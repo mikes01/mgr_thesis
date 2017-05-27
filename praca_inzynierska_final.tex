@@ -1,0 +1,2093 @@
+\documentclass[eng,archivemode]{mgr}
+
+\usepackage[polish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{fontenc}
+\usepackage{polski}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{psfrag}
+\usepackage{supertabular}
+\usepackage{array}
+\usepackage{hhline}
+\usepackage{indentfirst}
+\usepackage{float}
+\usepackage{enumitem}
+\usepackage{afterpage}
+\usepackage{tabularx}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{hyphenat}
+\usepackage[hidelinks]{hyperref}
+\usepackage{ucs}
+
+\raggedbottom
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+\definecolor{lightgray}{rgb}{.9,.9,.9}
+\definecolor{darkgray}{rgb}{.4,.4,.4}
+\definecolor{purple}{rgb}{0.65, 0.12, 0.82}
+
+\lstdefinelanguage{JavaScript}{
+	keywords={break, case, catch, continue, debugger, default, delete, do, else, false, finally, for, function, if, in, instanceof, new, null, return, switch, this, throw, true, try, typeof, var, void, while, with, \$scope},
+	morecomment=[l]{//},
+	morecomment=[s]{/*}{*/},
+	morestring=[b]',
+	morestring=[b]",
+	ndkeywords={class, export, boolean, throw, implements, import, this},
+	keywordstyle=\color{blue}\bfseries,
+	ndkeywordstyle=\color{darkgray}\bfseries,
+	identifierstyle=\color{black},
+	commentstyle=\color{purple}\ttfamily,
+	stringstyle=\color{mymauve}\ttfamily,
+	sensitive=true
+}
+
+\lstdefinelanguage{Slim}{
+	keywords={ul, div, a, href, i, li},
+	morecomment=[l]{//},
+	morecomment=[s]{/*}{*/},
+	morestring=[b]',
+	morestring=[b]",
+	ndkeywords={class, export, boolean, throw, implements, import, this},
+	keywordstyle=\color{blue}\bfseries,
+	ndkeywordstyle=\color{darkgray}\bfseries,
+	identifierstyle=\color{black},
+	commentstyle=\color{purple}\ttfamily,
+	stringstyle=\color{mymauve}\ttfamily,
+	sensitive=true,
+}
+
+\lstset{ %
+	backgroundcolor=\color{white},   % choose the background color
+	basicstyle=\footnotesize,        % size of fonts used for the code
+	breaklines=true,                 % automatic line breaking only at whitespace
+	frame=single,  
+	commentstyle=\color{mygreen},    % comment style
+	escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+	keywordstyle=\color{blue},       % keyword style
+	stringstyle=\color{mymauve},     % string literal style
+	tabsize=2,
+	inputencoding=utf8x, 
+	extendedchars=\true,
+	literate={ą}{{\k{a}}}1
+	{Ą}{{\k{A}}}1
+	{ę}{{\k{e}}}1
+	{Ę}{{\k{E}}}1
+	{ó}{{\'o}}1
+	{Ó}{{\'O}}1
+	{ś}{{\'s}}1
+	{Ś}{{\'S}}1
+	{ł}{{\l{}}}1
+	{Ł}{{\L{}}}1
+	{ż}{{\.z}}1
+	{Ż}{{\.Z}}1
+	{ź}{{\'z}}1
+	{Ź}{{\'Z}}1
+	{ć}{{\'c}}1
+	{Ć}{{\'C}}1
+	{ń}{{\'n}}1
+	{Ń}{{\'N}}1
+}
+
+\newcommand\blankpage{%
+	\null
+	\thispagestyle{empty}%
+	\addtocounter{page}{-1}%
+	\newpage}
+
+\renewcommand\bibname{Literatura}
+\renewcommand{\lstlistingname}{Fragment kodu}
+
+\date{2015}
+
+\title{System informatyczny wspomagający organizację wspólnych przejazdów samochodami w~mieście}
+\engtitle{The information system supporting organization of joint car journeys in the city}
+\author{Mikołaj Grygiel}
+\supervisor{dr inż. Marek Piasecki}
+
+\field{Informatyka (INF)}
+\specialisation{ Inżynieria systemów informatycznych (INS)}
+
+\begin{document}
+\bibliographystyle{plabbrv}
+
+\maketitle
+
+\tableofcontents
+
+\chapter{Wprowadzenie}
+\section{Cel pracy}
+\label{sec:cel}
+Celem niniejszego projektu jest zaprojektowanie systemu informatycznego, który będzie wspomagał użytkowników przy organizacji wspólnych przejazdów samochodami w~mieście oraz zaimplementowanie wybranych funkcjonalności tego systemu.\\
+
+Głównymi funkcjonalnościami systemu będą:
+\begin{itemize}
+	\item Oferowanie wspólnych przejazdów samochodem innym użytkownikom
+	\item Wyszukiwanie przejazdów jako pasażer	
+\end{itemize}
+
+System będzie składał się z~4 komponentów:
+\begin{itemize}
+	\item bazy danych
+	\item web serwisu
+	\item aplikacji moblinej
+	\item aplikacji internetowej	
+\end{itemize}
+
+
+
+\section[Przegląd wybranych rozwiązań dostępnych na rynku]{Przegląd wybranych rozwiązań dostępnych\\ na rynku}
+Na rynku dostępne są aplikacje oferujące zbliżone funkcjonalności do projektowanego systemu:
+\begin{itemize}
+	\item \textbf{Uber }-- zamawianie przejazdu na żądanie. Są dwa typy użytkowników z~oddzielnymi procesami rejestracji. Użytkownicy, którzy szukają środka transportu, w~aplikacji widzą aktywnych kierowców oraz ich położenie na mapie miasta. Użytkownik po wyborze kierowcy, kontaktuje się z~nim za pomocą wiadomości w~aplikacji dokąd chce pojechać oraz uzgadnia cenę przejazdu. Uber zapewnia system płatności, część zapłaty za przejazd jest potrącana przez aplikacje. Dostępna jest aplikacja mobilna dla Androida, iOSa oraz Windows Phone.
+	\item \textbf{Jakdojade }-- aplikacja, służąca do wyszukiwania połączeń publicznymi środkami transportu między interesującymi nas miejscami w~obrębie maista. Możemy wybrać godzinę, o~której chcemy wyjechać lub na którą godzinę chcemy dotrzeć na miejsce docelowe. Wyszukiwarka wyszukuje pełne połączenie między wybranymi miejscami, uwzględniając złożenie pełnej trasy z~kilku różnych przejazdów oraz drogi pieszo. Są do wyboru 3 tryby wyszukiwania połaczenia:
+	\begin{itemize}
+		\item Wygodne – szukana jest trasa z~jak najmniejszą ilością przesiadek oraz z~jak najkrótszą odległością do przejścia pieszo
+		\item Optymalna – wyszukiwarka szuka połączeń o~zrównoważonym czasie podróży do jej wygody
+		\item Ekspresowa – wyszukiwana jest jak najszybsza trasa
+	\end{itemize}
+	Aplikacja ma swoją wersje na przeglądarkę oraz na systemy mobilne Android, iOS i~Windows Phone.
+	
+	\item \textbf{Blablacar }-- aplikacja do organizowania wspólnych przejazdów między miastami. Można dodawać przejazdy jednorazowe lub cykliczne, których trasa jest nie dłuższa niż 75km. Użytkownik, który chce oferować przejazdy, musi najpierw dodać swój samochód (markę, wyposażenie), oraz określić reguły obowiązujące w~jego samochodzie (np. czy zgadza się na przewóz zwierząt). Miejsca w~samochodzie można rezerwować automatycznie online lub manualnie, poprzez rozmowę telefoniczną z~kierowcą, który następnie aktualizuje ilość dostępnych miejsc w~samochodzie. Użytkownicy mogę nawzajem siebie oceniać, nie jest do tego wymagany wspólnie odbyty przejazd. Jedyne zabezpieczenie przed nieprawdziwymi komentarzami to możliwość odpowiedzenia na nie. Z~ innymi użytkownikami można komunikować się poprzez wewnętrzny system wiadomości. Użytkowników można wyszukać jedynie po ich numerze telefonu. Podczas dodawania nowej oferty przejazdu można określić pośrednie miasta podróży, w~których kierowca zgadza się wysadzić pasażerów. Korzystanie z~aplikacji jest w~pełni darmowe, jednak za przejazdy kierowcy mogą żądać opłaty. Aplikacja nie posiada żadnego systemu płatności, rozliczenie między kierowcą, a~pasażerami odbywa się podczas podróży poza systemem. Blablacar oprócz wersji przeglądarkowej posiada wersje na urządzenia mobilne z~system iOS lub Android.
+	\item \textbf{Otodojazd	}-- Aplikacja oferuje organizacje wspólnych dojazdów na uczelnie oraz do pracy. Kierowca dodając przejazd musi podać szereg parametrów:
+	\begin{itemize}
+		\item punkt początkowy
+		\item punkt końcowy
+		\item stacje pośrednie
+		\item w~jakie dni oferuje wspólną podróż
+		\item czy jego przejazdy są cykliczne
+		\item o~której godzinie wyjeżdża z~miejsca początkowego
+		\item ile ma wolnych miejsc w~samochodzie
+		\item opłatę za dojazd
+	\end{itemize}
+	Trasy można wyszukiwać podając samo miasto lub punkt początkowy i~końcowy podróży. Wyszukiwarka wyszukuje trasy analizując cały ich przebieg, nie tylko punkty krańcowe.
+	
+\end{itemize}
+\begin{table}[H]
+	\caption{ Porównanie funkcjonalności istniejących aplikacji z~projektowanym systemem}
+	\centering
+	\begin{tabularx}{1\linewidth}{|X|c|c|c|c|c|} \hline
+		& Uber & Jakdojade & Blablacar & Otodojazd & Proj. system \\ \hline
+		Dodawanie przejazdów & - & - & + & + & + \\ \hline
+		Zamawianie przejazdów  & + & - & - & - & - \\ \hline
+		Określenie warunków\newline przejazdu  & + & - & + & + & + \\ \hline
+		Wyszukiwanie przejazdów  & - & + & + & + & + \\ \hline
+		Łączenie przejazdów  & - & + & - & - & + \\ \hline
+		Podróże między miastami & - & - & + & - & - \\ \hline
+		Podróże w obrębie miasta & + & + & - & + & + \\ \hline
+		Rezerwacja online\newline przejazdu & + & - & + & - & + \\ \hline
+		Informacja o położeniu kierowcy & + & - & - & - & + \\ \hline
+		Informacja o położeniu \newline pasażera & + & - & - & - & + \\ \hline
+		Nawigacja do przystanku & - & + & - & - & + \\ \hline
+		Wersja mobilna aplikacji & + & + & + & + & + \\ \hline
+		Wersja internetowa \newline aplikacji & + & + & + & + & + \\ \hline
+		Komentowanie kierowców & + & - & + & + & + \\ \hline
+	\end{tabularx}
+\end{table}
+\section{Możliwe warianty systemu \emph{Jedźmy razem}}
+
+Główne funkcjonalności systemu \emph{Jedźmy razem} można zrealizować na kilka sposobów. Poniżej przedstawiono trzy warianty systemu, w każdym z nich inaczej zrealizowane jest wyszukiwanie przejazdów, co powoduje inną reprezentacje połączeń w systemie.
+
+\begin{enumerate}[label=\textbf{Wariant \Alph*.}]
+	\item W~ systemie \emph{Jedźmy razem} miasto zapisane jest jako graf skierowany, ważony. Wierzchołkami grafu są lokalizacje w~mieście gdzie możliwe jest zatrzymanie się samochodem i~zabranie/zostawienie pasażerów. Wagą każdej krawędzi jest średni czas potrzebny na przejazd samochodem między lokalizacjami zapisanymi w~wierzchołkach. Kierowca podczas tworzenia przejazdu podaje punkt początkowy, punkt końcowy, proponowane punkty pośrednie oraz określa maksymalny czas jaki jest gotowy poświęcić na zjechanie ze swojej głównej trasy. Trasa na stałe zapisana jest jedynie jako punkt początkowy i~końcowy. Gdy pasażerowie wyszukują przejazdu, modyfikowane są trasy kierowców, nie wydłużając ich ponad maksymalny czas podróży podany przez kierowcę. Trasa zapisana jest jako ścieżka w~grafie.\newline\newline
+	Zalety:
+	\begin{itemize}
+		\item Elastyczne dopasowanie trasy kierowcy do miejsc gdzie znajdują się pasażerowie.
+		\item Reprezentacja tras w~formie grafu, może ułatwić wyszukiwanie przejazdów dzięki wykorzystaniu algorytmów wyszukujących ścieżki w~grafie.
+		\item Przy wyszukiwaniu złożonych tras, połączenia między pośrednimi przejazdami są zdefiniowane z~góry za pomocą grafu miasta.
+	\end{itemize}
+	Wady:
+	\begin{itemize}
+		\item W~systemie trzeba zdefiniować graf dla całego miasta.
+		\item Przed wdrożeniem systemu w~innych miastach, konieczne jest definiowanie grafów dla nowych miast.
+	\end{itemize}
+	
+	\item W~ systemie nie jest zapisana siatka połączeń dla miasta. Trasy planowane są przez zewnętrzny serwis, który przetłumaczy nazwy miejsc podanych przez kierowce na współrzędne geograficzne. Kierowca jest odpowiedzialny za wprowadzenie miejsc gdzie może zatrzymać się samochodem. Kierowca podaje punkt początkowy, punkty pośrednie oraz punkt końcowy. Przejazdy wybierane są na podstawie odległości od punktów pasażera.\newline\newline
+	Zalety:
+	\begin{itemize}
+		\item System nie musi zajmować się planowaniem trasy kierowcy.
+		\item Zastosowanie systemu dla innych miast nie wymaga zbyt dużo dodatkowej pracy.
+	\end{itemize}
+	Wady:
+	\begin{itemize}
+		\item Przy wyszukiwaniu złożonych tras, konieczne jest za każdym razem sprawdzanie, które przejazdy pośrednie znajdują się blisko siebie.
+	\end{itemize}
+	\item Trasa jest zapisana w~systemie jako lista nazw miejsc wraz z~godziną, które podał kierowca. Pasażer wprowadza ramy czasowe, w~których zamierza podróżować. Zwrócone zostają wszystkie przejazdy znajdujące się w~podanym przedziale czasowym.\newline\newline
+	Zalety:
+	\begin{itemize}
+		\item Przejazdów nie trzeba wyszukiwać względem lokalizacji co ułatwi implementacje.
+		\item System nie musi zajmować się planowaniem trasy kierowcy.
+		\item Zastosowanie systemu dla innych miast nie wymaga zbyt dużo dodatkowej pracy.
+	\end{itemize}
+	Wady:
+	\begin{itemize}
+		\item System bez wyszukiwania połączeń względem lokalizacji może okazać się mało funkcjonalny dla użytkownika.
+	\end{itemize}
+\end{enumerate}
+
+Najbardziej funkcjonalnym wydaje się być wariant A. Jednak zdefiniowanie miasta w~formie grafu i~zapisanie go w~bazie danych jest bardzo czasochłonnym przedsięwzięciem. Z~ tego powodu do wykonania podczas projektu inżynierskiego został wybrany wariant B., który posiada równie dużo funkcjonalności dla użytkownika co wariant A., ale dzięki pominięciu zapamiętania mapy miasta po stronie systemu jest możliwy do zrealizowania w~czasie przeznaczonym na wykonanie projektu. Wariant C. został odrzucony z~powodu zbyt małej złożoności.
+
+\chapter{Opis projektu realizowanego systemu}
+\section{Struktura systemu}
+System zgodnie za schematem na rysunku [\ref{fig:component_diagram}] został podzielony na 3 warstwy:
+\begin{itemize}
+	\item Warstwa danych (ang. data access layer) -- to najniższy poziom systemu, w~której znajduje się baza danych. W~ tej warstwie wyłącznie przechowywane są dane i~udostępniane za pomocą mapowania relacji na obiekty. Wybrana baza danych to Postgresql.
+	\item Warstwa logiki biznesowej (ang. buisness logic layer) -- na tym poziomie dane są przetwarzane. W~ tej warstwie znajduje się web serwis wykonany w~Ruby on Rails. Komunikacja z~wyższą warstwą odbywać się będzie za pomocą protokołu http, a~dane będą w~formacie JSON.
+	\item Warstwa prezentacji danych (ang. presentation layer) -- poziom, w~którym odbywa się komunikacja między użytkownikiem, a~systemem. Aplikacje klienckie zawarte są w~tej warstwie. Podczas projektu wykonane zostaną dwie aplikacje klienckie:
+	\begin{itemize}
+		\item aplikacja internetowa utworzona za pomocą AngularJS
+		\item aplikacja mobilna na platformę Android
+	\end{itemize}
+\end{itemize}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{component_diagram}
+	\caption{Struktura systemu}
+	\label{fig:component_diagram}
+\end{figure}
+
+\section{Funkcjonalność systemu}
+Na rysunkach [\ref{fig:Kierowca}] i~[\ref{fig:Pasazer}] przedstawiono możliwe przypadki użycia systemu przez użytkowników, którzy mogą być podzieleni na dwie grupy według dwóch głównych funkcjonalności systemu:
+	\begin{itemize}
+		\item kierowcy - użytkownicy, którzy oferują przejazdy
+		\item pasażerowie - użytkownicy, którzy wyszukują przejazdy
+	\end{itemize}
+Podział ten ma charakter wyłącznie abstrakcyjny, dla zwiększenia czytelności diagramów. W~ systemie każdy użytkownik ma dostęp do tego samego zestawu funkcjonalności.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{Kierowca}
+	\caption{Diagram przypadków użycia systemu jako kierowca}
+	\label{fig:Kierowca}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{Pasazer}
+	\caption{Diagram przypadków użycia systemu jako pasażer}
+	\label{fig:Pasazer}
+\end{figure}
+\newpage
+Poniżej przestawiono przykładowy scenariusz dla przypadku użycia. Scenariusze dla wszystkich przypadków użycia dostępne są w~dodatku A.
+\newline
+\vspace*{1 cm}
+\newline
+\begin{tabularx}{1\linewidth}{l|X}
+	\multicolumn{2}{c}{\textbf{Uruchom menadżer kierowcy}} \\ \hline
+	Aktorzy & Kierowca\\ \hline
+	Cel &  Nawigowanie kierowcy wzdłuż trasy przejazdu oraz informowanie o~pozycji pasażerów. \\ \hline
+	Warunki wstępne & Kierowca posiada przejazd w~aktualnym czasie. \\ \hline
+	Warunki końcowe & Kierowca zakończył swój przejazd.\\ \hline
+	Scenariusz główny & 
+	\begin{minipage}{4in}
+		\vskip 4pt
+		\begin{enumerate}
+			\item Pobranie trasy przejazdu z~bazy danych.
+			\item Zapisanie pozycji kierowcy w~bazie danych.
+			\item Zaznaczenie pozycji kierowcy względem trasy przejazdu.
+			\item Pobranie pozycji pasażerów.
+			\item Zaznaczenie pozycji pasażerów względem trasy przejazdu.
+			\item Przejście do kroku drugiego.
+		\end{enumerate}
+		\vskip 4pt
+	\end{minipage}
+	\\ \hline
+	Wyjątki &
+	\begin{minipage}{4in}
+		\vskip 4pt
+		\begin{enumerate}[label={2.\Alph*.},leftmargin=1.2cm]
+			\item Nie można pobrać położenia kierowcy.
+			\begin{enumerate}[label=1.A.\arabic*.]
+				\item Wyświetlenie widoku z~możliwością uruchomienia modułu gps
+				\item Przejście do kroku pierwszego.
+			\end{enumerate}					
+		\end{enumerate}
+		\begin{enumerate}[label={4.\Alph*.},leftmargin=1.2cm]
+			\item Pozycja, któregoś z~pasażerów jest nieznana.
+			\begin{enumerate}[label=4.A.\arabic*.]
+				\item Wyświetlenie informacji o~nieokreślonej lokalizacji danego pasażera.
+				\item Przejście do kolejnego kroku.
+			\end{enumerate}
+			\item Pozycja, wszystkich pasażerów jest nieznana.
+			\begin{enumerate}[label=4.B.\arabic*.]
+				\item Wyświetlenie informacji o~nieokreślonej lokalizacji pasażerów.
+				\item Przejście do kroku pierwszego.
+			\end{enumerate}				
+		\end{enumerate}
+		\begin{enumerate}[label={6.\Alph*.},leftmargin=1.2cm]
+			\item Zakończenie trasy przejazdu.
+			\begin{enumerate}[label=6.A.\arabic*.]
+				\item Zakończenie przypadku użycia.
+			\end{enumerate}	
+		\end{enumerate}
+		\vskip 4pt
+	\end{minipage}
+	\\ \hline
+	Rozszerzenia & 
+	\begin{minipage}{4in}
+		\vskip 4pt			
+		\vskip 4pt
+	\end{minipage}
+	\\ \hline
+\end{tabularx}
+
+\newpage
+\section{Struktura bazy danych}
+
+Baza danych została zaprojektowana dla pełnego systemu. Typy kolumn, zgadzają się z~typami dostępnymi w~Postgresql, z~wyjątkiem typu "point", który jest dostarczony przez bibliotekę Postgis.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{ERD}
+	\caption{Diagram ERD}
+	\label{fig:erd}
+\end{figure}
+
+Poszczególne tabele w~bazie danych przedstawionej na rysunku [\ref{fig:erd}]:
+\begin{itemize}
+	\item \textbf{Users} -- dane o~użytkownikach:
+	\begin{itemize}
+		\item username -- nazwa użytkownika, pomocna przy kontaktach między użytkownikami. Nie musi być ona unikalna, ponieważ nie jest używana podczas logowania.
+		\item email -- adres email, musi być unikalny, ponieważ jest używany podczas logowania.
+		\item phone -- numer telefonu użytkownika, musi być unikalny, ponieważ każdy użytkownik powinien mieć tylko jedno konto.
+		\item password -- zakodowane hasło użytkownika.
+		\item current\_sign\_in\_at -- data i~godzina utworzenie aktualnej sesji.
+		\item current\_sign\_in\_ip -- adres ip, z~którego utworzono aktualną sesje.
+		\item last\_sign\_in\_at -- data i~godzina utworzenie poprzedniej sesji.
+		\item last\_sign\_in\_ip -- adres ip, z~którego utworzono poprzednią sesje.
+		\item reset\_password\_sent\_at -- data i~godzina wysłania tokenu do resetowania hasła, to pole może być puste.
+		\item reset\_password\_token -- token do resetowania hasła, to pole może być puste.
+		\item sign\_in\_count -- liczba utworzonych sesji przez użytkownika.
+		\item last\_known\_location -- ostatnia znana lokalizacja użytkownika, to pole może być puste.
+		\item location\_recorded\_at -- data i~godzina zapisania ostatniej znanej lokalizacji, to pole może być puste.
+		\item vehicle\_model\_id -- klucz obcy do tabeli "VehicleModels", określa markę i model samochodu przypisanego do użytkownika.
+		\item vehicle\_production\_year -- rok produkcji samochodu.
+		\item vehicle\_description -- opis pojazdu, wprowadzony przez użytkownika, np. kolor, funkcjonalności.
+	\end{itemize}
+	\item \textbf{VehicleModels} -- dostępne modele samochodów:
+	\begin{itemize}
+		\item model -- model samochodu.
+		\item maker -- marka pojazdu.
+	\end{itemize}
+	\item \textbf{Journeys} -- dane o~przejazdach:
+	\begin{itemize}
+		\item date -- data przejazdu.
+		\item spaces -- ilość oferowanych miejsc.
+		\item driver -- klucz obcy do tabeli "Users", który określa kierowce przejazdu.
+		\item created\_at -- data utworzenia przejazdu.
+		\item updated\_at -- data ostatniej modyfikacji przejazdu.
+	\end{itemize}
+	\item \textbf{Waypoints} -- punkty pośrednie przejazdu:
+	\begin{itemize}
+		\item time -- godzina, o~której kierowca znajdzie się w~danym punkcie.
+		\item journeys\_id -- klucz obcy do tabeli "Journeys", określa do którego przejazdu należy punkt.
+		\item localizations\_id -- klucz obcy do tabeli "Localizations", określa w~jakiej lokalizacji geograficznym znajduje się punkt przejazdu.
+	\end{itemize}
+	\item \textbf{Localizations} -- lokalizacje geograficzne:
+	\begin{itemize}
+		\item geographic\_point -- współrzędne geograficzne.
+		\item name -- nazwa lokalizacji, np. ulica, nr domu(Grunwaldzka 18).
+	\end{itemize}
+	\item \textbf{Passangers} -- tabela łącząca użytkowników z~przejazdami, start\_waypoint i~finish\_waypoint muszą należeć do tego samego przejazdu:
+	\begin{itemize}
+		\item user\_id --  klucz obcy do tabeli "Users", definiuje pasażera.
+		\item start\_point -- klucz obcy do tabeli "Waypoints", punkt początkowy podróży pasażera.
+		\item finish\_point -- klucz obcy do tabeli "Waypoints", punkt końcowy podróży pasażera.
+	\end{itemize}
+	\item \textbf{Comments} -- komentarze dotyczące konkretnych przejazdów:
+	\begin{itemize}
+		\item mark --  ocena podróży.
+		\item comment -- treść komentarza na temat przejazdu.
+		\item passenger\_id -- klucz obcy do tabeli "Passengers", definiuje przejazd i~pasażera, którego dotyczy komentarz.
+		\item is\_from\_driver -- jeśli wartość jest prawdą, to oznacza, że komentarz wystawił kierowca, w~przeciwny razie komentarz jest od pasażera.
+		\item created\_at -- data i~godzina utworzenia komentarza.
+	\end{itemize}
+	\item \textbf{Messages} -- wiadomości użytkowników:
+	\begin{itemize}
+		\item from -- klucz obcy do tabeli "Users", oznacza nadawce wiadomości.
+		\item message -- treść wiadomości.
+		\item created\_at -- data i~godzina utworzenia wiadomości.
+	\end{itemize}
+	\item \textbf{Recivers} -- odbiorcy wiadomości:
+	\begin{itemize}
+		\item to -- klucz obcy do tabeli "Users", oznacza odbiorce wiadomości.
+		\item read\_at -- data i~godzina otworzenia wiadomości przez odbiorce, początkowo nie ma wartości.
+		\item message\_id -- klucz obcy do tabeli "Messages".
+	\end{itemize}
+\end{itemize}
+\newpage
+\section{Zakres projektu}
+\label{sec:zakres}
+Z powodu ograniczenia czasowego, do zaimplementowania w~ramach projektu wybrano kilka przypadków użycia przedstawionych na rys. [\ref{fig:use_cases}].
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{implemented_use_cases}
+	\caption{Diagram przypadków użycia do zaimplementowania w~projekcie}
+	\label{fig:use_cases}
+\end{figure}
+\newpage
+\section{Algorytm wyszukiwania przejazdów}
+\label{sec:algorithm}
+Na wejściu algorytmu do wyszukiwania przejazdów mamy następujące dane:
+\begin{itemize}
+	\item $p_{p}$ -- lokalizacja początku podróży pasażera
+	\item $p_{k}$ -- lokalizacja końca podróży pasażera
+	\item $t_{p}$ -- godzina rozpoczęcia podróży
+\end{itemize}
+
+Parametrami algorytmu są:
+\begin{itemize}
+	\item $\Delta_{t}$ -- maksymalne opóźnienie rozpoczęcia podróży
+	\item $k_{max}$ -- maksymalna ilość przejazdów pośrednich
+	\item $d_{max}$ -- maksymalna odległość między dwoma punktami, przy której stwierdzamy, że dwa przejazdy z~tymi punktami są ze sobą połączone
+\end{itemize}
+
+Pomocnicze funkcje użyte na schematach blokowych:
+\begin{itemize}
+	\item size -- zwraca rozmiar listy
+	\item push(element) -- wstawia podany element na koniec listy
+	\item last -- zwraca ostatni element listy
+	\item connect(przejazd, lokalizacja) -- zwraca wartość null, jeśli przejazd nie zawiera punktu p, takiego, że odległość między punktem p, a~podaną lokalizacją jest mniejsza od $d_{max}$, w~przeciwnym razie zwraca punkt p
+	\item find\_connection(kurs, lista\_przejazdow) -- zwraca przejazd z~podanej listy przejazdów, między którym istnieje połączenie z~podanym kursem. Jeśli taki przejazd nie istnieje, zwraca wartość null.
+\end{itemize}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{general_search_journeys_algorithm}
+	\caption{Schemat blokowy algorytmu do wyszukiwania przejazdów}
+	\label{fig:general_search_journeys_algorithm}
+\end{figure}
+
+Ogólny schemat blokowy algorytmu został przedstawiony na rysunku [\ref{fig:general_search_journeys_algorithm}]. Pierwszym krokiem jest wczytanie z~bazy danych przejazdów występujących w~zadanym czasie. Następnie można wydzielić dwa główne etapy algorytmu:
+\newpage
+\begin{enumerate}
+	\item[\textbf{ETAP I}] -- podzielenie wczytanych przejazdów na 4 listy:
+	\begin{itemize}
+		\item $g_1$ - przejazdy bezpośrednie
+		\item $g_2$ - przejazdy znajdujące się w~otoczeniu punktu początkowego $p_{p}$
+		\item $g_3$ - przejazdy znajdujące się w~otoczeniu punktu końcowego $p_{k}$
+		\item $g_4$ - reszta przejazdów
+	\end{itemize}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1\linewidth]{e1_search_journeys_algorithm}
+		\caption{Schemat blokowy etapu pierwszego algorytmu do wyszukiwania przejazdów}
+		\label{fig:e1_search_journeys_algorithm}
+	\end{figure}
+	\newpage
+	\item[\textbf{ETAP II}] -- wyznaczenie tras pośrednich złożonych z~przejazdów z~list $g_2$, $g_3$, $g_4$.
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1\linewidth]{e2_search_journeys_algorithm}
+		\caption{Schemat blokowy etapu drugiego algorytmu do wyszukiwania przejazdów}
+		\label{fig:e2_search_journeys_algorithm}
+	\end{figure}
+\end{enumerate}
+
+Podczas implementacji algorytmu w~projekcie przyjęto następujące parametry algorytmu:
+\begin{itemize}
+	\item $\Delta_{t}=2h$
+	\item $k_{max}=4$
+	\item $d_{max}=1000m$
+\end{itemize}
+
+ Złożoność obliczeniowa algorytmu w notacji $O$\cite{cormen} wynosi $O(n^{k_max})$, gdzie "n" to liczba przejazdów w~danym przedziale czasowym. Aby zmniejszyć złożoność obliczeniową algorytmu można by zastosować heurystyki, ograniczające zbiór przeglądanych rozwiązań, np.:
+\begin{itemize}
+	\item jeśli przejazd nie jest przejazdem bezpośrednim, punktów przesiadkowych szukać wyłącznie w~\textit{m} najdłuższych przejazdów, gdzie prawdopodobieństwo znalezienia punktu przesiadkowego jest większe z~powodu większej ilości punktów przejazdu
+	\item na podstawie przejazdów zapisanych w~bazie danych typować obszary o~największej ilości przejazdów. Trasy z~przesiadkami wyszukiwać wyłącznie wśród przejazdów przebiegających przez te obszary
+\end{itemize}
+
+\chapter{Wykorzystane technologie}
+
+\section{Baza danych}
+W projekcie wykorzystano relacyjną bazę danych PostgreSQL z~dodatkiem Postgis, który pozwala operować na danych przestrzennych takich jak np.:
+\begin{itemize}
+	\item Lokalizacja geograficzna - Point
+	\item Trasa - Polyline
+	\item Obszar geograficzny - Polygon
+\end{itemize}
+Dane tych typów są przechowywane w~formie binarnej. Oprócz zapisania informacji w~oszczędnym formacie, możliwe jest sprawne wykonywanie zapytań z~warunkami przestrzennymi np. wczytać wszystkie punkty odległe od zadanego punktu nie więcej niż zadana wartość. Przykład takiego zapytania widoczny jest w fragmencie kodu [\ref{lst:spatial_sql}, którego wynikiem są wszystkich rekordy z~tabeli "waypoints", gdzie odległość punktu z~kolumny "point" do punkt (51.12312, 17.223104) jest mniejsza niż 1000m.
+
+\begin{lstlisting}[language=SQL, caption={Przykład zapytania SQL z~użyciem operacji na danych przestrzennych}, label={lst:spatial_sql}]
+SELECT * FROM waypoints WHERE
+ST_Distance(waypoints.point, POINT(51.12312 17.223104)) < 1000;
+\end{lstlisting} 
+\newpage
+\section{Web serwis}
+Do komunikacji między web serwisem, a~aplikacjami klienckimi zostanie wykorzystana architektura RESTful API, która musi trzymać się przynajmniej 3 prostych reguł\cite{rails api}:
+\begin{itemize}
+	\item Bazować na adresach URI
+	\item Reprezentować dane z użyciem internetowego nośnika danych, najczęściej jest to JSON
+	\item Używać podstawowych metod HTTP:
+	\begin{itemize}
+		\item GET - pobieranie danych
+		\item POST - tworzenie danych
+		\item PUT - modyfikowanie danych
+		\item DELETE - usuwanie danych
+	\end{itemize}
+\end{itemize}
+
+Do zaimplementowania aplikacji serwerowej wykorzystany zostanie framework Ruby on Rails, który jest oparty o~wzorzec projektowy Model-Widok-Kontroler\cite{rails agile}. Aplikacja oparta na tym wzorcu jest podzielona na 3 części:
+\begin{itemize}
+	\item Modele - reprezentują logikę biznesową. Tutaj znajdują się wszelkie obiekty, które służą do wykonywania wszelkich operacji związanych z~implementacją funkcjonalności aplikacji.
+	\item Widoki - służą do prezentowania danych. W~ projektowanej aplikacji, ta część nie zostanie wykorzystana, ponieważ rolę widoków przejmą aplikacje klienckie. 
+	\item Kontrolery - obsługują zapytania użytkownika. Nie przetwarzają żadnych danych, jedynie odbierają parametry, przekazują je do odpowiedniego modelu i~zwracają odpowiedź modelu.
+\end{itemize}
+W projekcie wykorzystana zostanie ostatnia stabilna wersja rubiego 2.2.2 z~najnowszą stabilną wersją frameworka rails 4.2.3.
+\section{Aplikacja internetowa}
+
+Aplikacja internetowa zostanie stworzona we frameworku języka JavaScript AngularJS. AngularJS korzysta z~wzorca projektowego Model-Widok-Kontroler, oddzielając warstwę prezentacji od logiki biznesowej. Framework rozszerza standardowe możliwości HTMLa m. in. dzięki wiązaniom dwukierunkowym(ang. two-way-binding). Kompletną wiedzę na temat zasad działania i zastosowania AngularJS można zdobyć z książki \emph{ng-book}\cite{ng-book}.
+
+W projekcie AngularJS zostanie użyty z~językiem CoffesScript, który jest kompilowany do JavaScriptu i~w~ pełni kompatybilny z~tym językiem. Widoki zostaną napisane za pomocą języka Slim, który jest kompilowany do HTMLa, a~style widoków zostaną napisane z~ wykorzystaniem języka SASS, który jest interpretowany do CSSa.
+
+\section{Aplikacja mobilna}
+Aplikacja mobilna zostanie stworzona na platformę Android. W~ tym celu zostanie wykorzystana paczka narzędzi programistycznych Android SDK. Minimalną wersją systemu wymaganą do poprawnego działania aplikacji będzie Android 4.0.3 (API wersja 15). Dzięki temu aplikacja będzie wspierana dla około 96\%\footnote{Dane z dnia 2 listopada 2015 roku, dostępne na stronie http://developer.android.com/about/dashboards/index.html} telefonów komórkowych spośród wszystkich z~systemem Android.
+
+\chapter{Implementacja}
+\section{Web serwis}
+
+\subsection{Tworzenie przejazdu}
+Tworzenie przejazdu rozpoczyna się od wysłania zapytania POST na adres \textit{/journeys}. Adres ten jest obsługiwany przez metodę \textit{create} z~kontrolera \textit{JourneysController} widoczną w fragmencie kodu [\ref{lst:create_controller}]
+
+\begin{lstlisting}[language=Ruby, caption={Obsługa zapytania POST na adres /journeys}, label=lst:create_controller]
+def create
+  @journey = Journey.create_with_path(journey_params, current_user)
+  render json: { status: :created, journey: @journey }
+rescue StandardError => e
+  render json: { status: :unprocessable_entity, error: e.to_s }
+end
+\end{lstlisting}
+
+Podczas tworzenia przejazdu, parametry przekazane w~zapytaniu, przepuszczane są przez metodę \textit{journey\_params} widoczną w poniższym kodzie źródłowym. Metoda ta ma na celu odfiltrowanie wymaganych parametrów od pozostałych, aby uniknąć przetwarzania nie pożądanych danych.
+
+\begin{lstlisting}[language=Ruby, caption={Odfiltrowanie wymaganych parametrów}, label=lst:journey_params]
+def journey_params
+  params.require(:journey)
+    .permit(:date, :spaces, path: [:time, :name, point: []])
+end
+\end{lstlisting}
+
+Dane do bazy danych zapisywane są poprzez wywołanie metody \newline \textit{Journey.create\_with\_path(journey\_params, current\_user)}, która jest zamieszczona w fragmencie kodu [\ref{lst:create_with_path}]. Wszystkie zapytania do bazy danych w~bloku \textit{Journey.transaction do .. end} zostaną wykonane w~jednym połączeniu z~bazą danych. Zwiększa to wydajność aplikacji oraz chroni przed utratą integralności danych w~bazie. W~ przypadku niepowodzenia jednego z~zapytań, cała transakcja jest wycofywana.
+\newpage
+\begin{lstlisting}[language=Ruby, caption={Zapisanie przejazdu w~bazie danych}, label=lst:create_with_path]
+def self.create_with_path(journey_with_path, user)
+  Journey.transaction do
+    journey = Journey.create!(date: journey_with_path[:date],
+      spaces: journey_with_path[:spaces],
+      driver: user)
+    Waypoint.create_from_array(journey_with_path[:path], journey)
+    journey
+  end
+end
+\end{lstlisting}
+
+\subsection{Wyszukiwanie przejazdów}
+Zgodnie z algorytmem opisanym w rozdziale \ref{sec:algorithm} główna funkcja do wyszukiwania tras \textit{get\_journeys\_in\_period}, wywołuje kolejno 3 funkcje:
+\begin{itemize}
+	\item \textit{get\_journeys\_in\_period} - wczytanie z bazy danych przejazdów odbywających się w ciągu 2 godzin od planowanego przez pasażera rozpoczęcia podróży
+	\item \textit{sort\_journeys} - podzielenie przejazdów na 4 grupy, ze względu na ich relacje z punktem początkowym i punktem końcowym podróży pasażera
+	\item \textit{get\_matched\_journeys\_from\_sorted\_journeys} - wyznaczenie tras, łączących lokalizacje początkową i cel podróży
+\end{itemize}
+\begin{lstlisting}[language=Ruby, caption={Wyszukanie przejazdów o~zadanych parametrach}, label=lst:search_journeys]
+def self.search_journeys(parameters)
+  candidates = Journey.get_journeys_in_period(parameters[:start_time],
+    parameters[:date])
+   sorted_js = Journey.sort_journeys(candidates, parameters)
+   journeys = Journey.get_matched_journeys_from_sorted_journeys(sorted_js)
+   Journey.sort_and_format_response(journeys)
+end
+\end{lstlisting}
+Na końcu znalezione przejazdy są sortowane według godziny rozpoczęcia i przetwarzane do formatu, który może być zwrócony w zapytaniu http.
+\newpage
+\section{Aplikacja internetowa}
+\subsection{Zapytania do API}
+W AngularJS wszystkie zapytania http wykonywane są w~tle, dzięki temu strona jest bardziej dynamiczna, wiele akcji można wykonywać równolegle. Przykład takich zapytań przedstawiono w fragmencie kodu [\ref{lst:services}]. Składnia jest bardzo intuicyjna, obiekt \textit{\$http} posiada metody odpowiadające konkretnym typom zapytań. Pierwszym argumentem każdej z~tych metod jest adres, na który chcemy wysłać zapytanie, a~drugim jest hash z~parametrami do przesłania.
+
+\begin{lstlisting}[language=JavaScript, caption={Zapytania do API}, label=lst:services]
+angular.module('JedzmyrazemApp').factory 'Journey', ($http) ->
+  createJourney: (journey) ->
+    $http.post('/journeys.json', {journey: journey})
+  searchJourney: (params) ->
+    $http.get('/journeys.json', {params: params})
+\end{lstlisting}
+
+Przy wywołaniu funkcji, która zawiera takie zapytanie można zdefiniować osobne akcje w~przypadku sukcesu(funkcja "success") lub porażki(funkcja "error") zapytania. Jedna z~tych akcji zostanie wywołana dopiero po zakończeniu zapytania, które wykonywane jest w~tle. Przykład jest zamieszczony w fragmencie kodu \ref{lst:search}
+
+\begin{lstlisting}[language=JavaScript, caption={Obsługa zapytania asynchronicznego}, label=lst:search, extendedchars=true]
+$scope.search = () ->
+  if checkParameters()
+    params = {date: moment($scope.dt).format("YYYY-MM-DD"),
+      start_time: moment($scope.time).format("HH:mm"),
+      start_lat: $scope.startPlace.geometry.location.lat()
+      start_lng: $scope.startPlace.geometry.location.lng(),
+      finish_lat: $scope.finishPlace.geometry.location.lat(),
+      finish_lng: $scope.finishPlace.geometry.location.lng()}
+    Journey.searchJourney(params).success (data) ->
+      $scope.journeys = data.journey
+      if data.journey.length < 1
+        toastr.warning('Nie ma żadnych przejazdów o tych parametrach.',
+        'Przykro nam')
+     .error (data) ->
+       toastr.error('Spróbuj pownownie za chwilę.', 'Wystąpił błąd')
+\end{lstlisting}
+\newpage
+\subsection{Walidacja formularzy}
+Dzięki wiązaniom dwukierunkowym, dane można walidować już w~trakcie ich wpisywanie, zamiast dopiero przy próbie ich wysłania. W~fragmencie kodu [\ref{lst:email_validator}] pokazana jest dyrektywa \textit{\$watch}, która jest wywoływana za każdym razem gdy zmieni się jej argument. Do dyrektywy przekazywana jest poprzednia i~nowa wartość argumentu.  
+\begin{lstlisting}[language=JavaScript, caption={Walidowanie formatu email}, label=lst:email_validator]
+$scope.$watch 'user.email', (newValue, oldValue) ->
+  re = 
+    /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})
+    \.([a-z]{2,6}(?:\.[a-z]{2})?)$/i
+  if !re.test(newValue) && typeof(newValue) != 'undefined' && newValue !=''
+    $scope.validate.email_format = true
+  else
+    $scope.validate.email_format = false
+\end{lstlisting}
+W przypadku, kiedy wprowadzony email jest niezgodny z~wyrażeniem regularnym opisującym format adresu, zmienna \textit{\$scope.validate.email\_format} ustawiona jest na true. Każda zmienna zdefiniowana w~obrębie dyrektywy \textit{\$scope} współdzielona jest między widokiem i~kontrolerem. Dzięki temu w~przypadku wykrycia niepoprawnego adresu email, pokazywane jest stosowne powiadomienie w~formularzu za pomocą dyrektywy \textit{ng-show}, która pokazuje przypisany do niej frament widoku tylko, jeśli, jej argument jest prawdą, co można zobaczyć w poniższym kodzie źródłowym.
+\begin{lstlisting}[language=Slim, caption={Walidowanie foramtu email}, label=lst:email_validator_template]
+#password.input-group
+  span.input-group-addon
+    i.icon_key_alt
+  input.form-control ng-model="user.password" placeholder="Hasło" type="password"
+  div ng-show="validate.password_require"
+    label.error for="password" ng-show="validate.password_require"
+    | Pole hasło jest wymagane
+    br
+  label.error for="password" ng-show="validate.password_format"
+    | Hasło musi mieć conajmniej 8 znaków
+\end{lstlisting}
+\newpage
+\subsection{Stworzone widoki}
+
+Pierwszą funkcjonalnością po wejściu na stronę aplikacji jest wyszukiwanie przejazdów. Aby wyszukać daną trasę należy wypełnić wyświetlone pola. Dane, które użytkownik musi wprowadzić to lokalizacja początkowa, cel podróżować oraz data i~godzina rozpoczęcia podróży.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{search_journey_before}
+	\caption{Wyszukiwanie połączeń}
+	\label{fig:search_journey_before}
+\end{figure}
+
+Aby użytkownik zaistniał w~systemie, należy dokonać poprawnej rejestracji, podać w~formularzu adres e-mail, nazwę użytkownika, numer telefonu oraz login i~hasło. Email oraz numer telefonu muszą być unikalne, a~hasło musi mieć co najmniej 8 znaków.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{sign_up}
+	\caption{Tworzenie konta w~systemie}
+	\label{fig:sign_up}
+\end{figure}
+
+Po poprawnym podaniu danych, konto zostaje utworzone, a użytkownik jest automatycznie zalogowany na stronę internetową.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{search_journey}
+	\caption{Widok systemu po zalogowaniu}
+	\label{fig:search_user}
+\end{figure}
+Po wykonaniu czynności wyloguj, klient może ponownie się zalogować do systemu.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{sign_in}
+	\caption{Widok logowania do systemu}
+	\label{fig:sign_in}
+\end{figure}
+
+W przypadku kliknięcia na odnośnik "Nie pamiętasz hasła?", użytkownik zostaje przekierowany na widok, z którego może wysłać sobie instrukcje z resetowaniem hasła.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{send_mail}
+	\caption{Wysłanie maila z~instrukcją do zresetowania hasła}
+	\label{fig:send_mail}
+\end{figure}
+Po chwili czasu, na ustawionego maila powinna przyjść wiadomość o~zmianie hasła.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{password_reset_email}
+	\caption{Email z~instrukcją resetowania hasła}
+	\label{fig:password_reset_email}
+\end{figure}
+Po kliknięciu na link dot. zmiany hasła użytkownik zostanie przekierowany do formularza, w~którym może wprowadzić nowe hasło.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{password_reset}
+	\caption{Widok do wprowadzenia nowego hasła}
+	\label{fig:password_reset}
+\end{figure}
+
+Po zalogowaniu użytkownik może edytować dane swojego konta.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{edit_user}
+	\caption{Edytowanie danych własnego konta}
+	\label{fig:edit_user}
+\end{figure}
+\newpage
+Zalogowany użytkownik może również dodawać przejazdy.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{create_journey}
+	\caption{Dodawanie nowego przejazdu}
+	\label{fig:create_journey}
+\end{figure}
+
+\section{Aplikacja mobilna}
+
+\subsection{Utrzymywanie sesji użytkownika}
+W systemie sesja użytkownika utrzymywana jest za pomocą unikalnych tokenów dla użytkowników przechowywanych w~ciasteczkach, jest to domyślny mechanizm używany w~przeglądarkach internetowych. Aby ten mechanizm zadziałał w~aplikacji mobilnej, należy zapisywać otrzymane ciasteczka wysyłane razem z~odpowiedzią web serwisu oraz załączać je w~kolejnych zapytaniach do web serwisu. Tą funkcjonalność udostępnia biblioteka \textit{loopj}. Należy utworzyć obiekt \textit{PersistentCookieStore} i~wstrzyknąć go do obiektu klienta http co przedstawia fragment kodu \ref{lst:cookie_store}. Dla usprawnienia zapamiętania sesji w~aplikacji mobilnej, w~pamięci podręcznej telefonu zapamiętywany jest stan sesji użytkownika. Dzięki temu, użytkownik posiada ważną sesje do czasu wyczyszczenia pamięci podręcznej aplikacji i~nie jest konieczne łączenie z~serwerem w~celu sprawdzenia stanu sesji.
+
+\begin{lstlisting}[language=java, caption={Automatyczna obsługa ciasteczek}, label=lst:cookie_store]
+  cookieStore = new PersistentCookieStore(LoginActivity.this);
+  httpClient.setCookieStore(cookieStore);
+\end{lstlisting}
+
+\begin{lstlisting}[language=java, caption={Sprawdzenie czy użytkownik posiada aktywną sesje poprzez odczyt zmiennej "logged" przechowywanej w~pamięci telefonu}]
+SharedPreferences pref;
+SharedPreferences.Editor editor;
+
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+  super.onCreate(savedInstanceState);
+
+  pref = getSharedPreferences("userdetails", MODE_PRIVATE);
+
+  String getStatus = pref.getString("logged", "");
+  if(getStatus.equals("true")){
+    Intent intent = new Intent(this, SearchActivity.class);
+    startActivity(intent);
+  }
+\end{lstlisting}
+
+\begin{lstlisting}[language=java, caption={Ustawienie zmiennej "logged" na true po udanym logowaniu lub rejestracji}]
+editor = pref.edit();
+editor.putString("logged", "true").apply();
+\end{lstlisting}
+
+\subsection{Komunikacja z~web serwisem}
+Wszystkie dostępne adresy końcowe API zapisane są w~zmiennej typu enum \newline \textit{RestApiUrl}, która dla danego adresu końcowego dodaje adres serwera. Dzięki takiemu rozwiązaniu zmiana adresu serwera lub adresu końcowego dla danego zapytania, wymaga zmiany wyłącznie w~jednym miejscu w~aplikacji mobilnej.
+
+\begin{lstlisting}[language=java, caption={Zmienna enum, zwracająca pełny adres dla zapytania do API}]
+public enum RestApiUrl {
+  SIGN_IN("users/sign_in.json"),
+  SIGN_UP("users.json"),
+  SEARCH("journeys.json");
+
+  private final String url;
+  private final String BASE_URL = "http://www.jedzmyrazem.pl/";
+
+  RestApiUrl(String url) {
+    this.url = url;
+  }
+
+  public final String getUrl() { return  BASE_URL + url;}
+}
+\end{lstlisting}
+
+
+Każde zapytanie odbywa się za pomocą klasy dziedziczącej po klasie \textit{AsyncTask}, aby zadania z~wysyłaniem zapytania http, które trwają kilka sekund były wykonywane w~tle. Wykorzystane metody z~klasy \textit{AsyncTask} to \textit{doInBackground}, w~której umieszcza się kod do wykonania w~tle oraz metoda \textit{onPostExecute}, która wykonywana jest w~głównym wątku aplikacji po zakończeniu metody \textit{doInBackground}. Przykład tych metod dla wyszukiwania przejazdów przedstawiono w fragmentach kodu \ref{lst:doInBackground} i~\ref{lst:onPostExecute}.
+
+\begin{lstlisting}[language=java, caption={Metoda "doInBackground" dla wyszukiwania połączeń}, label=lst:doInBackground]
+protected String doInBackground(String... params) {
+  String parameters = prepareStringParameters(params);
+  if (parameters == null) return null;
+  ServiceHandler sh = new ServiceHandler();
+  return sh.makeServiceCall(RestApiUrl.SEARCH.getUrl(), ServiceHandler.GET, null, parameters);
+}
+\end{lstlisting}
+\newpage
+\begin{lstlisting}[language=java, caption={Metoda "onPostExecute" dla wyszukiwania połączeń}, label=lst:onPostExecute]
+protected void onPostExecute(String result) {
+  parents.clear();
+  ((MyExpandableListAdapter)expListView.getExpandableListAdapter()).notifyDataSetChanged();
+  if (result == null) return;
+  try {
+    if (parseResponse(result)) return;
+      ((MyExpandableListAdapter)expListView.getExpandableListAdapter()).notifyDataSetChanged();
+  } catch (JSONException e) {
+    e.printStackTrace();
+  }
+}
+\end{lstlisting}
+
+\subsection{Google Places API}
+
+Podstawowe informacje o tym jak zastosować bibliotekę Google Places API zarówno w aplikacji mobilnej jak i internetowej można znaleźć w jej dokumentacji\cite{google places api guide}.
+
+Do pokazywania podpowiedzi z~proponowanymi lokalizacjami została napisana klasa \textit{PlaceArrayAdapter} rozszerzająca standardową klasę \textit{ArrayAdapter}. Metoda pobierająca podpowiedzi jest przedstawia fragment kodu \ref{lst:getPrediction}.
+
+\begin{lstlisting}[language=java, caption={Pobieranie podpowiedyi z~Google Places API}, label=lst:getPrediction]
+private ArrayList<PlaceAutocomplete> getPredictions(CharSequence constraint) {
+  if (mGoogleApiClient != null) {
+    PendingResult<AutocompletePredictionBuffer> results =
+      Places.GeoDataApi.getAutocompletePredictions(mGoogleApiClient, constraint.toString(), mBounds, mPlaceFilter);
+    //ustawienie timeout'u na 60 sekund
+    AutocompletePredictionBuffer autocompletePredictions = results.await(60, TimeUnit.SECONDS);
+    final Status status = autocompletePredictions.getStatus();
+    //jeśli zapytanie się nie powiedzie,
+    //zostanie wyświetlony toast z~błędem
+    if (!status.isSuccess()) {
+      Toast.makeText(getContext(), "Error: " + status.toString(), Toast.LENGTH_SHORT).show();
+      autocompletePredictions.release();
+      return null;
+    }
+    ArrayList resultList = formatArrayList(autocompletePredictions);
+    autocompletePredictions.release();
+    return resultList;
+  }
+  return null;
+}
+\end{lstlisting}
+
+\subsection{Odczyt lokalizacji GPS telefonu}
+
+Do pobierania lokalizacji została zaimplementowana osobna klasa \textit{GPSTracker} rozszerzająca klasę \textit{Service}. System Android nie pozwala na bezpośrednie pobranie aktualnej lokalizacji z~modułu GPS telefonu. Można jedynie pobrać ostatnio zarejestrowaną lokalizacje. W~ wykonywanej aplikacji do wyszukiwania przejazdów chcemy użyć aktualnej pozycji użytkownika jako punktu startowego podróży. Zgodnie z przykładem z książki \emph{Android. Poradnik programisty}\cite{android} aby to osiągnąć należy wykonać dwa kroki:
+\begin{enumerate}
+	\item Wysłać żądanie o~zarejestrowanie lokalizacji
+	\item Pobrać ostatnią znaną lokalizacje
+\end{enumerate}
+Kod realizujący te dwa kroki został przedstawiony poniżej.
+
+\begin{lstlisting}[language=java, caption={Pobranie lokalizacji}, label=lst:getLocation]
+public Location getLocation() {
+  try {
+    locationManager = (LocationManager) mContext.getSystemService(LOCATION_SERVICE);
+    if (isGPSEnabled()) {
+      //aktualizacja lokalizacji
+      locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 60000, 10, this);
+      if (locationManager != null) {
+        //pobranie zaaktualizowanej lokalizacji
+        location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+      }
+    }
+  } catch (Exception e) {
+    e.printStackTrace();
+  }
+  return location;
+}
+\end{lstlisting}
+\newpage
+\subsection{Widoki aplikacji}
+Aplikacja mobilna posiada 3 proste widoki:
+\begin{itemize}
+	\item Widok logowania
+	\item Widok tworzenia konta
+	\item Widok wyszukiwania przejazdów
+\end{itemize}
+
+Na ekranach "logowania" oraz "tworzenia konta" wszystkie pola są wymagane i~jest walidowana ich zawartość.
+
+\begin{figure}[H]
+	\centering
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\includegraphics[width=1\linewidth]{login_screen}
+		\caption{Widok logowania}
+	\end{minipage}\hfill
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\includegraphics[width=1\linewidth]{register_screen}
+		\caption{Widok tworzenia konta}
+	\end{minipage}
+\end{figure}
+
+\newpage
+Na ekranie "wyszukiwania przejazdów", po kliknięciu na jednym ze znalezionych połączeń, są rozwijane szczegóły pośrednich przejazdów. Wszystkie przejazdy znajdują się na przewijanej liście.
+
+\begin{figure}[H]
+	\centering
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\includegraphics[width=1\linewidth]{search_screen}
+		\caption{Widok wyszukiwania połączeń bez rozwinięcia szczegółów}
+	\end{minipage}\hfill
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\includegraphics[width=1\linewidth]{search2_screen}
+		\caption{Widok wyszukiwania połączeń z~rozwiniętymi szczegółami dla jednego przejazdu}
+	\end{minipage}
+\end{figure}
+\newpage
+W aplikacji mobilnej również zaimplementowanu użycie Google Places Api z podpowiadaniem wprowadzanej lokalizacji.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.45\linewidth]{mobile_autocompleter}
+	\caption{Podpowiadanie lokalizacji}
+\end{figure}
+
+\chapter{Testowanie systemu}
+\label{chpt:testy}
+\section{Statyczna analiza kodu}
+Podczas trwania projektu, została wykonywana statyczna analiza kodu. Dla każdej z~części projektu użyto dedykowanych narzędzi:
+\begin{enumerate}[label={\alph*}\\) ]
+	\item Web serwis
+	\begin{itemize}
+		\item \textbf{Rubocop} - statyczna analiza kodu w~języku Ruby.
+		\item \textbf{Rcov} - mierzy pokrycie kodu testami jednostkowymi.
+	\end{itemize}
+	\item Aplikacja internetowa
+	\begin{itemize}
+		\item \textbf{Coffeelint} - analizuje kod w~języku coffeescript.
+	\end{itemize}
+	\item Aplikacja mobilna 
+	\begin{itemize}
+		\item \textbf{Findbug} - służy do analizy aplikacji napisanych w~Javie. 
+		\item \textbf{Androidlint} - sprawdza stosowanie złych praktyk w~aplikacjach na platformę Android.
+	\end{itemize}
+\end{enumerate}
+
+
+Według Roberta Martina\cite{clean code} dobre oprogramowanie cechuje się przejrzystym kodem, w którym łatwiej znaleźć potencjalne miejsca błędów. Dzięki zastosowaniu powyższych narzędzi, poprzez praktykę można nauczyć się zasad, wzorców i heurestyk używanych w danym język programowania i sprawdzać czy zdobyta wiedza jest wykorzystywana, co przekłada się na jakość i przejrzystość stworzonego kodu źródłowego.
+
+\section{Testy jednostkowe}
+\subsection{Web serwis}
+Do testów jednostkowych aplikacji stworzonej w~Ruby on Rails wykorzytsano bibliotekę RSpec. Testować można zarówno metody kontrolerów, jak i~modeli. RSpec do testów wykorzystuje osobną, testową bazę danych, która jest tworzona przed wykonywaniem testów i~czyszczona po ich zakończeniu(można ją również czyścić po każdym teście). Składnia testów jest bardzo prosta i~intuicyjna, testy podzielone są na 3 części:
+\begin{enumerate}
+	\item „describe” – tu definiujemy jaką funkcje/klasę/moduł ma sprawdzać dany zbiór testów
+	\item „context” – to miejsce służy do określenia warunków testu, ta część jest opcjonalna
+	\item „it” – mówi nam jak powinien się zachować testowany moduł
+\end{enumerate}
+
+\begin{lstlisting}[language=ruby, caption={Przykład testów dla metody kontrolera}, label=lst:contoller_test]
+RSpec.describe JourneysController, type: :controller do
+  before(:each) do
+    user = FactoryGirl.build(:user)
+    allow_any_instance_of(JourneysController).to receive(:current_user)
+      .and_return(user)
+  end
+  describe 'POST #create' do
+    context 'with valid attributes' do
+      it 'creates the journey' do
+        post :create, journey: FactoryGirl.attributes_for(:journey_with_path),
+          format: :json
+        expect(Journey.count).to eq(1)
+      end
+    end
+    context 'with failed waypoints saving' do
+      it 'won\'t save trip' do
+        allow(Waypoint).to receive(:create_from_array).and_raise('Error')
+        post :create, journey: FactoryGirl.attributes_for(:journey_with_path),
+          format: :json
+        expect(Journey.count).to eq(0)
+      end
+    end
+end
+\end{lstlisting}
+
+W fragmencie kodu [\ref{lst:contoller_test}] przed każdym testem jest tworzony mock funkcji \textit{current\_user}, która zwraca aktualnie zalogowanego użytkownika. Do stworzenia instancji modelu \textit{User} została użyta biblioteka \textit{FactoryGirl}, która implementuje wzorzec "fabryki", ułatwiający tworzenie obiektów w~testach o~określonych parametrach. Przykład definicji fabryki został zamieszczony w poniższym kodzie źródłowym.
+
+\begin{lstlisting}[language=ruby, caption={Fabryka do tworzenia obiektu typu "User"}]
+FactoryGirl.define do
+  factory :user do
+    username 'Test_user'
+    password '12345678'
+    email 't@t.pl'
+    phone 123_456_789
+  end
+end
+\end{lstlisting}
+\newpage
+Pokrycie kodu testami było mierzone za pomocą narzędzia RCov podczas każdej zmiany na repozytorium kodu źródłowego, ostatecznie wyniosło ono 100\%, czyli każda funkcja jest wywoływana podczas testów.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{rcov}
+	\caption{Historia wyników analizy}
+	\label{fig:rcov}
+\end{figure}
+\subsection{Aplikacja internetowa}
+Do przetestowania aplikacji wykonanej we frameworku AngularJS wymagane jest kilka dodatkowych narzędzi:
+\begin{itemize}
+	\item "Teaspoon" - tworzy testowy serwer z~środowiskiem uruchomieniowym dla JavaScriptu
+	\item "Jasmine" - biblioteka do tworzenia testów jednostkowych dla aplikacji napisanych w~JavaScript'cie
+	\item "Angular Mocks" - biblioteka do symulowania właściwości i~działania aplikacji stworzonej przy pomocy AngularJS
+\end{itemize}
+Test składa się z~takich samych części jak w~przypadku RSpeca:
+\begin{enumerate}
+	\item „describe”
+	\item „context”
+	\item „it”
+\end{enumerate}
+
+Przed każdym testem dla kontrolera, należy go zainicjować, aby mieć dostęp do jego zmiennych, funkcji i~dyrektyw. Przykład inicjalizacji kontrolera w~teście przedstawiono w fragmencie kodu [\ref{jasmine_mock}].
+\newpage
+\begin{lstlisting}[language=javascript, caption={Inicjalizacja testów aplikacji internetowej}, label=jasmine_mock ]
+describe 'HomeCtrl', ( $scope)->
+  $scope = null
+  $controller = null
+  beforeEach module('JedzmyrazemApp')
+
+  beforeEach inject ($injector, _$q_) ->
+    $scope = $injector.get('$rootScope').$new()
+    $controller = $injector.get('$controller')
+    $controller('HomeCtrl', {$scope: $scope })
+\end{lstlisting}
+W fragmencie kodu źródłowego [\ref{lst:jasmine_test}] znajduje się prosty test, który sprawdza, czy po wywołaniu funkcji \textit{\$scope.clear()} zmienna \textit{\$scope.dt} jest równa \textit{null}.
+\begin{lstlisting}[language=javascript, caption={Test jednostkowy dla metody z~aplikacji internetowej}, label=lst:jasmine_test]
+describe 'clear', ->
+  it 'clear $scope.dt var', ->
+    $scope.dt = new Date(2014, 11, 15)
+    $scope.clear()
+    expect($scope.dt).toBeNull
+\end{lstlisting}
+
+\subsection{Aplikacja mobilna}
+
+W aplikacji mobilnej do testów jednostkowych użyto dodatkowych bibliotek:
+\begin{itemize}
+	\item JUnit - biblioteka do pisania testów jednostkowych dla aplikacji wykonanych w języku Java.
+	\item Robolectric - zawiera narzędzia do symulowania platformy Android, dzięki temu w testach nie potrzeba używać emulatora lub rzeczywistego urządzenia.
+	\item Mockito - moduł do tworzenia mocków części aplikacji androidowej.
+\end{itemize}
+
+Za pomocą adnotacji \textit{@Before} można oznaczyć funkcje, które powinny być wykonane przed rozpoczęciem testów. W fragmencie kodu \ref{lst:setup} przedstawiono czynności wykonywane przed wykonaniem testów dla aktywności \textit{SearchActivity}.
+
+
+\begin{lstlisting}[language=java, caption={Inicjalizowanie testów}, label=lst:setup]
+ @Before
+ public void setup() {
+ 
+   //Stworzenie mocka dla Google Play Services, aby można było uruchomić
+   //testy bez korzystania z zewnętrznego narzędzia
+   ShadowApplication shadowApplication = Shadows.shadowOf(RuntimeEnvironment.application);
+   shadowApplication.declareActionUnbindable("com.google.android.gms.analytics.service.START");
+   ShadowGooglePlayServicesUtil.setIsGooglePlayServicesAvailable(ConnectionResult.API_UNAVAILABLE);
+ 
+   activity = Robolectric.setupActivity(SearchActivity.class);
+   //Stworzenie mocka dla klasy GPSTracker
+   gpsTrackerMock = Mockito.mock(GPSTracker.class);
+   activity.gps = gpsTrackerMock;
+ }
+\end{lstlisting}
+
+Przykładem testów dla aktywności wyszukiwania przejazdów, może być sprawdzenie, czy próbuje ona pobrać lokalizacje gps, jeśli użytkownik nie poda swojego położenia. Takie testy przedstawia poniższy fragment kodu.
+
+\begin{lstlisting}[language=java, caption={Testy wywołania funkcji pobierającej lokalizacje}, label=lst:gps_test]
+//test sprawdzający, czy lokalizacja jest pobierana z modułu gps,
+//jeśli użytkownik jej nie wprowadził
+@Test
+public void searchCallGetLocationIfStarLocationIsNotSetted()
+{
+  activity.search(null);
+  Mockito.verify(gpsTrackerMock, Mockito.times(1)).getLocation();
+}
+//test sprawdzający, czy lokalizacja nie jest pobierana z modułu gps,
+//jeśli użytkownik ją wprowadził
+@Test
+public void searchNotCallGetLocationIfStartLocationIsSetted()
+{
+  activity.mAutocompleteTextViewSrc.setText("start");
+  activity.start_location = new LatLng(52.00, 17.00);
+  activity.search(null);
+  Mockito.verify(gpsTrackerMock, Mockito.times(0)).getLocation();
+}
+\end{lstlisting}
+
+\chapter{Opis wdrożenia web serwisu i~aplikacji internetowej}
+\section{Uruchomienie aplikacji}
+Aby uruchomić aplikacje opartą o~Ruby on Rails oraz AngularJS z~bazą danych Postgresql + Postgis na serwerze z~systemem Linux w~środowkisku produkcyjnym należy wykonać następującą listę kroków:
+\begin{enumerate}
+	\item Zainstalować narzędzia do obsługi bazy danych Postgresql:\\
+	\$ apt-get install postgresql-9.4 postgresql-client-9.4 postgresql-contrib-9.4 libpq-dev\\ postgis2\_93
+	\item Stworzyć super rolę w~bazie danych, o~nazwie takiej samej jak konto użytkownika, na którym zostanie uruchomiony serwer: \\
+	\$ psql \\
+	\$ createuser --superuser \textit{USERNAME}
+	\item  Zainstalować ruby i~bibliotekę rails - np. przy pomocy \\RVM (Ruby Version Manager):\\
+	\$ gpg –keyserver\textbackslash\\
+	\$ hkp://keys.gnupg.net –recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+	\$ curl -sSL https://get.rvm.io | bash \#instalacja rvm\\
+	\$ rvm install 2.2.2 \#instalacja ruby w~wersji 2.2.2\\
+	\$ rvm gemset create rails-4.2.3 \#instalacja railsów w~wersji 4.2.3\\
+	\$ rvm use 2.2.2@rails-4.2.3 \#ustawienie zainstalowanych narzędzi \\
+	\item Pobrać wszystkie potrzebne biblioteki\\
+	\$ cd \textit{PROJECT\_DIR}\\
+	\$ bundle install\\
+	\item Stworzyć bazę danych i~wprowadzić migracje\\
+	\$ RAILS\_ENV=production rake db:create db:migrate
+	\item Skompilować pliki dodane do projektu jako assets (np. pliki .coffeescript, .slim). Ten krok nie jest konieczny do poprawnego działania aplikacji, ale zwiększa jej wydajność, ponieważ pliki assets nie będą kompilowane na żądanie podczas działania aplikacji.\\
+	\$ RAILS\_ENV=production rake assets:precompile
+	\item Wygenerować i~wyeksportować secret key:\\
+	\$ export SECRET\_KEY\_BASE=\$(RAILS\_ENV=production rake secret)
+	\item Uruchomić serwer:\\
+	\$ rails server -e production -p 80 -b 0.0.0.0
+	
+	
+\end{enumerate}
+\section{Automatyzacja aktualizacji oprogramowania}
+System od początku został uruchomiony na zewnętrznym serwerze i~był automatycznie aktualizowany po każdej przetestowanej zmianie. Do tego celu został wykorzystany \textit{Jenkins}, czyli narzędzie do automatyzacji integracji oprogramowania. Jenkins wykonywał dwa zadania:
+\begin{enumerate}
+	\item „web\_jedzmyrazem\_tests” - zadanie budowane po każdej zmianie wprowadzonej na repozytorium. Podczas tego zadania wykonywane były testy i~satatyczna analiza kodu, jeśli nie znaleziono, żadnych błędów, zadanie wyzwalało kolejne zadanie „web\_jedzmyrazem\_update”. Głównym krokiem tego zadania jest wykonanie skryptu widocznego na fragmencie kodu [\ref{lst:web_jedzmyrazem_tests}]
+\begin{lstlisting}[language=bash, caption={Skrypt do wykonywania testów aplikacji}, label=lst:web_jedzmyrazem_tests]
+#!/bin/bash -e
+source "/usr/local/rvm/scripts/rvm"
+rvm use 2.2.2@rails-4.2.3
+
+set -x
+sudo bundle install --without production
+#usunięcie i~utworzenie nowej bazy danych
+RAILS_ENV=test rake db:drop db:create db:migrate
+
+#wykonanie testów jednostkowych railsów
+RAILS_ENV=test rake ci:setup:rspec spec || true
+
+#wykonanie statycznej analizy kodu railsów
+bundle exec rubocop \
+  --require rubocop/formatter/checkstyle_formatter \
+  --format RuboCop::Formatter::CheckstyleFormatter -o\
+    reports/xml/checkstyle-result.xml \
+  --format html -o reports/html/index.html
+
+#wykonanie statycznej analizy kodu aplikacji napisanej za pomocą AngularJS
+coffeelint spec/ app/assets/javascripts/ --reporter checkstyle\
+  > coffe_check.xml || true
+#wykonanie testów aplikacji napisanej za pomocą AngularJS
+RAILS_ENV=test teaspoon --format junit | tail -n+3\
+  > spec/reports/teaspoon.xml || true
+\end{lstlisting}
+\newpage
+	\item „web\_jedzmyrazem\_update” - aktualizacja wersji aplikacji na serwerze. Skrypt wykonywany przez to zadanie znajduje się w fragmencie kodu [\ref{lst:web_jedzmyrazem_update}]
+\begin{lstlisting}[language=bash, caption={Skrypt do aktualizacji aplikacji na serwerze}, label=lst:web_jedzmyrazem_update]
+#!/bin/bash -e
+source "/usr/local/rvm/scripts/rvm"
+rvm use 2.2.2@rails-4.2.3
+export SECRET_KEY_BASE=$(RAILS_ENV=production rake secret)
+set -x
+cd /var/jedzmyrazem
+#pobranie najnowszej wersji aplikacji
+git pull origin master
+#zainstalowanie brakujących bibliotek
+RAILS_ENV=production bundle install
+RAILS_ENV=production rake assets:precompile || true
+RAILS_ENV=production rake db:migrate
+#wyłączenie serwera, który już działa
+if [ -e /var/jedzmyrazem/tmp/pids/server.pid ]; then
+  kill -9 `cat /var/jedzmyrazem/tmp/pids/server.pid` || true
+fi
+#włączenie serwera
+BUILD_ID=dontKillMe rails server -e production -p 80 -b 0.0.0.0 -d
+\end{lstlisting}
+\end{enumerate}
+
+\chapter{Podsumowanie}
+\section{Realizacja celu projektu}
+Cel projektu opisany w rozdziale \ref{sec:cel} został w pełni zrealizowany. System jest w pełni funkcjonalny i działający. Można oferować przejazdy innym użytkownikom jako kierowca oraz wyszukiwać połączenia dodane przez innych użytkowników. Cały system składa się z zaplanowanych 4 części. Ponadto zakres projektu podany w rozdziale \ref{sec:zakres} został w pełni zaimplementowany.
+
+\section{Ocena jakości systemu}
+System został przetestowany przy pomocy testów jednostkowych sprawdzających poprawność działania pojedynczych elementów każdej z części projektu. Za pomocą tych testów stwierdzono, że każdy element działa poprawnie. Dodatkowo wszystkie błędy wskazane przez wykorzystywane narzędzia do statycznej analizy kodu zostały poprawione. 
+
+\section{Kierunki rozwoju}
+W przyszłości w projekcie zostały do zaimplementowania pozostałe przypadki użycia systemu. Dodatkowo dzięki modułowej budowie systemu z osobną częścią realizującą REST API, można tworzyć aplikacje na inne platformy mobilne, np. iOS lub Windows Phone. Aby system można w pełni udostępnić dla użytkowników należałoby zwiększyć bezpieczeństwo za pomocą protokołu ssl, do szyfrowania przesyłanych danych między aplikacjami klienckimi, a web serwisem.
+
+\begin{thebibliography}{inz}
+	\addcontentsline{toc}{chapter}{Literatura}
+	
+	\bibitem{cormen}
+	Cormen Thomas H., Leiserson Charles E., Rivest Ronald L., \emph{Wprowadzenie do algorytmów}, The Massachusetts Institute of Technology, 1990
+	
+	\bibitem{google places api guide}
+	\emph{Google Places API}, dostępne pod adresem:\\ \url{https://developers.google.com/places}, aktualne na dzień 03.12.2015r.
+	
+	\bibitem{rails api}
+	Kuri Abraham, \emph{ APIs on Rails}, 2014
+	
+	\bibitem{ng-book}
+	Lerner Ari, \emph{ng-book. The Complete Book on AngularJS}, 2013
+	
+	\bibitem{clean code}
+	Martin Robert C., \emph{Czysty kod}, Pearson Education, 2009
+	
+	\bibitem{rails agile}
+	Ruby Sam, Thomas Dave, Hansson Heinemeier David, \emph{Agile Web Development with Rails 4}, Pragmatic Programmers, 2013
+	
+	\bibitem{android}
+	Wei-Meng Lee, \emph{Android. Poradnik programisty}, Helion, 2013
+\end{thebibliography}
+\appendix
+\chapter{Scenariusze przypadków użycia}
+\begin{tabularx}{1\linewidth}{l|l} \hline
+	\multicolumn{2}{c}{\textbf{Utwórz konto}} \\ \hline
+	Aktorzy & Pasażer, Kierowca\\ \hline
+	Cel &  Utworzenie nowego użytkownika w~bazie danych. \\ \hline
+	Warunki wstępne & Gość systemu nie posiada konta.\\ \hline
+	Warunki końcowe & w~systemie zostało utworzone konto dla nowego użytkownika.\\ \hline
+	Scenariusz główny & 
+	\begin{minipage}{4in}
+		\vskip 4pt
+		\begin{enumerate}
+			\item Pobranie danych użytkownika z~formularza rejestracji. 
+			\item Walidacja wprowadzonych danych.
+			\item Utworzenie nowego użytkownika w~bazie danych.
+			\item Wykonanie PU "Utwórz sesje".
+		\end{enumerate}
+		\vskip 4pt
+	\end{minipage}
+	\\ \hline
+	Wyjątki & 
+	\begin{minipage}{4in}
+		\vskip 4pt
+		\begin{enumerate}[label={2.\Alph*.},leftmargin=1.2cm]
+			\item Dane wprowadzone przez użytkownika są niepoprawne.
+			\begin{enumerate}[label=2.A.\arabic*.]
+				\item Przekierowanie użytkownika na stronę rejestracji.
+				\item Wyświetlenie informacji o~błędnych danych.
+				\item Przejście do kroku 1.
+			\end{enumerate}				
+		\end{enumerate}	
+		\vskip 4pt
+	\end{minipage}
+	\\ \hline
+	Rozszerzenia & 
+	\\ \hline
+\end{tabularx}
+\newline
+\vspace*{1 cm}
+\newline
+\begin{tabularx}{1\linewidth}{l|l}
+	\multicolumn{2}{c}{\textbf{Zaloguj się}} \\ \hline
+	Aktorzy & Pasażer, Kierowca\\ \hline
+	Cel &  Autentykacja użytkownika. \\ \hline
+	Warunki wstępne & Użytkownik nie jest zalogowany do systemu.\\ \hline
+	Warunki końcowe & Użytkownik posiada aktywną sesje.\\ \hline
+	Scenariusz główny & 
+	\begin{minipage}{4in}
+		\vskip 4pt
+		\begin{enumerate}
+			\item Pobranie danych użytkownika z~formularza logowania.
+			\item Wyszukanie użytkownika w~bazie danych.
+			\item Wykonanie PU "Utwórz sesje".
+		\end{enumerate}
+		\vskip 4pt
+	\end{minipage}
+	\\ \hline
+	Wyjątki & 
+	\begin{minipage}{4in}
+		\vskip 4pt
+		\begin{enumerate}[label={2.\Alph*.},leftmargin=1.2cm]
+			\item Użytkownik z~podanymi danymi nie istnieje.
+			\begin{enumerate}[label=2.A.\arabic*.]
+				\item Przekierowanie użytkownika na stronę logowania.
+				\item Wyświetlenie informacji o~błędnych danych.
+				\item Przejście do kroku 1.
+			\end{enumerate}
+		\end{enumerate}
+		\vskip 4pt
+	\end{minipage}
+	\\ \hline
+	Rozszerzenia & 
+	\begin{minipage}{4in}
+		\vskip 4pt	
+		\vskip 4pt
+	\end{minipage}
+	\\ \hline
+\end{tabularx}
+\newline
+\vspace*{1 cm}
+\newline
+\begin{tabularx}{1\linewidth}{l|l}
+	\multicolumn{2}{c}{\textbf{Utwórz sesje}} \\ \hline
+	Aktorzy & Pasażer, Kierowca\\ \hline
+	Cel &  Utworzenie sesji użytkownika. \\ \hline
+	Warunki wstępne & Użytkownik posiada konto.\\ \hline
+	Warunki końcowe & Sesja użytkownika jest aktywna.\\ \hline
+	Scenariusz główny & 
+	\begin{minipage}{4in}
+		\vskip 4pt
+		\begin{enumerate}
+			\item Wygenerowanie unikalnego tokenu dla użytkownika.
+			\item Zapisanie tokenu w~ciasteczku.
+		\end{enumerate}
+		\vskip 4pt
+	\end{minipage}
+	\\ \hline
+	Wyjątki & 
+	\begin{minipage}{4in}
+		\vskip 4pt
+		\vskip 4pt
+	\end{minipage}
+	\\ \hline
+	Rozszerzenia & 
+	\begin{minipage}{4in}
+		\vskip 4pt	
+		\vskip 4pt
+	\end{minipage}
+	\\ \hline
+\end{tabularx}
+\newline
+\vspace*{1 cm}
+\newline
+\begin{tabularx}{1\linewidth}{l|l}
+	\multicolumn{2}{c}{\textbf{Zakończ sesje}} \\ \hline
+	Aktorzy & Pasażer, Kierowca\\ \hline
+	Cel &  Zakończenie sesji użytkownika. \\ \hline
+	Warunki wstępne & Użytkownik jest zalogowany do systemu.\\ \hline
+	Warunki końcowe & Sesja użytkownika jest nieaktywna.\\ \hline
+	Scenariusz główny & 
+	\begin{minipage}{4in}
+		\vskip 4pt
+		\begin{enumerate}
+			\item Usunięcia ciasteczka z~tokenem sesji.
+			\item Przekierowanie użytkownika na główną stronę aplikacji.
+		\end{enumerate}
+		\vskip 4pt
+	\end{minipage}
+	\\ \hline
+	Wyjątki & 
+	\begin{minipage}{4in}
+		\vskip 4pt
+		\vskip 4pt
+	\end{minipage}
+	\\ \hline
+	Rozszerzenia & 
+	\begin{minipage}{4in}
+		\vskip 4pt	
+		\vskip 4pt
+	\end{minipage}
+	\\ \hline
+\end{tabularx}
+\newline
+\vspace*{1 cm}
+\newline
+\begin{tabularx}{1\linewidth}{l|l}
+	\multicolumn{2}{c}{\textbf{Edytuj konto}} \\ \hline
+	Aktorzy & Pasażer, Kierowca\\ \hline
+	Cel &  Edycja danych użytkownika. \\ \hline
+	Warunki wstępne & Użytkownik posiada aktywną sesje.\\ \hline
+	Warunki końcowe & Zmodyfikowane dane użytkownika są zapisane w~bazie danych.\\ \hline
+	Scenariusz główny & 
+	\begin{minipage}{4in}
+		\vskip 4pt
+		\begin{enumerate}
+			\item Pobranie danych użytkownika z~bazy danych.
+			\item Pobranie zmodyfikowanych danych użytkownika z~formularza wraz z~aktualnym hasłem.
+			\item Walidacja danych.
+			\item Zaktualizowanie danych użytkownika w~bazie danych.
+		\end{enumerate}
+		\vskip 4pt
+	\end{minipage}
+	\\ \hline
+	Wyjątki & 
+	\begin{minipage}{4in}
+		\vskip 4pt
+		\begin{enumerate}[label={3.\Alph*.},leftmargin=1.2cm]
+			\item Aktualne hasło podane przez użytkownika jest nieprawidłowe.
+			\begin{enumerate}[label=3.A.\arabic*.]
+				\item Przekierowanie użytkownika na stronę edycji danych.
+				\item Wyświetlenie informacji o~błędnym haśle.
+				\item Przejście do kroku 1.
+			\end{enumerate}
+			\item Wprowadzone dane nie przeszły walidacji.
+			\begin{enumerate}[label=3.B.\arabic*.]
+				\item Przekierowanie użytkownika na stronę edycji danych.
+				\item Wyświetlenie informacji o~błędnych danych.
+				\item Przejście do kroku 1.
+			\end{enumerate}
+		\end{enumerate}
+		
+		\vskip 4pt
+	\end{minipage}
+	\\ \hline
+	Rozszerzenia & 
+	\begin{minipage}{4in}
+		\vskip 4pt
+		\vskip 4pt
+	\end{minipage}
+	\\ \hline
+\end{tabularx}
+\newline
+\vspace*{1 cm}
+\newline
+\begin{tabularx}{1\linewidth}{l|l}
+	\multicolumn{2}{c}{\textbf{Zresetuj hasło}} \\ \hline
+	Aktorzy & Pasażer, Kierowca\\ \hline
+	Cel &  Zmiana hasła użytkownika. \\ \hline
+	Warunki wstępne & Użytkownik nie jest zalogowany do systemu.\\ \hline
+	Warunki końcowe & Zapisanie nowego hasła w~bazie danych.\\ \hline
+	Scenariusz główny & 
+	\begin{minipage}{4in}
+		\vskip 4pt
+		\begin{enumerate}
+			\item Pobranie wprowadzonego przez użytkownika adresu email.
+			\item Wyszukanie użytkownika o~podanym adresie email.
+			\item Wygenerowanie bezpiecznego tokenu do zmiany hasła i~zapisanie go w~bazie danych w~rekordzie konkretnego użytkownika.
+			\item Wysłanie emaila z~wygenerowanym tokenem.
+			\item Pobranie z~formularza tokenu, nowego hasła oraz potwierdzenia nowego hasła.
+			\item Walidacja danych.
+			\item Zapisanie nowego hasła.
+			\item Usunięcie tokenu do zmiany hasła z~bazy danych dla podanego użytkownika.
+		\end{enumerate}
+		\vskip 4pt
+	\end{minipage}
+	\\ \hline
+	Wyjątki & 
+	\begin{minipage}{4in}
+		\vskip 4pt
+		\begin{enumerate}[label={2.\Alph*.},leftmargin=1.2cm]
+			\item Użytkownik z~podanym adresem email nie istnieje.
+			\begin{enumerate}[label=2.A.\arabic*.]
+				\item Wyświetlenie informacji o~błędnym adresie email.
+				\item Przejście do kroku 1.
+			\end{enumerate}
+		\end{enumerate}
+		\begin{enumerate}[label={6.\Alph*.},leftmargin=1.2cm]
+			\item Wprowadzony token do zmiany hasła jest nieprawidłowy.
+			\begin{enumerate}[label=6.A.\arabic*.]
+				\item Wyświetlenie informacji o~błędnym tokenie.
+				\item Przejście do kroku 5.
+			\end{enumerate}
+			\item Wprowadzone hasło oraz powtórzenie hasła są od siebie różne.
+			\begin{enumerate}[label=6.B.\arabic*.]
+				\item Wyświetlenie informacji o~niezgodnych hasłach.
+				\item Przejście do kroku 5.
+			\end{enumerate}		
+		\end{enumerate}		
+		\vskip 4pt
+	\end{minipage}
+	\\ \hline
+	Rozszerzenia & 
+	\begin{minipage}{4in}
+		\vskip 4pt			
+		\vskip 4pt
+	\end{minipage}
+	\\ \hline
+\end{tabularx}
+\newline
+\vspace*{1 cm}
+\newline
+\begin{tabularx}{1\linewidth}{l|X}
+	\multicolumn{2}{c}{\textbf{Wyślij wiadomość do innego użytkownika. }} \\ \hline
+	Aktorzy & Kierowca, Pasażer\\ \hline
+	Cel &  Wysłanie wiadomości. \\ \hline
+	Warunki wstępne & Użytkownik posiada aktywną sesje. \\ \hline
+	Warunki końcowe & Wiadomość jest zapisana w~bazie danych.\\ \hline
+	Scenariusz główny & 
+	\begin{minipage}{4in}
+		\vskip 4pt
+		\begin{enumerate}
+			\item Pobranie wiadomości oraz identyfikatorów użytkowników wprowadzonych przez użytkownika.
+			\item Zapisanie danych.		
+		\end{enumerate}
+		\vskip 4pt
+	\end{minipage}
+	\\ \hline
+	Wyjątki i~rozszerzenia & 
+	\\ \hline
+\end{tabularx}
+\newline
+\vspace*{1 cm}
+\newline
+\begin{tabularx}{1\linewidth}{l|X}
+	\multicolumn{2}{c}{\textbf{Przejrzyj wiadomości. }} \\ \hline
+	Aktorzy & Kierowca, Pasażer\\ \hline
+	Cel &  Wyświetlenie wiadomości danego użytkownika. \\ \hline
+	Warunki wstępne & Użytkownik posiada aktywną sesje. \\ \hline
+	Warunki końcowe & Wiadomości danego użytkownika są wyświetlone. \\ \hline
+	Scenariusz główny & 
+	\begin{minipage}{4in}
+		\vskip 4pt
+		\begin{enumerate}
+			\item Pobranie wiadomości danego użytkownika.
+			\item Wyświetlenie pobranych wiadomości.
+			\item Zapisanie aktualnej daty jako czas odczytu w~wcześniej nieodczytanych wiadomościach.
+		\end{enumerate}
+		\vskip 4pt
+	\end{minipage}
+	\\ \hline
+	Wyjątki &
+	\begin{minipage}{4in}
+		\vskip 4pt
+		\begin{enumerate}[label={2.\Alph*.},leftmargin=1.2cm]
+			\item Użytkownik nie ma żadnych wiadomości.
+			\begin{enumerate}[label=2.A.\arabic*.]
+				\item Wyświetlenie informacji o~braku wiadomości.
+				\item Zakończenie przypadku użycia.	
+			\end{enumerate}
+		\end{enumerate}				
+		\vskip 4pt
+	\end{minipage}
+	\\ \hline
+	Rozszerzenia & 
+	\begin{minipage}{4in}
+		\vskip 4pt			
+		\vskip 4pt
+	\end{minipage}
+	\\ \hline
+\end{tabularx}
+\newline
+\vspace*{1 cm}
+\newline
+\begin{tabularx}{1\linewidth}{l|X}
+	\multicolumn{2}{c}{\textbf{Dodaj samochód}} \\ \hline
+	Aktorzy & Kierowca\\ \hline
+	Cel &  Zapisanie danych na temat samochodu użytkownika w~bazie danych. \\ \hline
+	Warunki wstępne & Użytkownik posiada aktywną sesje\\ \hline
+	Warunki końcowe & Użytkownik posiada przypisany samochód.\\ \hline
+	Scenariusz główny & 
+	\begin{minipage}{4in}
+		\vskip 4pt
+		\begin{enumerate}
+			\item Pobranie danych samochodu wprowadzonych przez użytkownika.
+			\item Walidacja danych.
+			\item Zapisanie danych.
+		\end{enumerate}
+		\vskip 4pt
+	\end{minipage}
+	\\ \hline
+	Wyjątki & 
+	\begin{minipage}{4in}
+		\vskip 4pt
+		\begin{enumerate}[label={2.\Alph*.},leftmargin=1.2cm]
+			\item Wprowadzone dane są niepoprawne.
+			\begin{enumerate}[label=2.A.\arabic*.]
+				\item Wyświetlenie informacji o~błędnych danych.
+				\item Przejście do kroku 1.
+			\end{enumerate}
+			
+		\end{enumerate}
+		
+		\vskip 4pt
+	\end{minipage}
+	\\ \hline
+	Rozszerzenia & 
+	\begin{minipage}{4in}
+		\vskip 4pt			
+		\vskip 4pt
+	\end{minipage}
+	\\ \hline
+\end{tabularx}
+\newline
+\vspace*{1 cm}
+\newline
+\begin{tabularx}{1\linewidth}{l|l}
+	\multicolumn{2}{c}{\textbf{Edytuj samochód}} \\ \hline
+	Aktorzy & Kierowca\\ \hline
+	Cel &  Zmodyfikowanie danych samochodu użytkownika. \\ \hline
+	Warunki wstępne & Użytkownik posiada aktywną sesje i~ma przypisany samochód.\\ \hline
+	Warunki końcowe & Zmienione dane samochodu są zapisane w~bazie danych.\\ \hline
+	Scenariusz główny & 
+	\begin{minipage}{4in}
+		\vskip 4pt
+		\begin{enumerate}
+			\item Wpisanie danych samochodu z~bazy danych do formularza.				
+			\item Pobranie danych samochodu wprowadzonych przez użytkownika.
+			\item Walidacja danych.
+			\item Zapisanie zmodyfikowanych danych.
+		\end{enumerate}
+		\vskip 4pt
+	\end{minipage}
+	\\ \hline
+	Wyjątki & 
+	\begin{minipage}{4in}
+		\vskip 4pt
+		\begin{enumerate}[label={3.\Alph*.},leftmargin=1.2cm]
+			\item Wprowadzone dane są niepoprawne.
+			\begin{enumerate}[label=3.A.\arabic*.]
+				\item Wyświetlenie informacji o~błędnych danych.
+				\item Przejście do kroku 1.
+			\end{enumerate}
+			
+		\end{enumerate}
+		
+		\vskip 4pt
+	\end{minipage}
+	\\ \hline
+	Rozszerzenia & 
+	\begin{minipage}{4in}
+		\vskip 4pt			
+		\vskip 4pt
+	\end{minipage}
+	\\ \hline
+\end{tabularx}
+\newline
+\vspace*{1 cm}
+\newline
+\begin{tabularx}{1\linewidth}{l|l}
+	\multicolumn{2}{c}{\textbf{Utwórz nowy przejazd}} \\ \hline
+	Aktorzy & Kierowca\\ \hline
+	Cel &  Dodanie nowego przejazdu do bazy danych. \\ \hline
+	Warunki wstępne & Użytkownik posiada aktywną sesje\\ \hline
+	Warunki końcowe & Nowy przejazd jest zapisany w~bazie danych.\\ \hline
+	Scenariusz główny & 
+	\begin{minipage}{4in}
+		\vskip 4pt
+		\begin{enumerate}
+			\item Pobranie danych przejazdu wprowadzonych przez użytkownika.
+			\item Walidacja danych.
+			\item Utworzenie nowego przejazdu.
+		\end{enumerate}
+		\vskip 4pt
+	\end{minipage}
+	\\ \hline
+	Wyjątki & 
+	\begin{minipage}{4in}
+		\vskip 4pt
+		\begin{enumerate}[label={2.\Alph*.},leftmargin=1.2cm]
+			\item Wprowadzone dane są niepoprawne.
+			\begin{enumerate}[label=2.A.\arabic*.]
+				\item Wyświetlenie informacji o~błędnych danych.
+				\item Przejście do kroku 1.
+			\end{enumerate}
+			
+		\end{enumerate}
+		
+		\vskip 4pt
+	\end{minipage}
+	\\ \hline
+	Rozszerzenia & 
+	\begin{minipage}{4in}
+		\vskip 4pt			
+		\vskip 4pt
+	\end{minipage}
+	\\ \hline
+\end{tabularx}
+\newline
+\vspace*{1 cm}
+\newline
+\begin{tabularx}{1\linewidth}{l|l}
+	\multicolumn{2}{c}{\textbf{Przejrzyj własne przejazdy}} \\ \hline
+	Aktorzy & Kierowca\\ \hline
+	Cel &  Wyświetlenie przejazdów danego użytkownika. \\ \hline
+	Warunki wstępne & Użytkownik posiada aktywną sesje.\\ \hline
+	Warunki końcowe & Użytkownik może przejrzeć stan wszystkich swoich przejazdów.\\ \hline
+	Scenariusz główny & 
+	\begin{minipage}{4in}
+		\vskip 4pt
+		\begin{enumerate}
+			\item Pobranie przejazdów danego użytkownika.
+			\item Wyświetlenie pobranych przejazdów.		
+		\end{enumerate}
+		\vskip 4pt
+	\end{minipage}
+	\\ \hline
+	Wyjątki & 
+	\\ \hline
+	Rozszerzenia &
+	\begin{minipage}{4in}
+		\vskip 4pt
+		\begin{itemize}
+			\item Anuluj swój przejazd
+			\item Edytuj swój przejazd
+			\item Oceń pasażera
+		\end{itemize}	
+		\vskip 4pt
+	\end{minipage}
+	\\ \hline
+\end{tabularx}
+\newline
+\vspace*{1 cm}
+\newline
+\begin{tabularx}{1\linewidth}{l|X}
+	\multicolumn{2}{c}{\textbf{Anuluj swój przejazd}} \\ \hline
+	Aktorzy & Kierowca\\ \hline
+	Cel &  Anulowanie przejazdu. \\ \hline
+	Warunki wstępne & Użytkownik posiada aktywną sesje	\newline
+	i wybrał przejazd z~listy własnych przejazdów.\\ \hline
+	Warunki końcowe & Przejazd nie jest dostępny dla innych użytkowników.\\ \hline
+	Scenariusz główny & 
+	\begin{minipage}{4in}
+		\vskip 4pt
+		\begin{enumerate}
+			\item Ustawienie flagi „nieaktywny” w~bazie danych w~wybranym przejeździe.
+			\item Wysłanie powiadomienia do zapisanych pasażerów.		
+		\end{enumerate}
+		\vskip 4pt
+	\end{minipage}
+	\\ \hline
+	Wyjątki & 	
+	\\ \hline
+	Rozszerzenia & 
+	\begin{minipage}{4in}
+		\vskip 4pt			
+		\vskip 4pt
+	\end{minipage}
+	\\ \hline
+\end{tabularx}
+\newline
+\vspace*{1 cm}
+\newline
+\begin{tabularx}{1\linewidth}{l|X}
+	\multicolumn{2}{c}{\textbf{Edytuj swój przejazd}} \\ \hline
+	Aktorzy & Kierowca\\ \hline
+	Cel &  Zmiana szczegółów przejazdu. \\ \hline
+	Warunki wstępne & Użytkownik posiada aktywną sesje	\newline
+	i wybrał przejazd z~listy własnych przejazdów.\\ \hline
+	Warunki końcowe & Zmodyfikowany przejazd jest zapisany w~bazie danych.\\ \hline
+	Scenariusz główny & 
+	\begin{minipage}{4in}
+		\vskip 4pt
+		\begin{enumerate}
+			\item Ustawienie flagi „nieaktywny” w~bazie danych w~wybranym przejeździe.
+			\item Wysłanie powiadomienia do zapisanych pasażerów.		
+		\end{enumerate}
+		\vskip 4pt
+	\end{minipage}
+	\\ \hline
+	Wyjątki & 
+	\begin{minipage}{4in}
+		\vskip 4pt
+		\begin{enumerate}[label={2.\Alph*.},leftmargin=1.2cm]
+			\item Wprowadzone dane są niepoprawne.
+			\begin{enumerate}[label=2.A.\arabic*.]
+				\item Wyświetlenie informacji o~błędnych danych.
+				\item Przejście do kroku 2.
+			\end{enumerate}					
+		\end{enumerate}				
+		\vskip 4pt
+	\end{minipage}
+	\\ \hline
+	Rozszerzenia & 
+	\begin{minipage}{4in}
+		\vskip 4pt			
+		\vskip 4pt
+	\end{minipage}
+	\\ \hline
+\end{tabularx}
+\newline
+\vspace*{1 cm}
+\newline
+\begin{tabularx}{1\linewidth}{l|X}
+	\multicolumn{2}{c}{\textbf{Oceń pasażera}} \\ \hline
+	Aktorzy & Kierowca\\ \hline
+	Cel &  Ocenienie pasażera \\ \hline
+	Warunki wstępne & Użytkownik zakończył przejazd jako kierowca. \\ \hline
+	Warunki końcowe & Ocena pasażera jest zapisana w~bazie danych.\\ \hline
+	Scenariusz główny & 
+	\begin{minipage}{4in}
+		\vskip 4pt
+		\begin{enumerate}
+			\item Pobranie oceny oraz komentarza wprowadzonego przez użytkownika.
+			\item Zapisanie danych.		
+		\end{enumerate}
+		\vskip 4pt
+	\end{minipage}
+	\\ \hline
+	Wyjątki & 
+	\\ \hline
+	Rozszerzenia & 
+	\begin{minipage}{4in}
+		\vskip 4pt			
+		\vskip 4pt
+	\end{minipage}
+	\\ \hline
+\end{tabularx}
+\newline
+\vspace*{1 cm}
+\newline
+\begin{tabularx}{1\linewidth}{l|X}
+	\multicolumn{2}{c}{\textbf{Uruchom menadżer kierowcy}} \\ \hline
+	Aktorzy & Kierowca\\ \hline
+	Cel &  Nawigowanie kierowcy wzdłuż trasy przejazdu oraz informowanie o~pozycji pasażerów. \\ \hline
+	Warunki wstępne & Kierowca posiada przejazd w~aktualnym czasie. \\ \hline
+	Warunki końcowe & Kierowca zakończył swój przejazd.\\ \hline
+	Scenariusz główny & 
+	\begin{minipage}{4in}
+		\vskip 4pt
+		\begin{enumerate}
+			\item Pobranie trasy przejazdu z~bazy danych.
+			\item Zapisanie pozycji kierowcy w~bazie danych.
+			\item Zaznaczenie pozycji kierowcy względem trasy przejazdu.
+			\item Pobranie pozycji pasażerów.
+			\item Zaznaczenie pozycji pasażerów względem trasy przejazdu.
+			\item Przejście do kroku drugiego.
+		\end{enumerate}
+		\vskip 4pt
+	\end{minipage}
+	\\ \hline
+	Wyjątki &
+	\begin{minipage}{4in}
+		\vskip 4pt
+		\begin{enumerate}[label={2.\Alph*.},leftmargin=1.2cm]
+			\item Nie można pobrać położenia kierowcy.
+			\begin{enumerate}[label=1.A.\arabic*.]
+				\item Wyświetlenie widoku z~możliwością uruchomienia modułu gps
+				\item Przejście do kroku pierwszego.
+			\end{enumerate}					
+		\end{enumerate}
+		\begin{enumerate}[label={4.\Alph*.},leftmargin=1.2cm]
+			\item Pozycja, któregoś z~pasażerów jest nieznana.
+			\begin{enumerate}[label=4.A.\arabic*.]
+				\item Wyświetlenie informacji o~nieokreślonej lokalizacji danego pasażera.
+				\item Przejście do kolejnego kroku.
+			\end{enumerate}
+			\item Pozycja, wszystkich pasażerów jest nieznana.
+			\begin{enumerate}[label=4.B.\arabic*.]
+				\item Wyświetlenie informacji o~nieokreślonej lokalizacji pasażerów.
+				\item Przejście do kroku pierwszego.
+			\end{enumerate}				
+		\end{enumerate}
+		\begin{enumerate}[label={6.\Alph*.},leftmargin=1.2cm]
+			\item Zakończenie trasy przejazdu.
+			\begin{enumerate}[label=6.A.\arabic*.]
+				\item Zakończenie przypadku użycia.
+			\end{enumerate}	
+		\end{enumerate}
+		\vskip 4pt
+	\end{minipage}
+	\\ \hline
+	Rozszerzenia & 
+	\begin{minipage}{4in}
+		\vskip 4pt			
+		\vskip 4pt
+	\end{minipage}
+	\\ \hline
+\end{tabularx}
+\newline
+\vspace*{1 cm}
+\newline
+\begin{tabularx}{1\linewidth}{l|X}
+	\multicolumn{2}{c}{\textbf{Wyszukaj przejazd}} \\ \hline
+	Aktorzy & Pasażer\\ \hline
+	Cel &  Wyszukanie przejazdów o~zadanych parametrach. \\ \hline
+	Warunki wstępne & Użytkownik posiada dostęp do systemu.	\newline
+	i wybrał przejazd z~listy własnych przejazdów.\\ \hline
+	Warunki końcowe & Wyświetlenie przejazdów o~podanych parametrach.\\ \hline
+	Scenariusz główny & 
+	\begin{minipage}{4in}
+		\vskip 4pt
+		\begin{enumerate}
+			\item Pobranie z~formularza podanych parametrów.
+			\item Wyszukanie w~bazie danych przejazdów o~zadanych kryteriach.	
+			\item Wyświetlenie znalezionych połączeń wraz z~przejazdami pośrednimi.
+		\end{enumerate}
+		\vskip 4pt
+	\end{minipage}
+	\\ \hline
+	Wyjątki & 
+	\begin{minipage}{4in}
+		\vskip 4pt
+		\begin{enumerate}[label={2.\Alph*.},leftmargin=1.2cm]
+			\item Nie znaleziono przejazdów o~zadanych kryteriach.
+			\begin{enumerate}[label=2.A.\arabic*.]
+				\item Wyświetlenie informacji o~braku przejazdów o~określonych parametrach.
+			\end{enumerate}
+			
+		\end{enumerate}
+		
+		\vskip 4pt
+	\end{minipage}
+	\\ \hline
+	Rozszerzenia & 
+	\begin{minipage}{4in}
+		\vskip 4pt
+		\begin{itemize}
+			\item Zapisz się na przejazd(y)
+		\end{itemize}		
+		\vskip 4pt
+	\end{minipage}
+	\\ \hline
+\end{tabularx}
+\newline
+\vspace*{1 cm}
+\newline
+\begin{tabularx}{1\linewidth}{l|X}
+	\multicolumn{2}{c}{\textbf{Zapisz się na przejazd(y)}} \\ \hline
+	Aktorzy & Pasażer\\ \hline
+	Cel &  Zajęcie miejsca w~wybranym przejeździe. \\ \hline
+	Warunki wstępne & Użytkownik wyszukał interesujący go przejazd. \\ \hline
+	Warunki końcowe & Dany użytkownik został przypisany do podanego przejazdu jako pasażer.\\ \hline
+	Scenariusz główny & 
+	\begin{minipage}{4in}
+		\vskip 4pt
+		\begin{enumerate}
+			\item Sprawdzenie czy użytkownik jest zalogowany.
+			\item Powiązanie użytkownika z~przejazdem/przejazdami w~bazie danych.	
+			\item Wyświetlenie znalezionych połączeń wraz z~przejazdami pośrednimi.
+		\end{enumerate}
+		\vskip 4pt
+	\end{minipage}
+	\\ \hline
+	Wyjątki & 
+	\begin{minipage}{4in}
+		\vskip 4pt
+		\begin{enumerate}[label={1.\Alph*.},leftmargin=1.2cm]
+			\item Użytkownik nie jest zalogowany.
+			\begin{enumerate}[label=1.A.\arabic*.]
+				\item Wykonanie PU „Zaloguj się”.
+				\item Przejście do kroku 2.
+			\end{enumerate}
+			\item Użytkownik nie posiada konta.
+			\begin{enumerate}[label=2.A.\arabic*.]
+				\item Wykonanie PU „Utwórz konto”.
+				\item Przejście do kroku 2.
+			\end{enumerate}
+		\end{enumerate}
+		\begin{enumerate}[label={2.\Alph*.},leftmargin=1.2cm]
+			\item Jeden z~przejazdów nie ma już wolnych miejsc.
+			\begin{enumerate}[label=2.A.\arabic*.]
+				\item Wyświetlenie informacji o~braku miejsc.
+				\item Zakończenie PU.
+			\end{enumerate}
+		\end{enumerate}
+		\vskip 4pt
+	\end{minipage}
+	\\ \hline
+	Rozszerzenia & 
+	\begin{minipage}{4in}
+		\vskip 4pt		
+		\vskip 4pt
+	\end{minipage}
+	\\ \hline
+\end{tabularx}
+\newline
+\vspace*{1 cm}
+\newline
+\begin{tabularx}{1\linewidth}{l|X}
+	\multicolumn{2}{c}{\textbf{Przejrzyj przejazdy, do których jesteś zapisany}} \\ \hline
+	Aktorzy & Pasażer\\ \hline
+	Cel &  Wyświetlenie przejazdów danego pasażera. \\ \hline
+	Warunki wstępne & Użytkownik posiada aktywną sesje.\\ \hline
+	Warunki końcowe & Użytkownik może przejrzeć przejazdy, do których jest przypisany\newline jako pasażer.\\ \hline
+	Scenariusz główny & 
+	\begin{minipage}{4in}
+		\vskip 4pt
+		\begin{enumerate}
+			\item Pobranie przejazdów, gdzie pasażerem jest dany użytkownik.
+			\item Wyświetlenie pobranych przejazdów.		
+		\end{enumerate}
+		\vskip 4pt
+	\end{minipage}
+	\\ \hline
+	Wyjątki &
+	\begin{minipage}{4in}
+		\vskip 4pt
+		\begin{enumerate}[label={2.\Alph*.},leftmargin=1.2cm]
+			\item Użytkownik nie jest przypisany do żadnego przejazdu.
+			\begin{enumerate}[label=2.A.\arabic*.]
+				\item Wyświetlenie informacji o~braku przejazdu.
+			\end{enumerate}
+		\end{enumerate}
+		\vskip 4pt
+	\end{minipage}
+	\\ \hline
+	Rozszerzenia & 
+	\begin{minipage}{4in}
+		\vskip 4pt
+		\begin{itemize}
+			\item Oceń kierowce
+			\item Wypisz się z~przejazdu
+		\end{itemize}			
+		\vskip 4pt
+	\end{minipage}
+	\\ \hline
+\end{tabularx}
+\newline
+\vspace*{1 cm}
+\newline
+\begin{tabularx}{1\linewidth}{l|X}
+	\multicolumn{2}{c}{\textbf{Oceń kierowce}} \\ \hline
+	Aktorzy & Pasażer\\ \hline
+	Cel &  Ocenienie kierowcy \\ \hline
+	Warunki wstępne & Użytkownik zakończył przejazd jako pasażer. \\ \hline
+	Warunki końcowe & Ocena kierowcy jest zapisana w~bazie danych.\\ \hline
+	Scenariusz główny & 
+	\begin{minipage}{4in}
+		\vskip 4pt
+		\begin{enumerate}
+			\item Pobranie oceny oraz komentarza wprowadzonego przez użytkownika.
+			\item Zapisanie danych.		
+		\end{enumerate}
+		\vskip 4pt
+	\end{minipage}
+	\\ \hline
+	Wyjątki & 
+	\\ \hline
+	Rozszerzenia & 
+	\begin{minipage}{4in}
+		\vskip 4pt			
+		\vskip 4pt
+	\end{minipage}
+	\\ \hline
+\end{tabularx}
+\newline
+\vspace*{1 cm}
+\newline
+\begin{tabularx}{1\linewidth}{l|X}
+	\multicolumn{2}{c}{\textbf{Wypisz się z~przejazdu}} \\ \hline
+	Aktorzy & Pasażer\\ \hline
+	Cel &  Wypisanie się z~przejazdu. \\ \hline
+	Warunki wstępne & Użytkownik jest przypisany do nadchodzącego przejazdu. \\ \hline
+	Warunki końcowe &  Użytkownik nie jest powiązany z~nadchodzącym przejazdem.\\ \hline
+	Scenariusz główny & 
+	\begin{minipage}{4in}
+		\vskip 4pt
+		\begin{enumerate}
+			\item Usunięcie powiązania między pasażerem, a~podanym przejazdem.
+			\item Wysłanie powiadomienia do kierowcy.	
+		\end{enumerate}
+		\vskip 4pt
+	\end{minipage}
+	\\ \hline
+	Wyjątki & 
+	\\ \hline
+	Rozszerzenia & 
+	\begin{minipage}{4in}
+		\vskip 4pt			
+		\vskip 4pt
+	\end{minipage}
+	\\ \hline
+\end{tabularx}
+\newline
+\vspace*{1 cm}
+\newline
+\begin{tabularx}{1\linewidth}{l|X}
+	\multicolumn{2}{c}{\textbf{Uruchom menadżer pasażera}} \\ \hline
+	Aktorzy & Pasażer\\ \hline
+	Cel &  Informowanie pasażera o~pozycji kierowcy i~nawigowanie do przystanku. \\ \hline
+	Warunki wstępne & Pasażer posiada przejazd w~bliskim czasie. \\ \hline
+	Warunki końcowe & Pasażer rozpoczął przejazd.\\ \hline
+	Scenariusz główny & 
+	\begin{minipage}{4in}
+		\vskip 4pt
+		\begin{enumerate}
+			\item Zapisanie pozycji pasażera w~bazie danych.
+			\item Pobranie początku przejazdu z~bazy danych.
+			\item Zaznaczenie pozycji pasażera względem trasy przejazdu.
+			\item Pobranie pozycji kierowcy.
+			\item Zaznaczenie pozycji kierowcy względem trasy przejazdu.
+			\item Przejście do kroku pierwszego.
+		\end{enumerate}
+		\vskip 4pt
+	\end{minipage}
+	\\ \hline
+	Wyjątki &
+	\begin{minipage}{4in}
+		\vskip 4pt
+		\begin{enumerate}[label={1.\Alph*.},leftmargin=1.2cm]
+			\item Nie można pobrać położenia pasażera.
+			\begin{enumerate}[label=1.A.\arabic*.]
+				\item Wyświetlenie widoku z~możliwością uruchomienia modułu gps.
+				\item Przejście do kroku pierwszego.
+			\end{enumerate}					
+		\end{enumerate}
+		\begin{enumerate}[label={4.\Alph*.},leftmargin=1.2cm]
+			\item Pozycja, kierowcy jest nieznana.
+			\begin{enumerate}[label=4.A.\arabic*.]
+				\item Wyświetlenie informacji o~nieokreślonej lokalizacji kierowcy.
+				\item Przejście do pierwszego kroku.
+			\end{enumerate}			
+		\end{enumerate}
+		\begin{enumerate}[label={6.\Alph*.},leftmargin=1.2cm]
+			\item Dotarcie do początku przejazdu.
+			\begin{enumerate}[label=6.A.\arabic*.]
+				\item Zakończenie przypadku użycia.
+			\end{enumerate}	
+		\end{enumerate}
+		\vskip 4pt
+	\end{minipage}
+	\\ \hline
+	Rozszerzenia & 
+	\begin{minipage}{4in}
+		\vskip 4pt			
+		\vskip 4pt
+	\end{minipage}
+	\\ \hline
+\end{tabularx}
+\chapter{Opis zawartości płyty CD}
+W głównym katalogu załączonej do pracy płyty CD znajdują się:
+\begin{itemize}
+	\item jedzmyrazem\_android - kod źródłowy projektu aplikacji mobilnej
+	\item jedzmyrazem\_rails - kod źródłowy web serwisu i aplikacji internetowej 
+	\item dokumentacja.pdf - niniejszy dokument
+	\item streszczenie.pdf - streszczenie niniejszego dokumentu
+\end{itemize}
+\end{document}

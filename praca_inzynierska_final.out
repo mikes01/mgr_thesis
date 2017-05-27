@@ -1,0 +1,45 @@
+\BOOKMARK [0][-]{chapter.1}{Wprowadzenie}{}% 1
+\BOOKMARK [1][-]{section.1.1}{Cel pracy}{chapter.1}% 2
+\BOOKMARK [1][-]{section.1.2}{Przeglad wybranych rozwiazan dostepnych na rynku}{chapter.1}% 3
+\BOOKMARK [1][-]{section.1.3}{Mozliwe warianty systemu Jedzmy razem}{chapter.1}% 4
+\BOOKMARK [0][-]{chapter.2}{Opis projektu realizowanego systemu}{}% 5
+\BOOKMARK [1][-]{section.2.1}{Struktura systemu}{chapter.2}% 6
+\BOOKMARK [1][-]{section.2.2}{Funkcjonalnosc systemu}{chapter.2}% 7
+\BOOKMARK [1][-]{section.2.3}{Struktura bazy danych}{chapter.2}% 8
+\BOOKMARK [1][-]{section.2.4}{Zakres projektu}{chapter.2}% 9
+\BOOKMARK [1][-]{section.2.5}{Algorytm wyszukiwania przejazd\363w}{chapter.2}% 10
+\BOOKMARK [0][-]{chapter.3}{Wykorzystane technologie}{}% 11
+\BOOKMARK [1][-]{section.3.1}{Baza danych}{chapter.3}% 12
+\BOOKMARK [1][-]{section.3.2}{Web serwis}{chapter.3}% 13
+\BOOKMARK [1][-]{section.3.3}{Aplikacja internetowa}{chapter.3}% 14
+\BOOKMARK [1][-]{section.3.4}{Aplikacja mobilna}{chapter.3}% 15
+\BOOKMARK [0][-]{chapter.4}{Implementacja}{}% 16
+\BOOKMARK [1][-]{section.4.1}{Web serwis}{chapter.4}% 17
+\BOOKMARK [2][-]{subsection.4.1.1}{Tworzenie przejazdu}{section.4.1}% 18
+\BOOKMARK [2][-]{subsection.4.1.2}{Wyszukiwanie przejazd\363w}{section.4.1}% 19
+\BOOKMARK [1][-]{section.4.2}{Aplikacja internetowa}{chapter.4}% 20
+\BOOKMARK [2][-]{subsection.4.2.1}{Zapytania do API}{section.4.2}% 21
+\BOOKMARK [2][-]{subsection.4.2.2}{Walidacja formularzy}{section.4.2}% 22
+\BOOKMARK [2][-]{subsection.4.2.3}{Stworzone widoki}{section.4.2}% 23
+\BOOKMARK [1][-]{section.4.3}{Aplikacja mobilna}{chapter.4}% 24
+\BOOKMARK [2][-]{subsection.4.3.1}{Utrzymywanie sesji uzytkownika}{section.4.3}% 25
+\BOOKMARK [2][-]{subsection.4.3.2}{Komunikacja z web serwisem}{section.4.3}% 26
+\BOOKMARK [2][-]{subsection.4.3.3}{Google Places API}{section.4.3}% 27
+\BOOKMARK [2][-]{subsection.4.3.4}{Odczyt lokalizacji GPS telefonu}{section.4.3}% 28
+\BOOKMARK [2][-]{subsection.4.3.5}{Widoki aplikacji}{section.4.3}% 29
+\BOOKMARK [0][-]{chapter.5}{Testowanie systemu}{}% 30
+\BOOKMARK [1][-]{section.5.1}{Statyczna analiza kodu}{chapter.5}% 31
+\BOOKMARK [1][-]{section.5.2}{Testy jednostkowe}{chapter.5}% 32
+\BOOKMARK [2][-]{subsection.5.2.1}{Web serwis}{section.5.2}% 33
+\BOOKMARK [2][-]{subsection.5.2.2}{Aplikacja internetowa}{section.5.2}% 34
+\BOOKMARK [2][-]{subsection.5.2.3}{Aplikacja mobilna}{section.5.2}% 35
+\BOOKMARK [0][-]{chapter.6}{Opis wdrozenia web serwisu i aplikacji internetowej}{}% 36
+\BOOKMARK [1][-]{section.6.1}{Uruchomienie aplikacji}{chapter.6}% 37
+\BOOKMARK [1][-]{section.6.2}{Automatyzacja aktualizacji oprogramowania}{chapter.6}% 38
+\BOOKMARK [0][-]{chapter.7}{Podsumowanie}{}% 39
+\BOOKMARK [1][-]{section.7.1}{Realizacja celu projektu}{chapter.7}% 40
+\BOOKMARK [1][-]{section.7.2}{Ocena jakosci systemu}{chapter.7}% 41
+\BOOKMARK [1][-]{section.7.3}{Kierunki rozwoju}{chapter.7}% 42
+\BOOKMARK [0][-]{chapter*.2}{Literatura}{}% 43
+\BOOKMARK [0][-]{appendix.A}{Scenariusze przypadk\363w uzycia}{}% 44
+\BOOKMARK [0][-]{appendix.B}{Opis zawartosci p\233yty CD}{}% 45

@@ -1,0 +1,32 @@
+\BOOKMARK [0][-]{chapter.1}{Wprowadzenie}{}% 1
+\BOOKMARK [1][-]{section.1.1}{Cel pracy}{chapter.1}% 2
+\BOOKMARK [1][-]{section.1.2}{Charakterystyka System\363w Informacji Geograficznej}{chapter.1}% 3
+\BOOKMARK [1][-]{section.1.3}{Charakterystyka jezyka Ruby}{chapter.1}% 4
+\BOOKMARK [1][-]{section.1.4}{Istniejace systemy GIS w jezyku Ruby}{chapter.1}% 5
+\BOOKMARK [2][-]{subsection.1.4.1}{OpenStreetMap}{section.1.4}% 6
+\BOOKMARK [2][-]{subsection.1.4.2}{MangoMap}{section.1.4}% 7
+\BOOKMARK [0][-]{chapter.2}{Frameworki internetowe w jezyku Ruby}{}% 8
+\BOOKMARK [1][-]{section.2.1}{Ruby on Rails}{chapter.2}% 9
+\BOOKMARK [1][-]{section.2.2}{Trailblazer}{chapter.2}% 10
+\BOOKMARK [1][-]{section.2.3}{Hanami}{chapter.2}% 11
+\BOOKMARK [0][-]{chapter.3}{Narzedzia dostepne do przetwarzania danych geograficznych w jezyku Ruby}{}% 12
+\BOOKMARK [1][-]{section.3.1}{Przechowywanie danych}{chapter.3}% 13
+\BOOKMARK [2][-]{subsection.3.1.1}{PostGIS}{section.3.1}% 14
+\BOOKMARK [2][-]{subsection.3.1.2}{MySQL Spatial}{section.3.1}% 15
+\BOOKMARK [2][-]{subsection.3.1.3}{SpatiaLite}{section.3.1}% 16
+\BOOKMARK [2][-]{subsection.3.1.4}{MongoDB}{section.3.1}% 17
+\BOOKMARK [1][-]{section.3.2}{Przetwarzanie danych}{chapter.3}% 18
+\BOOKMARK [2][-]{subsection.3.2.1}{Rgeo}{section.3.2}% 19
+\BOOKMARK [2][-]{subsection.3.2.2}{GeoRuby}{section.3.2}% 20
+\BOOKMARK [1][-]{section.3.3}{Prezentowanie danych}{chapter.3}% 21
+\BOOKMARK [2][-]{subsection.3.3.1}{Leaflet}{section.3.3}% 22
+\BOOKMARK [2][-]{subsection.3.3.2}{GoogleMaps}{section.3.3}% 23
+\BOOKMARK [0][-]{chapter.4}{Badanie wydajnosci przetwarzania danych geograficznych}{}% 24
+\BOOKMARK [1][-]{section.4.1}{Plan eksperyment\363w}{chapter.4}% 25
+\BOOKMARK [1][-]{section.4.2}{Wyniki badan}{chapter.4}% 26
+\BOOKMARK [0][-]{chapter.5}{Por\363wnianie funkcjonalnosci wybranych framework\363w}{}% 27
+\BOOKMARK [0][-]{chapter.6}{Por\363wnianie struktur wykonanych projekt\363w}{}% 28
+\BOOKMARK [0][-]{chapter.7}{Podsumowanie}{}% 29
+\BOOKMARK [1][-]{section.7.1}{Analiza wynik\363w badan}{chapter.7}% 30
+\BOOKMARK [1][-]{section.7.2}{Realizacja celu projektu}{chapter.7}% 31
+\BOOKMARK [0][-]{chapter*.5}{Literatura}{}% 32

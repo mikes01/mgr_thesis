@@ -1,0 +1,46 @@
+\select@language {polish}
+\contentsline {chapter}{\numberline {1}Wprowadzenie}{1}{chapter.1}
+\contentsline {section}{\numberline {1.1}Cel pracy}{1}{section.1.1}
+\contentsline {section}{\numberline {1.2}Przegl\IeC {\k a}d wybranych rozwi\IeC {\k a}za\IeC {\'n} dost\IeC {\k e}pnych na rynku}{1}{section.1.2}
+\contentsline {section}{\numberline {1.3}Mo\IeC {\.z}liwe warianty systemu \emph {Jed\IeC {\'z}my razem}}{2}{section.1.3}
+\contentsline {chapter}{\numberline {2}Opis projektu realizowanego systemu}{4}{chapter.2}
+\contentsline {section}{\numberline {2.1}Struktura systemu}{4}{section.2.1}
+\contentsline {section}{\numberline {2.2}Funkcjonalno\IeC {\'s}\IeC {\'c} systemu}{4}{section.2.2}
+\contentsline {section}{\numberline {2.3}Struktura bazy danych}{6}{section.2.3}
+\contentsline {section}{\numberline {2.4}Zakres projektu}{8}{section.2.4}
+\contentsline {section}{\numberline {2.5}Algorytm wyszukiwania przejazd\IeC {\'o}w}{9}{section.2.5}
+\contentsline {chapter}{\numberline {3}Wykorzystane technologie}{12}{chapter.3}
+\contentsline {section}{\numberline {3.1}Baza danych}{12}{section.3.1}
+\contentsline {section}{\numberline {3.2}Web serwis}{13}{section.3.2}
+\contentsline {section}{\numberline {3.3}Aplikacja internetowa}{13}{section.3.3}
+\contentsline {section}{\numberline {3.4}Aplikacja mobilna}{13}{section.3.4}
+\contentsline {chapter}{\numberline {4}Implementacja}{14}{chapter.4}
+\contentsline {section}{\numberline {4.1}Web serwis}{14}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Tworzenie przejazdu}{14}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}Wyszukiwanie przejazd\IeC {\'o}w}{15}{subsection.4.1.2}
+\contentsline {section}{\numberline {4.2}Aplikacja internetowa}{16}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Zapytania do API}{16}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Walidacja formularzy}{17}{subsection.4.2.2}
+\contentsline {subsection}{\numberline {4.2.3}Stworzone widoki}{18}{subsection.4.2.3}
+\contentsline {section}{\numberline {4.3}Aplikacja mobilna}{19}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Utrzymywanie sesji u\IeC {\.z}ytkownika}{19}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}Komunikacja z~web serwisem}{19}{subsection.4.3.2}
+\contentsline {subsection}{\numberline {4.3.3}Google Places API}{20}{subsection.4.3.3}
+\contentsline {subsection}{\numberline {4.3.4}Odczyt lokalizacji GPS telefonu}{20}{subsection.4.3.4}
+\contentsline {subsection}{\numberline {4.3.5}Widoki aplikacji}{21}{subsection.4.3.5}
+\contentsline {chapter}{\numberline {5}Testowanie systemu}{24}{chapter.5}
+\contentsline {section}{\numberline {5.1}Statyczna analiza kodu}{24}{section.5.1}
+\contentsline {section}{\numberline {5.2}Testy jednostkowe}{24}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}Web serwis}{24}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.2}Aplikacja internetowa}{26}{subsection.5.2.2}
+\contentsline {subsection}{\numberline {5.2.3}Aplikacja mobilna}{27}{subsection.5.2.3}
+\contentsline {chapter}{\numberline {6}Opis wdro\IeC {\.z}enia web serwisu i~aplikacji internetowej}{28}{chapter.6}
+\contentsline {section}{\numberline {6.1}Uruchomienie aplikacji}{28}{section.6.1}
+\contentsline {section}{\numberline {6.2}Automatyzacja aktualizacji oprogramowania}{28}{section.6.2}
+\contentsline {chapter}{\numberline {7}Podsumowanie}{31}{chapter.7}
+\contentsline {section}{\numberline {7.1}Realizacja celu projektu}{31}{section.7.1}
+\contentsline {section}{\numberline {7.2}Ocena jako\IeC {\'s}ci systemu}{31}{section.7.2}
+\contentsline {section}{\numberline {7.3}Kierunki rozwoju}{31}{section.7.3}
+\contentsline {chapter}{Literatura}{32}{chapter*.2}
+\contentsline {chapter}{\numberline {A}Scenariusze przypadk\IeC {\'o}w u\IeC {\.z}ycia}{33}{appendix.A}
+\contentsline {chapter}{\numberline {B}Opis zawarto\IeC {\'s}ci p\IeC {\l }yty CD}{42}{appendix.B}
