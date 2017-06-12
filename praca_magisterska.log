@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.1.18)  24 APR 2017 08:10
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.1.18)  9 JUN 2017 22:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1281,39 +1281,176 @@ Package: xparse 2016/05/18 v6512 L3 Experimental document command parser
 \forest@externalize@max@outer@n=\count178
 \forest@externalize@inner@n=\count179
 )
-(./praca_magisterska.aux)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/forest/forest-lib-edges.sty
+Package: forest-lib-edges 2015/11/14 v0.1
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/pgfplots/pgfplots.sty
+(/usr/local/texlive/2016/texmf-dist/tex/generic/pgfplots/pgfplots.revision.tex)
+Package: pgfplots 2016/01/06 v1.13 Data Visualization (1.13)
+(/usr/local/texlive/2016/texmf-dist/tex/generic/pgfplots/pgfplots.code.tex
+(/usr/local/texlive/2016/texmf-dist/tex/generic/pgfplots/pgfplotscore.code.tex
+\t@pgfplots@toka=\toks51
+\t@pgfplots@tokb=\toks52
+\t@pgfplots@tokc=\toks53
+\pgfplots@tmpa=\dimen278
+\c@pgfplots@coordindex=\count180
+\c@pgfplots@scanlineindex=\count181
+
+(/usr/local/texlive/2016/texmf-dist/tex/generic/pgfplots/sys/pgfplotssysgeneric
+.code.tex))
+(/usr/local/texlive/2016/texmf-dist/tex/generic/pgfplots/libs/pgfplotslibrary.c
+ode.tex)
+(/usr/local/texlive/2016/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplot
+soldpgfsupp_loader.code.tex
+Package pgfplots: loading complementary arithmetics for your pgf version...
+
+(/usr/local/texlive/2016/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplot
+soldpgfsupp_pgflibraryfpu.code.tex)
+(/usr/local/texlive/2016/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplot
+soldpgfsupp_pgfmathfloat.code.tex
+\c@pgfmathroundto@lastzeros=\count182
+))
+(/usr/local/texlive/2016/texmf-dist/tex/generic/pgfplots/util/pgfplotsutil.code
+.tex
+(/usr/local/texlive/2016/texmf-dist/tex/generic/pgfplots/liststructure/pgfplots
+liststructure.code.tex)
+(/usr/local/texlive/2016/texmf-dist/tex/generic/pgfplots/liststructure/pgfplots
+liststructureext.code.tex)
+(/usr/local/texlive/2016/texmf-dist/tex/generic/pgfplots/liststructure/pgfplots
+array.code.tex
+\c@pgfplotsarray@tmp=\count183
+)
+(/usr/local/texlive/2016/texmf-dist/tex/generic/pgfplots/liststructure/pgfplots
+matrix.code.tex)
+(/usr/local/texlive/2016/texmf-dist/tex/generic/pgfplots/numtable/pgfplotstable
+shared.code.tex
+\c@pgfplotstable@counta=\count184
+\t@pgfplotstable@a=\toks54
+)
+(/usr/local/texlive/2016/texmf-dist/tex/generic/pgfplots/liststructure/pgfplots
+deque.code.tex)
+(/usr/local/texlive/2016/texmf-dist/tex/generic/pgfplots/util/pgfplotsbinary.co
+de.tex
+(/usr/local/texlive/2016/texmf-dist/tex/generic/pgfplots/util/pgfplotsbinary.da
+ta.code.tex))
+(/usr/local/texlive/2016/texmf-dist/tex/generic/pgfplots/util/pgfplotsutil.verb
+.code.tex)
+(/usr/local/texlive/2016/texmf-dist/tex/generic/pgfplots/libs/pgflibrarypgfplot
+s.surfshading.code.tex
+\c@pgfplotslibrarysurf@no=\count185
+
+(/usr/local/texlive/2016/texmf-dist/tex/generic/pgfplots/sys/pgflibrarypgfplots
+.surfshading.pgfsys-pdftex.def)))
+(/usr/local/texlive/2016/texmf-dist/tex/generic/pgfplots/util/pgfplotscolormap.
+code.tex
+(/usr/local/texlive/2016/texmf-dist/tex/generic/pgfplots/util/pgfplotscolor.cod
+e.tex))
+(/usr/local/texlive/2016/texmf-dist/tex/generic/pgfplots/pgfplotsstackedplots.c
+ode.tex)
+(/usr/local/texlive/2016/texmf-dist/tex/generic/pgfplots/pgfplotsplothandlers.c
+ode.tex
+(/usr/local/texlive/2016/texmf-dist/tex/generic/pgfplots/pgfplotsmeshplothandle
+r.code.tex
+(/usr/local/texlive/2016/texmf-dist/tex/generic/pgfplots/pgfplotsmeshplotimage.
+code.tex)))
+(/usr/local/texlive/2016/texmf-dist/tex/generic/pgfplots/pgfplots.scaling.code.
+tex)
+(/usr/local/texlive/2016/texmf-dist/tex/generic/pgfplots/pgfplotscoordprocessin
+g.code.tex)
+(/usr/local/texlive/2016/texmf-dist/tex/generic/pgfplots/pgfplots.errorbars.cod
+e.tex)
+(/usr/local/texlive/2016/texmf-dist/tex/generic/pgfplots/pgfplots.markers.code.
+tex)
+(/usr/local/texlive/2016/texmf-dist/tex/generic/pgfplots/pgfplotsticks.code.tex
+)
+(/usr/local/texlive/2016/texmf-dist/tex/generic/pgfplots/pgfplots.paths.code.te
+x)
+(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibrarydecorations.code.tex
+(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/modules/pgfmoduledecoration
+s.code.tex
+\pgfdecoratedcompleteddistance=\dimen279
+\pgfdecoratedremainingdistance=\dimen280
+\pgfdecoratedinputsegmentcompleteddistance=\dimen281
+\pgfdecoratedinputsegmentremainingdistance=\dimen282
+\pgf@decorate@distancetomove=\dimen283
+\pgf@decorate@repeatstate=\count186
+\pgfdecorationsegmentamplitude=\dimen284
+\pgfdecorationsegmentlength=\dimen285
+)
+\tikz@lib@dec@box=\box82
+)
+(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibrarydecorations.pathmorphing.code.tex
+(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/libraries/decorations/pgfli
+brarydecorations.pathmorphing.code.tex))
+(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibrarydecorations.pathreplacing.code.tex
+(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/libraries/decorations/pgfli
+brarydecorations.pathreplacing.code.tex))
+\pgfplots@numplots=\count187
+\pgfplots@xmin@reg=\dimen286
+\pgfplots@xmax@reg=\dimen287
+\pgfplots@ymin@reg=\dimen288
+\pgfplots@ymax@reg=\dimen289
+\pgfplots@zmin@reg=\dimen290
+\pgfplots@zmax@reg=\dimen291
+)
+(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibraryplotmarks.code.tex
+File: tikzlibraryplotmarks.code.tex 2008/01/09 v3.0.1a (rcs-revision 1.1)
+
+(/usr/local/texlive/2016/texmf-dist/tex/generic/pgf/libraries/pgflibraryplotmar
+ks.code.tex
+File: pgflibraryplotmarks.code.tex 2015/08/03 v3.0.1a (rcs-revision 1.14)
+)))
+(/usr/local/texlive/2016/texmf-dist/tex/latex/pgfplots/pgfplotstable.sty
+(/usr/local/texlive/2016/texmf-dist/tex/generic/pgfplots/pgfplots.revision.tex)
+Package: pgfplotstable 2016/01/06 v1.13 Table typesetting and Pretty-printing (
+1.13)
+
+(/usr/local/texlive/2016/texmf-dist/tex/generic/pgfplots/numtable/pgfplotstable
+.code.tex
+(/usr/local/texlive/2016/texmf-dist/tex/generic/pgfplots/numtable/pgfplotstable
+.coltype.code.tex))) (./praca_magisterska.aux
+
+LaTeX Warning: Label `fig:rails_proj_structure' multiply defined.
+
+
+LaTeX Warning: Label `fig:rails_proj_structure' multiply defined.
+
+)
 \openout1 = `praca_magisterska.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 116.
-LaTeX Font Info:    ... okay on input line 116.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 116.
-LaTeX Font Info:    ... okay on input line 116.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 116.
-LaTeX Font Info:    ... okay on input line 116.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 116.
-LaTeX Font Info:    ... okay on input line 116.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 116.
-LaTeX Font Info:    ... okay on input line 116.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 116.
-LaTeX Font Info:    ... okay on input line 116.
-LaTeX Font Info:    Checking defaults for OT4/cmr/m/n on input line 116.
-LaTeX Font Info:    ... okay on input line 116.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 116.
-LaTeX Font Info:    ... okay on input line 116.
-
-(/usr/local/texlive/2016/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 167.
+LaTeX Font Info:    ... okay on input line 167.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 167.
+LaTeX Font Info:    ... okay on input line 167.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 167.
+LaTeX Font Info:    ... okay on input line 167.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 167.
+LaTeX Font Info:    ... okay on input line 167.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 167.
+LaTeX Font Info:    ... okay on input line 167.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 167.
+LaTeX Font Info:    ... okay on input line 167.
+LaTeX Font Info:    Checking defaults for OT4/cmr/m/n on input line 167.
+LaTeX Font Info:    ... okay on input line 167.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 167.
+LaTeX Font Info:    ... okay on input line 167.
+ (/usr/local/texlive/2016/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count180
-\scratchdimen=\dimen278
-\scratchbox=\box82
-\nofMPsegments=\count181
-\nofMParguments=\count182
-\everyMPshowfont=\toks51
-\MPscratchCnt=\count183
-\MPscratchDim=\dimen279
-\MPnumerator=\count184
-\makeMPintoPDFobject=\count185
-\everyMPtoPDFconversion=\toks52
+\scratchcounter=\count188
+\scratchdimen=\dimen292
+\scratchbox=\box83
+\nofMPsegments=\count189
+\nofMParguments=\count190
+\everyMPshowfont=\toks55
+\MPscratchCnt=\count191
+\MPscratchDim=\dimen293
+\MPnumerator=\count192
+\makeMPintoPDFobject=\count193
+\everyMPtoPDFconversion=\toks56
 ) (/usr/local/texlive/2016/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
@@ -1329,9 +1466,9 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-\c@lstlisting=\count186
-\AtBeginShipoutBox=\box83
-Package hyperref Info: Link coloring OFF on input line 116.
+\c@lstlisting=\count194
+\AtBeginShipoutBox=\box84
+Package hyperref Info: Link coloring OFF on input line 167.
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -1339,11 +1476,11 @@ Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 (/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count187
+\c@section@level=\count195
 )
-LaTeX Info: Redefining \ref on input line 116.
-LaTeX Info: Redefining \pageref on input line 116.
-LaTeX Info: Redefining \nameref on input line 116.
+LaTeX Info: Redefining \ref on input line 167.
+LaTeX Info: Redefining \pageref on input line 167.
+LaTeX Info: Redefining \nameref on input line 167.
 
 (./praca_magisterska.out) (./praca_magisterska.out)
 \@outlinefile=\write5
@@ -1354,8 +1491,14 @@ LaTeX Info: Redefining \nameref on input line 116.
 File: ucsencs.def 2011/01/21 Fixes to fontencodings LGR, T3
 )
 ABD: EveryShipout initializing macros
-\@temphbadness=\count188
-\@tempvbadness=\count189
+
+Package pgfplots Warning: running in backwards compatibility mode (unsuitable t
+ick labels; missing features). Consider writing \pgfplotsset{compat=1.13} into 
+your preamble.
+ on input line 167.
+
+\@temphbadness=\count196
+\@tempvbadness=\count197
 \@temphfuzz=\skip63
 \@temptextwidth=\skip64
 \@temptextheight=\skip65
@@ -1364,30 +1507,29 @@ ABD: EveryShipout initializing macros
 \@tempheadsep=\skip68
 \@tempoddsidemargin=\skip69
 \@tempevensidemargin=\skip70
-LaTeX Font Info:    Try loading font information for OML+plm on input line 120.
-
+LaTeX Font Info:    Try loading font information for OML+plm on input line 171.
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/polski/omlplm.fd
 File: omlplm.fd 2008/02/24 v1.2.1 Font defs for fonts PL (MW)
 )
-LaTeX Font Info:    Try loading font information for OMS+plsy on input line 120
+LaTeX Font Info:    Try loading font information for OMS+plsy on input line 171
 .
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/polski/omsplsy.fd
 File: omsplsy.fd 2008/02/24 v1.2.1 Font defs for fonts PL (MW)
 )
-LaTeX Font Info:    Try loading font information for OMX+plex on input line 120
+LaTeX Font Info:    Try loading font information for OMX+plex on input line 171
 .
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/polski/omxplex.fd
 File: omxplex.fd 2008/02/24 v1.2.1 Font defs for fonts PL (MW)
 )
 LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <12> on input line 120.
+(Font)              <12> on input line 171.
 LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <8> on input line 120.
+(Font)              <8> on input line 171.
 LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <6> on input line 120.
+(Font)              <6> on input line 171.
 \@tempheightkier=\skip71
 \@tempheighttkier=\skip72
 \@tempheightspec=\skip73
@@ -1400,177 +1542,439 @@ Non-PDF special ignored!
 {/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [0
 
 
-] (./praca_magisterska.toc)
+] (./praca_magisterska.tocpdfTeX warning (ext4): destination with the same iden
+tifier (name{page.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.37 ...anych projekt\IeC {\'o}w}{23}{section.6.3}
+                                                   [1])
 \tf@toc=\write6
 \openout6 = `praca_magisterska.toc'.
 
-pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
-been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.123 \chapter
-              {Wprowadzenie} [1] [2
+ [2]
+Rozdzia\l  1.
+LaTeX Font Info:    External font `plex10' loaded for size
+(Font)              <10> on input line 176.
+LaTeX Font Info:    External font `plex10' loaded for size
+(Font)              <7> on input line 176.
+LaTeX Font Info:    External font `plex10' loaded for size
+(Font)              <5> on input line 176.
+[3
+
+
+] [4
 
 
 ]
-Rozdzia\l  1.
-LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <10> on input line 125.
-LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <7> on input line 125.
-LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <5> on input line 125.
+Rozdzia\l  2.
 
-Overfull \hbox (30.02171pt too wide) in paragraph at lines 132--133
+Overfull \hbox (30.02171pt too wide) in paragraph at lines 189--190
 \OT4/cmr/m/n/12 tion Sys-tem) mo»na zde-fi-nio-wa¢ na wiele spo-so-bów. Mi-chae
 l Schmandt w swoim opracowaniu[[]]
  []
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 138.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 195.
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 138.
- [3]
-Overfull \hbox (1.08946pt too wide) in paragraph at lines 148--149
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 195.
+
+Overfull \hbox (1.08946pt too wide) in paragraph at lines 205--206
  []\OT4/cmr/bx/n/12 Definicja 3. \OT4/cmr/m/n/12 GIS to na-rz¦-dzie do wy-szu-k
 i-wa-nia wzor-ców geo-gra-ficz-nych(przestrzennych)
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 163--163
+[5]
+Underfull \hbox (badness 10000) in paragraph at lines 220--220
 [][][]\OT4/cmr/m/n/10 wypowied¹ w li-±cie ruby-talk 12.05.2000 r., ¹ró-dªo: htt
 p://blade.nagaokaut.ac.jp/cgi-
  []
 
-<obrazki/ruby_tiobe.png, id=210, 917.4275pt x 458.71375pt>
-File: obrazki/ruby_tiobe.png Graphic file (type png)
+<pictures/ruby_tiobe.png, id=285, 917.4275pt x 458.71375pt>
+File: pictures/ruby_tiobe.png Graphic file (type png)
 
-<use obrazki/ruby_tiobe.png>
-Package pdftex.def Info: obrazki/ruby_tiobe.png used on input line 171.
+<use pictures/ruby_tiobe.png>
+Package pdftex.def Info: pictures/ruby_tiobe.png used on input line 228.
 (pdftex.def)             Requested size: 455.24408pt x 227.62045pt.
- [4] [5 <./obrazki/ruby_tiobe.png>] [6]
-Rozdzia\l  2.
+ [6 <./pictures/ruby_tiobe.png>]
+Rozdzia\l  3.
 [7
 
 
-] <obrazki/rails_mvc.png, id=253, 589.20125pt x 476.78125pt>
-File: obrazki/rails_mvc.png Graphic file (type png)
+] [8
 
-<use obrazki/rails_mvc.png>
-Package pdftex.def Info: obrazki/rails_mvc.png used on input line 246.
+
+]
+Rozdzia\l  4.
+[9] <pictures/rails_mvc.png, id=322, 589.20125pt x 476.78125pt>
+File: pictures/rails_mvc.png Graphic file (type png)
+
+<use pictures/rails_mvc.png>
+Package pdftex.def Info: pictures/rails_mvc.png used on input line 302.
 (pdftex.def)             Requested size: 455.24408pt x 368.38855pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 247--247
-[]\OT4/cmr/m/n/12 Rysunek 2.1  []Architektura apli-ka-cji w Ruby on Ra-ils, ¹ró
+Underfull \hbox (badness 10000) in paragraph at lines 303--303
+[]\OT4/cmr/m/n/12 Rysunek 4.1  []Architektura apli-ka-cji w Ruby on Ra-ils, ¹ró
 -dªo:
  []
 
-[8 <./obrazki/rails_mvc.png>]
-LaTeX Font Info:    Try loading font information for OT4+cmtt on input line 288
+[10 <./pictures/rails_mvc.png>]
+LaTeX Font Info:    Try loading font information for OT4+cmtt on input line 329
 .
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/polski/ot4cmtt.fd
 File: ot4cmtt.fd 2008/02/24 v1.2.1 Font defs for fonts PL (MW)
 )
-<obrazki/trailblazer_architecture.png, id=263, 501.875pt x 470.75874pt>
-File: obrazki/trailblazer_architecture.png Graphic file (type png)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2015/06/04 1.6 listings language file
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/listings/lstlang2.sty
+File: lstlang2.sty 2015/06/04 1.6 listings language file
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/ucs/utf8x.def
+File: utf8x.def 2004/10/17 UCS: Input encoding UTF-8
+) [11]
+<pictures/roda_architecture.png, id=350, 542.75255pt x 378.8112pt>
+File: pictures/roda_architecture.png Graphic file (type png)
 
-<use obrazki/trailblazer_architecture.png>
-Package pdftex.def Info: obrazki/trailblazer_architecture.png used on input lin
-e 312.
-(pdftex.def)             Requested size: 455.24408pt x 427.0407pt.
- [9] [10 <./obrazki/trailblazer_architecture.png>]
-<obrazki/clean_architecture.jpg, id=279, 774.895pt x 569.12625pt>
-File: obrazki/clean_architecture.jpg Graphic file (type jpg)
+<use pictures/roda_architecture.png>
+Package pdftex.def Info: pictures/roda_architecture.png used on input line 362.
 
-<use obrazki/clean_architecture.jpg>
-Package pdftex.def Info: obrazki/clean_architecture.jpg used on input line 375.
+(pdftex.def)             Requested size: 455.24408pt x 317.73103pt.
+ [12 <./pictures/roda_architecture.png (PNG copy)>] <pictures/clean_architectur
+e.jpg, id=363, 774.895pt x 569.12625pt>
+File: pictures/clean_architecture.jpg Graphic file (type jpg)
 
+<use pictures/clean_architecture.jpg>
+Package pdftex.def Info: pictures/clean_architecture.jpg used on input line 393
+.
 (pdftex.def)             Requested size: 455.24408pt x 334.35738pt.
- [11] [12 <./obrazki/clean_architecture.jpg>] [13] [14
-
-
-]
-Rozdzia\l  3.
-[15] [16
-
-
-]
-Rozdzia\l  4.
-[17] [18
-
-
-]
+ [13 <./pictures/clean_architecture.jpg>]
+[14]
 Rozdzia\l  5.
-[19] [20
+[15
+
+
+] [16]
+Rozdzia\l  6.
+<pictures/use_cases.png, id=388, 631.51369pt x 494.24919pt>
+File: pictures/use_cases.png Graphic file (type png)
+
+<use pictures/use_cases.png>
+Package pdftex.def Info: pictures/use_cases.png used on input line 493.
+(pdftex.def)             Requested size: 455.24408pt x 356.29655pt.
+ [17
 
 
 ]
-Rozdzia\l  6.
-[21] [22
+Overfull \hbox (137.7331pt too wide) in paragraph at lines 500--501
+\OT4/cmr/m/n/12 ±ci", zbiór za-wiera 256796 obiek-tów, do-st¦pny jest pod ad-re
+-sem http://www.codgik.gov.pl/index.php/darmowe-
+ []
+
+<pictures/erd.png, id=396, 482.80376pt x 316.18124pt>
+File: pictures/erd.png Graphic file (type png)
+ <use pictures/erd.png>
+Package pdftex.def Info: pictures/erd.png used on input line 509.
+(pdftex.def)             Requested size: 455.24408pt x 298.14154pt.
+
+[18 <./pictures/use_cases.png>]
+<pictures/app.png, id=404, 1684.2925pt x 962.59625pt>
+File: pictures/app.png Graphic file (type png)
+ <use pictures/app.png>
+Package pdftex.def Info: pictures/app.png used on input line 518.
+(pdftex.def)             Requested size: 455.24408pt x 260.16884pt.
+
+[19 <./pictures/erd.png (PNG copy)> <./pictures/app.png>] [20]
+(/usr/local/texlive/2016/texmf-dist/tex/latex/ucs/utf8x.def
+File: utf8x.def 2004/10/17 UCS: Input encoding UTF-8
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 550.
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/ucs/utf8x.def
+File: utf8x.def 2004/10/17 UCS: Input encoding UTF-8
+)
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 562.
+
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/base/omlcmr.fd
+File: omlcmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10> not available
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 562.
+ [21]
+(/usr/local/texlive/2016/texmf-dist/tex/latex/ucs/utf8x.def
+File: utf8x.def 2004/10/17 UCS: Input encoding UTF-8
+)
+Overfull \hbox (73.09966pt too wide) in paragraph at lines 652--653
+[][] 
+ []
+
+
+Overfull \hbox (59.02065pt too wide) in paragraph at lines 685--686
+[][] 
+ []
+
+[22]
+Overfull \hbox (87.15294pt too wide) in paragraph at lines 736--737
+[][] 
+ []
+
+
+Overfull \hbox (34.3335pt too wide) in paragraph at lines 782--783
+[][] 
+ []
+
+[23] [24]
+Overfull \hbox (6.60358pt too wide) in paragraph at lines 823--823
+[]\OT4/cmr/bx/n/17.28 Porównianie wy-daj-no-±ci za-im-ple-me-to-wa-nych apli-
+ []
+
+PGFPlots: reading {results/rails_cud_point_capybara_50.csv}
+PGFPlots: reading {results/rails_cud_point_capybara_50.csv}
+Missing character: There is no ; in font nullfont!
+PGFPlots: reading {results/hanami_cud_point_capybara_50.csv}
+Missing character: There is no ; in font nullfont!
+PGFPlots: reading {results/roda_cud_point_capybara_50.csv}
+Missing character: There is no ; in font nullfont!
+[25]
+PGFPlots: reading {results/rails_read_points_capybara_50.csv}
+Missing character: There is no ; in font nullfont!
+PGFPlots: reading {results/hanami_read_points_capybara_50.csv}
+Missing character: There is no ; in font nullfont!
+PGFPlots: reading {results/roda_read_points_capybara_50.csv}
+Missing character: There is no ; in font nullfont!
+PGFPlots: reading {results/rails_cud_line_capybara_50.csv}
+PGFPlots: reading {results/rails_cud_line_capybara_50.csv}
+Missing character: There is no ; in font nullfont!
+PGFPlots: reading {results/hanami_cud_line_capybara_50.csv}
+Missing character: There is no ; in font nullfont!
+PGFPlots: reading {results/roda_cud_line_capybara_50.csv}
+Missing character: There is no ; in font nullfont!
+ [26]
+PGFPlots: reading {results/rails_read_lines_capybara_50.csv}
+Missing character: There is no ; in font nullfont!
+PGFPlots: reading {results/hanami_read_lines_capybara_50.csv}
+Missing character: There is no ; in font nullfont!
+PGFPlots: reading {results/roda_read_lines_capybara_50.csv}
+Missing character: There is no ; in font nullfont!
+PGFPlots: reading {results/rails_cud_polygon_capybara_50.csv}
+PGFPlots: reading {results/rails_cud_polygon_capybara_50.csv}
+Missing character: There is no ; in font nullfont!
+PGFPlots: reading {results/hanami_cud_polygon_capybara_50.csv}
+Missing character: There is no ; in font nullfont!
+PGFPlots: reading {results/roda_cud_polygon_capybara_50.csv}
+Missing character: There is no ; in font nullfont!
+ [27]
+PGFPlots: reading {results/rails_read_polygons_capybara_50.csv}
+Missing character: There is no ; in font nullfont!
+PGFPlots: reading {results/hanami_read_polygons_capybara_50.csv}
+Missing character: There is no ; in font nullfont!
+PGFPlots: reading {results/roda_read_polygons_capybara_50.csv}
+Missing character: There is no ; in font nullfont!
+PGFPlots: reading {results/rails_cud_point_capybara_50.csv}
+PGFPlots: reading {results/http/rails_crud_point_http_50.csv}
+Missing character: There is no ; in font nullfont!
+PGFPlots: reading {results/http/hanami_crud_point_http_50.csv}
+Missing character: There is no ; in font nullfont!
+PGFPlots: reading {results/http/roda_crud_point_http_50.csv}
+Missing character: There is no ; in font nullfont!
+ [28]
+PGFPlots: reading {results/http/rails_read_points_http_50.csv}
+Missing character: There is no ; in font nullfont!
+PGFPlots: reading {results/http/hanami_read_points_http_50.csv}
+Missing character: There is no ; in font nullfont!
+PGFPlots: reading {results/http/roda_read_points_http_50.csv}
+Missing character: There is no ; in font nullfont!
+PGFPlots: reading {results/load/rails_point_avg_time.csv}
+Missing character: There is no ; in font nullfont!
+PGFPlots: reading {results/load/hanami_point_avg_time.csv}
+Missing character: There is no ; in font nullfont!
+PGFPlots: reading {results/load/roda_point_avg_time.csv}
+Missing character: There is no ; in font nullfont!
+ [29]
+PGFPlots: reading {results/load/rails_point_rps.csv}
+Missing character: There is no ; in font nullfont!
+PGFPlots: reading {results/load/hanami_point_rps.csv}
+Missing character: There is no ; in font nullfont!
+PGFPlots: reading {results/load/roda_point_rps.csv}
+Missing character: There is no ; in font nullfont!
+PGFPlots: reading {results/http/rails_crud_line_http_50.csv}
+PGFPlots: reading {results/http/rails_crud_line_http_50.csv}
+Missing character: There is no ; in font nullfont!
+PGFPlots: reading {results/http/hanami_crud_line_http_50.csv}
+Missing character: There is no ; in font nullfont!
+PGFPlots: reading {results/http/roda_crud_line_http_50.csv}
+Missing character: There is no ; in font nullfont!
+ [30]
+PGFPlots: reading {results/http/rails_read_lines_http_50.csv}
+Missing character: There is no ; in font nullfont!
+PGFPlots: reading {results/http/hanami_read_lines_http_50.csv}
+Missing character: There is no ; in font nullfont!
+PGFPlots: reading {results/http/roda_read_lines_http_50.csv}
+Missing character: There is no ; in font nullfont!
+PGFPlots: reading {results/load/rails_line_avg_time.csv}
+Missing character: There is no ; in font nullfont!
+PGFPlots: reading {results/load/hanami_line_avg_time.csv}
+Missing character: There is no ; in font nullfont!
+PGFPlots: reading {results/load/roda_line_avg_time.csv}
+Missing character: There is no ; in font nullfont!
+ [31]
+PGFPlots: reading {results/load/rails_line_rps.csv}
+Missing character: There is no ; in font nullfont!
+PGFPlots: reading {results/load/hanami_line_rps.csv}
+Missing character: There is no ; in font nullfont!
+PGFPlots: reading {results/load/roda_line_rps.csv}
+Missing character: There is no ; in font nullfont!
+PGFPlots: reading {results/http/rails_crud_polygon_http_50.csv}
+PGFPlots: reading {results/http/rails_crud_polygon_http_50.csv}
+Missing character: There is no ; in font nullfont!
+PGFPlots: reading {results/http/hanami_crud_polygon_http_50.csv}
+Missing character: There is no ; in font nullfont!
+PGFPlots: reading {results/http/roda_crud_polygon_http_50.csv}
+Missing character: There is no ; in font nullfont!
+ [32]
+PGFPlots: reading {results/http/rails_read_polygons_http_50.csv}
+Missing character: There is no ; in font nullfont!
+PGFPlots: reading {results/http/hanami_read_polygons_http_50.csv}
+Missing character: There is no ; in font nullfont!
+PGFPlots: reading {results/http/roda_read_polygons_http_50.csv}
+Missing character: There is no ; in font nullfont!
+PGFPlots: reading {results/load/rails_polygon_avg_time.csv}
+Missing character: There is no ; in font nullfont!
+PGFPlots: reading {results/load/hanami_polygon_avg_time.csv}
+Missing character: There is no ; in font nullfont!
+PGFPlots: reading {results/load/roda_polygon_avg_time.csv}
+Missing character: There is no ; in font nullfont!
+ [33]
+PGFPlots: reading {results/load/rails_polygon_rps.csv}
+Missing character: There is no ; in font nullfont!
+PGFPlots: reading {results/load/hanami_polygon_rps.csv}
+Missing character: There is no ; in font nullfont!
+PGFPlots: reading {results/load/roda_polygon_rps.csv}
+Missing character: There is no ; in font nullfont!
+PGFPlots: reading {results/model/rails_crud_point_model_50.csv}
+PGFPlots: reading {results/model/rails_crud_point_model_50.csv}
+Missing character: There is no ; in font nullfont!
+PGFPlots: reading {results/model/hanami_crud_point_model_50.csv}
+Missing character: There is no ; in font nullfont!
+PGFPlots: reading {results/model/roda_crud_point_model_50.csv}
+Missing character: There is no ; in font nullfont!
+ [34]
+PGFPlots: reading {results/model/rails_read_points_model_50.csv}
+Missing character: There is no ; in font nullfont!
+PGFPlots: reading {results/model/hanami_read_points_model_50.csv}
+Missing character: There is no ; in font nullfont!
+PGFPlots: reading {results/model/roda_read_points_model_50.csv}
+Missing character: There is no ; in font nullfont!
+PGFPlots: reading {results/model/rails_crud_line_model_50.csv}
+PGFPlots: reading {results/model/rails_crud_line_model_50.csv}
+Missing character: There is no ; in font nullfont!
+PGFPlots: reading {results/model/hanami_crud_line_model_50.csv}
+Missing character: There is no ; in font nullfont!
+PGFPlots: reading {results/model/roda_crud_line_model_50.csv}
+Missing character: There is no ; in font nullfont!
+ [35]
+PGFPlots: reading {results/model/rails_read_lines_model_50.csv}
+Missing character: There is no ; in font nullfont!
+PGFPlots: reading {results/model/hanami_read_lines_model_50.csv}
+Missing character: There is no ; in font nullfont!
+PGFPlots: reading {results/model/roda_read_lines_model_50.csv}
+Missing character: There is no ; in font nullfont!
+PGFPlots: reading {results/model/rails_crud_polygon_model_50.csv}
+PGFPlots: reading {results/model/rails_crud_polygon_model_50.csv}
+Missing character: There is no ; in font nullfont!
+PGFPlots: reading {results/model/hanami_crud_polygon_model_50.csv}
+Missing character: There is no ; in font nullfont!
+PGFPlots: reading {results/model/roda_crud_polygon_model_50.csv}
+Missing character: There is no ; in font nullfont!
+ [36]
+PGFPlots: reading {results/model/rails_read_polygons_model_50.csv}
+Missing character: There is no ; in font nullfont!
+PGFPlots: reading {results/model/hanami_read_polygons_model_50.csv}
+Missing character: There is no ; in font nullfont!
+PGFPlots: reading {results/model/roda_read_polygons_model_50.csv}
+Missing character: There is no ; in font nullfont!
+ [37] [38
 
 
 ]
 Rozdzia\l  7.
-[23] [24
+[39] [40
 
 
 ]
-Underfull \hbox (badness 2922) in paragraph at lines 498--499
-[]\OT4/cmr/m/it/12 Dokumentacja Tra-il-bla-zer \OT4/cmr/m/n/12 https://8thlight
-.com/blog/uncle-bob/2012/08/13/the-
+Underfull \hbox (badness 10000) in paragraph at lines 1543--1544
+[]$\OT4/cmtt/m/n/12 http : / / roda . jeremyevans . net / documentation . html$
+[]\OT4/cmr/m/n/12 , ak-tu-alne na dzie«
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 504--505
+Underfull \hbox (badness 4144) in paragraph at lines 1546--1547
+[]$\OT4/cmtt/m/n/12 https : / / www . gaia-[]gis . it / fossil / libspatialite 
+/ index$[]\OT4/cmr/m/n/12 , ak-tu-alne na dzie«
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1552--1553
 []$\OT4/cmtt/m/n/12 https : / / 8thlight . com / blog / uncle-[]bob / 2012 / 08
  / 13 /
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 514--516
+[41]
+Underfull \hbox (badness 10000) in paragraph at lines 1562--1564
 []$\OT4/cmtt/m/n/12 http : / / poznajprogramowanie . pl / czym-[]jest-[]framewo
 rk-[]i-[]po-[]co-[]go-[]uzywac/$[]\OT4/cmr/m/n/12 ,
  []
 
-[25]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 523.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 523.
+[42]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1569.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1569.
  (./praca_magisterska.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 523.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 523.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1569.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1569.
+
 Package rerunfilecheck Info: File `praca_magisterska.out' has not changed.
-(rerunfilecheck)             Checksum: 6BE15B1E53953F3850B47558297F0150;2157.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 523.
+(rerunfilecheck)             Checksum: D2BF1499A13ABAB95E70A817E9621151;3042.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1569.
  ) 
 Here is how much of TeX's memory you used:
- 36606 strings out of 493014
- 802219 string characters out of 6133351
- 828523 words of memory out of 5000000
- 39583 multiletter control sequences out of 15000+600000
+ 55003 strings out of 493014
+ 1465877 string characters out of 6133351
+ 1450177 words of memory out of 5000000
+ 57539 multiletter control sequences out of 15000+600000
  18184 words of font info for 49 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 156i,16n,192p,10369b,3142s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/pl/pltt.enc}{/usr/local/t
-exlive/2016/texmf-dist/fonts/enc/dvips/pl/plrm.enc}{/usr/local/texlive/2016/tex
-mf-dist/fonts/enc/dvips/pl/plit.enc}{/usr/local/texlive/2016/texmf-dist/fonts/e
-nc/dvips/pl/plsc.enc}</usr/local/texlive/2016/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmsy10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/pl/p
-lbx10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/pl/plbx12.pfb>
-</usr/local/texlive/2016/texmf-dist/fonts/type1/public/pl/plcsc10.pfb></usr/loc
-al/texlive/2016/texmf-dist/fonts/type1/public/pl/plr10.pfb></usr/local/texlive/
-2016/texmf-dist/fonts/type1/public/pl/plr12.pfb></usr/local/texlive/2016/texmf-
-dist/fonts/type1/public/pl/plr17.pfb></usr/local/texlive/2016/texmf-dist/fonts/
-type1/public/pl/plr7.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public
-/pl/plr8.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/pl/plti12.p
-fb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/pl/pltt12.pfb>
-Output written on praca_magisterska.pdf (27 pages, 355265 bytes).
+ 163i,19n,198p,10386b,4941s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/pl/plms.enc}{/usr/local/t
+exlive/2016/texmf-dist/fonts/enc/dvips/pl/plmi.enc}{/usr/local/texlive/2016/tex
+mf-dist/fonts/enc/dvips/pl/pltt.enc}{/usr/local/texlive/2016/texmf-dist/fonts/e
+nc/dvips/pl/plrm.enc}{/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/pl/pli
+t.enc}{/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/pl/plsc.enc}</usr/loc
+al/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/loca
+l/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local
+/texlive/2016/texmf-dist/fonts/type1/public/pl/plbx10.pfb></usr/local/texlive/2
+016/texmf-dist/fonts/type1/public/pl/plbx12.pfb></usr/local/texlive/2016/texmf-
+dist/fonts/type1/public/pl/plcsc10.pfb></usr/local/texlive/2016/texmf-dist/font
+s/type1/public/pl/plmi12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/pu
+blic/pl/plr10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/pl/plr
+12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/pl/plr17.pfb></us
+r/local/texlive/2016/texmf-dist/fonts/type1/public/pl/plr7.pfb></usr/local/texl
+ive/2016/texmf-dist/fonts/type1/public/pl/plr8.pfb></usr/local/texlive/2016/tex
+mf-dist/fonts/type1/public/pl/plsy10.pfb></usr/local/texlive/2016/texmf-dist/fo
+nts/type1/public/pl/plti12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/
+public/pl/pltt12.pfb>
+Output written on praca_magisterska.pdf (44 pages, 6538807 bytes).
 PDF statistics:
- 427 PDF objects out of 1000 (max. 8388607)
- 376 compressed objects within 4 object streams
- 95 named destinations out of 1000 (max. 500000)
- 289 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 720 PDF objects out of 1000 (max. 8388607)
+ 640 compressed objects within 7 object streams
+ 218 named destinations out of 1000 (max. 500000)
+ 412 words of extra memory for PDF output out of 10000 (max. 10000000)
 

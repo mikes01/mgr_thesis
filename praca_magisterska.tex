@@ -21,8 +21,57 @@
 \usepackage[hidelinks]{hyperref}
 \usepackage{ucs}
 \usepackage{makecell}
-\usepackage{forest}
+\usepackage[edges]{forest}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
 
+\def\Size{4pt}
+\tikzset{%
+  folder/.pic={%
+    \filldraw [draw=folderborder, top color=folderbg!50, bottom color=folderbg] (-1.05*\Size,0.2\Size+5pt) rectangle ++(.75*\Size,-0.2\Size-5pt);
+    \filldraw [draw=folderborder, top color=folderbg!50, bottom color=folderbg] (-1.15*\Size,-\Size) rectangle (1.15*\Size,\Size);
+  },
+  file/.pic={%
+    \filldraw [draw=folderborder, top color=folderbg!5, bottom color=folderbg!10] (-\Size,.4*\Size+5pt) coordinate (a) |- (\Size,-1.2*\Size) coordinate (b) -- ++(0,1.6*\Size) coordinate (c) -- ++(-5pt,5pt) coordinate (d) -- cycle (d) |- (c) ;
+  },
+}
+
+\forestset{%
+  declare autowrapped toks={pic me}{},
+  pic dir tree/.style={%
+    for tree={%
+      folder,
+      font=\ttfamily,
+      grow'=0,
+    },
+    before typesetting nodes={%
+      for tree={%
+        edge label+/.option={pic me},
+      },
+    },
+  },
+  pic me set/.code n args=2{%
+    \forestset{%
+      #1/.style={%
+        inner xsep=2\Size,
+        pic me={pic {#2}},
+      }
+    }
+  },
+  pic me set={directory}{folder},
+  pic me set={file}{file},
+}
+
+\makeatletter
+\pgfplotsset{
+    /pgfplots/flexible xticklabels from table/.code n args={3}{%
+        \pgfplotstableread[#3]{#1}\coordinate@table
+        \pgfplotstablegetcolumnbyindex{#2}\of{\coordinate@table}\to\pgfplots@xticklabels
+        \let\pgfplots@xticklabel=\pgfplots@user@ticklabel@list@x
+    }
+}
+\makeatother
 \raggedbottom
 
 \definecolor{mygreen}{rgb}{0,0.6,0}
@@ -31,6 +80,8 @@
 \definecolor{lightgray}{rgb}{.9,.9,.9}
 \definecolor{darkgray}{rgb}{.4,.4,.4}
 \definecolor{purple}{rgb}{0.65, 0.12, 0.82}
+\definecolor{folderbg}{RGB}{124,166,198}
+\definecolor{folderborder}{RGB}{110,144,169}
 
 \lstdefinelanguage{JavaScript}{
   keywords={break, case, catch, continue, debugger, default, delete, do, else, false, finally, for, function, if, in, instanceof, new, null, return, switch, this, throw, true, try, typeof, var, void, while, with, \$scope},
@@ -122,11 +173,17 @@
 
 \chapter{Wprowadzenie}
 \section{Cel pracy}
-Język Ruby zajmuję 12 miejsce w~rankingu popularności języków programowania \emph{Tiobe}\footnote{Dane z~marca 2017 roku dostępne na stronie https://www.tiobe.com/tiobe-index/}. Dużą popularnością wśród frameworków internetowych cieszy się Ruby on Rails, w~rankingu \emph{Hotframeworks}\footnote{Ranking https://hotframeworks.com bierzę pod uwagę ilość repozytoriów kodu na platformie Github i~ilość tematów na forum Stackoverflow dotyczących danego frameworku. Dane z~dnia 26.03.2017 r.} zajmuję 3 miejsce wśród wszystkich frameworków. Ruby on Rails jest bez wątpienia najpopularniejszym frameworkiem w~języku Ruby, kolejne dwa frameworki w~języku Ruby to Sinatra i~Hanammi, zajmują w~wcześniej przytoczonym rankingu odpowiednio miejsca 25. i~73. Jednak w~języku Ruby istnieje kilkanaście frameworków przeznaczonych do budowania aplikacji internetowych.
+Język Ruby zajmuję 12 miejsce w~rankingu popularności języków programowania \emph{Tiobe}\footnote{Dane z~marca 2017 roku dostępne na stronie https://www.tiobe.com/tiobe-index/}. Dużą popularnością wśród frameworków internetowych cieszy się Ruby on Rails, w~rankingu \emph{Hotframeworks}\footnote{Ranking https://hotframeworks.com bierzę pod uwagę liczba repozytoriów kodu na platformie Github i~ilość tematów na forum Stackoverflow dotyczących danego frameworku. Dane z~dnia 26.03.2017 r.} zajmuję 3 miejsce wśród wszystkich frameworków. Ruby on Rails jest bez wątpienia najpopularniejszym frameworkiem w~języku Ruby, kolejne dwa frameworki w~języku Ruby to Sinatra i~Hanami, zajmują w~wcześniej przytoczonym rankingu odpowiednio miejsca 25. i~73. Jednak w~języku Ruby istnieje kilkanaście frameworków przeznaczonych do budowania aplikacji internetowych.
+
+Celem niniejszej pracy jest poznanie wybranych frameworków w~języku Ruby, ich porównanie w~konkretnym zastosowaniu jakim są systemy informacji geograficznej oraz odpowiedź na pytanie jaki framework najlepiej wybrać do tworzenia systemu GIS.
+
+\section{Zakres i koncepcja pracy}
+"Framework" można zdefiniować jako szkielet służący do budowania aplikacji, czyli zbiór gotowych rozwiązań powtarzających się problemów i~wzór do budowania nowych funkcjonalności.\cite{framework}
+
+W niniejszej pracy zostaną omówione wybrane frameworki w języku Ruby w świetle ich użyteczności przy budowie systemu informacji geograficznej. Frameworki zostaną porównane na podstawie informacji zawartych w dostępnej dokumentacji narzędzia oraz zaimplementowanej przykładowej aplikacji, za pomocą każdego z wybranych narzędzi, spełniającej wymagania systemu GIS.
 
 
-
-Celem niniejszej pracy jest poznanie wybranych frameworków w~języku Ruby oraz ich porównanie w~konkretnym zastosowaniu jakim są  systemy informacji geograficznej.
+\chapter{Podstawy teorytyczne}
 
 \section{Charakterystyka Systemów Informacji Geograficznej}
 System Informacji Geograficznej skrótowo nazywany GIS (ang. Geographic Information System) można zdefiniować na wiele sposobów. Michael Schmandt w~swoim opracowaniu\cite{gis_introduction} podaje następujące definicje:
@@ -168,14 +225,14 @@ Szerszą popularność Ruby zyskał w~2006r., 11 lat po publikacji. Swoją popul
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=1\linewidth]{obrazki/ruby_tiobe}
+  \includegraphics[width=1\linewidth]{pictures/ruby_tiobe}
   \caption{Histora popularności języka Ruby według rankingu Tiobe}
   \label{fig:ruby_tiobe}
 \end{figure}
 
-\section{Istniejące systemy GIS w~języku Ruby}
+\chapter{Istniejące systemy GIS w~języku Ruby}
 
-\subsection{OpenStreetMap}
+\section{OpenStreetMap}
 
   OpenStreetMap jest internetowym systemem informacji geograficznej z~otwartym kodem źródłowym. System zbudowany z~wykorzystaniem bazy danych PostgreSQL, frameworku Ruby on Rails oraz biblioteki javascriptowej Leaflet służącej do tworzenia interaktywnych widoków z~mapami. Dostęp do danych jest otwarty, dane mogą być edytowane przez dowolnego użytkownika, dlatego mogą być niezgodne z~rzeczywistością. OpenStreetMap definiuje 4 typy obiektów przestrzennych\cite{doc_osm}:
   \begin{itemize}
@@ -187,20 +244,18 @@ Szerszą popularność Ruby zyskał w~2006r., 11 lat po publikacji. Swoją popul
 
   OpenStreetMap można wykorzystać przez utworzenie komponentu HTML z~wybraną mapą, gotowego do zamieszczenia na dowolnej stronie internetowej lub przez pobranie danych z~wybranej mapy. Skompresowane aktualne dane dla całej planety z~pojedynczego dnia zajmują prawie 40GB. Można pobierać również dane historyczne.
 
-\subsection{MangoMap}
+\section{MangoMap}
 
-  MangoMap jest komercyjnym narzędziem do tworzenia map dostępnych przez internet z~własnych danych geoprzestrzennych. Ceny za korzystanie z~serwisu wynoszą 49-399\$ miesięcznie w~zależności od ilości map i~udostępnianego miejsca na serwerze do przechowywania danych. System zbudowany jest w~oparciu o~framework Ruby on Rails. Mapy tworzy się przy użyciu interfejsu graficznego. Stworzone mapy mogą być udostępnione na serwerze MangoMap przez unikalny link lub zamieszczone na zewnętrznej stronie WWW przez komponent HTML\cite{doc_mango}.
+  MangoMap jest komercyjnym narzędziem do tworzenia map dostępnych przez internet z~własnych danych geoprzestrzennych. Ceny za korzystanie z~serwisu wynoszą 49-399\$ miesięcznie w~zależności od liczby map i~udostępnianego miejsca na serwerze do przechowywania danych. System zbudowany jest w~oparciu o~framework Ruby on Rails. Mapy tworzy się przy użyciu interfejsu graficznego. Stworzone mapy mogą być udostępnione na serwerze MangoMap przez unikalny link lub zamieszczone na zewnętrznej stronie WWW przez komponent HTML\cite{doc_mango}.
 
 \chapter{Frameworki internetowe w~języku Ruby}
-
-"Framework" można zdefiniować jako szkielet służący do budowania aplikacji, czyli zbiór gotowych rozwiązań powtarzających się problemów i~wzór do budowania nowych funkcjonalności.\cite{framework}
 
 W języku Ruby istnieje kilkanaście wspieranych frameworków internetowych. Wybór wykorzystanych frameworków w~niniejszej pracy dokonano w~następujący sposób:
   \begin{enumerate}
     \item Podzielono frameworki według daty opublikowania pierwszej wersji na 3 grupy:
     \begin{enumerate}
-      \item opublikowane w~latach 2004 - 2010 - frameworki o~ugruntowanej pozycji
-      \item opublikowane w~latach 2011 - 2015 - stosunkowo nowe frameworki
+      \item opublikowane w~latach 2004 - 2011 - frameworki o~ugruntowanej pozycji
+      \item opublikowane w~latach 2012 - 2015 - stosunkowo nowe frameworki
       \item opublikowane w~latach 2016 - 2017 - najnowsze frameworki
     \end{enumerate}
     \item z~każdej grupy wybrano framework z~największą ilością pobrań.
@@ -218,12 +273,13 @@ Ta metoda ma na celu wyłonienie najpopularniejszych frameworków, które powsta
     Hobo & 29.04.2007 r. & 07.05.2016 r. & 211 042 \\ \hline
     Sinatra & 04.10.2007 r. & 19.03.2017 r. & 45 207 501 \\ \hline
     Padrino & 16.11.2009 r. & 23.03.2017 r. & 556 481 \\ \hline
-    Cuba & 25.04.2010 r. & 01.07.2016 r. & 124 371 \\ \Xhline{4\arrayrulewidth}
+    Cuba & 25.04.2010 r. & 01.07.2016 r. & 124 371 \\ \hline
     Strelka & 24.08.2011 r. & 19.01.2017 r. & 57 007 \\ \hline
-    Pakyow & 20.09.2011 r. & 15.07.2016 r. & 18 222 \\ \hline
+    Pakyow & 20.09.2011 r. & 15.07.2016 r. & 18 222 \\ \Xhline{4\arrayrulewidth}
     Scorched & 03.03.2013 r. & 12.10.2016 r. & 26 929 \\ \hline
-    \rowcolor{lightgray}
     Trailblazer & 26.07.2013 r. & 23.01.2017 r. & 96 217 \\ \hline
+    \rowcolor{lightgray}
+    Roda & 20.07.2014 r. & 15.03.2017 r. & 105 103 \\ \hline
     Vanilla & 09.05.2015 r. & 05.07.2016 r. & 80 125 \\ \Xhline{4\arrayrulewidth}
     \rowcolor{lightgray}
     Hanami & 20.01.2016 r. & 06.04.2017 r. & 28 885 \\ \hline
@@ -243,7 +299,7 @@ Pierwsza stabilna wersja (1.0.0) frameworku Ruby on Rails ukazała się pod koni
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=1\linewidth]{obrazki/rails_mvc}
+  \includegraphics[width=1\linewidth]{pictures/rails_mvc}
   \caption{Architektura aplikacji w~Ruby on Rails, źródło: http://blog.ifuturz.com/ruby-on-rails/ruby-on-rails-mvc-learn-with-fun.html}
   \label{fig:rails_mvc}
 \end{figure}
@@ -259,25 +315,10 @@ Dwie główne zasady frameworku\cite{doc_rails}:
 \begin{figure}[H]
   \centering
   \begin{forest}
-    for tree={
-      font=\ttfamily,
-      grow'=0,
-      child anchor=west,
-      parent anchor=south,
-      anchor=west,
-      calign=first,
-      edge path={
-        \noexpand\path [draw, \forestoption{edge}]
-        (!u.south west) +(7.5pt,0) |- node[fill,inner sep=1.25pt] {} (.child anchor)\forestoption{edge label};
-      },
-      before typesetting nodes={
-        if n=1
-          {insert before={[,phantom]}}
-          {}
-      },
-      fit=band,
-      before computing xy={l=15pt},
-    }
+    pic dir tree,
+    where level=0{}{% folder icons by default; override using file for file icons
+      directory,
+    },
     [project\_root
       [app
         [controllers]
@@ -290,77 +331,54 @@ Dwie główne zasady frameworku\cite{doc_rails}:
   \label{fig:rails_structure}
 \end{figure}
 
+\section{Roda}
 
-\section{Trailblazer}
-
-Trailblazer w~dużej części bazuje na Ruby on Rails, posiada wiele wspólnych bibliotek. Framework w~stabilnej wersji(1.0.0) został opublikowany 25.08.15 r., aktualna wersja(2.0.3) ukazała się 23.01.2017 r. Trailblazer wykorzystuje architekturę MVC z~dodatkowymi warstwami abstrakcji\cite{nick_trailblazer}:
-
-\begin{itemize}
-  \item Kontroler (ang. controller) - służy tylko do obsługi zapytań HTTP, nie posiada w~sobie żadnej logiki przetwarzania danych.
-  \item Operacja (ang. operation) - skupia w~sobie całą logikę biznesową i~jest podzielona na:
+Twórcy frameworku Roda jest przy tworzeniu narzędzia podstawili sobie 4 cele\cite{doc_roda}:
   \begin{itemize}
-    \item Formularz (ang. form) - odpowiada za walidacje danych wejściowych operacji.
-    \item Reprezentant (ang. representer) - służy do rzutownia otrzymanych danych z~kontrolera do postaci modelu oraz w~drugą stronę do zmiany modelu na postać akceptowana przez kontroler.
-    \item Model (ang. model) - reprezentuje obiekt zapisywany w~bazie danych, nie zawiera w~sobie żadnej logiki, jedynie konfiguracje.
+    \item Prostota (ang. simplicity) - framework ma być prosty zarówno wewenątrz(w implementacji), jak i na zewnątrz (dla użytkowników).
+    \item Niezawodność (ang. reliability) - Roda wspiera i promuje projektowanie aplikacji z niemutowalnym stanem. Aplikacje zbudowane za pomocą Rody, są zaprojektowane tak. Roda ogranicza zmienne, stałe i metody przypisane do instancji obiektów aby uniknąć konfliktów z kodem zaimplementowanym przez użytkownika.
+    \item Rozszerzalność (ang. extensibility) - framework zbudowany jest całkowicie w oparciu o wtyczki, aby ułatwić dodawanie funkcjonalności do frameworka. Każda część Rody może być zastąpiona własną implementacją przez użytkownika.
+    \item Wydajność (ang. performance) - Roda posiada mały koszt obsługi zapytań, drzewo trasowania i inteligentną obsługę pamięci podręcznej co sprawia, że Roda jest szybsza od innych popularnych frameworków języka Ruby.
   \end{itemize}
-  \item Komórki (ang. cells) - przygotowują dane do prezentacji.
-  \item Widok (ang. view) - prezentuje dane.
-\end{itemize}
+Roda opiera się o drzewo trasowania, punkty dostępu aplikacji zdefiniowane są w strukturze drzewa. Przykład drzewa trasowań znajduje się we fragmencie kodu \ref{lst:routing_tree}.
+
+\begin{lstlisting}[language=Ruby, caption={Proste drzewo trasowań}, label=lst:routing_tree]
+r.on "a" do           # /a gałęź
+  r.on "b" do         # /a/b gałęź
+    r.is "c" do       # /a/b/c zapytanie
+      r.get do end    # GET  /a/b/c zapytanie
+      r.post do end   # POST /a/b/c zapytanie
+    end
+    r.get "d" do end  # GET  /a/b/d zapytanie
+    r.post "e" do end # POST /a/b/e zapytanie
+  end
+end
+\end{lstlisting}
+
+W przeciwieństwie do Ruby on Rails, Roda nie posiada warstwy kontrolerów i osobnego modułu obsługującego trasowanie, w Rodzie przy definicji danego punktu końcowego znajduje się od razu kod obsługujący otrzymane zapytanie.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=1\linewidth]{obrazki/trailblazer_architecture}
-  \caption{Architektura aplikacji w~Trailblazer}
-  \label{fig:trailblazer_architecture}
+  \includegraphics[width=1\linewidth]{pictures/roda_architecture}
+  \caption{Architektura aplikacji w frameworku Roda}
+  \label{fig:roda_architecture}
 \end{figure}
-
-Framework Trailblazer jako główne zadanie obrał utrzymywanie rozbudowanych aplikacji, dzięki dobrze skalującej się architekturze. Dobrze integruje się z~innymi frameworkami Rubiego takimi jak Ruby on Rails, Hanami, Sinatra pozwalając na refaktoryzacje używanych produkcyjne aplikacji małymi krokami.
 
 \begin{figure}[H]
   \centering
   \begin{forest}
-    for tree={
-      font=\ttfamily,
-      grow'=0,
-      child anchor=west,
-      parent anchor=south,
-      anchor=west,
-      calign=first,
-      edge path={
-        \noexpand\path [draw, \forestoption{edge}]
-        (!u.south west) +(7.5pt,0) |- node[fill,inner sep=1.25pt] {} (.child anchor)\forestoption{edge label};
-      },
-      before typesetting nodes={
-        if n=1
-          {insert before={[,phantom]}}
-          {}
-      },
-      fit=band,
-      before computing xy={l=15pt},
-    }
+    pic dir tree,
+    where level=0{}{% folder icons by default; override using file for file icons
+      directory,
+    },
     [project\_root
-      [app
-        [concepts
-          [item
-            [cell]
-            [contract]
-            [lib]
-            [operation]
-            [views]
-          ]
-          [item2
-            [cell]
-            [contract]
-            [lib]
-            [operation]
-            [views]
-          ]
-        ]
-      ]
+      [models]
+      [routes]
+      [views]
     ]
-  \end{forest}
-  \caption{Podstawowa struktura projektu Trailblazer}
-  \label{fig:trailblazer_structure}
+  \end{forest}   
+  \caption{Struktura projektu Roda}
+  \label{fig:roda_proj_structure}
 \end{figure}
 
 \section{Hanami}
@@ -372,8 +390,8 @@ Hanami jest lekkim frameworkiem internetowym opartym o~architekturę MVC, zbudow
 
   \begin{figure}[H]
     \centering
-    \includegraphics[width=1\linewidth]{obrazki/clean_architecture}
-    \caption{Schemat czystej architektury}
+    \includegraphics[width=1\linewidth]{pictures/clean_architecture}
+    \caption{Schemat czystej architektury\cite{clean_architecture}}
     \label{fig:clean_architecture}
   \end{figure}
 
@@ -396,25 +414,10 @@ Hanami jest lekkim frameworkiem internetowym opartym o~architekturę MVC, zbudow
 \begin{figure}[H]
   \centering
   \begin{forest}
-    for tree={
-      font=\ttfamily,
-      grow'=0,
-      child anchor=west,
-      parent anchor=south,
-      anchor=west,
-      calign=first,
-      edge path={
-        \noexpand\path [draw, \forestoption{edge}]
-        (!u.south west) +(7.5pt,0) |- node[fill,inner sep=1.25pt] {} (.child anchor)\forestoption{edge label};
-      },
-      before typesetting nodes={
-        if n=1
-          {insert before={[,phantom]}}
-          {}
-      },
-      fit=band,
-      before computing xy={l=15pt},
-    }
+    pic dir tree,
+    where level=0{}{% folder icons by default; override using file for file icons
+      directory,
+    },
     [project\_root
       [apps
         [web
@@ -437,31 +440,1070 @@ Hanami jest lekkim frameworkiem internetowym opartym o~architekturę MVC, zbudow
 
 \chapter{Narzędzia dostępne do przetwarzania danych geograficznych w~języku Ruby}
 \section{Przechowywanie danych}
+Omawiane frameworki domyślnie wykorzystują relacyjną bazę danych do przechowywania informacji. Najpopularniejsze bazy danych to PostgreSQL, MySQL, SQLite.
+\subsection{PostgreSQL}
+PostgreSQL posiada kilka wbudowanych typów przestrzennych: \textit{Point, Lines, Line Segment, Box, Path, Polygon, Circle}. Dane są zapisane jako łańcuch znaków zawierające współrzędne geograficzne. PostgreSQL dostarcza niewiele funkcji do wyszukiwania danych.
 \subsection{PostGIS}
+PostGIS jest biblioteką rozszerzającą możliwości PostgreSQL w zakresie przetwarzania danych przestrzennych. Biblioteka jest wspierana przez fundacje Open Source Geospatial. Dane są zapisane w formie binarnej jako współrzędne geograficzne lub geometryczne w zależności od wyboru. 
 \subsection{MySQL Spatial}
 \subsection{SpatiaLite}
-\subsection{MongoDB}
+SpatiaLite jest rozszerzeniem dla bazy danych SQLite, które zawiera wsparcie dla typów przestrzennych zdefiniowanych przez grupę \textit{Open Geospatial Consortium}\cite{doc_spatialite}: \textit{Point, Line, Multiline, Polygon, Multipolygon}. Cała baza danych zapisana jest w pojedynczym pliku. Biblioteka udostępniona jest na zasadzie otwartego źródła.
 
-\section{Przetwarzanie danych}
-\subsection{Rgeo}
+\section{Obiektowe przetwarzanie danych}
+\subsection{RGeo}
+RGeo wspiera typy danych zdefiniowane przez \textit{Open Geospatial Consortium}, takie jak punkt, linia i wielokąt. Dane są reprezentowane w formie obiektowej. Biblioteka pozwala na podstawowe operacje analizowania danych przestrzennych, takie jak szukanie punktów przecięcia i obliczenia pola powierzchni. Biblioteka operuje na reprezentacji geograficznej i gemoetrycznej danych i pozwala konwertować dane pomiędzy dostępnymi reprezentacjami. RGeo udostępnia udostępnia jedynie interfejs w języku Ruby dla programistów, a do obsługi danych geograficznej korzysta z bibliotek GEOS i proj.4, te biblioteki są napisane w języku C++.
+
 \subsection{GeoRuby}
+GeoRuby 
 
 \section{Prezentowanie danych}
+\label{sec:maps-tools}
 \subsection{Leaflet}
 \subsection{GoogleMaps}
 
 
 
-\chapter{Badanie wydajności przetwarzania danych geograficznych}
-\section{Plan eksperymentów}
-\emph{użyte narzędzia, metody mierzenia, przebieg badań}
+\chapter{Badania}
 
-\section{Wyniki badań}
-\emph{zapis, odczyt, wyszukiwanie, aktualizacja}
+\section{Plan badań}
 
-\chapter{Porównianie funkcjonalności wybranych frameworków}
+Na podstawie dostępnej dokumentacji oraz zaimplementowanych aplikacji w każdym z badanych narzędzi, frameworki zostaną porównane w następującyh aspektach:
+\begin{itemize}
+  \item dostępne funkcjonalności
+  \item struktura utworzonego projektu
+  \item wydajność zaimplementowanej aplikacji
+\end{itemize}
 
-\chapter{Porównianie struktur wykonanych projektów}
+
+\subsection{Aplikacja zaimplementowana na potrzeby badań}
+
+W~celu wykonania analizy porównanwczej w~każdym z~wybranych frameworków została zaimplementowana aplikacja internetowa operująca na danych geograficznych posiadająca takie same funkcjonalności. Aplikacje zostały zrealizowane zgodnie z architekturą i konwencją wykorzystywanymi w danym frameworku zawartych w dokumentacji narzędzia. W projektach wykorzystano jedynie biblioteki niezbędnę do zrealizowania wymaganych funkcjonalności. Nie używano bibliotek modyfikujących architekturę aplikacji lub funkcjonalności frameworka.
+Aplikacja ma za zadanie wykonywać 4 podstawowe operacje na danych geograficznych:
+\begin{itemize}
+  \item tworzenie
+  \item odczytywanie
+  \item aktualizowanie
+  \item usuwanie
+\end{itemize}
+
+Wszystkie funkcjonalności wykonanej aplikacji zostały zaprezentowane na rysunku \ref{fig:use_cases}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1\linewidth]{pictures/use_cases}
+  \caption{Diagram przypadków użycia aplikacji}
+  \label{fig:use_cases}
+\end{figure}
+
+Aby przeprowadzić badania w realistycznych warunkach aplikacja korzysta z gotowych zbiorów danych:
+\begin{itemize}
+  \item punkty - pochodzące ze zbioru "Państwowy rejestr nazw geograficznych - miejscowości", zbiór zawiera 256796 obiektów, dostępny jest pod adresem http://www.codgik.gov.pl/index.php/darmowe-dane/prng.html
+  \item linie - dane uzyskano z serwisu http://download.geofabrik.de/europe/poland.html pozwalającego pobrać drogi z terenu Polski z bazy danych OpenStreetMap. Zbiór obejmuje 2519660 obiektów
+  \item wielokąty - obiekty pobrano z Państwowego Rejestru Granic dostępnego pod adresem http://gis-support.pl/baza-wiedzy/dane-do-pobrania/, zbiór liczy 59978 obiektów
+\end{itemize}
+
+Każda wersja aplikacji posiada taką samą bazę danych, której schemat znajduje się na rysunku \ref{fig:erd}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1\linewidth]{pictures/erd}
+  \caption{Schemat ERD bazy danych}
+  \label{fig:erd}
+\end{figure}
+
+Do prezentacji danych na mapie wykorzystano bibliotekę LefletJS, ponieważ jest darmowa i ma otwarte źródła. Mapa pochodzi z serwisu OpenStreetMap. Widok gotowej aplikacji znajduje się na rysunku \ref{fig:app}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1\linewidth]{pictures/app}
+  \caption{Widok gotowej aplikacji}
+  \label{fig:app}
+\end{figure}
+
+\subsection{Narzędzia wykorzystane podczas badań}
+selenium, capybara, jmeter, ruby benchmark
+
+\subsection{Środowisko badawcze}
+
+\section{Porównianie funkcjonalności wybranych frameworków}
+
+\subsection{Przechowywanie danych}
+
+ Ruby on Rails posiada największe wsparcie w przechowywaniu danych geograficznych z rozpatrywanych narzędzi. Biblioteka ActiveRecord domyślne wykorzystywana w Ruby on Rails do mapowania obiektowo-relacyjnego posiada adaptery dla następujących baz danych: PostgreSQL z dodatkiem PostGIS, MysqlSpatial, SpatiaLite. Za pomocą adapterów, w migracjach można używać typów kolumn z przestrzennych baz danych. Przy komunikacji typy przestrzenne z bazy danych mapowane są na typy zaimplemetowane w bibliotece RGeo. Konfiguracja nie wymaga wiele pracy, wystarczy dodać odpowiednią bibliotekę do projektu i w konfiguracji bazy danych ustawić odpowiedni adapter. Od tego momentu można w migracjach przy definiowaniu kolumn używać wszystkich typów przestrzennych dostarczanych przez wybraną bazę danych. Dane przestrzenne podczas wykonywanych akcji między aplikacją, a bazą danych są automatycznie mapowane.
+
+ Hanami w migracjach pozwala uzywać kodu napisanego w języku sql do np. definiowania typów lub włączania dodatków w bazie danych, dlatego bez problemów można stworzyć i wersjonować bazę danych z typami przestrzennymi. Jednak framework, podobnie jak Ruby on Rails, posiada mechanizm automatycznego mapowania typów bazy danych do typów obiektów, który nie pozwala na definiowanie własnych typów lub własnych reguł mapowania. To ograniczenie powoduje otrzymanie wyjątku przy próbie uruchomienia aplikacj zawierającej nieznany typ. Framework wspiera jedynie typy przestrzenne zdefiniowane w bazie danych Postgresql, które są zapisywane postaci tekstowej zawierającej współrzędne. Możliwe jest zapisanie wszystkich 3 podstawowych typów przestrzennych: punktu, lini, wielokąta. Postgresql dostarcza podstawowe operacje wyszukiwania danych przestrzennych tylko dla punktów, dlatego zastosowanie Postgresql bez dodatku Postgis mocno ogranicza możliwości budowanej aplikacji. Dodanie obsługi typów geometrycznych dostarczonych przez dodatek Postgis nie wymaga dużej ilości kodu, wymagana jest dobra znajomość języka Ruby i mechanizmu przedefiniowania istniejących już klas tzw. "monkey patching". Najłatwiejsze rozwiązanie pozwalające używać typów geometrycznych z biblioteki Postgis znajduje się na listingu \ref{lst:postgis_patching}. Przy takim rozwiązaniu wartości z kolumny geometrycznnej mapowane są na typ String z wartością binarną.
+
+ \newpage
+
+\begin{lstlisting}[language=Ruby, caption={Obsługa typów geometrycznych z biblioteki Postgis przez Hanami}, label=lst:postgis_patching]
+require 'rom/sql/extensions/postgres/inferrer'
+require 'rom/sql/extensions/postgres/types'
+
+ROM::SQL::Schema::PostgresInferrer.class_eval do
+  alias map_db_type_original map_db_type
+
+  def map_db_type(db_type)
+    # najpierw następuje próba użycia oryginalnej metody mapowania typów
+    # jeśli zakończy się ona nie powodzeniem, to następuje sprawdzenie 
+    # czy typ kolumny z bazy danych rozpoczyna się od słowa 'geometry'
+    # wtedy dane są rzutowane do typu ROM::Types::String
+    map_db_type_original(db_type) || (db_type.start_with?('geometry') ? ROM::Types::String : nil)
+  end
+end
+\end{lstlisting}
+
+\subsection{Przetwarzanie danych}
+
+ Do obiektowego przetwarzania danych dostępne są dwie biblioteki Rgeo i GeoRuby. Ruby on Rails, dzięki wspomnianym wcześniej adapterom dużo wygodniej jest korzystać z Rgeo dzięki automatycznemu mapowaniu danych relacyjnych na obiekty.
+ Framework Hanami w żaden sposób nie rozszerza możliwości bibliotek Rgeo i GeoRuby. W zaimplementowanej metodzie mapującej wartości przestrzenne na typ obiektowy otrzymujemy wartość binarną, którą dalej można zamienić na typ z biblioteki Rgeo, co zaprezentowano na listingu \ref{lst:coordinates_helper}
+
+ \begin{lstlisting}[language=Ruby, caption={Tworzenie obiektu Rgeo z zapisu binarnego danych przestrzennych}, label=lst:coordinates_helper]
+module CoordinatesHelper
+  FACTORY = RGeo::Geographic.spherical_factory(:srid => 4326)
+
+  # utworzenie obiektu Rgeo z binarnego zapisu danych przestrzennych
+  def coordinates_object
+    RGeo::WKRep::WKBParser.new(FACTORY, support_ewkb: true,
+        default_srid: 4326).parse(coordinates)
+  end
+
+  # rzutowanie obiektu przestrzennego do postaci "well known text"
+  def coordinates_text
+    coordinates_object.as_text
+  end
+end
+\end{lstlisting}
+
+\subsection{Prezentowanie danych}
+
+Framework Ruby on Rails posiada biblioteki do integracji obu narzędzi do prezentacji danych geograficznych wspomnianych w rozdziale \ref{sec:maps-tools}:
+\begin{enumerate}
+  \item{leaflet-rails} - dołącza do projektu Ruby on Rails bibliotekę leafletjs napisaną w języku javascript wraz ze stylami oraz dodaje metody do widoków pozwalające na dołączenie mapy i podstawową konfiguracje bez potrzeby używania javascriptu
+  \item{Google Maps for Rails} - biblioteka opakowuje javascriptową bibliotekę google maps, ułatwiając jej dodanie do projektu
+\end{enumerate}
+Dzięki takiej integracji zgodnie z konwencją w języku Ruby\cite{doc_ruby}  wspomniane bilbioteki są przechowywane centralnie w systemie zamiast w projekcie.
+Hanami w przeciwieśtwie do Ruby on Rails nie posiada bibliotek wspomagających dołączenie do projektu biblioteki leafletjs lub Google Maps. Żeby skorzystać jednej z wymienionych bibliotek należy dołączyć jej kod do projektu.
+
+Przy odczycie danych w formacie JSON, Ruby on Rails automatycznie serializuje model do postaci JSON. W projekcie wykorzystującym Hanami, niezbędne jest dodanie zewnętrznej bilbioteki realizującej serializowanie danych np. \textit{Roar} i zdefiniowanie odpowiedniego reprezentera. Przykładowy reprezenter został zaprezentowany na listingu \ref{lst:representer}
+
+ \begin{lstlisting}[language=Ruby, caption={Reprezenter dla modelu Point}, label=lst:representer]
+require 'roar/decorator'
+require 'roar/json'
+
+module Web::Representers
+  class Point < Roar::Decorator
+    include Roar::JSON
+
+    property :id
+    property :name
+    property :object_type
+    property :object_class
+    property :voivodeship
+    property :county
+    property :commune
+    property :terc
+    property :coordinates_text
+    property :color
+  end
+end
+\end{lstlisting}
+
+\subsection{Podsumowanie}
+
+Ruby on Rails posiada zdecydowanie więcej gotowych narzędzi do pracy z danymi geograficznymi. Tworzenie aplikacji dzięki temu trwa mniej czasu. Implementacja systemu informacji geograficznej za pomocą frameworku Hanami wymaga od programisty znacznie więcej pracy i większych umiejętności programistycznych.
+
+\section{Porównianie struktur wykonanych projektów}
+
+\begin{figure}[H]
+  \centering
+  \begin{minipage}[H]{0.4\textwidth}
+    \begin{forest}
+      pic dir tree,
+      where level=0{}{% folder icons by default; override using file for file icons
+        directory,
+      },
+      [rails\_project
+        [app
+          [assets
+            [javascripts
+              [application.js 17, file]
+              [checkboxes.js 72, file]
+              [line\_form.js 33, file]
+              [lines.js 38, file]
+              [point\_form.js 33, file]
+              [points.js 65, file]
+              [polygon\_form.js 33, file]
+              [polygons.js 36, file]
+              [map.js 41, file]
+            ]
+            [stylesheets
+              [application.scss 54, file]
+            ]
+          ]
+          [controllers
+            [application\_controller.rb 3, file]
+            [lines\_controller.rb 50, file]
+            [maps\_controller.rb 7, file]
+            [points\_controller.rb 56, file]
+            [polygons\_controller.rb 50, file]
+          ]
+        ]
+      [...]]
+    \end{forest}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[t!]{0.4\textwidth}
+    \begin{forest}
+      pic dir tree,
+      where level=0{}{% folder icons by default; override using file for file icons
+        directory,
+      },
+      [...
+        [models
+          [concerns
+            [gis\_support.rb 15, file]
+          ]
+          [application\_record.rb 3, file]
+          [line.rb 23, file]
+          [point.rb 32, file]
+          [polygon.rb 18, file]
+        ]
+        [views
+          [layouts
+            [application.html.erb 12, file]
+          ]
+          [maps
+            [index.html.erb 91, file]
+          ]
+          [shared
+            [\_line\_form.erb 11, file]
+            [\_point\_form.html.erb 16, file]
+            [\_polygon\_form.html.erb 13, file]
+          ]
+        ]
+      ]
+    \end{forest}
+  \end{minipage}
+  
+    
+  \caption{Struktura projektu Rails}
+  \label{fig:rails_proj_structure}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \begin{minipage}[H]{0.4\textwidth}
+    \begin{forest}
+      pic dir tree,
+      where level=0{}{% folder icons by default; override using file for file icons
+        directory,
+      },
+      [hanami\_project
+        [apps
+          [web
+            [assets
+              [javascripts
+                [application.js 17, file]
+                [checkboxes.js 63, file]
+                [leaflet.js 5, file]
+                [line\_form.js 58, file]
+                [lines.js 39, file]
+                [point\_form.js 59, file]
+                [points.js 66, file]
+                [polygon\_form.js 60, file]
+                [polygons.js 37, file]
+                [map.js 41, file]
+              ]
+              [stylesheets
+                [leaflet.css 548, file]
+                [main.css.scss 34, file]
+              ]
+            ]
+            [templates
+              [map
+                [index.html.erb 86, file]
+              ]
+              [shared
+                [\_line\_form.html.erb 22, file]
+                [\_point\_form.html.erb 42, file]
+                [\_polygon\_form.html.erb 26, file]
+              ]
+              [application.html.erb 30, file]
+            ]
+          ]
+        ]
+      [...]]
+    \end{forest}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[t!]{0.4\textwidth}
+    \begin{forest}
+      pic dir tree,
+      where level=0{}{% folder icons by default; override using file for file icons
+        directory,
+      },
+      [...
+        [controllers
+          [lines
+            [create.rb 31, file]
+            [destroy.rb 9, file]
+            [index.rb 23, file]
+            [update.rb 30, file]
+          ]
+          [points
+            [create.rb 37, file]
+            [destroy.rb 9, file]
+            [index.rb 24, file]
+            [update.rb 36, file]
+          ]
+          [polygons
+            [create.rb 32, file]
+            [destroy.rb 9, file]
+            [index.rb 23, file]
+            [update.rb 32, file]
+          ]
+          [map
+            [index.rb 7, file]
+          ]
+        ]
+        [representers
+          [line.rb 12, file]
+          [point.rb 17, file]
+          [polygon.rb 13, file]
+        ]
+        [views
+          [map
+            [index.rb 26, file]
+          ]
+          [application\_layout.rb 7, file]
+        ]
+        [application.rb 65, file]
+      ]
+    \end{forest}
+  \end{minipage}
+  
+    
+  \caption{Struktura projektu Rails}
+  \label{fig:rails_proj_structure}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \begin{forest}
+    pic dir tree,
+    where level=0{}{% folder icons by default; override using file for file icons
+      directory,
+    },
+    [hanami\_project
+      [lib
+        [web
+          [entities
+            [line.rb 16, file]
+            [point.rb 19, file]
+            [polygon.rb 15, file]
+          ]
+          [repositories
+            [concerns
+              [coordinates\_helper.rb 10, file]
+              [gis\_support.rb 16, file]
+            ]
+            [line\_repository.rb 7, file]
+            [point\_repository.rb 7, file]
+            [polygon\_repository.rb 7, file]
+          ]
+        ]
+        [postgres\_inferrer.rb 8, file]
+      ]
+    ]
+  \end{forest}   
+  \caption{Struktura projektu Rails}
+  \label{fig:rails_proj_structure}
+\end{figure}
+
+\section{Porównianie  wydajności zaimplemetowanych aplikacji}
+\subsection{Interfejs użytkownika}
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+      width = 0.8\linewidth,
+      height = 0.5\linewidth,
+      ybar=8pt,
+      enlarge x limits=0.15,
+      ymin=0,
+      flexible xticklabels from table={results/rails_cud_point_capybara_50.csv}{0}{header=false,col sep=comma},
+      xticklabel style={right=10pt,rotate=45,anchor=east}, % To make sure the text labels are nicely aligned
+      xtick=data,
+      legend pos=outer north east,
+      ylabel={Czas [s]},
+      nodes near coords,
+      nodes near coords align={vertical},
+      compat=1.8]
+      \pgfplotstableread[header=false,col sep=comma]{results/rails_cud_point_capybara_50.csv}\railstable;
+      \pgfplotstableread[header=false,col sep=comma]{results/hanami_cud_point_capybara_50.csv}\hanamitable;
+      \pgfplotstableread[header=false,col sep=comma]{results/roda_cud_point_capybara_50.csv}\rodatable;
+
+      \addplot table[x expr=\coordindex, y index={1}] {\hanamitable};
+      \addplot table[x expr=\coordindex, y index={1}] {\railstable};
+      \addplot table[x expr=\coordindex, y index={1}] {\rodatable};
+      \legend{hanami, rails, roda}
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Czas wykonania operacji CRUD dla punktu}
+  \label{fig:crud_points}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+      width = 0.8\linewidth,
+      height = 0.5\linewidth,
+      ymin=0,
+      xmin=0,
+      legend pos=outer north east,
+      xlabel={Liczba punktów na mapie},
+      ylabel={Czas [s]}]
+      \pgfplotstableread[col sep=comma]{results/rails_read_points_capybara_50.csv}\railstable;
+      \pgfplotstableread[col sep=comma]{results/hanami_read_points_capybara_50.csv}\hanamitable;
+      \pgfplotstableread[col sep=comma]{results/roda_read_points_capybara_50.csv}\rodatable;
+
+      \addplot table[x=count, y=time] {\hanamitable};
+      \addplot table[x=count, y=time] {\railstable};
+      \addplot table[x=count, y=time] {\rodatable};
+      \legend{hanami, rails, roda}
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Czas ładowania widoku w zależności od liczby punktów}
+  \label{fig:read_points}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+      width = 0.8\linewidth,
+      height = 0.5\linewidth,
+      ybar=8pt,
+      enlarge x limits=0.15,
+      ymin=0,
+      flexible xticklabels from table={results/rails_cud_line_capybara_50.csv}{0}{header=false,col sep=comma},
+      xticklabel style={right=10pt,rotate=45,anchor=east}, % To make sure the text labels are nicely aligned
+      xtick=data,
+      legend pos=outer north east,
+      ylabel={Czas [s]},
+      nodes near coords,
+      nodes near coords align={vertical},
+      ]
+      \pgfplotstableread[header=false,col sep=comma]{results/rails_cud_line_capybara_50.csv}\railstable;
+      \pgfplotstableread[header=false,col sep=comma]{results/hanami_cud_line_capybara_50.csv}\hanamitable;
+      \pgfplotstableread[header=false,col sep=comma]{results/roda_cud_line_capybara_50.csv}\rodatable;
+
+      \addplot table[x expr=\coordindex, y index={1}] {\hanamitable};
+      \addplot table[x expr=\coordindex, y index={1}] {\railstable};
+      \addplot table[x expr=\coordindex, y index={1}] {\rodatable};
+      \legend{hanami, rails, roda}
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Czas wykonania operacji CRUD dla linii}
+  \label{fig:crud_lines}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+      width = 0.8\linewidth,
+      height = 0.5\linewidth,
+      ymin=0,
+      xmin=0,
+      xticklabel style={right=10pt, below=5pt,rotate=30,anchor=east},
+      xlabel style={below=10pt},
+      legend pos=outer north east,
+      xlabel={Liczba linii na mapie},
+      ylabel={Czas [s]}]
+      \pgfplotstableread[col sep=comma]{results/rails_read_lines_capybara_50.csv}\railstable;
+      \pgfplotstableread[col sep=comma]{results/hanami_read_lines_capybara_50.csv}\hanamitable;
+      \pgfplotstableread[col sep=comma]{results/roda_read_lines_capybara_50.csv}\rodatable;
+
+      \addplot table[x=count, y=time] {\hanamitable};
+      \addplot table[x=count, y=time] {\railstable};
+      \addplot table[x=count, y=time] {\rodatable};
+      \legend{hanami, rails, roda}
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Czas ładowania widoku w zależności od liczby linii}
+  \label{fig:read_lines}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+      width = 0.8\linewidth,
+      height = 0.5\linewidth,
+      ybar=8pt,
+      enlarge x limits=0.15,
+      ymin=0,
+      flexible xticklabels from table={results/rails_cud_polygon_capybara_50.csv}{0}{header=false,col sep=comma},
+      xticklabel style={right=10pt,rotate=45,anchor=east}, % To make sure the text labels are nicely aligned
+      xtick=data,
+      legend pos=outer north east,
+      ylabel={Czas [s]},
+      nodes near coords,
+      nodes near coords align={vertical},
+      ]
+      \pgfplotstableread[header=false,col sep=comma]{results/rails_cud_polygon_capybara_50.csv}\railstable;
+      \pgfplotstableread[header=false,col sep=comma]{results/hanami_cud_polygon_capybara_50.csv}\hanamitable;
+      \pgfplotstableread[header=false,col sep=comma]{results/roda_cud_polygon_capybara_50.csv}\rodatable;
+
+      \addplot table[x expr=\coordindex, y index={1}] {\hanamitable};
+      \addplot table[x expr=\coordindex, y index={1}] {\railstable};
+      \addplot table[x expr=\coordindex, y index={1}] {\rodatable};
+      \legend{hanami, rails, roda}
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Czas wykonania operacji CRUD dla wielokątów}
+  \label{fig:crud_polygons}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+      width = 0.8\linewidth,
+      height = 0.5\linewidth,
+      ymin=0,
+      xmin=0,
+      xticklabel style={right=10pt, below=5pt,rotate=30,anchor=east},
+      xlabel style={below=10pt},
+      legend pos=outer north east,
+      xlabel={Liczba linii na mapie},
+      ylabel={Czas [s]}]
+      \pgfplotstableread[col sep=comma]{results/rails_read_polygons_capybara_50.csv}\railstable;
+      \pgfplotstableread[col sep=comma]{results/hanami_read_polygons_capybara_50.csv}\hanamitable;
+      \pgfplotstableread[col sep=comma]{results/roda_read_polygons_capybara_50.csv}\rodatable;
+
+      \addplot table[x=count, y=time] {\hanamitable};
+      \addplot table[x=count, y=time] {\railstable};
+      \addplot table[x=count, y=time] {\rodatable};
+      \legend{hanami, rails, roda}
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Czas ładowania widoku w zależności od liczby wielokątów}
+  \label{fig:read_polygons}
+\end{figure}
+
+\subsection{Zapytania HTTP}
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+      width = 0.8\linewidth,
+      height = 0.5\linewidth,
+      ybar=8pt,
+      enlarge x limits=0.15,
+      ymin=0,
+      flexible xticklabels from table={results/rails_cud_point_capybara_50.csv}{0}{header=false,col sep=comma},
+      xticklabel style={right=10pt,rotate=45,anchor=east}, % To make sure the text labels are nicely aligned
+      xtick=data,
+      legend pos=outer north east,
+      ylabel={Czas [ms]},
+      nodes near coords,
+      nodes near coords align={vertical},
+      compat=1.8]
+      \pgfplotstableread[header=false,col sep=comma]{results/http/rails_crud_point_http_50.csv}\railstable;
+      \pgfplotstableread[header=false,col sep=comma]{results/http/hanami_crud_point_http_50.csv}\hanamitable;
+      \pgfplotstableread[header=false,col sep=comma]{results/http/roda_crud_point_http_50.csv}\rodatable;
+
+      \addplot table[x expr=\coordindex, y index={1}] {\hanamitable};
+      \addplot table[x expr=\coordindex, y index={1}] {\railstable};
+      \addplot table[x expr=\coordindex, y index={1}] {\rodatable};
+      \legend{hanami, rails, roda}
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Czas wykonania zapytania HTTP dla punktu}
+  \label{fig:http_crud_points}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+      width = 0.8\linewidth,
+      height = 0.5\linewidth,
+      ymin=0,
+      xmin=0,
+      legend pos=outer north east,
+      xlabel={liczba punktów},
+      ylabel={Czas [ms]}]
+      \pgfplotstableread[col sep=comma]{results/http/rails_read_points_http_50.csv}\railstable;
+      \pgfplotstableread[col sep=comma]{results/http/hanami_read_points_http_50.csv}\hanamitable;
+      \pgfplotstableread[col sep=comma]{results/http/roda_read_points_http_50.csv}\rodatable;
+
+      \addplot table[x=count, y=time] {\hanamitable};
+      \addplot table[x=count, y=time] {\railstable};
+      \addplot table[x=count, y=time] {\rodatable};
+      \legend{hanami, rails, roda}
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Czas ładowania danych w zależności od liczby punktów}
+  \label{fig:http_read_points}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+      width = 0.8\linewidth,
+      height = 0.5\linewidth,
+      ymin=0,
+      xmin=0,
+      xticklabel style={right=10pt, below=5pt,rotate=30,anchor=east},
+      xlabel style={below=10pt},
+      legend pos=outer north east,
+      xlabel={Liczba użytkowników},
+      ylabel={Czas [ms]}]
+      \pgfplotstableread[col sep=comma]{results/load/rails_point_avg_time.csv}\railstable;
+      \pgfplotstableread[col sep=comma]{results/load/hanami_point_avg_time.csv}\hanamitable;
+      \pgfplotstableread[col sep=comma]{results/load/roda_point_avg_time.csv}\rodatable;
+
+      \addplot table[x index={0}, y index={1}] {\hanamitable};
+      \addplot table[x index={0}, y index={1}] {\railstable};
+      \addplot table[x index={0}, y index={1}] {\rodatable};
+      \legend{hanami, rails, roda}
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Czas ładowania danych w zależności od liczby użytkowników}
+  \label{fig:load_avg_time_point}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+      width = 0.8\linewidth,
+      height = 0.5\linewidth,
+      ymin=0,
+      xmin=0,
+      xticklabel style={right=10pt, below=5pt,rotate=30,anchor=east},
+      xlabel style={below=10pt},
+      legend pos=outer north east,
+      xlabel={liczba użytkowników},
+      ylabel={liczba obsłużonych zapytań na sekunde}]
+      \pgfplotstableread[col sep=comma]{results/load/rails_point_rps.csv}\railstable;
+      \pgfplotstableread[col sep=comma]{results/load/hanami_point_rps.csv}\hanamitable;
+      \pgfplotstableread[col sep=comma]{results/load/roda_point_rps.csv}\rodatable;
+
+      \addplot table[x index={0}, y index={1}] {\hanamitable};
+      \addplot table[x index={0}, y index={1}] {\railstable};
+      \addplot table[x index={0}, y index={1}] {\rodatable};
+      \legend{hanami, rails, roda}
+    \end{axis}
+  \end{tikzpicture}
+  \caption{liczba obsłużonych zapytań na sekunde w zależności od liczby użytkowników}
+  \label{fig:load_rps_point}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+      width = 0.8\linewidth,
+      height = 0.5\linewidth,
+      ybar=8pt,
+      enlarge x limits=0.15,
+      ymin=0,
+      flexible xticklabels from table={results/http/rails_crud_line_http_50.csv}{0}{header=false,col sep=comma},
+      xticklabel style={right=10pt,rotate=45,anchor=east}, % To make sure the text labels are nicely aligned
+      xtick=data,
+      legend pos=outer north east,
+      ylabel={Czas [ms]},
+      nodes near coords,
+      nodes near coords align={vertical},
+      ]
+      \pgfplotstableread[header=false,col sep=comma]{results/http/rails_crud_line_http_50.csv}\railstable;
+      \pgfplotstableread[header=false,col sep=comma]{results/http/hanami_crud_line_http_50.csv}\hanamitable;
+      \pgfplotstableread[header=false,col sep=comma]{results/http/roda_crud_line_http_50.csv}\rodatable;
+
+      \addplot table[x expr=\coordindex, y index={1}] {\hanamitable};
+      \addplot table[x expr=\coordindex, y index={1}] {\railstable};
+      \addplot table[x expr=\coordindex, y index={1}] {\rodatable};
+      \legend{hanami, rails, roda}
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Czas wykonania operacji CRUD dla linii}
+  \label{fig:http_crud_lines}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+      width = 0.8\linewidth,
+      height = 0.5\linewidth,
+      ymin=0,
+      xmin=0,
+      xticklabel style={right=10pt, below=5pt,rotate=30,anchor=east},
+      xlabel style={below=10pt},
+      legend pos=outer north east,
+      xlabel={liczba linii na mapie},
+      ylabel={Czas [ms]}]
+      \pgfplotstableread[col sep=comma]{results/http/rails_read_lines_http_50.csv}\railstable;
+      \pgfplotstableread[col sep=comma]{results/http/hanami_read_lines_http_50.csv}\hanamitable;
+      \pgfplotstableread[col sep=comma]{results/http/roda_read_lines_http_50.csv}\rodatable;
+
+      \addplot table[x=count, y=time] {\hanamitable};
+      \addplot table[x=count, y=time] {\railstable};
+      \addplot table[x=count, y=time] {\rodatable};
+      \legend{hanami, rails, roda}
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Czas ładowania danych w zależności od liczby linii}
+  \label{fig:http_read_lines}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+      width = 0.8\linewidth,
+      height = 0.5\linewidth,
+      ymin=0,
+      xmin=0,
+      xticklabel style={right=10pt, below=5pt,rotate=30,anchor=east},
+      xlabel style={below=10pt},
+      legend pos=outer north east,
+      xlabel={Liczba użytkowników},
+      ylabel={Czas [ms]}]
+      \pgfplotstableread[col sep=comma]{results/load/rails_line_avg_time.csv}\railstable;
+      \pgfplotstableread[col sep=comma]{results/load/hanami_line_avg_time.csv}\hanamitable;
+      \pgfplotstableread[col sep=comma]{results/load/roda_line_avg_time.csv}\rodatable;
+
+      \addplot table[x index={0}, y index={1}] {\hanamitable};
+      \addplot table[x index={0}, y index={1}] {\railstable};
+      \addplot table[x index={0}, y index={1}] {\rodatable};
+      \legend{hanami, rails, roda}
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Czas ładowania danych w zależności od liczby użytkowników}
+  \label{fig:load_avg_time_line}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+      width = 0.8\linewidth,
+      height = 0.5\linewidth,
+      ymin=0,
+      xmin=0,
+      xticklabel style={right=10pt, below=5pt,rotate=30,anchor=east},
+      xlabel style={below=10pt},
+      legend pos=outer north east,
+      xlabel={liczba użytkowników},
+      ylabel={liczba obsłużonych zapytań na sekunde}]
+      \pgfplotstableread[col sep=comma]{results/load/rails_line_rps.csv}\railstable;
+      \pgfplotstableread[col sep=comma]{results/load/hanami_line_rps.csv}\hanamitable;
+      \pgfplotstableread[col sep=comma]{results/load/roda_line_rps.csv}\rodatable;
+
+      \addplot table[x index={0}, y index={1}] {\hanamitable};
+      \addplot table[x index={0}, y index={1}] {\railstable};
+      \addplot table[x index={0}, y index={1}] {\rodatable};
+      \legend{hanami, rails, roda}
+    \end{axis}
+  \end{tikzpicture}
+  \caption{liczba obsłużonych zapytań na sekunde w zależności od liczby użytkowników}
+  \label{fig:load_rps_line}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+      width = 0.8\linewidth,
+      height = 0.5\linewidth,
+      ybar=8pt,
+      enlarge x limits=0.15,
+      ymin=0,
+      flexible xticklabels from table={results/http/rails_crud_polygon_http_50.csv}{0}{header=false,col sep=comma},
+      xticklabel style={right=10pt,rotate=45,anchor=east}, % To make sure the text labels are nicely aligned
+      xtick=data,
+      legend pos=outer north east,
+      ylabel={Czas [s]},
+      nodes near coords,
+      nodes near coords align={vertical},
+      ]
+      \pgfplotstableread[header=false,col sep=comma]{results/http/rails_crud_polygon_http_50.csv}\railstable;
+      \pgfplotstableread[header=false,col sep=comma]{results/http/hanami_crud_polygon_http_50.csv}\hanamitable;
+      \pgfplotstableread[header=false,col sep=comma]{results/http/roda_crud_polygon_http_50.csv}\rodatable;
+
+      \addplot table[x expr=\coordindex, y index={1}] {\hanamitable};
+      \addplot table[x expr=\coordindex, y index={1}] {\railstable};
+      \addplot table[x expr=\coordindex, y index={1}] {\rodatable};
+      \legend{hanami, rails, roda}
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Czas wykonania operacji CRUD dla wielokątów}
+  \label{fig:http_crud_polygons}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+      width = 0.8\linewidth,
+      height = 0.5\linewidth,
+      ymin=0,
+      xmin=0,
+      xticklabel style={right=10pt, below=5pt,rotate=30,anchor=east},
+      xlabel style={below=10pt},
+      legend pos=outer north east,
+      xlabel={Liczba linii na mapie},
+      ylabel={Czas [s]}]
+      \pgfplotstableread[col sep=comma]{results/http/rails_read_polygons_http_50.csv}\railstable;
+      \pgfplotstableread[col sep=comma]{results/http/hanami_read_polygons_http_50.csv}\hanamitable;
+      \pgfplotstableread[col sep=comma]{results/http/roda_read_polygons_http_50.csv}\rodatable;
+
+      \addplot table[x=count, y=time] {\hanamitable};
+      \addplot table[x=count, y=time] {\railstable};
+      \addplot table[x=count, y=time] {\rodatable};
+      \legend{hanami, rails, roda}
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Czas ładowania danych w zależności od liczby wielokątów}
+  \label{fig:http_read_polygons}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+      width = 0.8\linewidth,
+      height = 0.5\linewidth,
+      ymin=0,
+      xmin=0,
+      xticklabel style={right=10pt, below=5pt,rotate=30,anchor=east},
+      xlabel style={below=10pt},
+      legend pos=outer north east,
+      xlabel={Liczba użytkowników},
+      ylabel={Czas [ms]}]
+      \pgfplotstableread[col sep=comma]{results/load/rails_polygon_avg_time.csv}\railstable;
+      \pgfplotstableread[col sep=comma]{results/load/hanami_polygon_avg_time.csv}\hanamitable;
+      \pgfplotstableread[col sep=comma]{results/load/roda_polygon_avg_time.csv}\rodatable;
+
+      \addplot table[x index={0}, y index={1}] {\hanamitable};
+      \addplot table[x index={0}, y index={1}] {\railstable};
+      \addplot table[x index={0}, y index={1}] {\rodatable};
+      \legend{hanami, rails, roda}
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Czas ładowania danych w zależności od liczby użytkowników}
+  \label{fig:load_avg_time_polygon}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+      width = 0.8\linewidth,
+      height = 0.5\linewidth,
+      ymin=0,
+      xmin=0,
+      xticklabel style={right=10pt, below=5pt,rotate=30,anchor=east},
+      xlabel style={below=10pt},
+      legend pos=outer north east,
+      xlabel={liczba użytkowników},
+      ylabel={liczba obsłużonych zapytań na sekunde}]
+      \pgfplotstableread[col sep=comma]{results/load/rails_polygon_rps.csv}\railstable;
+      \pgfplotstableread[col sep=comma]{results/load/hanami_polygon_rps.csv}\hanamitable;
+      \pgfplotstableread[col sep=comma]{results/load/roda_polygon_rps.csv}\rodatable;
+
+      \addplot table[x index={0}, y index={1}] {\hanamitable};
+      \addplot table[x index={0}, y index={1}] {\railstable};
+      \addplot table[x index={0}, y index={1}] {\rodatable};
+      \legend{hanami, rails, roda}
+    \end{axis}
+  \end{tikzpicture}
+  \caption{liczba obsłużonych zapytań na sekunde w zależności od liczby użytkowników}
+  \label{fig:load_rps_polygon}
+\end{figure}
+
+\subsection{Komunikacja z bazą danych}
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+      width = 0.8\linewidth,
+      height = 0.5\linewidth,
+      ybar=8pt,
+      enlarge x limits=0.15,
+      ymin=0,
+      flexible xticklabels from table={results/model/rails_crud_point_model_50.csv}{0}{header=false,col sep=comma},
+      xticklabel style={right=10pt,rotate=45,anchor=east}, % To make sure the text labels are nicely aligned
+      xtick=data,
+      legend pos=outer north east,
+      ylabel={Czas [s]},
+      nodes near coords,
+      nodes near coords align={vertical},
+      compat=1.8]
+      \pgfplotstableread[header=false,col sep=comma]{results/model/rails_crud_point_model_50.csv}\railstable;
+      \pgfplotstableread[header=false,col sep=comma]{results/model/hanami_crud_point_model_50.csv}\hanamitable;
+      \pgfplotstableread[header=false,col sep=comma]{results/model/roda_crud_point_model_50.csv}\rodatable;
+
+      \addplot table[x expr=\coordindex, y index={1}] {\hanamitable};
+      \addplot table[x expr=\coordindex, y index={1}] {\railstable};
+      \addplot table[x expr=\coordindex, y index={1}] {\rodatable};
+      \legend{hanami, rails, roda}
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Czas wykonania operacji CRUD dla punktu}
+  \label{fig:model_crud_points}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+      width = 0.8\linewidth,
+      height = 0.5\linewidth,
+      ymin=0,
+      xmin=0,
+      legend pos=outer north east,
+      xlabel={Liczba punktów na mapie},
+      ylabel={Czas [s]}]
+      \pgfplotstableread[col sep=comma]{results/model/rails_read_points_model_50.csv}\railstable;
+      \pgfplotstableread[col sep=comma]{results/model/hanami_read_points_model_50.csv}\hanamitable;
+      \pgfplotstableread[col sep=comma]{results/model/roda_read_points_model_50.csv}\rodatable;
+
+      \addplot table[x=count, y=time] {\hanamitable};
+      \addplot table[x=count, y=time] {\railstable};
+      \addplot table[x=count, y=time] {\rodatable};
+      \legend{hanami, rails, roda}
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Czas wczytywania danych z bazy w zależności od liczby punktów}
+  \label{fig:model_read_points}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+      width = 0.8\linewidth,
+      height = 0.5\linewidth,
+      ybar=8pt,
+      enlarge x limits=0.15,
+      ymin=0,
+      flexible xticklabels from table={results/model/rails_crud_line_model_50.csv}{0}{header=false,col sep=comma},
+      xticklabel style={right=10pt,rotate=45,anchor=east}, % To make sure the text labels are nicely aligned
+      xtick=data,
+      legend pos=outer north east,
+      ylabel={Czas [s]},
+      nodes near coords,
+      nodes near coords align={vertical},
+      ]
+      \pgfplotstableread[header=false,col sep=comma]{results/model/rails_crud_line_model_50.csv}\railstable;
+      \pgfplotstableread[header=false,col sep=comma]{results/model/hanami_crud_line_model_50.csv}\hanamitable;
+      \pgfplotstableread[header=false,col sep=comma]{results/model/roda_crud_line_model_50.csv}\rodatable;
+
+      \addplot table[x expr=\coordindex, y index={1}] {\hanamitable};
+      \addplot table[x expr=\coordindex, y index={1}] {\railstable};
+      \addplot table[x expr=\coordindex, y index={1}] {\rodatable};
+      \legend{hanami, rails, roda}
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Czas wykonania operacji CRUD dla linii}
+  \label{fig:model_crud_lines}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+      width = 0.8\linewidth,
+      height = 0.5\linewidth,
+      ymin=0,
+      xmin=0,
+      xticklabel style={right=10pt, below=5pt,rotate=30,anchor=east},
+      xlabel style={below=10pt},
+      legend pos=outer north east,
+      xlabel={Liczba linii na mapie},
+      ylabel={Czas [s]}]
+      \pgfplotstableread[col sep=comma]{results/model/rails_read_lines_model_50.csv}\railstable;
+      \pgfplotstableread[col sep=comma]{results/model/hanami_read_lines_model_50.csv}\hanamitable;
+      \pgfplotstableread[col sep=comma]{results/model/roda_read_lines_model_50.csv}\rodatable;
+
+      \addplot table[x=count, y=time] {\hanamitable};
+      \addplot table[x=count, y=time] {\railstable};
+      \addplot table[x=count, y=time] {\rodatable};
+      \legend{hanami, rails, roda}
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Czas wczytywania danych z bazy w zależności od liczby linii}
+  \label{fig:model_read_lines}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+      width = 0.8\linewidth,
+      height = 0.5\linewidth,
+      ybar=8pt,
+      enlarge x limits=0.15,
+      ymin=0,
+      flexible xticklabels from table={results/model/rails_crud_polygon_model_50.csv}{0}{header=false,col sep=comma},
+      xticklabel style={right=10pt,rotate=45,anchor=east}, % To make sure the text labels are nicely aligned
+      xtick=data,
+      legend pos=outer north east,
+      ylabel={Czas [s]},
+      nodes near coords,
+      nodes near coords align={vertical},
+      ]
+      \pgfplotstableread[header=false,col sep=comma]{results/model/rails_crud_polygon_model_50.csv}\railstable;
+      \pgfplotstableread[header=false,col sep=comma]{results/model/hanami_crud_polygon_model_50.csv}\hanamitable;
+      \pgfplotstableread[header=false,col sep=comma]{results/model/roda_crud_polygon_model_50.csv}\rodatable;
+
+      \addplot table[x expr=\coordindex, y index={1}] {\hanamitable};
+      \addplot table[x expr=\coordindex, y index={1}] {\railstable};
+      \addplot table[x expr=\coordindex, y index={1}] {\rodatable};
+      \legend{hanami, rails, roda}
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Czas wykonania operacji CRUD dla wielokątów}
+  \label{fig:model_crud_polygons}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+      width = 0.8\linewidth,
+      height = 0.5\linewidth,
+      ymin=0,
+      xmin=0,
+      xticklabel style={right=10pt, below=5pt,rotate=30,anchor=east},
+      xlabel style={below=10pt},
+      legend pos=outer north east,
+      xlabel={Liczba linii na mapie},
+      ylabel={Czas [s]}]
+      \pgfplotstableread[col sep=comma]{results/model/rails_read_polygons_model_50.csv}\railstable;
+      \pgfplotstableread[col sep=comma]{results/model/hanami_read_polygons_model_50.csv}\hanamitable;
+      \pgfplotstableread[col sep=comma]{results/model/roda_read_polygons_model_50.csv}\rodatable;
+
+      \addplot table[x=count, y=time] {\hanamitable};
+      \addplot table[x=count, y=time] {\railstable};
+      \addplot table[x=count, y=time] {\rodatable};
+      \legend{hanami, rails, roda}
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Czas wczytywania danych z bazy w zależności od liczby wielokątów}
+  \label{fig:model_read_polygons}
+\end{figure}
 
 \chapter{Podsumowanie}
 \section{Analiza wyników badań}
@@ -488,14 +1530,20 @@ Hanami jest lekkim frameworkiem internetowym opartym o~architekturę MVC, zbudow
   \bibitem{doc_osm}
   \emph{Dokumentacja OpenStreetMap}, dostępna pod adresem:\\ \url{http://wiki.openstreetmap.org/}, aktualne na dzień 08.03.2017r.
 
+  \bibitem{doc_postgresql}
+  \emph{Dokumentacja PostgreSQL}, dostępna pod adresem:\\ \url{https://www.postgresql.org/docs/9.6/static/index.html}, aktualne na dzień 09.06.2017r.
+
   \bibitem{doc_postgis}
   \emph{Dokumentacja PostGIS}, dostępna pod adresem:\\ \url{http://postgis.net/documentation/}, aktualne na dzień 08.03.2017r.
 
   \bibitem{doc_rails}
   \emph{Dokumentacja Ruby on Rails}, dostępna pod adresem:\\ \url{http://guides.rubyonrails.org/}, aktualne na dzień 08.03.2017r.
 
-  \bibitem{doc_trailblazer}
-  \emph{Dokumentacja Trailblazer} https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html
+  \bibitem{doc_roda}
+  \emph{Dokumentacja Roda}, dostępna pod adresem:\\ \url{http://roda.jeremyevans.net/documentation.html}, aktualne na dzień 01.06.2017r.
+
+  \bibitem{doc_spatialite}
+  \emph{Dokumentacja SpatiaLite}, dostępna pod adresem:\\ \url{https://www.gaia-gis.it/fossil/libspatialite/index}, aktualne na dzień 09.06.2017r.
 
   \bibitem{principles_gis}
   Huisman Otto, By (de) Rolf A., \emph{Principles of Geographic Information Systems}, ITC, 2009
@@ -514,8 +1562,6 @@ Hanami jest lekkim frameworkiem internetowym opartym o~architekturę MVC, zbudow
   Smyrdek Przemysław, \emph{Czym jest framework i~po co go używać}, dostępne pod adresem:\\
   \url{http://poznajprogramowanie.pl/czym-jest-framework-i-po-co-go-uzywac/}, aktualne na dzień 20.04.2017r.
   
-  \bibitem{nick_trailblazer}
-  Sutterer Nick, \emph{Trailblazer. a~New Architecture For Rails}, Leanpub, 2016
   
  
 \end{thebibliography}
