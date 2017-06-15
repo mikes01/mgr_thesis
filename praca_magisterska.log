@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.1.18)  9 JUN 2017 22:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.1.18)  15 JUN 2017 13:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1419,6 +1419,9 @@ LaTeX Warning: Label `fig:rails_proj_structure' multiply defined.
 
 LaTeX Warning: Label `fig:rails_proj_structure' multiply defined.
 
+
+LaTeX Warning: Label `fig:roda_proj_structure' multiply defined.
+
 )
 \openout1 = `praca_magisterska.aux'.
 
@@ -1546,7 +1549,7 @@ Non-PDF special ignored!
 tifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.37 ...anych projekt\IeC {\'o}w}{23}{section.6.3}
+l.37 ...anych projekt\IeC {\'o}w}{25}{section.6.3}
                                                    [1])
 \tf@toc=\write6
 \openout6 = `praca_magisterska.toc'.
@@ -1657,79 +1660,89 @@ Rozdzia\l  5.
 [15
 
 
-] [16]
-Rozdzia\l  6.
-<pictures/use_cases.png, id=388, 631.51369pt x 494.24919pt>
-File: pictures/use_cases.png Graphic file (type png)
-
-<use pictures/use_cases.png>
-Package pdftex.def Info: pictures/use_cases.png used on input line 493.
-(pdftex.def)             Requested size: 455.24408pt x 356.29655pt.
- [17
+] [16] [17] [18
 
 
 ]
-Overfull \hbox (137.7331pt too wide) in paragraph at lines 500--501
+Rozdzia\l  6.
+<pictures/use_cases.png, id=405, 631.51369pt x 494.24919pt>
+File: pictures/use_cases.png Graphic file (type png)
+
+<use pictures/use_cases.png>
+Package pdftex.def Info: pictures/use_cases.png used on input line 521.
+(pdftex.def)             Requested size: 455.24408pt x 356.29655pt.
+ [19]
+Overfull \hbox (137.7331pt too wide) in paragraph at lines 528--529
 \OT4/cmr/m/n/12 ±ci", zbiór za-wiera 256796 obiek-tów, do-st¦pny jest pod ad-re
 -sem http://www.codgik.gov.pl/index.php/darmowe-
  []
 
-<pictures/erd.png, id=396, 482.80376pt x 316.18124pt>
+<pictures/erd.png, id=412, 482.80376pt x 316.18124pt>
 File: pictures/erd.png Graphic file (type png)
  <use pictures/erd.png>
-Package pdftex.def Info: pictures/erd.png used on input line 509.
+Package pdftex.def Info: pictures/erd.png used on input line 537.
 (pdftex.def)             Requested size: 455.24408pt x 298.14154pt.
 
-[18 <./pictures/use_cases.png>]
-<pictures/app.png, id=404, 1684.2925pt x 962.59625pt>
+[20 <./pictures/use_cases.png>]
+<pictures/app.png, id=420, 1684.2925pt x 962.59625pt>
 File: pictures/app.png Graphic file (type png)
  <use pictures/app.png>
-Package pdftex.def Info: pictures/app.png used on input line 518.
+Package pdftex.def Info: pictures/app.png used on input line 546.
 (pdftex.def)             Requested size: 455.24408pt x 260.16884pt.
 
-[19 <./pictures/erd.png (PNG copy)> <./pictures/app.png>] [20]
+[21 <./pictures/erd.png (PNG copy)> <./pictures/app.png>] [22]
 (/usr/local/texlive/2016/texmf-dist/tex/latex/ucs/utf8x.def
 File: utf8x.def 2004/10/17 UCS: Input encoding UTF-8
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 550.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 578.
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/ucs/utf8x.def
 File: utf8x.def 2004/10/17 UCS: Input encoding UTF-8
 )
-LaTeX Font Info:    Try loading font information for OML+cmr on input line 562.
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 590.
 
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/base/omlcmr.fd
 File: omlcmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 562.
- [21]
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 590.
+ [23]
 (/usr/local/texlive/2016/texmf-dist/tex/latex/ucs/utf8x.def
 File: utf8x.def 2004/10/17 UCS: Input encoding UTF-8
 )
-Overfull \hbox (73.09966pt too wide) in paragraph at lines 652--653
+Overfull \hbox (73.09966pt too wide) in paragraph at lines 680--681
 [][] 
  []
 
 
-Overfull \hbox (59.02065pt too wide) in paragraph at lines 685--686
+Overfull \hbox (59.02065pt too wide) in paragraph at lines 713--714
 [][] 
  []
 
-[22]
-Overfull \hbox (87.15294pt too wide) in paragraph at lines 736--737
+[24]
+Overfull \hbox (87.15294pt too wide) in paragraph at lines 764--765
 [][] 
  []
 
 
-Overfull \hbox (34.3335pt too wide) in paragraph at lines 782--783
+Overfull \hbox (34.3335pt too wide) in paragraph at lines 810--811
 [][] 
  []
 
-[23] [24]
-Overfull \hbox (6.60358pt too wide) in paragraph at lines 823--823
+[25] [26]
+Overfull \hbox (17.52464pt too wide) in paragraph at lines 879--880
+[][] 
+ []
+
+
+Overfull \hbox (15.79564pt too wide) in paragraph at lines 913--914
+[][] 
+ []
+
+[27]
+Overfull \hbox (6.60358pt too wide) in paragraph at lines 942--942
 []\OT4/cmr/bx/n/17.28 Porównianie wy-daj-no-±ci za-im-ple-me-to-wa-nych apli-
  []
 
@@ -1740,7 +1753,7 @@ PGFPlots: reading {results/hanami_cud_point_capybara_50.csv}
 Missing character: There is no ; in font nullfont!
 PGFPlots: reading {results/roda_cud_point_capybara_50.csv}
 Missing character: There is no ; in font nullfont!
-[25]
+[28]
 PGFPlots: reading {results/rails_read_points_capybara_50.csv}
 Missing character: There is no ; in font nullfont!
 PGFPlots: reading {results/hanami_read_points_capybara_50.csv}
@@ -1754,7 +1767,7 @@ PGFPlots: reading {results/hanami_cud_line_capybara_50.csv}
 Missing character: There is no ; in font nullfont!
 PGFPlots: reading {results/roda_cud_line_capybara_50.csv}
 Missing character: There is no ; in font nullfont!
- [26]
+ [29]
 PGFPlots: reading {results/rails_read_lines_capybara_50.csv}
 Missing character: There is no ; in font nullfont!
 PGFPlots: reading {results/hanami_read_lines_capybara_50.csv}
@@ -1768,7 +1781,7 @@ PGFPlots: reading {results/hanami_cud_polygon_capybara_50.csv}
 Missing character: There is no ; in font nullfont!
 PGFPlots: reading {results/roda_cud_polygon_capybara_50.csv}
 Missing character: There is no ; in font nullfont!
- [27]
+ [30]
 PGFPlots: reading {results/rails_read_polygons_capybara_50.csv}
 Missing character: There is no ; in font nullfont!
 PGFPlots: reading {results/hanami_read_polygons_capybara_50.csv}
@@ -1782,7 +1795,7 @@ PGFPlots: reading {results/http/hanami_crud_point_http_50.csv}
 Missing character: There is no ; in font nullfont!
 PGFPlots: reading {results/http/roda_crud_point_http_50.csv}
 Missing character: There is no ; in font nullfont!
- [28]
+ [31]
 PGFPlots: reading {results/http/rails_read_points_http_50.csv}
 Missing character: There is no ; in font nullfont!
 PGFPlots: reading {results/http/hanami_read_points_http_50.csv}
@@ -1795,7 +1808,7 @@ PGFPlots: reading {results/load/hanami_point_avg_time.csv}
 Missing character: There is no ; in font nullfont!
 PGFPlots: reading {results/load/roda_point_avg_time.csv}
 Missing character: There is no ; in font nullfont!
- [29]
+ [32]
 PGFPlots: reading {results/load/rails_point_rps.csv}
 Missing character: There is no ; in font nullfont!
 PGFPlots: reading {results/load/hanami_point_rps.csv}
@@ -1809,7 +1822,7 @@ PGFPlots: reading {results/http/hanami_crud_line_http_50.csv}
 Missing character: There is no ; in font nullfont!
 PGFPlots: reading {results/http/roda_crud_line_http_50.csv}
 Missing character: There is no ; in font nullfont!
- [30]
+ [33]
 PGFPlots: reading {results/http/rails_read_lines_http_50.csv}
 Missing character: There is no ; in font nullfont!
 PGFPlots: reading {results/http/hanami_read_lines_http_50.csv}
@@ -1822,7 +1835,7 @@ PGFPlots: reading {results/load/hanami_line_avg_time.csv}
 Missing character: There is no ; in font nullfont!
 PGFPlots: reading {results/load/roda_line_avg_time.csv}
 Missing character: There is no ; in font nullfont!
- [31]
+ [34]
 PGFPlots: reading {results/load/rails_line_rps.csv}
 Missing character: There is no ; in font nullfont!
 PGFPlots: reading {results/load/hanami_line_rps.csv}
@@ -1836,7 +1849,7 @@ PGFPlots: reading {results/http/hanami_crud_polygon_http_50.csv}
 Missing character: There is no ; in font nullfont!
 PGFPlots: reading {results/http/roda_crud_polygon_http_50.csv}
 Missing character: There is no ; in font nullfont!
- [32]
+ [35]
 PGFPlots: reading {results/http/rails_read_polygons_http_50.csv}
 Missing character: There is no ; in font nullfont!
 PGFPlots: reading {results/http/hanami_read_polygons_http_50.csv}
@@ -1849,7 +1862,7 @@ PGFPlots: reading {results/load/hanami_polygon_avg_time.csv}
 Missing character: There is no ; in font nullfont!
 PGFPlots: reading {results/load/roda_polygon_avg_time.csv}
 Missing character: There is no ; in font nullfont!
- [33]
+ [36]
 PGFPlots: reading {results/load/rails_polygon_rps.csv}
 Missing character: There is no ; in font nullfont!
 PGFPlots: reading {results/load/hanami_polygon_rps.csv}
@@ -1863,7 +1876,7 @@ PGFPlots: reading {results/model/hanami_crud_point_model_50.csv}
 Missing character: There is no ; in font nullfont!
 PGFPlots: reading {results/model/roda_crud_point_model_50.csv}
 Missing character: There is no ; in font nullfont!
- [34]
+ [37]
 PGFPlots: reading {results/model/rails_read_points_model_50.csv}
 Missing character: There is no ; in font nullfont!
 PGFPlots: reading {results/model/hanami_read_points_model_50.csv}
@@ -1877,7 +1890,7 @@ PGFPlots: reading {results/model/hanami_crud_line_model_50.csv}
 Missing character: There is no ; in font nullfont!
 PGFPlots: reading {results/model/roda_crud_line_model_50.csv}
 Missing character: There is no ; in font nullfont!
- [35]
+ [38]
 PGFPlots: reading {results/model/rails_read_lines_model_50.csv}
 Missing character: There is no ; in font nullfont!
 PGFPlots: reading {results/model/hanami_read_lines_model_50.csv}
@@ -1891,65 +1904,71 @@ PGFPlots: reading {results/model/hanami_crud_polygon_model_50.csv}
 Missing character: There is no ; in font nullfont!
 PGFPlots: reading {results/model/roda_crud_polygon_model_50.csv}
 Missing character: There is no ; in font nullfont!
- [36]
+ [39]
 PGFPlots: reading {results/model/rails_read_polygons_model_50.csv}
 Missing character: There is no ; in font nullfont!
 PGFPlots: reading {results/model/hanami_read_polygons_model_50.csv}
 Missing character: There is no ; in font nullfont!
 PGFPlots: reading {results/model/roda_read_polygons_model_50.csv}
 Missing character: There is no ; in font nullfont!
- [37] [38
-
-
-]
+ [40]
 Rozdzia\l  7.
-[39] [40
+[41
+
+
+] [42
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 1543--1544
+Underfull \hbox (badness 2990) in paragraph at lines 1641--1642
+[]$\OT4/cmtt/m/n/12 https : / / developers . google . com / maps / documentatio
+n / javascript/$[]\OT4/cmr/m/n/12 , ak-tu-alne
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1674--1675
 []$\OT4/cmtt/m/n/12 http : / / roda . jeremyevans . net / documentation . html$
 []\OT4/cmr/m/n/12 , ak-tu-alne na dzie«
  []
 
 
-Underfull \hbox (badness 4144) in paragraph at lines 1546--1547
+Underfull \hbox (badness 4144) in paragraph at lines 1677--1678
 []$\OT4/cmtt/m/n/12 https : / / www . gaia-[]gis . it / fossil / libspatialite 
 / index$[]\OT4/cmr/m/n/12 , ak-tu-alne na dzie«
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 1552--1553
+[43]
+Underfull \hbox (badness 10000) in paragraph at lines 1683--1684
 []$\OT4/cmtt/m/n/12 https : / / 8thlight . com / blog / uncle-[]bob / 2012 / 08
  / 13 /
  []
 
-[41]
-Underfull \hbox (badness 10000) in paragraph at lines 1562--1564
+
+Underfull \hbox (badness 10000) in paragraph at lines 1693--1695
 []$\OT4/cmtt/m/n/12 http : / / poznajprogramowanie . pl / czym-[]jest-[]framewo
 rk-[]i-[]po-[]co-[]go-[]uzywac/$[]\OT4/cmr/m/n/12 ,
  []
 
-[42]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1569.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1569.
+[44]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1700.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1700.
  (./praca_magisterska.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1569.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1569.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1700.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1700.
 
 Package rerunfilecheck Info: File `praca_magisterska.out' has not changed.
-(rerunfilecheck)             Checksum: D2BF1499A13ABAB95E70A817E9621151;3042.
+(rerunfilecheck)             Checksum: 47C5327DB6C1785DA09CCE0E512E5325;3057.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1569.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1700.
  ) 
 Here is how much of TeX's memory you used:
- 55003 strings out of 493014
- 1465877 string characters out of 6133351
- 1450177 words of memory out of 5000000
- 57539 multiletter control sequences out of 15000+600000
+ 56207 strings out of 493014
+ 1521799 string characters out of 6133351
+ 1450312 words of memory out of 5000000
+ 58736 multiletter control sequences out of 15000+600000
  18184 words of font info for 49 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  163i,19n,198p,10386b,4941s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1971,10 +1990,10 @@ ive/2016/texmf-dist/fonts/type1/public/pl/plr8.pfb></usr/local/texlive/2016/tex
 mf-dist/fonts/type1/public/pl/plsy10.pfb></usr/local/texlive/2016/texmf-dist/fo
 nts/type1/public/pl/plti12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/
 public/pl/pltt12.pfb>
-Output written on praca_magisterska.pdf (44 pages, 6538807 bytes).
+Output written on praca_magisterska.pdf (46 pages, 6550576 bytes).
 PDF statistics:
- 720 PDF objects out of 1000 (max. 8388607)
- 640 compressed objects within 7 object streams
- 218 named destinations out of 1000 (max. 500000)
+ 742 PDF objects out of 1000 (max. 8388607)
+ 660 compressed objects within 7 object streams
+ 225 named destinations out of 1000 (max. 500000)
  412 words of extra memory for PDF output out of 10000 (max. 10000000)
 

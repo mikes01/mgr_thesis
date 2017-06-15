@@ -442,10 +442,36 @@ Hanami jest lekkim frameworkiem internetowym opartym o~architekturę MVC, zbudow
 \section{Przechowywanie danych}
 Omawiane frameworki domyślnie wykorzystują relacyjną bazę danych do przechowywania informacji. Najpopularniejsze bazy danych to PostgreSQL, MySQL, SQLite.
 \subsection{PostgreSQL}
-PostgreSQL posiada kilka wbudowanych typów przestrzennych: \textit{Point, Lines, Line Segment, Box, Path, Polygon, Circle}. Dane są zapisane jako łańcuch znaków zawierające współrzędne geograficzne. PostgreSQL dostarcza niewiele funkcji do wyszukiwania danych.
+PostgreSQL posiada kilka wbudowanych typów przestrzennych\cite{doc_postgresql}: 
+\begin{itemize}
+  \item Point - reprezentuje punkt na mapie, to podstawowy typ, który służy do budowania pozostałych typów przestrzennych. Dane zapisane są jako para współrzędnych w postaci tekstowej \textit{( x, y )}, gdzie x i y to liczby zmienno przecinkowe.
+  \item Line - prosta w znaczeniu geometrycznym, mogą być reprezentowane przez równanie liniowe \textit{Ax + By + C = 0}, wtedy w bazie danych zapisane są współczynniki \textit{A, B, C}. Innym sposobem reprezentacji tego typu są dwa punkty, przez które przechodzi prosta \textit{[ ( x1 , y1 ) , ( x2 , y2 ) ]
+  }.
+  \item Line Segment - w znaczeniu geometrycznym to odcinek, reprezentowany przez dwa punkty, początek i koniec odcinka \textit{[ ( x1 , y1 ) , ( x2 , y2 ) ]}.
+  \item Box - to czworokąty zapisane jako dwa przeciwległe wierzchołki \textit{( ( x1 , y1 ) , ( x2 , y2 ) )}.
+  \item Path - lista połączonych ze sobą punktów, ścieżka. Ścieżka może być otwarta, jeśli pierwszy i ostatni punkt nie są ze sobą połączone, lub zamknięta, jeśli pierwszy i ostatni punkt są ze sobą połączone. Nawiasy kwadratowe reprezentują otwartę ścieżkę \textit{[ ( x1 , y1 ) , ... , ( xn , yn ) ]}, zamnkięta ścieżka jest przedstawiona za pomocą okrągłych nawiasów \textit{( ( x1 , y1 ) , ... , ( xn , yn ) )}.
+  \item Polygon - to wielokąt zapisany za pomocą listy punktów, reprezentujących kolejne wierzchołki wielokątu \textit{( ( x1 , y1 ) , ... , ( xn , yn ) )}.
+  \item Circle - okrąg zapisany przy pomocy środka i promienia \textit{< ( x , y ) , r >}.
+\end{itemize}
+PostgreSQL dostarcza niewiele funkcji do wyszukiwania danych. Sprawdzenie zależności między dwoma punktami takich jak np. przecięcie dwóch obiektów lub zawieranie się jednego punktu w drugim nie jest dostępne dla typów \textit{Path} i \textit{Polygon}. 
 \subsection{PostGIS}
-PostGIS jest biblioteką rozszerzającą możliwości PostgreSQL w zakresie przetwarzania danych przestrzennych. Biblioteka jest wspierana przez fundacje Open Source Geospatial. Dane są zapisane w formie binarnej jako współrzędne geograficzne lub geometryczne w zależności od wyboru. 
+PostGIS jest biblioteką rozszerzającą możliwości PostgreSQL w zakresie przetwarzania danych przestrzennych. Biblioteka jest wspierana przez fundacje \textit{Open Source Geospatial}\cite{doc_postgis}. Dane są zapisane w formie binarnej jako współrzędne geograficzne lub geometryczne w zależności od wyboru. Postgis zapewnia wsparcie typów zdefiniowanych przez \textit{Open Geospatial Consortium}:
+\begin{itemize}
+  \item POINT - pojedynczy punkt na mapie.
+  \item LINESTRING - zbiór połączonych ze sobą punktów reprezentujący ścieżkę.
+  \item POLYGON - zbiór połączonych ze sobą punktów reprezentujący wierzchołki wielokątu.
+\end{itemize}
+\textit{Open Geospatial Consortium} definiuje również kolekcje obiektów powyższych typów:
+\begin{itemize}
+  \item MULTIPOINT - kolekcja punktów.
+  \item MULTILINESTRING - kolekcja linii.
+  \item MULTIPOLYGON - kolekcja wielokątów.
+  \item GEOMETRYCOLLECTION - kolekcja dowolnych obiektów geometrycznych.
+\end{itemize}
+Dla wszystkich typów dostępny jest taki sam zestaw funkcji, które np. sprawdzają zależności między dwoma obiektami, co jest pomocne przy wyszukiwaniu obiektów.
+
 \subsection{MySQL Spatial}
+MySQL Spatial jest rozszerzeniem dla bazy MySQL, które dostarcza wsparcie dla danych przestrzennych. Rozszerzenie dostarcza typy danych zdefiniowane przez grupę \textit{Open Geospatial Consortium}\cite{doc_mysql}. Zbiór funkcjonalności pokrywa się z funkcjonalnościami rozszerzenia Postgis.
 \subsection{SpatiaLite}
 SpatiaLite jest rozszerzeniem dla bazy danych SQLite, które zawiera wsparcie dla typów przestrzennych zdefiniowanych przez grupę \textit{Open Geospatial Consortium}\cite{doc_spatialite}: \textit{Point, Line, Multiline, Polygon, Multipolygon}. Cała baza danych zapisana jest w pojedynczym pliku. Biblioteka udostępniona jest na zasadzie otwartego źródła.
 
@@ -454,13 +480,15 @@ SpatiaLite jest rozszerzeniem dla bazy danych SQLite, które zawiera wsparcie dl
 RGeo wspiera typy danych zdefiniowane przez \textit{Open Geospatial Consortium}, takie jak punkt, linia i wielokąt. Dane są reprezentowane w formie obiektowej. Biblioteka pozwala na podstawowe operacje analizowania danych przestrzennych, takie jak szukanie punktów przecięcia i obliczenia pola powierzchni. Biblioteka operuje na reprezentacji geograficznej i gemoetrycznej danych i pozwala konwertować dane pomiędzy dostępnymi reprezentacjami. RGeo udostępnia udostępnia jedynie interfejs w języku Ruby dla programistów, a do obsługi danych geograficznej korzysta z bibliotek GEOS i proj.4, te biblioteki są napisane w języku C++.
 
 \subsection{GeoRuby}
-GeoRuby 
+GeoRuby jest biblioteką całkowicie napisaną za pomocą języka Ruby do przetwarzania danych przestrzennych. Biblioteka ściśle podąża za modelem danych definiowanych przez \textit{Open Geospatial Consortium}, dlatego dobrze łączy się z takimi bazami danych jak Postgis, Mysql Spatial, SpatiaLite i innymi, które również wspierają typu opracowane przez OGC\cite{doc_georuby}.
 
 \section{Prezentowanie danych}
 \label{sec:maps-tools}
 \subsection{Leaflet}
-\subsection{GoogleMaps}
+Leaflet jest biblioteką napisaną w języku Javascript, która pozwala dodać interaktywną mapę do widoku aplikacji internetowej. Biblioteka nie dostarcza graficznej reprezentacji mapy, ale zapewnia obsługę mapy z zewnętrznego serwisu np. OpenStreetMap. Do mapy można dodawać interaktywne obiekty. Biblioteka dostępna jest na zasadzie otwartego źródła.\cite{doc_leaflet}
 
+\subsection{GoogleMaps JavaScript API}
+GoogleMaps JavaScript API pozwala dołączyć mapę z serwisu Google Maps. Mapa jest interaktywna i pozwala wyświetlać obiekty dodane przez programistę. W darmowejwersji GoogleMaps API pozwala wczytać mapę 25 000 razy w ciągu dnia.\cite{doc_google}
 
 
 \chapter{Badania}
@@ -819,6 +847,97 @@ Ruby on Rails posiada zdecydowanie więcej gotowych narzędzi do pracy z danymi 
   \caption{Struktura projektu Rails}
   \label{fig:rails_proj_structure}
 \end{figure}
+
+\begin{figure}[H]
+  \centering
+  \begin{minipage}[H]{0.4\textwidth}
+    \begin{forest}
+      pic dir tree,
+      where level=0{}{% folder icons by default; override using file for file icons
+        directory,
+      },
+      [roda\_project
+        [assets
+          [js
+            [application.js 17, file]
+            [checkboxes.js 63, file]
+            [leaflet.js 5, file]
+            [line\_form.js 58, file]
+            [lines.js 39, file]
+            [point\_form.js 59, file]
+            [points.js 66, file]
+            [polygon\_form.js 60, file]
+            [polygons.js 37, file]
+            [map.js 41, file]
+          ]
+          [css
+            [leaflet.css 548, file]
+            [main.css.scss 34, file]
+          ]
+        ]
+      [...]]
+    \end{forest}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[t!]{0.4\textwidth}
+    \begin{forest}
+      pic dir tree,
+      where level=0{}{% folder icons by default; override using file for file icons
+        directory,
+      },
+      [...
+        [models
+          [concerns
+            [gis\_support.rb 16, file]
+          ]
+          [line.rb 20, file]
+          [point.rb 23, file]
+          [polygon.rb 19, file]
+        ]
+        [routes
+          [lines.rb 47, file]
+          [points.rb 47, file]
+          [polygons.rb 47, file]
+        ]
+        [views
+          [shared
+            [\_line\_form.erb 12, file]
+            [\_point\_form.erb 17, file]
+          ]
+          [index.erb 92, file]
+          [layout.erb 14, file]
+        ]
+        [app.rb 33, file]
+        [models.rb 24, file]
+      ]
+    \end{forest}
+  \end{minipage}  
+  \caption{Struktura projektu Roda}
+  \label{fig:roda_proj_structure}
+\end{figure}
+
+% \begin{figure}[H]
+%   \centering
+%   \begin{tikzpicture}
+%     \begin{axis}[
+%       width = 0.8\linewidth,
+%       height = 0.5\linewidth,
+%       ybar=8pt,
+%       enlarge x limits=0.15,
+%       ymin=0,
+%       xtick=none,
+%       legend pos=outer north east,
+%       ylabel={Liczba plików},
+%       nodes near coords,
+%       nodes near coords align={vertical},
+%       compat=1.8]
+%       \addplot coordinates {(,1), (,2), (,3) };
+%       \legend{hanami, rails, roda}
+%     \end{axis}
+%   \end{tikzpicture}
+%   \caption{Liczba plików w projekcie w zależności od użytego frameworka}
+%   \label{fig:files_count}
+% \end{figure}
 
 \section{Porównianie  wydajności zaimplemetowanych aplikacji}
 \subsection{Interfejs użytkownika}
@@ -1515,8 +1634,17 @@ Ruby on Rails posiada zdecydowanie więcej gotowych narzędzi do pracy z danymi 
 \begin{thebibliography}{inz}
   \addcontentsline{toc}{chapter}{Literatura}
 
+  \bibitem{doc_georuby}
+  \emph{Dokumentacja biblioteki GeoRuby}, dostępna pod adresem:\\ \url{https://github.com/nofxx/georuby}, aktualne na dzień 15.06.2017r.
+
+  \bibitem{doc_google}
+  \emph{Dokumentacja biblioteki Google Maps JavaScript API}, dostępna pod adresem:\\ \url{https://developers.google.com/maps/documentation/javascript/}, aktualne na dzień 15.06.2017r.
+
+  \bibitem{doc_leaflet}
+  \emph{Dokumentacja biblioteki Leaflet}, dostępna pod adresem:\\ \url{http://leafletjs.com/reference-1.0.3.html}, aktualne na dzień 15.06.2017r.
+
   \bibitem{doc_rgeo}
-  \emph{Dokumentacja biblioteki Rgeo}, dostępna pod adresem:\\ \url{http://www.rubydoc.info/gems/rgeo/}, aktualne na dzień 08.03.2017r.
+  \emph{Dokumentacja biblioteki Rgeo}, dostępna pod adresem:\\ \url{https://github.com/rgeo/rgeo}, aktualne na dzień 15.06.2017r.
 
   \bibitem{doc_hanami}
   \emph{Dokumentacja Hanami}, dostępna pod adresem:\\ \url{http://hanamirb.org/guides/}, aktualne na dzień 08.03.2017r.
@@ -1526,6 +1654,9 @@ Ruby on Rails posiada zdecydowanie więcej gotowych narzędzi do pracy z danymi 
 
   \bibitem{doc_mango}
   \emph{Dokumentacja MangoMap}, dostępna pod adresem:\\ \url{http://help.mangomap.com/}, aktualne na dzień 22.04.2017r.
+
+  \bibitem{doc_mysql}
+  \emph{Dokumentacja MySQL}, dostępna pod adresem:\\ \url{https://dev.mysql.com/doc/refman/5.7/en/}, aktualne na dzień 15.06.2017r.
 
   \bibitem{doc_osm}
   \emph{Dokumentacja OpenStreetMap}, dostępna pod adresem:\\ \url{http://wiki.openstreetmap.org/}, aktualne na dzień 08.03.2017r.

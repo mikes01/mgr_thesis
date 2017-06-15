@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1497038881 "praca_magisterska.tex" "praca_magisterska.pdf" "praca_magisterska" 1497038898
+["pdflatex"] 1497524910 "praca_magisterska.tex" "praca_magisterska.pdf" "praca_magisterska" 1497524926
   "/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/pl/plit.enc" 1136849721 1946 62ba825cda1ff16dbaa60d53ac60525a ""
   "/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/pl/plmi.enc" 1136849721 2005 f094775651a1386335c158fb632529f1 ""
   "/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/pl/plms.enc" 1136849721 2468 3f9e2f3088bcf5b581dfc367d71e7d95 ""
@@ -265,10 +265,10 @@
   "pictures/roda_architecture.png" 1497032209 22236 90727f2fdb54db95c9f25a1158576f4c ""
   "pictures/ruby_tiobe.png" 1491684317 43219 4d2be983462dcc0ffb81f7287e20c668 ""
   "pictures/use_cases.png" 1495901157 121868 89062c0c05c41c043cc0acbf2e529f54 ""
-  "praca_magisterska.aux" 1497038897 17979 52f4d0c3fc0b34d6ee9b33533bef3934 ""
-  "praca_magisterska.out" 1497038897 3042 d2bf1499a13abab95e70a817e9621151 ""
-  "praca_magisterska.tex" 1497038866 69382 dcb124a77e2af8c3fdd2807572920fb1 ""
-  "praca_magisterska.toc" 1497038897 3938 8d83c0493c931478affdcf9ec9fcb412 ""
+  "praca_magisterska.aux" 1497524926 18392 10c495f0462b490452fb82606bbc58ba ""
+  "praca_magisterska.out" 1497524926 3057 47c5327db6c1785da09cce0e512e5325 ""
+  "praca_magisterska.tex" 1497524894 76237 c8e9c5e03c3b9a629189be6f2327a0c8 ""
+  "praca_magisterska.toc" 1497524926 3953 531e872e13cad9188539cd32f1aba246 ""
   "results/hanami_cud_line_capybara_50.csv" 1496694212 149 f26db5c377eae59acf337dda5fc7be75 ""
   "results/hanami_cud_point_capybara_50.csv" 1496691884 152 23c9f230b014d98604318f04e787ce89 ""
   "results/hanami_cud_polygon_capybara_50.csv" 1496696310 168 d64adbcdf243d8157bde728e32ede7cc ""
@@ -343,7 +343,7 @@
   "results/roda_read_polygons_capybara_50.csv" 1496864597 119 ea0873d8ff69c2067b73eac6256a4882 ""
   (generated)
   "praca_magisterska.pdf"
-  "praca_magisterska.log"
   "praca_magisterska.out"
-  "praca_magisterska.aux"
+  "praca_magisterska.log"
   "praca_magisterska.toc"
+  "praca_magisterska.aux"
