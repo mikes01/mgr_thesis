@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.1.18)  15 JUN 2017 13:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.1.18)  21 JUN 2017 22:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1412,17 +1412,7 @@ Package: pgfplotstable 2016/01/06 v1.13 Table typesetting and Pretty-printing (
 (/usr/local/texlive/2016/texmf-dist/tex/generic/pgfplots/numtable/pgfplotstable
 .code.tex
 (/usr/local/texlive/2016/texmf-dist/tex/generic/pgfplots/numtable/pgfplotstable
-.coltype.code.tex))) (./praca_magisterska.aux
-
-LaTeX Warning: Label `fig:rails_proj_structure' multiply defined.
-
-
-LaTeX Warning: Label `fig:rails_proj_structure' multiply defined.
-
-
-LaTeX Warning: Label `fig:roda_proj_structure' multiply defined.
-
-)
+.coltype.code.tex))) (./praca_magisterska.aux)
 \openout1 = `praca_magisterska.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 167.
@@ -1441,7 +1431,8 @@ LaTeX Font Info:    Checking defaults for OT4/cmr/m/n on input line 167.
 LaTeX Font Info:    ... okay on input line 167.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 167.
 LaTeX Font Info:    ... okay on input line 167.
- (/usr/local/texlive/2016/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+
+(/usr/local/texlive/2016/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count188
 \scratchdimen=\dimen292
@@ -1549,7 +1540,7 @@ Non-PDF special ignored!
 tifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.37 ...anych projekt\IeC {\'o}w}{25}{section.6.3}
+l.37 ...anych projekt\IeC {\'o}w}{26}{section.6.3}
                                                    [1])
 \tf@toc=\write6
 \openout6 = `praca_magisterska.toc'.
@@ -1570,12 +1561,6 @@ LaTeX Font Info:    External font `plex10' loaded for size
 
 ]
 Rozdzia\l  2.
-
-Overfull \hbox (30.02171pt too wide) in paragraph at lines 189--190
-\OT4/cmr/m/n/12 tion Sys-tem) mo»na zde-fi-nio-wa¢ na wiele spo-so-bów. Mi-chae
-l Schmandt w swoim opracowaniu[[]]
- []
-
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 195.
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/base/omscmr.fd
@@ -1583,19 +1568,8 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 195.
-
-Overfull \hbox (1.08946pt too wide) in paragraph at lines 205--206
- []\OT4/cmr/bx/n/12 Definicja 3. \OT4/cmr/m/n/12 GIS to na-rz¦-dzie do wy-szu-k
-i-wa-nia wzor-ców geo-gra-ficz-nych(przestrzennych)
- []
-
-[5]
-Underfull \hbox (badness 10000) in paragraph at lines 220--220
-[][][]\OT4/cmr/m/n/10 wypowied¹ w li-±cie ruby-talk 12.05.2000 r., ¹ró-dªo: htt
-p://blade.nagaokaut.ac.jp/cgi-
- []
-
-<pictures/ruby_tiobe.png, id=285, 917.4275pt x 458.71375pt>
+ [5]
+<pictures/ruby_tiobe.png, id=290, 917.4275pt x 458.71375pt>
 File: pictures/ruby_tiobe.png Graphic file (type png)
 
 <use pictures/ruby_tiobe.png>
@@ -1611,7 +1585,7 @@ Rozdzia\l  3.
 
 ]
 Rozdzia\l  4.
-[9] <pictures/rails_mvc.png, id=322, 589.20125pt x 476.78125pt>
+[9] <pictures/rails_mvc.png, id=327, 589.20125pt x 476.78125pt>
 File: pictures/rails_mvc.png Graphic file (type png)
 
 <use pictures/rails_mvc.png>
@@ -1629,7 +1603,7 @@ LaTeX Font Info:    Try loading font information for OT4+cmtt on input line 329
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/polski/ot4cmtt.fd
 File: ot4cmtt.fd 2008/02/24 v1.2.1 Font defs for fonts PL (MW)
-)
+) [11]
 (/usr/local/texlive/2016/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
@@ -1638,20 +1612,20 @@ File: lstlang2.sty 2015/06/04 1.6 listings language file
 )
 (/usr/local/texlive/2016/texmf-dist/tex/latex/ucs/utf8x.def
 File: utf8x.def 2004/10/17 UCS: Input encoding UTF-8
-) [11]
+)
 <pictures/roda_architecture.png, id=350, 542.75255pt x 378.8112pt>
 File: pictures/roda_architecture.png Graphic file (type png)
 
 <use pictures/roda_architecture.png>
-Package pdftex.def Info: pictures/roda_architecture.png used on input line 362.
+Package pdftex.def Info: pictures/roda_architecture.png used on input line 363.
 
 (pdftex.def)             Requested size: 455.24408pt x 317.73103pt.
  [12 <./pictures/roda_architecture.png (PNG copy)>] <pictures/clean_architectur
-e.jpg, id=363, 774.895pt x 569.12625pt>
+e.jpg, id=368, 774.895pt x 569.12625pt>
 File: pictures/clean_architecture.jpg Graphic file (type jpg)
 
 <use pictures/clean_architecture.jpg>
-Package pdftex.def Info: pictures/clean_architecture.jpg used on input line 393
+Package pdftex.def Info: pictures/clean_architecture.jpg used on input line 394
 .
 (pdftex.def)             Requested size: 455.24408pt x 334.35738pt.
  [13 <./pictures/clean_architecture.jpg>]
@@ -1665,84 +1639,120 @@ Rozdzia\l  5.
 
 ]
 Rozdzia\l  6.
-<pictures/use_cases.png, id=405, 631.51369pt x 494.24919pt>
+<pictures/use_cases.png, id=417, 631.51369pt x 494.24919pt>
 File: pictures/use_cases.png Graphic file (type png)
 
 <use pictures/use_cases.png>
-Package pdftex.def Info: pictures/use_cases.png used on input line 521.
+Package pdftex.def Info: pictures/use_cases.png used on input line 522.
 (pdftex.def)             Requested size: 455.24408pt x 356.29655pt.
  [19]
-Overfull \hbox (137.7331pt too wide) in paragraph at lines 528--529
+Overfull \hbox (137.7331pt too wide) in paragraph at lines 529--530
 \OT4/cmr/m/n/12 ±ci", zbiór za-wiera 256796 obiek-tów, do-st¦pny jest pod ad-re
 -sem http://www.codgik.gov.pl/index.php/darmowe-
  []
 
-<pictures/erd.png, id=412, 482.80376pt x 316.18124pt>
+<pictures/erd.png, id=424, 482.80376pt x 316.18124pt>
 File: pictures/erd.png Graphic file (type png)
  <use pictures/erd.png>
-Package pdftex.def Info: pictures/erd.png used on input line 537.
+Package pdftex.def Info: pictures/erd.png used on input line 538.
 (pdftex.def)             Requested size: 455.24408pt x 298.14154pt.
 
-[20 <./pictures/use_cases.png>]
-<pictures/app.png, id=420, 1684.2925pt x 962.59625pt>
+[20 <./pictures/use_cases.png (PNG copy)>]
+<pictures/app.png, id=431, 1684.2925pt x 962.59625pt>
 File: pictures/app.png Graphic file (type png)
  <use pictures/app.png>
-Package pdftex.def Info: pictures/app.png used on input line 546.
+Package pdftex.def Info: pictures/app.png used on input line 547.
 (pdftex.def)             Requested size: 455.24408pt x 260.16884pt.
 
-[21 <./pictures/erd.png (PNG copy)> <./pictures/app.png>] [22]
-(/usr/local/texlive/2016/texmf-dist/tex/latex/ucs/utf8x.def
+[21 <./pictures/erd.png (PNG copy)> <./pictures/app.png>]
+Overfull \hbox (8.32358pt too wide) in paragraph at lines 583--583
+[]\OT4/cmr/bx/n/17.28 Porównanie funk-cjo-nal-no-±ci wy-bra-nych fra-me-wor-
+ []
+
+[22] [23] (/usr/local/texlive/2016/texmf-dist/tex/latex/ucs/utf8x.def
 File: utf8x.def 2004/10/17 UCS: Input encoding UTF-8
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 578.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 607.
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/ucs/utf8x.def
 File: utf8x.def 2004/10/17 UCS: Input encoding UTF-8
 )
-LaTeX Font Info:    Try loading font information for OML+cmr on input line 590.
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 619.
 
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/base/omlcmr.fd
 File: omlcmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 590.
- [23]
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 619.
+ [24]
 (/usr/local/texlive/2016/texmf-dist/tex/latex/ucs/utf8x.def
 File: utf8x.def 2004/10/17 UCS: Input encoding UTF-8
-)
-Overfull \hbox (73.09966pt too wide) in paragraph at lines 680--681
+) [25]
+Overfull \hbox (73.09966pt too wide) in paragraph at lines 713--714
 [][] 
  []
 
 
-Overfull \hbox (59.02065pt too wide) in paragraph at lines 713--714
+Overfull \hbox (59.02065pt too wide) in paragraph at lines 746--747
 [][] 
  []
 
-[24]
-Overfull \hbox (87.15294pt too wide) in paragraph at lines 764--765
-[][] 
- []
-
-
-Overfull \hbox (34.3335pt too wide) in paragraph at lines 810--811
-[][] 
- []
-
-[25] [26]
-Overfull \hbox (17.52464pt too wide) in paragraph at lines 879--880
+[26]
+Overfull \hbox (17.52464pt too wide) in paragraph at lines 785--786
 [][] 
  []
 
 
-Overfull \hbox (15.79564pt too wide) in paragraph at lines 913--914
+Overfull \hbox (15.79564pt too wide) in paragraph at lines 819--820
 [][] 
  []
 
-[27]
-Overfull \hbox (6.60358pt too wide) in paragraph at lines 942--942
+
+Overfull \hbox (87.15294pt too wide) in paragraph at lines 870--871
+[][] 
+ []
+
+
+Overfull \hbox (34.3335pt too wide) in paragraph at lines 916--917
+[][] 
+ []
+
+[27] [28]
+
+Package pgfplots Warning: Axis range for axis x is approximately empty; enlargi
+ng it (it is [1.0000000000:1.0000000000]) on input line 977.
+
+ [warning /pgfplots/warning/approx empty range enlarged]
+
+Overfull \hbox (11.04161pt too wide) in paragraph at lines 978--979
+ [][] 
+ []
+
+[29]
+
+Package pgfplots Warning: Axis range for axis x is approximately empty; enlargi
+ng it (it is [1.0000000000:1.0000000000]) on input line 1001.
+
+ [warning /pgfplots/warning/approx empty range enlarged]
+
+Overfull \hbox (11.04161pt too wide) in paragraph at lines 1002--1003
+ [][] 
+ []
+
+
+Package pgfplots Warning: Axis range for axis x is approximately empty; enlargi
+ng it (it is [1.0000000000:1.0000000000]) on input line 1027.
+
+ [warning /pgfplots/warning/approx empty range enlarged]
+
+Overfull \hbox (11.04161pt too wide) in paragraph at lines 1028--1029
+ [][] 
+ []
+
+[30] [31]
+Overfull \hbox (6.60358pt too wide) in paragraph at lines 1034--1034
 []\OT4/cmr/bx/n/17.28 Porównianie wy-daj-no-±ci za-im-ple-me-to-wa-nych apli-
  []
 
@@ -1753,13 +1763,23 @@ PGFPlots: reading {results/hanami_cud_point_capybara_50.csv}
 Missing character: There is no ; in font nullfont!
 PGFPlots: reading {results/roda_cud_point_capybara_50.csv}
 Missing character: There is no ; in font nullfont!
-[28]
+
+Overfull \hbox (9.90053pt too wide) in paragraph at lines 1071--1072
+ [][] 
+ []
+
 PGFPlots: reading {results/rails_read_points_capybara_50.csv}
 Missing character: There is no ; in font nullfont!
 PGFPlots: reading {results/hanami_read_points_capybara_50.csv}
 Missing character: There is no ; in font nullfont!
 PGFPlots: reading {results/roda_read_points_capybara_50.csv}
 Missing character: There is no ; in font nullfont!
+
+Overfull \hbox (19.81725pt too wide) in paragraph at lines 1098--1099
+ [][] 
+ []
+
+[32]
 PGFPlots: reading {results/rails_cud_line_capybara_50.csv}
 PGFPlots: reading {results/rails_cud_line_capybara_50.csv}
 Missing character: There is no ; in font nullfont!
@@ -1767,13 +1787,23 @@ PGFPlots: reading {results/hanami_cud_line_capybara_50.csv}
 Missing character: There is no ; in font nullfont!
 PGFPlots: reading {results/roda_cud_line_capybara_50.csv}
 Missing character: There is no ; in font nullfont!
- [29]
+
+Overfull \hbox (11.74432pt too wide) in paragraph at lines 1133--1134
+ [][] 
+ []
+
 PGFPlots: reading {results/rails_read_lines_capybara_50.csv}
 Missing character: There is no ; in font nullfont!
 PGFPlots: reading {results/hanami_read_lines_capybara_50.csv}
 Missing character: There is no ; in font nullfont!
 PGFPlots: reading {results/roda_read_lines_capybara_50.csv}
 Missing character: There is no ; in font nullfont!
+
+Overfull \hbox (19.81194pt too wide) in paragraph at lines 1164--1165
+ [][] 
+ []
+
+[33]
 PGFPlots: reading {results/rails_cud_polygon_capybara_50.csv}
 PGFPlots: reading {results/rails_cud_polygon_capybara_50.csv}
 Missing character: There is no ; in font nullfont!
@@ -1781,13 +1811,24 @@ PGFPlots: reading {results/hanami_cud_polygon_capybara_50.csv}
 Missing character: There is no ; in font nullfont!
 PGFPlots: reading {results/roda_cud_polygon_capybara_50.csv}
 Missing character: There is no ; in font nullfont!
- [30]
+
+Overfull \hbox (17.39983pt too wide) in paragraph at lines 1197--1198
+ [][] 
+ []
+
+[34]
 PGFPlots: reading {results/rails_read_polygons_capybara_50.csv}
 Missing character: There is no ; in font nullfont!
 PGFPlots: reading {results/hanami_read_polygons_capybara_50.csv}
 Missing character: There is no ; in font nullfont!
 PGFPlots: reading {results/roda_read_polygons_capybara_50.csv}
 Missing character: There is no ; in font nullfont!
+
+Overfull \hbox (19.81386pt too wide) in paragraph at lines 1226--1227
+ [][] 
+ []
+
+[35]
 PGFPlots: reading {results/rails_cud_point_capybara_50.csv}
 PGFPlots: reading {results/http/rails_crud_point_http_50.csv}
 Missing character: There is no ; in font nullfont!
@@ -1795,26 +1836,46 @@ PGFPlots: reading {results/http/hanami_crud_point_http_50.csv}
 Missing character: There is no ; in font nullfont!
 PGFPlots: reading {results/http/roda_crud_point_http_50.csv}
 Missing character: There is no ; in font nullfont!
- [31]
+
+Overfull \hbox (12.51161pt too wide) in paragraph at lines 1267--1268
+ [][] 
+ []
+
 PGFPlots: reading {results/http/rails_read_points_http_50.csv}
 Missing character: There is no ; in font nullfont!
 PGFPlots: reading {results/http/hanami_read_points_http_50.csv}
 Missing character: There is no ; in font nullfont!
 PGFPlots: reading {results/http/roda_read_points_http_50.csv}
 Missing character: There is no ; in font nullfont!
+
+Overfull \hbox (19.81201pt too wide) in paragraph at lines 1294--1295
+ [][] 
+ []
+
+[36]
 PGFPlots: reading {results/load/rails_point_avg_time.csv}
 Missing character: There is no ; in font nullfont!
 PGFPlots: reading {results/load/hanami_point_avg_time.csv}
 Missing character: There is no ; in font nullfont!
 PGFPlots: reading {results/load/roda_point_avg_time.csv}
 Missing character: There is no ; in font nullfont!
- [32]
+
+Overfull \hbox (19.81305pt too wide) in paragraph at lines 1323--1324
+ [][] 
+ []
+
 PGFPlots: reading {results/load/rails_point_rps.csv}
 Missing character: There is no ; in font nullfont!
 PGFPlots: reading {results/load/hanami_point_rps.csv}
 Missing character: There is no ; in font nullfont!
 PGFPlots: reading {results/load/roda_point_rps.csv}
 Missing character: There is no ; in font nullfont!
+
+Overfull \hbox (19.11304pt too wide) in paragraph at lines 1352--1353
+ [][] 
+ []
+
+[37]
 PGFPlots: reading {results/http/rails_crud_line_http_50.csv}
 PGFPlots: reading {results/http/rails_crud_line_http_50.csv}
 Missing character: There is no ; in font nullfont!
@@ -1822,26 +1883,46 @@ PGFPlots: reading {results/http/hanami_crud_line_http_50.csv}
 Missing character: There is no ; in font nullfont!
 PGFPlots: reading {results/http/roda_crud_line_http_50.csv}
 Missing character: There is no ; in font nullfont!
- [33]
+
+Overfull \hbox (11.74432pt too wide) in paragraph at lines 1387--1388
+ [][] 
+ []
+
 PGFPlots: reading {results/http/rails_read_lines_http_50.csv}
 Missing character: There is no ; in font nullfont!
 PGFPlots: reading {results/http/hanami_read_lines_http_50.csv}
 Missing character: There is no ; in font nullfont!
 PGFPlots: reading {results/http/roda_read_lines_http_50.csv}
 Missing character: There is no ; in font nullfont!
+
+Overfull \hbox (19.81563pt too wide) in paragraph at lines 1416--1417
+ [][] 
+ []
+
+[38]
 PGFPlots: reading {results/load/rails_line_avg_time.csv}
 Missing character: There is no ; in font nullfont!
 PGFPlots: reading {results/load/hanami_line_avg_time.csv}
 Missing character: There is no ; in font nullfont!
 PGFPlots: reading {results/load/roda_line_avg_time.csv}
 Missing character: There is no ; in font nullfont!
- [34]
+
+Overfull \hbox (19.81305pt too wide) in paragraph at lines 1445--1446
+ [][] 
+ []
+
 PGFPlots: reading {results/load/rails_line_rps.csv}
 Missing character: There is no ; in font nullfont!
 PGFPlots: reading {results/load/hanami_line_rps.csv}
 Missing character: There is no ; in font nullfont!
 PGFPlots: reading {results/load/roda_line_rps.csv}
 Missing character: There is no ; in font nullfont!
+
+Overfull \hbox (19.11304pt too wide) in paragraph at lines 1474--1475
+ [][] 
+ []
+
+[39]
 PGFPlots: reading {results/http/rails_crud_polygon_http_50.csv}
 PGFPlots: reading {results/http/rails_crud_polygon_http_50.csv}
 Missing character: There is no ; in font nullfont!
@@ -1849,26 +1930,47 @@ PGFPlots: reading {results/http/hanami_crud_polygon_http_50.csv}
 Missing character: There is no ; in font nullfont!
 PGFPlots: reading {results/http/roda_crud_polygon_http_50.csv}
 Missing character: There is no ; in font nullfont!
- [35]
+
+Overfull \hbox (11.74432pt too wide) in paragraph at lines 1509--1510
+ [][] 
+ []
+
+[40]
 PGFPlots: reading {results/http/rails_read_polygons_http_50.csv}
 Missing character: There is no ; in font nullfont!
 PGFPlots: reading {results/http/hanami_read_polygons_http_50.csv}
 Missing character: There is no ; in font nullfont!
 PGFPlots: reading {results/http/roda_read_polygons_http_50.csv}
 Missing character: There is no ; in font nullfont!
+
+Overfull \hbox (19.813pt too wide) in paragraph at lines 1538--1539
+ [][] 
+ []
+
+[41]
 PGFPlots: reading {results/load/rails_polygon_avg_time.csv}
 Missing character: There is no ; in font nullfont!
 PGFPlots: reading {results/load/hanami_polygon_avg_time.csv}
 Missing character: There is no ; in font nullfont!
 PGFPlots: reading {results/load/roda_polygon_avg_time.csv}
 Missing character: There is no ; in font nullfont!
- [36]
+
+Overfull \hbox (19.81305pt too wide) in paragraph at lines 1567--1568
+ [][] 
+ []
+
 PGFPlots: reading {results/load/rails_polygon_rps.csv}
 Missing character: There is no ; in font nullfont!
 PGFPlots: reading {results/load/hanami_polygon_rps.csv}
 Missing character: There is no ; in font nullfont!
 PGFPlots: reading {results/load/roda_polygon_rps.csv}
 Missing character: There is no ; in font nullfont!
+
+Overfull \hbox (19.11304pt too wide) in paragraph at lines 1596--1597
+ [][] 
+ []
+
+[42]
 PGFPlots: reading {results/model/rails_crud_point_model_50.csv}
 PGFPlots: reading {results/model/rails_crud_point_model_50.csv}
 Missing character: There is no ; in font nullfont!
@@ -1876,13 +1978,23 @@ PGFPlots: reading {results/model/hanami_crud_point_model_50.csv}
 Missing character: There is no ; in font nullfont!
 PGFPlots: reading {results/model/roda_crud_point_model_50.csv}
 Missing character: There is no ; in font nullfont!
- [37]
+
+Overfull \hbox (6.63667pt too wide) in paragraph at lines 1635--1636
+ [][] 
+ []
+
 PGFPlots: reading {results/model/rails_read_points_model_50.csv}
 Missing character: There is no ; in font nullfont!
 PGFPlots: reading {results/model/hanami_read_points_model_50.csv}
 Missing character: There is no ; in font nullfont!
 PGFPlots: reading {results/model/roda_read_points_model_50.csv}
 Missing character: There is no ; in font nullfont!
+
+Overfull \hbox (19.81201pt too wide) in paragraph at lines 1662--1663
+ [][] 
+ []
+
+[43]
 PGFPlots: reading {results/model/rails_crud_line_model_50.csv}
 PGFPlots: reading {results/model/rails_crud_line_model_50.csv}
 Missing character: There is no ; in font nullfont!
@@ -1890,13 +2002,23 @@ PGFPlots: reading {results/model/hanami_crud_line_model_50.csv}
 Missing character: There is no ; in font nullfont!
 PGFPlots: reading {results/model/roda_crud_line_model_50.csv}
 Missing character: There is no ; in font nullfont!
- [38]
+
+Overfull \hbox (11.74432pt too wide) in paragraph at lines 1697--1698
+ [][] 
+ []
+
 PGFPlots: reading {results/model/rails_read_lines_model_50.csv}
 Missing character: There is no ; in font nullfont!
 PGFPlots: reading {results/model/hanami_read_lines_model_50.csv}
 Missing character: There is no ; in font nullfont!
 PGFPlots: reading {results/model/roda_read_lines_model_50.csv}
 Missing character: There is no ; in font nullfont!
+
+Overfull \hbox (19.81563pt too wide) in paragraph at lines 1726--1727
+ [][] 
+ []
+
+[44]
 PGFPlots: reading {results/model/rails_crud_polygon_model_50.csv}
 PGFPlots: reading {results/model/rails_crud_polygon_model_50.csv}
 Missing character: There is no ; in font nullfont!
@@ -1904,74 +2026,91 @@ PGFPlots: reading {results/model/hanami_crud_polygon_model_50.csv}
 Missing character: There is no ; in font nullfont!
 PGFPlots: reading {results/model/roda_crud_polygon_model_50.csv}
 Missing character: There is no ; in font nullfont!
- [39]
+
+Overfull \hbox (11.74432pt too wide) in paragraph at lines 1761--1762
+ [][] 
+ []
+
+[45]
 PGFPlots: reading {results/model/rails_read_polygons_model_50.csv}
 Missing character: There is no ; in font nullfont!
 PGFPlots: reading {results/model/hanami_read_polygons_model_50.csv}
 Missing character: There is no ; in font nullfont!
 PGFPlots: reading {results/model/roda_read_polygons_model_50.csv}
 Missing character: There is no ; in font nullfont!
- [40]
+
+Overfull \hbox (19.813pt too wide) in paragraph at lines 1790--1791
+ [][] 
+ []
+
+[46]
 Rozdzia\l  7.
-[41
+[47
 
 
-] [42
+] [48
 
 
 ]
-Underfull \hbox (badness 2990) in paragraph at lines 1641--1642
+Underfull \hbox (badness 10000) in paragraph at lines 1817--1818
 []$\OT4/cmtt/m/n/12 https : / / developers . google . com / maps / documentatio
 n / javascript/$[]\OT4/cmr/m/n/12 , ak-tu-alne
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1674--1675
+Underfull \hbox (badness 10000) in paragraph at lines 1826--1827
+[]$\OT4/cmtt/m/n/12 https : / / ruby-[]doc . org / stdlib-[]1 . 9 . 3 / libdoc 
+/ benchmark / rdoc / Benchmark .
+ []
+
+[49]
+Underfull \hbox (badness 10000) in paragraph at lines 1856--1857
 []$\OT4/cmtt/m/n/12 http : / / roda . jeremyevans . net / documentation . html$
 []\OT4/cmr/m/n/12 , ak-tu-alne na dzie«
  []
 
 
-Underfull \hbox (badness 4144) in paragraph at lines 1677--1678
+Underfull \hbox (badness 6477) in paragraph at lines 1859--1860
 []$\OT4/cmtt/m/n/12 https : / / www . gaia-[]gis . it / fossil / libspatialite 
 / index$[]\OT4/cmr/m/n/12 , ak-tu-alne na dzie«
  []
 
-[43]
-Underfull \hbox (badness 10000) in paragraph at lines 1683--1684
+
+Underfull \hbox (badness 10000) in paragraph at lines 1865--1866
 []$\OT4/cmtt/m/n/12 https : / / 8thlight . com / blog / uncle-[]bob / 2012 / 08
  / 13 /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1693--1695
+Underfull \hbox (badness 10000) in paragraph at lines 1875--1877
 []$\OT4/cmtt/m/n/12 http : / / poznajprogramowanie . pl / czym-[]jest-[]framewo
 rk-[]i-[]po-[]co-[]go-[]uzywac/$[]\OT4/cmr/m/n/12 ,
  []
 
-[44]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1700.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1700.
+[50]
+Dodatek A.
+[51
+
+
+]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1894.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1894.
  (./praca_magisterska.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1700.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1700.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1894.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1894.
 
 Package rerunfilecheck Info: File `praca_magisterska.out' has not changed.
-(rerunfilecheck)             Checksum: 47C5327DB6C1785DA09CCE0E512E5325;3057.
-
-
-LaTeX Warning: There were multiply-defined labels.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1700.
+(rerunfilecheck)             Checksum: E02280BCA1976A4E5F7EEBEDFD5F4EAE;3131.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1894.
  ) 
 Here is how much of TeX's memory you used:
- 56207 strings out of 493014
- 1521799 string characters out of 6133351
- 1450312 words of memory out of 5000000
- 58736 multiletter control sequences out of 15000+600000
+ 56279 strings out of 493014
+ 1522940 string characters out of 6133351
+ 1446890 words of memory out of 5000000
+ 58783 multiletter control sequences out of 15000+600000
  18184 words of font info for 49 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 163i,19n,198p,10386b,4941s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 163i,19n,198p,10386b,4939s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/pl/plms.enc}{/usr/local/t
 exlive/2016/texmf-dist/fonts/enc/dvips/pl/plmi.enc}{/usr/local/texlive/2016/tex
 mf-dist/fonts/enc/dvips/pl/pltt.enc}{/usr/local/texlive/2016/texmf-dist/fonts/e
@@ -1990,10 +2129,10 @@ ive/2016/texmf-dist/fonts/type1/public/pl/plr8.pfb></usr/local/texlive/2016/tex
 mf-dist/fonts/type1/public/pl/plsy10.pfb></usr/local/texlive/2016/texmf-dist/fo
 nts/type1/public/pl/plti12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/
 public/pl/pltt12.pfb>
-Output written on praca_magisterska.pdf (46 pages, 6550576 bytes).
+Output written on praca_magisterska.pdf (53 pages, 6570003 bytes).
 PDF statistics:
- 742 PDF objects out of 1000 (max. 8388607)
- 660 compressed objects within 7 object streams
- 225 named destinations out of 1000 (max. 500000)
- 412 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 811 PDF objects out of 1000 (max. 8388607)
+ 722 compressed objects within 8 object streams
+ 250 named destinations out of 1000 (max. 500000)
+ 420 words of extra memory for PDF output out of 10000 (max. 10000000)
 

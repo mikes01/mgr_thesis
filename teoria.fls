@@ -416,6 +416,7 @@ INPUT /usr/local/texlive/2016/texmf-dist/fonts/tfm/public/pl/plbx12.tfm
 INPUT teoria.aux
 INPUT ./teoria.out
 INPUT ./teoria.out
+INPUT /usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/pl/plmi.enc
 INPUT /usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/pl/pltt.enc
 INPUT /usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/pl/plrm.enc
 INPUT /usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/pl/plit.enc
@@ -424,6 +425,7 @@ INPUT /usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.p
 INPUT /usr/local/texlive/2016/texmf-dist/fonts/type1/public/pl/plbx10.pfb
 INPUT /usr/local/texlive/2016/texmf-dist/fonts/type1/public/pl/plbx12.pfb
 INPUT /usr/local/texlive/2016/texmf-dist/fonts/type1/public/pl/plcsc10.pfb
+INPUT /usr/local/texlive/2016/texmf-dist/fonts/type1/public/pl/plmi12.pfb
 INPUT /usr/local/texlive/2016/texmf-dist/fonts/type1/public/pl/plr10.pfb
 INPUT /usr/local/texlive/2016/texmf-dist/fonts/type1/public/pl/plr12.pfb
 INPUT /usr/local/texlive/2016/texmf-dist/fonts/type1/public/pl/plr17.pfb

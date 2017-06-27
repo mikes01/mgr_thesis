@@ -173,17 +173,17 @@
 
 \chapter{Wprowadzenie}
 \section{Cel pracy}
-Język Ruby zajmuję 12 miejsce w~rankingu popularności języków programowania \emph{Tiobe}\footnote{Dane z~marca 2017 roku dostępne na stronie https://www.tiobe.com/tiobe-index/}. Dużą popularnością wśród frameworków internetowych cieszy się Ruby on Rails, w~rankingu \emph{Hotframeworks}\footnote{Ranking https://hotframeworks.com bierzę pod uwagę liczba repozytoriów kodu na platformie Github i~ilość tematów na forum Stackoverflow dotyczących danego frameworku. Dane z~dnia 26.03.2017 r.} zajmuję 3 miejsce wśród wszystkich frameworków. Ruby on Rails jest bez wątpienia najpopularniejszym frameworkiem w~języku Ruby, kolejne dwa frameworki w~języku Ruby to Sinatra i~Hanami, zajmują w~wcześniej przytoczonym rankingu odpowiednio miejsca 25. i~73. Jednak w~języku Ruby istnieje kilkanaście frameworków przeznaczonych do budowania aplikacji internetowych.
+Język Ruby zajmuję 12 miejsce w~rankingu popularności języków programowania \emph{Tiobe}\footnote{Dane z~marca 2017 r. dostępne na stronie https://www.tiobe.com/tiobe-index/}. Dużą popularnością wśród frameworków internetowych cieszy się Ruby on Rails, w~rankingu \emph{Hotframeworks}\footnote{Ranking https://hotframeworks.com bierzę pod uwagę liczba repozytoriów kodu na platformie Github i~ilość tematów na forum Stackoverflow dotyczących danego frameworku. Dane z~dnia 26.03.2017 r.} zajmuję 3 miejsce wśród wszystkich frameworków. Ruby on Rails jest bez wątpienia najpopularniejszym frameworkiem w~języku Ruby, kolejne dwa frameworki w~języku Ruby to Sinatra i~Hanami, zajmują w~wcześniej przytoczonym rankingu odpowiednio miejsca 25. i~73. Jednak w~języku Ruby istnieje kilkanaście frameworków przeznaczonych do budowania aplikacji internetowych.
 
 Celem niniejszej pracy jest poznanie wybranych frameworków w~języku Ruby, ich porównanie w~konkretnym zastosowaniu jakim są systemy informacji geograficznej oraz odpowiedź na pytanie jaki framework najlepiej wybrać do tworzenia systemu GIS.
 
-\section{Zakres i koncepcja pracy}
+\section{Zakres i~koncepcja pracy}
 "Framework" można zdefiniować jako szkielet służący do budowania aplikacji, czyli zbiór gotowych rozwiązań powtarzających się problemów i~wzór do budowania nowych funkcjonalności.\cite{framework}
 
-W niniejszej pracy zostaną omówione wybrane frameworki w języku Ruby w świetle ich użyteczności przy budowie systemu informacji geograficznej. Frameworki zostaną porównane na podstawie informacji zawartych w dostępnej dokumentacji narzędzia oraz zaimplementowanej przykładowej aplikacji, za pomocą każdego z wybranych narzędzi, spełniającej wymagania systemu GIS.
+W niniejszej pracy zostaną omówione wybrane frameworki w~języku Ruby w~świetle ich użyteczności przy budowie systemu informacji geograficznej. Frameworki zostaną porównane na podstawie informacji zawartych w~dostępnej dokumentacji narzędzia oraz zaimplementowanej przykładowej aplikacji, za pomocą każdego z~wybranych narzędzi, spełniającej wymagania systemu GIS.
 
 
-\chapter{Podstawy teorytyczne}
+\chapter{Podstawy teoretyczne}
 
 \section{Charakterystyka Systemów Informacji Geograficznej}
 System Informacji Geograficznej skrótowo nazywany GIS (ang. Geographic Information System) można zdefiniować na wiele sposobów. Michael Schmandt w~swoim opracowaniu\cite{gis_introduction} podaje następujące definicje:
@@ -192,7 +192,7 @@ System Informacji Geograficznej skrótowo nazywany GIS (ang. Geographic Informat
 GIS jest to system komputerowym składającym się z~sprzętu i~oprogramowania oraz ludzie, którzy wspomagają zbieranie, zarządzanie, analizowanie i~wyświetlanie danych przestrzennych. Stosując tą definicje możemy podzielić system GIS na 4 moduły:
 
   \begin{itemize}
-    \item moduł wprowadzania danych - zawiera narzędzia pozwalające na wprowadzania i~przechowywanie danych przestrzennych.
+    \item moduł wprowadzania danych - zawiera narzędzia pozwalające na wprowadzania i~przechowywanie danych przestrzennych
     \item moduł zarządzania danymi - ta część umożliwia edytowanie oraz przeglądanie zgromadzonych zbiorów danych
     \item moduł analizowania danych - podsystem, który odpowiada za analizowanie danych geograficznych i~wyciągania z~nich informacji
     \item moduł prezentowania danych - pozwala na tworzenie map, modeli, statystyk ilustrujących zgromadzone dane
@@ -236,7 +236,7 @@ Szerszą popularność Ruby zyskał w~2006r., 11 lat po publikacji. Swoją popul
 
   OpenStreetMap jest internetowym systemem informacji geograficznej z~otwartym kodem źródłowym. System zbudowany z~wykorzystaniem bazy danych PostgreSQL, frameworku Ruby on Rails oraz biblioteki javascriptowej Leaflet służącej do tworzenia interaktywnych widoków z~mapami. Dostęp do danych jest otwarty, dane mogą być edytowane przez dowolnego użytkownika, dlatego mogą być niezgodne z~rzeczywistością. OpenStreetMap definiuje 4 typy obiektów przestrzennych\cite{doc_osm}:
   \begin{itemize}
-    \item Węzeł (ang. node) - pojedynczy punkt geoprzestrzenny reprezentowany przez długość i~szerokość geograficzną.
+    \item Węzeł (ang. node) - pojedynczy punkt przestrzenny reprezentowany przez długość i~szerokość geograficzną.
     \item Linia (ang. way) - jest to uporządkowany zbiór punktów, które mogą reprezentować funkcje liniowe(wektory) lub obszary.
     \item Relacja (ang. relation) - składa się z~uporządkowanej listy węzłów, linii i~innych relacji.
     \item Tag (ang. tag) - to jednostka informacji dołączona do obiektu jednego z~powyżej opisanych typów. Tag składa się z~klucza oraz wartości. 
@@ -246,7 +246,7 @@ Szerszą popularność Ruby zyskał w~2006r., 11 lat po publikacji. Swoją popul
 
 \section{MangoMap}
 
-  MangoMap jest komercyjnym narzędziem do tworzenia map dostępnych przez internet z~własnych danych geoprzestrzennych. Ceny za korzystanie z~serwisu wynoszą 49-399\$ miesięcznie w~zależności od liczby map i~udostępnianego miejsca na serwerze do przechowywania danych. System zbudowany jest w~oparciu o~framework Ruby on Rails. Mapy tworzy się przy użyciu interfejsu graficznego. Stworzone mapy mogą być udostępnione na serwerze MangoMap przez unikalny link lub zamieszczone na zewnętrznej stronie WWW przez komponent HTML\cite{doc_mango}.
+  MangoMap jest komercyjnym narzędziem do tworzenia map dostępnych przez internet z~własnych danych przestrzennych. Ceny za korzystanie z~serwisu wynoszą 49-399\$ miesięcznie w~zależności od liczby map i~udostępnianego miejsca na serwerze do przechowywania danych. System zbudowany jest w~oparciu o~framework Ruby on Rails. Mapy tworzy się przy użyciu interfejsu graficznego. Stworzone mapy mogą być udostępnione na serwerze MangoMap przez unikalny link lub zamieszczone na zewnętrznej stronie WWW przez komponent HTML\cite{doc_mango}.
 
 \chapter{Frameworki internetowe w~języku Ruby}
 
@@ -258,9 +258,9 @@ W języku Ruby istnieje kilkanaście wspieranych frameworków internetowych. Wyb
       \item opublikowane w~latach 2012 - 2015 - stosunkowo nowe frameworki
       \item opublikowane w~latach 2016 - 2017 - najnowsze frameworki
     \end{enumerate}
-    \item z~każdej grupy wybrano framework z~największą ilością pobrań.
+    \item Z~każdej grupy wybrano framework z~największą ilością pobrań.
   \end{enumerate}
-Ta metoda ma na celu wyłonienie najpopularniejszych frameworków, które powstały w~różnych etapach języka Ruby, jednocześnie każdy z~nich współpracuje z~najnowszą wersją języka. w~ten sposób wybrano \emph{Ruby on Rails, Trailblazer i~Hanami.}
+Ta metoda ma na celu wyłonienie najpopularniejszych frameworków, które powstały w~różnych etapach języka Ruby, jednocześnie każdy z~nich współpracuje z~najnowszą wersją języka. w~ten sposób wybrano \emph{Ruby on Rails, Roda i~Hanami.}
 
 
 \begin{table}[H]
@@ -335,13 +335,14 @@ Dwie główne zasady frameworku\cite{doc_rails}:
 
 Twórcy frameworku Roda jest przy tworzeniu narzędzia podstawili sobie 4 cele\cite{doc_roda}:
   \begin{itemize}
-    \item Prostota (ang. simplicity) - framework ma być prosty zarówno wewenątrz(w implementacji), jak i na zewnątrz (dla użytkowników).
-    \item Niezawodność (ang. reliability) - Roda wspiera i promuje projektowanie aplikacji z niemutowalnym stanem. Aplikacje zbudowane za pomocą Rody, są zaprojektowane tak. Roda ogranicza zmienne, stałe i metody przypisane do instancji obiektów aby uniknąć konfliktów z kodem zaimplementowanym przez użytkownika.
-    \item Rozszerzalność (ang. extensibility) - framework zbudowany jest całkowicie w oparciu o wtyczki, aby ułatwić dodawanie funkcjonalności do frameworka. Każda część Rody może być zastąpiona własną implementacją przez użytkownika.
-    \item Wydajność (ang. performance) - Roda posiada mały koszt obsługi zapytań, drzewo trasowania i inteligentną obsługę pamięci podręcznej co sprawia, że Roda jest szybsza od innych popularnych frameworków języka Ruby.
+    \item Prostota (ang. simplicity) - framework ma być prosty zarówno wewnątrz(w implementacji), jak i~na zewnątrz (dla użytkowników).
+    \item Niezawodność (ang. reliability) - Roda wspiera i~promuje projektowanie aplikacji z~niemutowanym stanem. Roda ogranicza zmienne, stałe i~metody przypisane do instancji obiektów aby uniknąć konfliktów z~kodem zaimplementowanym przez użytkownika.
+    \item Rozszerzalność (ang. extensibility) - framework zbudowany jest całkowicie w~oparciu o~wtyczki, aby ułatwić dodawanie funkcjonalności do frameworka. Każda część Rody może być zastąpiona własną implementacją przez użytkownika.
+    \item Wydajność (ang. performance) - Roda posiada mały koszt obsługi zapytań, drzewo trasowania i~inteligentną obsługę pamięci podręcznej co sprawia, że Roda jest szybsza od innych popularnych frameworków języka Ruby.
   \end{itemize}
-Roda opiera się o drzewo trasowania, punkty dostępu aplikacji zdefiniowane są w strukturze drzewa. Przykład drzewa trasowań znajduje się we fragmencie kodu \ref{lst:routing_tree}.
+Roda opiera się o~drzewo trasowania, punkty dostępu aplikacji zdefiniowane są w~strukturze drzewa. Przykład drzewa trasowań znajduje się we fragmencie kodu \ref{lst:routing_tree}.
 
+\newpage
 \begin{lstlisting}[language=Ruby, caption={Proste drzewo trasowań}, label=lst:routing_tree]
 r.on "a" do           # /a gałęź
   r.on "b" do         # /a/b gałęź
@@ -355,12 +356,12 @@ r.on "a" do           # /a gałęź
 end
 \end{lstlisting}
 
-W przeciwieństwie do Ruby on Rails, Roda nie posiada warstwy kontrolerów i osobnego modułu obsługującego trasowanie, w Rodzie przy definicji danego punktu końcowego znajduje się od razu kod obsługujący otrzymane zapytanie.
+W przeciwieństwie do Ruby on Rails, Roda nie posiada warstwy kontrolerów i~osobnego modułu obsługującego trasowanie, w~Rodzie przy definicji danego punktu końcowego znajduje się od razu kod obsługujący otrzymane zapytanie.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=1\linewidth]{pictures/roda_architecture}
-  \caption{Architektura aplikacji w frameworku Roda}
+  \caption{Architektura aplikacji w~frameworku Roda}
   \label{fig:roda_architecture}
 \end{figure}
 
@@ -383,7 +384,7 @@ W przeciwieństwie do Ruby on Rails, Roda nie posiada warstwy kontrolerów i oso
 
 \section{Hanami}
 
-Hanami jest lekkim frameworkiem internetowym opartym o~architekturę MVC, zbudowanym z~wielu mikro-bibliotek. w~przeciwieństwie do Ruby on Rails, Hanami nie stawia konwencji ponad konfiguracje, wszystkie informacje powinny być zawarte w~napisanym przez programistę kodzie, którego zrozumienie nie wymaga znajomości konwencji frameworka. Architekura projektu jest głównie inspirowana przez te dwa podejścia:
+Hanami jest lekkim frameworkiem internetowym opartym o~architekturę MVC, zbudowanym z~wielu mikro-bibliotek. W~przeciwieństwie do Ruby on Rails, Hanami nie stawia konwencji ponad konfiguracje, wszystkie informacje powinny być zawarte w~napisanym przez programistę kodzie, którego zrozumienie nie wymaga znajomości konwencji frameworka. Architektura projektu jest głównie inspirowana przez dwa podejścia:
 
 \begin{itemize}
   \item Czysta architektura (ang. clean architecture) - schemat tej architektury składa się z~kolejnych zawierających się w~sobie kół. Każde wewnętrzne koło nie ma żadnych zależności w~zewnętrznym kole, czyli w~obiektach należących do wewnętrznego koła, nie ma odwołań do obiektów z~zewnętrznych kół\cite{clean_architecture}. To podstawowa zasada tego podejścia. 
@@ -406,7 +407,7 @@ Hanami jest lekkim frameworkiem internetowym opartym o~architekturę MVC, zbudow
 
   \item Najpierw monolit (ang. monolith first) - według tej zasady budowę systemu zaczyna się od monolitycznej aplikacji. Jednak budowa aplikacji od samego początku powinna być jak najbardziej modularna aby można było ją później rozbić na wiele mniejszych aplikacji.
 
-  Zgodnie z~zasadą \emph{czystej architektury} w~utworzonym projekcie systemu z~użyciem Hanami oddzielona jest warstwa logiki biznesowej znajdująca się w~folderze \emph{lib\\} projektu od mechanizmu komunikacji z~innymi serwisami zawartego w~folderze \emph{apps\\}.
+  Zgodnie z~zasadą \emph{czystej architektury} w~utworzonym projekcie systemu z~użyciem Hanami oddzielona jest warstwa logiki biznesowej znajdująca się w~folderze \emph{lib} projektu od mechanizmu komunikacji z~innymi serwisami zawartego w~folderze \emph{apps}.
 
   Hanami posiada kontener aplikacji, który pozwala nam utworzyć wiele aplikacji w~ramach jednego projektu, które korzystają z~tego samego zbioru encji i~przypadków użycia, a~następnie uruchomić je w~jednym procesie Rubiego.
 \end{itemize}
@@ -444,22 +445,22 @@ Omawiane frameworki domyślnie wykorzystują relacyjną bazę danych do przechow
 \subsection{PostgreSQL}
 PostgreSQL posiada kilka wbudowanych typów przestrzennych\cite{doc_postgresql}: 
 \begin{itemize}
-  \item Point - reprezentuje punkt na mapie, to podstawowy typ, który służy do budowania pozostałych typów przestrzennych. Dane zapisane są jako para współrzędnych w postaci tekstowej \textit{( x, y )}, gdzie x i y to liczby zmienno przecinkowe.
-  \item Line - prosta w znaczeniu geometrycznym, mogą być reprezentowane przez równanie liniowe \textit{Ax + By + C = 0}, wtedy w bazie danych zapisane są współczynniki \textit{A, B, C}. Innym sposobem reprezentacji tego typu są dwa punkty, przez które przechodzi prosta \textit{[ ( x1 , y1 ) , ( x2 , y2 ) ]
+  \item Point - reprezentuje punkt na mapie, to podstawowy typ, który służy do budowania pozostałych typów przestrzennych. Dane zapisane są jako para współrzędnych w~postaci tekstowej \textit{( x, y )}, gdzie x i~y to liczby zmienno-przecinkowe.
+  \item Line - prosta w~znaczeniu geometrycznym, mogą być reprezentowane przez równanie liniowe \textit{Ax + By + C = 0}, wtedy w~bazie danych zapisane są współczynniki \textit{A, B, C}. Innym sposobem reprezentacji tego typu są dwa punkty, przez które przechodzi prosta \textit{[ ( x1 , y1 ) , ( x2 , y2 ) ]
   }.
-  \item Line Segment - w znaczeniu geometrycznym to odcinek, reprezentowany przez dwa punkty, początek i koniec odcinka \textit{[ ( x1 , y1 ) , ( x2 , y2 ) ]}.
-  \item Box - to czworokąty zapisane jako dwa przeciwległe wierzchołki \textit{( ( x1 , y1 ) , ( x2 , y2 ) )}.
-  \item Path - lista połączonych ze sobą punktów, ścieżka. Ścieżka może być otwarta, jeśli pierwszy i ostatni punkt nie są ze sobą połączone, lub zamknięta, jeśli pierwszy i ostatni punkt są ze sobą połączone. Nawiasy kwadratowe reprezentują otwartę ścieżkę \textit{[ ( x1 , y1 ) , ... , ( xn , yn ) ]}, zamnkięta ścieżka jest przedstawiona za pomocą okrągłych nawiasów \textit{( ( x1 , y1 ) , ... , ( xn , yn ) )}.
-  \item Polygon - to wielokąt zapisany za pomocą listy punktów, reprezentujących kolejne wierzchołki wielokątu \textit{( ( x1 , y1 ) , ... , ( xn , yn ) )}.
-  \item Circle - okrąg zapisany przy pomocy środka i promienia \textit{< ( x , y ) , r >}.
+  \item Line Segment - w~znaczeniu geometrycznym to odcinek, reprezentowany przez dwa punkty, początek i~koniec odcinka \textit{[ ( x1 , y1 ) , ( x2 , y2 ) ]}.
+  \item Box - to czworokąt zapisane jako dwa przeciwległe wierzchołki\\ \textit{( ( x1 , y1 ) , ( x2 , y2 ) )}.
+  \item Path - lista połączonych ze sobą punktów, ścieżka. Ścieżka może być otwarta, jeśli pierwszy i~ostatni punkt nie są ze sobą połączone, lub zamknięta, jeśli pierwszy i~ostatni punkt są ze sobą połączone. Nawiasy kwadratowe reprezentują otwartę ścieżkę \textit{[ ( x1 , y1 ) , ... , ( xn , yn ) ]}, zamknięta ścieżka jest przedstawiona za pomocą okrągłych nawiasów \textit{( ( x1 , y1 ) , ... , ( xn , yn ) )}.
+  \item Polygon - to wielokąt zapisany za pomocą listy punktów, reprezentujących kolejne wierzchołki wielokąta \textit{( ( x1 , y1 ) , ... , ( xn , yn ) )}.
+  \item Circle - okrąg zapisany przy pomocy środka i~promienia \textit{  $< ( x , y ) , r >$ }.
 \end{itemize}
-PostgreSQL dostarcza niewiele funkcji do wyszukiwania danych. Sprawdzenie zależności między dwoma punktami takich jak np. przecięcie dwóch obiektów lub zawieranie się jednego punktu w drugim nie jest dostępne dla typów \textit{Path} i \textit{Polygon}. 
+PostgreSQL dostarcza niewiele funkcji do wyszukiwania danych. Sprawdzenie zależności między dwoma punktami takich jak np. przecięcie dwóch obiektów lub zawieranie się jednego obiektu w~drugim nie jest dostępne dla typów \textit{Path} i~\textit{Polygon}. 
 \subsection{PostGIS}
-PostGIS jest biblioteką rozszerzającą możliwości PostgreSQL w zakresie przetwarzania danych przestrzennych. Biblioteka jest wspierana przez fundacje \textit{Open Source Geospatial}\cite{doc_postgis}. Dane są zapisane w formie binarnej jako współrzędne geograficzne lub geometryczne w zależności od wyboru. Postgis zapewnia wsparcie typów zdefiniowanych przez \textit{Open Geospatial Consortium}:
+PostGIS jest biblioteką rozszerzającą możliwości PostgreSQL w~zakresie przetwarzania danych przestrzennych. Biblioteka jest wspierana przez fundacje \textit{Open Source Geospatial}\cite{doc_postgis}. Dane są zapisane w~formie binarnej jako współrzędne geograficzne lub geometryczne w~zależności od wyboru. Postgis zapewnia wsparcie typów zdefiniowanych przez \textit{Open Geospatial Consortium}:
 \begin{itemize}
   \item POINT - pojedynczy punkt na mapie.
   \item LINESTRING - zbiór połączonych ze sobą punktów reprezentujący ścieżkę.
-  \item POLYGON - zbiór połączonych ze sobą punktów reprezentujący wierzchołki wielokątu.
+  \item POLYGON - zbiór połączonych ze sobą punktów reprezentujący wierzchołki wielokąta.
 \end{itemize}
 \textit{Open Geospatial Consortium} definiuje również kolekcje obiektów powyższych typów:
 \begin{itemize}
@@ -471,24 +472,24 @@ PostGIS jest biblioteką rozszerzającą możliwości PostgreSQL w zakresie prze
 Dla wszystkich typów dostępny jest taki sam zestaw funkcji, które np. sprawdzają zależności między dwoma obiektami, co jest pomocne przy wyszukiwaniu obiektów.
 
 \subsection{MySQL Spatial}
-MySQL Spatial jest rozszerzeniem dla bazy MySQL, które dostarcza wsparcie dla danych przestrzennych. Rozszerzenie dostarcza typy danych zdefiniowane przez grupę \textit{Open Geospatial Consortium}\cite{doc_mysql}. Zbiór funkcjonalności pokrywa się z funkcjonalnościami rozszerzenia Postgis.
+MySQL Spatial jest rozszerzeniem dla bazy MySQL, które dostarcza wsparcie dla danych przestrzennych. Rozszerzenie dostarcza typy danych zdefiniowane przez grupę \textit{Open Geospatial Consortium}\cite{doc_mysql}. Zbiór funkcjonalności pokrywa się z~funkcjonalnościami rozszerzenia Postgis.
 \subsection{SpatiaLite}
-SpatiaLite jest rozszerzeniem dla bazy danych SQLite, które zawiera wsparcie dla typów przestrzennych zdefiniowanych przez grupę \textit{Open Geospatial Consortium}\cite{doc_spatialite}: \textit{Point, Line, Multiline, Polygon, Multipolygon}. Cała baza danych zapisana jest w pojedynczym pliku. Biblioteka udostępniona jest na zasadzie otwartego źródła.
+SpatiaLite jest rozszerzeniem dla bazy danych SQLite, które zawiera wsparcie dla typów przestrzennych zdefiniowanych przez grupę \textit{Open Geospatial Consortium}\cite{doc_spatialite}: \textit{Point, Line, Multiline, Polygon, Multipolygon}. Cała baza danych zapisana jest w~pojedynczym pliku. Biblioteka udostępniona jest na zasadzie otwartego źródła.
 
 \section{Obiektowe przetwarzanie danych}
 \subsection{RGeo}
-RGeo wspiera typy danych zdefiniowane przez \textit{Open Geospatial Consortium}, takie jak punkt, linia i wielokąt. Dane są reprezentowane w formie obiektowej. Biblioteka pozwala na podstawowe operacje analizowania danych przestrzennych, takie jak szukanie punktów przecięcia i obliczenia pola powierzchni. Biblioteka operuje na reprezentacji geograficznej i gemoetrycznej danych i pozwala konwertować dane pomiędzy dostępnymi reprezentacjami. RGeo udostępnia udostępnia jedynie interfejs w języku Ruby dla programistów, a do obsługi danych geograficznej korzysta z bibliotek GEOS i proj.4, te biblioteki są napisane w języku C++.
+RGeo wspiera typy danych zdefiniowane przez \textit{Open Geospatial Consortium}, takie jak punkt, linia i~wielokąt. Dane są reprezentowane w~formie obiektowej. Biblioteka pozwala na podstawowe operacje analizowania danych przestrzennych, takie jak szukanie punktów przecięcia i~obliczenia pola powierzchni. Biblioteka operuje na reprezentacji geograficznej i~geometrycznej danych i~pozwala konwertować dane pomiędzy dostępnymi reprezentacjami. RGeo udostępnia udostępnia jedynie interfejs w~języku Ruby dla programistów, a~do obsługi danych geograficznych korzysta z~bibliotek GEOS i~proj.4, te biblioteki są napisane w~języku C++.
 
 \subsection{GeoRuby}
-GeoRuby jest biblioteką całkowicie napisaną za pomocą języka Ruby do przetwarzania danych przestrzennych. Biblioteka ściśle podąża za modelem danych definiowanych przez \textit{Open Geospatial Consortium}, dlatego dobrze łączy się z takimi bazami danych jak Postgis, Mysql Spatial, SpatiaLite i innymi, które również wspierają typu opracowane przez OGC\cite{doc_georuby}.
+GeoRuby jest biblioteką całkowicie napisaną za pomocą języka Ruby do przetwarzania danych przestrzennych. Biblioteka ściśle podąża za modelem danych definiowanych przez \textit{Open Geospatial Consortium}, dlatego dobrze łączy się z~takimi bazami danych jak Postgis, Mysql Spatial, SpatiaLite i~innymi, które również wspierają typu opracowane przez OGC\cite{doc_georuby}.
 
 \section{Prezentowanie danych}
 \label{sec:maps-tools}
 \subsection{Leaflet}
-Leaflet jest biblioteką napisaną w języku Javascript, która pozwala dodać interaktywną mapę do widoku aplikacji internetowej. Biblioteka nie dostarcza graficznej reprezentacji mapy, ale zapewnia obsługę mapy z zewnętrznego serwisu np. OpenStreetMap. Do mapy można dodawać interaktywne obiekty. Biblioteka dostępna jest na zasadzie otwartego źródła.\cite{doc_leaflet}
+Leaflet jest biblioteką napisaną w~języku JavaScript, która pozwala dodać interaktywną mapę do widoku aplikacji internetowej. Biblioteka nie dostarcza graficznej reprezentacji mapy, ale zapewnia obsługę mapy z~zewnętrznego serwisu np. OpenStreetMap. Do mapy można dodawać interaktywne obiekty. Biblioteka dostępna jest na zasadzie otwartego źródła.\cite{doc_leaflet}
 
 \subsection{GoogleMaps JavaScript API}
-GoogleMaps JavaScript API pozwala dołączyć mapę z serwisu Google Maps. Mapa jest interaktywna i pozwala wyświetlać obiekty dodane przez programistę. W darmowejwersji GoogleMaps API pozwala wczytać mapę 25 000 razy w ciągu dnia.\cite{doc_google}
+GoogleMaps JavaScript API pozwala dołączyć mapę z~serwisu Google Maps. Mapa jest interaktywna i~pozwala wyświetlać obiekty dodane przez programistę. W darmowej wersji GoogleMaps API pozwala wczytać mapę 25 000 razy w~ciągu dnia.\cite{doc_google}
 
 \begin{thebibliography}{inz}
   \addcontentsline{toc}{chapter}{Literatura}

@@ -151,7 +151,7 @@
   \addtocounter{page}{-1}%
   \newpage}
 
-\renewcommand\bibname{Literatura}
+\addto\extraspolish{\def\bibname{Literatura}\let\refname\bibname}
 \renewcommand{\lstlistingname}{Fragment kodu}
 
 \date{2017}
@@ -159,7 +159,7 @@
 \title{Analiza porównawcza frameworków internetowych w~języku Ruby w~zastosowaniach GISowych}
 \engtitle{Comparative analysis of Ruby's web frameworks for Geographic Information Systems}
 \author{Mikołaj Grygiel}
-\supervisor{dr inż. Roman Ptak}
+\supervisor{dr inż. Roman Ptak, W4/K9}
 
 \field{Informatyka (INF)}
 \specialisation{ Inżynieria systemów informatycznych (INS)}
@@ -173,40 +173,40 @@
 
 \chapter{Wprowadzenie}
 \section{Cel pracy}
-Język Ruby zajmuję 12 miejsce w~rankingu popularności języków programowania \emph{Tiobe}\footnote{Dane z~marca 2017 roku dostępne na stronie https://www.tiobe.com/tiobe-index/}. Dużą popularnością wśród frameworków internetowych cieszy się Ruby on Rails, w~rankingu \emph{Hotframeworks}\footnote{Ranking https://hotframeworks.com bierzę pod uwagę liczba repozytoriów kodu na platformie Github i~ilość tematów na forum Stackoverflow dotyczących danego frameworku. Dane z~dnia 26.03.2017 r.} zajmuję 3 miejsce wśród wszystkich frameworków. Ruby on Rails jest bez wątpienia najpopularniejszym frameworkiem w~języku Ruby, kolejne dwa frameworki w~języku Ruby to Sinatra i~Hanami, zajmują w~wcześniej przytoczonym rankingu odpowiednio miejsca 25. i~73. Jednak w~języku Ruby istnieje kilkanaście frameworków przeznaczonych do budowania aplikacji internetowych.
+Język Ruby zajmuję 12 miejsce w~rankingu popularności języków programowania \emph{Tiobe}\footnote{Dane z~marca 2017 r. dostępne na stronie https://www.tiobe.com/tiobe-index/}. Dużą popularnością wśród frameworków internetowych cieszy się Ruby on Rails, w~rankingu \emph{Hotframeworks}\footnote{Ranking https://hotframeworks.com bierzę pod uwagę liczba repozytoriów kodu na platformie Github i~ilość tematów na forum Stackoverflow dotyczących danego frameworku. Dane z~dnia 26.03.2017 r.} zajmuję 3 miejsce wśród wszystkich frameworków. Ruby on Rails jest bez wątpienia najpopularniejszym frameworkiem w~języku Ruby, kolejne dwa frameworki w~języku Ruby to Sinatra i~Hanami, zajmują w~wcześniej przytoczonym rankingu odpowiednio miejsca 25. i~73. Jednak w~języku Ruby istnieje kilkanaście frameworków przeznaczonych do budowania aplikacji internetowych.
 
 Celem niniejszej pracy jest poznanie wybranych frameworków w~języku Ruby, ich porównanie w~konkretnym zastosowaniu jakim są systemy informacji geograficznej oraz odpowiedź na pytanie jaki framework najlepiej wybrać do tworzenia systemu GIS.
 
-\section{Zakres i koncepcja pracy}
-"Framework" można zdefiniować jako szkielet służący do budowania aplikacji, czyli zbiór gotowych rozwiązań powtarzających się problemów i~wzór do budowania nowych funkcjonalności.\cite{framework}
+\section{Zakres i~koncepcja pracy}
+"Framework" można zdefiniować jako szkielet służący do budowania aplikacji, czyli zbiór gotowych rozwiązań powtarzających się problemów i~wzór do budowania nowych funkcjonalności. \cite{framework}
 
-W niniejszej pracy zostaną omówione wybrane frameworki w języku Ruby w świetle ich użyteczności przy budowie systemu informacji geograficznej. Frameworki zostaną porównane na podstawie informacji zawartych w dostępnej dokumentacji narzędzia oraz zaimplementowanej przykładowej aplikacji, za pomocą każdego z wybranych narzędzi, spełniającej wymagania systemu GIS.
+W niniejszej pracy zostaną omówione wybrane frameworki w~języku Ruby w~świetle ich użyteczności przy budowie systemu informacji geograficznej. Frameworki zostaną porównane na podstawie informacji zawartych w~dostępnej dokumentacji narzędzia oraz zaimplementowanej przykładowej aplikacji, za pomocą każdego z~wybranych narzędzi, spełniającej wymagania systemu GIS.
 
 
-\chapter{Podstawy teorytyczne}
+\chapter{Podstawy teoretyczne}
 
 \section{Charakterystyka Systemów Informacji Geograficznej}
-System Informacji Geograficznej skrótowo nazywany GIS (ang. Geographic Information System) można zdefiniować na wiele sposobów. Michael Schmandt w~swoim opracowaniu\cite{gis_introduction} podaje następujące definicje:
+System Informacji Geograficznej skrótowo nazywany GIS (ang. \textit{Geographic Information System}) można zdefiniować na wiele sposobów. Michael Schmandt w~swoim opracowaniu \cite{gis_introduction} podaje następujące definicje:
 
 \paragraph*{Definicja 1.}
-GIS jest to system komputerowym składającym się z~sprzętu i~oprogramowania oraz ludzie, którzy wspomagają zbieranie, zarządzanie, analizowanie i~wyświetlanie danych przestrzennych. Stosując tą definicje możemy podzielić system GIS na 4 moduły:
+GIS to system komputerowy składający się z~sprzętu i~oprogramowania oraz ludzie, którzy wspomagają zbieranie, zarządzanie, analizowanie i~wyświetlanie danych przestrzennych. Stosując tą definicje możemy podzielić system GIS na 4 moduły:
 
   \begin{itemize}
-    \item moduł wprowadzania danych - zawiera narzędzia pozwalające na wprowadzania i~przechowywanie danych przestrzennych.
-    \item moduł zarządzania danymi - ta część umożliwia edytowanie oraz przeglądanie zgromadzonych zbiorów danych
-    \item moduł analizowania danych - podsystem, który odpowiada za analizowanie danych geograficznych i~wyciągania z~nich informacji
-    \item moduł prezentowania danych - pozwala na tworzenie map, modeli, statystyk ilustrujących zgromadzone dane
+    \item Moduł wprowadzania danych - zawiera narzędzia pozwalające na wprowadzania i~przechowywanie danych przestrzennych.
+    \item Moduł zarządzania danymi - ta część umożliwia edytowanie oraz przeglądanie zgromadzonych zbiorów danych.
+    \item Moduł analizowania danych - podsystem, który odpowiada za analizowanie danych geograficznych i~wyciąganie z~nich informacji.
+    \item Moduł prezentowania danych - pozwala na tworzenie map, modeli i statystyk ilustrujących zgromadzone dane.
   \end{itemize}
 
 \paragraph*{Definicja 2.}
 System informacji geograficznej to system komputerowy, który pozwala na przechowywanie danych powiązanych ze sobą geograficznie.
 
 \paragraph*{Definicja 3.}
-GIS to narzędzie do wyszukiwania wzorców geograficznych(przestrzennych) w~zbiorach danych.
+GIS to narzędzie do wyszukiwania wzorców geograficznych (przestrzennych) w~zbiorach danych.
 
 Pierwsza definicja jest najbardziej szeroka i~zawiera w~sobie dwie następne - definicja druga to dwa pierwsze moduły z~\textbf{Definicja 1.}, a~definicja trzecia to moduł analizowania danych.
 
-W podobny sposób do definicji nr 1 GIS jest zdefiniowany w~\emph{Principles of Geographic Information Systems}\cite{principles_gis} jako zbiór narzędzi pozwalających operować na danych reprezentujących zjawiska geograficzne. Zbiór ten dzieli się na 4 grupy ze względu na funkcje:
+W podobny sposób do definicji nr 1 GIS jest zdefiniowany w~\emph{Principles of Geographic Information Systems} \cite{principles_gis} jako zbiór narzędzi pozwalających operować na danych reprezentujących zjawiska geograficzne. Zbiór ten dzieli się na 4 grupy ze względu na funkcje:
   \begin{itemize}
     \item zbieranie i~przygotowywanie danych
     \item zarządzanie i~przechowywanie danych
@@ -217,11 +217,11 @@ W podobny sposób do definicji nr 1 GIS jest zdefiniowany w~\emph{Principles of 
 W poniższej pracy przyjmuje się pierwszą definicje Systemu Informacji Geograficznego - GIS to system informatyczny służący do wprowadzania, przechowywania, zarządzania, analizowania i~prezentacji danych przestrzennych.
 
 \section{Charakterystyka języka Ruby}
-Język Ruby został wydany w~1995 roku. Twórca Rubiego, Yukihiro “Matz” Matsumoto, inspirował się takimi językami programowani jak Perl, Smalltalk, Eiffel, Ada i~Lisp by stworzyć jego zdaniem język, który zbalansuje programowanie funkcjonalne z~programowanie imperatywnym\cite{doc_ruby}. Składnia Rubiego ma przypominać język naturalny, autor języka opisuje go jako: \emph{Ruby jest prosty z~wyglądu, ale bardzo skomplikowany w~środku, tak jak ciało ludzkie.}\footnote{wypowiedź w~liście ruby-talk 12.05.2000 r., źródło: http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/2773}
+Język Ruby został wydany w~1995 roku. Twórca Rubiego, Yukihiro “Matz” Matsumoto, inspirował się takimi językami programowani jak Perl, Smalltalk, Eiffel, Ada i~Lisp by stworzyć jego zdaniem język, który zbalansuje programowanie funkcjonalne z~programowanie imperatywnym. \cite{doc_ruby} Składnia Rubiego ma przypominać język naturalny, autor języka opisuje go jako: \emph{Ruby jest prosty z~wyglądu, ale bardzo skomplikowany w~środku, tak jak ciało ludzkie.}\footnote{Wypowiedź w~liście ruby-talk 12.05.2000 r., źródło: \\http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/2773}
 
 Ruby jest językiem ściśle obiektowym, wszystko postrzegane jest jako obiekt. Każda funkcja jest metodą, ponieważ musi być przyłączona do jakiegoś obiektu. Ruby posiada celowo tylko jednokrotne dziedziczenie, ale pozwala na dołączanie wielu modułów, które są zbiorami metod do klasy. Ruby jest bardzo elastycznym językiem, pozwala na usunięcie lub przedefiniowanie dowolnej swojej części. Mimo silnie obiektowej natury, dostępne są również elementy programowania funkcyjnego takie jak funkcje anonimowe lub domknięcia.
 
-Szerszą popularność Ruby zyskał w~2006r., 11 lat po publikacji. Swoją popularność zawdzięcza głównie frameworkowi Ruby on Rails. w~rankingu popularności języków programowania Tiobe znajduje się aktualnie na 12 miejscu\footnote{dane z~dnia 08.04.2016 r. https://www.tiobe.com/tiobe-index/}.
+Szerszą popularność Ruby zyskał w~2006 r., 11 lat po publikacji. Swoją popularność zawdzięcza głównie frameworkowi Ruby on Rails. w~rankingu popularności języków programowania Tiobe znajduje się aktualnie na 12 miejscu\footnote{Dane z~dnia 08.04.2017 r. https://www.tiobe.com/tiobe-index/}.
 
 \begin{figure}[H]
   \centering
@@ -234,19 +234,19 @@ Szerszą popularność Ruby zyskał w~2006r., 11 lat po publikacji. Swoją popul
 
 \section{OpenStreetMap}
 
-  OpenStreetMap jest internetowym systemem informacji geograficznej z~otwartym kodem źródłowym. System zbudowany z~wykorzystaniem bazy danych PostgreSQL, frameworku Ruby on Rails oraz biblioteki javascriptowej Leaflet służącej do tworzenia interaktywnych widoków z~mapami. Dostęp do danych jest otwarty, dane mogą być edytowane przez dowolnego użytkownika, dlatego mogą być niezgodne z~rzeczywistością. OpenStreetMap definiuje 4 typy obiektów przestrzennych\cite{doc_osm}:
+  OpenStreetMap jest internetowym systemem informacji geograficznej z~otwartym kodem źródłowym. System zbudowany z~wykorzystaniem bazy danych PostgreSQL, frameworku Ruby on Rails oraz biblioteki javascriptowej Leaflet służącej do tworzenia interaktywnych widoków z~mapami. Dostęp do danych jest otwarty, dane mogą być edytowane przez dowolnego użytkownika, dlatego mogą być niezgodne z~rzeczywistością. OpenStreetMap definiuje 4 typy obiektów przestrzennych \cite{doc_osm}:
   \begin{itemize}
-    \item Węzeł (ang. node) - pojedynczy punkt geoprzestrzenny reprezentowany przez długość i~szerokość geograficzną.
+    \item Węzeł (ang. node) - pojedynczy punkt przestrzenny reprezentowany przez długość i~szerokość geograficzną.
     \item Linia (ang. way) - jest to uporządkowany zbiór punktów, które mogą reprezentować funkcje liniowe(wektory) lub obszary.
     \item Relacja (ang. relation) - składa się z~uporządkowanej listy węzłów, linii i~innych relacji.
     \item Tag (ang. tag) - to jednostka informacji dołączona do obiektu jednego z~powyżej opisanych typów. Tag składa się z~klucza oraz wartości. 
   \end{itemize}
 
-  OpenStreetMap można wykorzystać przez utworzenie komponentu HTML z~wybraną mapą, gotowego do zamieszczenia na dowolnej stronie internetowej lub przez pobranie danych z~wybranej mapy. Skompresowane aktualne dane dla całej planety z~pojedynczego dnia zajmują prawie 40GB. Można pobierać również dane historyczne.
+  OpenStreetMap można wykorzystać przez utworzenie komponentu HTML z~wybraną mapą, gotowego do zamieszczenia na dowolnej stronie internetowej lub przez pobranie danych z~wybranej mapy. Skompresowane aktualne dane dla całej planety z~pojedynczego dnia zajmują prawie 40 GB. Można pobierać również dane historyczne.
 
 \section{MangoMap}
 
-  MangoMap jest komercyjnym narzędziem do tworzenia map dostępnych przez internet z~własnych danych geoprzestrzennych. Ceny za korzystanie z~serwisu wynoszą 49-399\$ miesięcznie w~zależności od liczby map i~udostępnianego miejsca na serwerze do przechowywania danych. System zbudowany jest w~oparciu o~framework Ruby on Rails. Mapy tworzy się przy użyciu interfejsu graficznego. Stworzone mapy mogą być udostępnione na serwerze MangoMap przez unikalny link lub zamieszczone na zewnętrznej stronie WWW przez komponent HTML\cite{doc_mango}.
+  MangoMap jest komercyjnym narzędziem do tworzenia map dostępnych przez internet z~własnych danych przestrzennych. Ceny za korzystanie z~serwisu wynoszą 49-399\$ miesięcznie w~zależności od liczby map i~udostępnianego miejsca na serwerze do przechowywania danych. System zbudowany jest w~oparciu o~framework Ruby on Rails. Mapy tworzy się przy użyciu interfejsu graficznego. Stworzone mapy mogą być udostępnione na serwerze MangoMap przez unikalny link lub zamieszczone na zewnętrznej stronie WWW przez komponent HTML. \cite{doc_mango}
 
 \chapter{Frameworki internetowe w~języku Ruby}
 
@@ -254,13 +254,13 @@ W języku Ruby istnieje kilkanaście wspieranych frameworków internetowych. Wyb
   \begin{enumerate}
     \item Podzielono frameworki według daty opublikowania pierwszej wersji na 3 grupy:
     \begin{enumerate}
-      \item opublikowane w~latach 2004 - 2011 - frameworki o~ugruntowanej pozycji
-      \item opublikowane w~latach 2012 - 2015 - stosunkowo nowe frameworki
-      \item opublikowane w~latach 2016 - 2017 - najnowsze frameworki
+      \item Opublikowane w~latach 2004 - 2011 - frameworki o~ugruntowanej pozycji.
+      \item Opublikowane w~latach 2012 - 2015 - stosunkowo nowe frameworki.
+      \item Opublikowane w~latach 2016 - 2017 - najnowsze frameworki.
     \end{enumerate}
-    \item z~każdej grupy wybrano framework z~największą ilością pobrań.
+    \item Z~każdej grupy wybrano framework z~największą liczbą pobrań.
   \end{enumerate}
-Ta metoda ma na celu wyłonienie najpopularniejszych frameworków, które powstały w~różnych etapach języka Ruby, jednocześnie każdy z~nich współpracuje z~najnowszą wersją języka. w~ten sposób wybrano \emph{Ruby on Rails, Trailblazer i~Hanami.}
+Ta metoda ma na celu wyłonienie najpopularniejszych frameworków, które powstały w~różnych etapach języka Ruby, jednocześnie każdy z~nich współpracuje z~najnowszą wersją języka. w~ten sposób wybrano \emph{Ruby on Rails, Roda i~Hanami.}
 
 
 \begin{table}[H]
@@ -290,7 +290,7 @@ Ta metoda ma na celu wyłonienie najpopularniejszych frameworków, które powsta
 
 \section{Ruby on Rails}
 
-Pierwsza stabilna wersja (1.0.0) frameworku Ruby on Rails ukazała się pod koniec 2005 roku, aktualna wersja (5.0.2) została opublikowana 02.03.2017 r. Aplikacja zbudowana z~wykorzystanie RoR jest oparta o~wzorzec projektowy Model-Widok-Kontroler\cite{rails_agile} (ang. Model-View-Controller). Aplikacja oparta na tym wzorcu jest podzielona na 3 części:
+Pierwsza stabilna wersja (1.0.0) frameworku Ruby on Rails ukazała się pod koniec 2005 roku, aktualna wersja (5.0.2) została opublikowana 02.03.2017 r. Aplikacja zbudowana z~wykorzystanie RoR jest oparta o~wzorzec projektowy Model-Widok-Kontroler \cite{rails_agile} (ang. Model-View-Controller). Aplikacja oparta na tym wzorcu jest podzielona na 3 części:
 \begin{itemize}
   \item Modele (ang. model) - reprezentują logikę biznesową. w~tej warstwie znajdują się wszelkie obiekty, które służą do wykonywania operacji związanych z~implementacją funkcjonalności aplikacji.
   \item Widoki (ang. view) - służą do prezentowania danych. 
@@ -304,7 +304,7 @@ Pierwsza stabilna wersja (1.0.0) frameworku Ruby on Rails ukazała się pod koni
   \label{fig:rails_mvc}
 \end{figure}
 \newpage
-Dwie główne zasady frameworku\cite{doc_rails}:
+Dwie główne zasady frameworku \cite{doc_rails}:
 
 \begin{itemize}
   \item Nie powtarzaj się (ang. Don't Repeat Yourself) - każda informacja powinna mieć pojedynczą, jednoznaczną i~autorytatywną reprezentacje w~kodzie źródłowym systemu. Ułatwia to utrzymywanie kodu.
@@ -333,15 +333,16 @@ Dwie główne zasady frameworku\cite{doc_rails}:
 
 \section{Roda}
 
-Twórcy frameworku Roda jest przy tworzeniu narzędzia podstawili sobie 4 cele\cite{doc_roda}:
+Twórcy frameworku Roda jest przy tworzeniu narzędzia podstawili sobie 4 cele \cite{doc_roda}:
   \begin{itemize}
-    \item Prostota (ang. simplicity) - framework ma być prosty zarówno wewenątrz(w implementacji), jak i na zewnątrz (dla użytkowników).
-    \item Niezawodność (ang. reliability) - Roda wspiera i promuje projektowanie aplikacji z niemutowalnym stanem. Aplikacje zbudowane za pomocą Rody, są zaprojektowane tak. Roda ogranicza zmienne, stałe i metody przypisane do instancji obiektów aby uniknąć konfliktów z kodem zaimplementowanym przez użytkownika.
-    \item Rozszerzalność (ang. extensibility) - framework zbudowany jest całkowicie w oparciu o wtyczki, aby ułatwić dodawanie funkcjonalności do frameworka. Każda część Rody może być zastąpiona własną implementacją przez użytkownika.
-    \item Wydajność (ang. performance) - Roda posiada mały koszt obsługi zapytań, drzewo trasowania i inteligentną obsługę pamięci podręcznej co sprawia, że Roda jest szybsza od innych popularnych frameworków języka Ruby.
+    \item Prostota (ang. simplicity) - framework ma być prosty zarówno wewnątrz (w implementacji), jak i~na zewnątrz (dla użytkowników).
+    \item Niezawodność (ang. reliability) - Roda wspiera i~promuje projektowanie aplikacji z~niemutowanym stanem. Roda ogranicza zmienne, stałe i~metody przypisane do instancji obiektów aby uniknąć konfliktów z~kodem zaimplementowanym przez użytkownika.
+    \item Rozszerzalność (ang. extensibility) - framework zbudowany jest całkowicie w~oparciu o~wtyczki, aby ułatwić dodawanie funkcjonalności do frameworka. Każda część Rody może być zastąpiona własną implementacją przez użytkownika.
+    \item Wydajność (ang. performance) - Roda posiada mały koszt obsługi zapytań, drzewo trasowania i~inteligentną obsługę pamięci podręcznej co sprawia, że Roda jest szybsza od innych popularnych frameworków języka Ruby.
   \end{itemize}
-Roda opiera się o drzewo trasowania, punkty dostępu aplikacji zdefiniowane są w strukturze drzewa. Przykład drzewa trasowań znajduje się we fragmencie kodu \ref{lst:routing_tree}.
+Roda opiera się o~drzewo trasowania, punkty dostępu aplikacji zdefiniowane są w~strukturze drzewa. Przykład drzewa trasowań znajduje się we fragmencie kodu \ref{lst:routing_tree}.
 
+\newpage
 \begin{lstlisting}[language=Ruby, caption={Proste drzewo trasowań}, label=lst:routing_tree]
 r.on "a" do           # /a gałęź
   r.on "b" do         # /a/b gałęź
@@ -355,12 +356,12 @@ r.on "a" do           # /a gałęź
 end
 \end{lstlisting}
 
-W przeciwieństwie do Ruby on Rails, Roda nie posiada warstwy kontrolerów i osobnego modułu obsługującego trasowanie, w Rodzie przy definicji danego punktu końcowego znajduje się od razu kod obsługujący otrzymane zapytanie.
+W przeciwieństwie do Ruby on Rails, Roda nie posiada warstwy kontrolerów i~osobnego modułu obsługującego trasowanie, w~Rodzie przy definicji danego punktu końcowego znajduje się od razu kod obsługujący otrzymane zapytanie.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=1\linewidth]{pictures/roda_architecture}
-  \caption{Architektura aplikacji w frameworku Roda}
+  \caption{Architektura aplikacji w~frameworku Roda}
   \label{fig:roda_architecture}
 \end{figure}
 
@@ -378,20 +379,20 @@ W przeciwieństwie do Ruby on Rails, Roda nie posiada warstwy kontrolerów i oso
     ]
   \end{forest}   
   \caption{Struktura projektu Roda}
-  \label{fig:roda_proj_structure}
+  \label{fig:roda_structure}
 \end{figure}
 
 \section{Hanami}
 
-Hanami jest lekkim frameworkiem internetowym opartym o~architekturę MVC, zbudowanym z~wielu mikro-bibliotek. w~przeciwieństwie do Ruby on Rails, Hanami nie stawia konwencji ponad konfiguracje, wszystkie informacje powinny być zawarte w~napisanym przez programistę kodzie, którego zrozumienie nie wymaga znajomości konwencji frameworka. Architekura projektu jest głównie inspirowana przez te dwa podejścia:
+Hanami jest lekkim frameworkiem internetowym opartym o~architekturę MVC, zbudowanym z~wielu mikro-bibliotek. W~przeciwieństwie do Ruby on Rails, Hanami nie stawia konwencji ponad konfiguracje, wszystkie informacje powinny być zawarte w~napisanym przez programistę kodzie, którego zrozumienie nie wymaga znajomości konwencji frameworka. Architektura projektu jest głównie inspirowana przez dwa podejścia:
 
 \begin{itemize}
-  \item Czysta architektura (ang. clean architecture) - schemat tej architektury składa się z~kolejnych zawierających się w~sobie kół. Każde wewnętrzne koło nie ma żadnych zależności w~zewnętrznym kole, czyli w~obiektach należących do wewnętrznego koła, nie ma odwołań do obiektów z~zewnętrznych kół\cite{clean_architecture}. To podstawowa zasada tego podejścia. 
+  \item Czysta architektura (ang. clean architecture) - schemat tej architektury składa się z~kolejnych zawierających się w~sobie kół. Każde wewnętrzne koło nie ma żadnych zależności w~zewnętrznym kole, czyli w~obiektach należących do wewnętrznego koła, nie ma odwołań do obiektów z~zewnętrznych kół. \cite{clean_architecture} To podstawowa zasada tego podejścia. 
 
   \begin{figure}[H]
     \centering
     \includegraphics[width=1\linewidth]{pictures/clean_architecture}
-    \caption{Schemat czystej architektury\cite{clean_architecture}}
+    \caption{Schemat czystej architektury \cite{clean_architecture}}
     \label{fig:clean_architecture}
   \end{figure}
 
@@ -406,7 +407,7 @@ Hanami jest lekkim frameworkiem internetowym opartym o~architekturę MVC, zbudow
 
   \item Najpierw monolit (ang. monolith first) - według tej zasady budowę systemu zaczyna się od monolitycznej aplikacji. Jednak budowa aplikacji od samego początku powinna być jak najbardziej modularna aby można było ją później rozbić na wiele mniejszych aplikacji.
 
-  Zgodnie z~zasadą \emph{czystej architektury} w~utworzonym projekcie systemu z~użyciem Hanami oddzielona jest warstwa logiki biznesowej znajdująca się w~folderze \emph{lib\\} projektu od mechanizmu komunikacji z~innymi serwisami zawartego w~folderze \emph{apps\\}.
+  Zgodnie z~zasadą \emph{czystej architektury} w~utworzonym projekcie systemu z~użyciem Hanami oddzielona jest warstwa logiki biznesowej znajdująca się w~folderze \emph{lib} projektu od mechanizmu komunikacji z~innymi serwisami zawartego w~folderze \emph{apps}.
 
   Hanami posiada kontener aplikacji, który pozwala nam utworzyć wiele aplikacji w~ramach jednego projektu, które korzystają z~tego samego zbioru encji i~przypadków użycia, a~następnie uruchomić je w~jednym procesie Rubiego.
 \end{itemize}
@@ -442,25 +443,25 @@ Hanami jest lekkim frameworkiem internetowym opartym o~architekturę MVC, zbudow
 \section{Przechowywanie danych}
 Omawiane frameworki domyślnie wykorzystują relacyjną bazę danych do przechowywania informacji. Najpopularniejsze bazy danych to PostgreSQL, MySQL, SQLite.
 \subsection{PostgreSQL}
-PostgreSQL posiada kilka wbudowanych typów przestrzennych\cite{doc_postgresql}: 
+PostgreSQL posiada kilka wbudowanych typów przestrzennych \cite{doc_postgresql}: 
 \begin{itemize}
-  \item Point - reprezentuje punkt na mapie, to podstawowy typ, który służy do budowania pozostałych typów przestrzennych. Dane zapisane są jako para współrzędnych w postaci tekstowej \textit{( x, y )}, gdzie x i y to liczby zmienno przecinkowe.
-  \item Line - prosta w znaczeniu geometrycznym, mogą być reprezentowane przez równanie liniowe \textit{Ax + By + C = 0}, wtedy w bazie danych zapisane są współczynniki \textit{A, B, C}. Innym sposobem reprezentacji tego typu są dwa punkty, przez które przechodzi prosta \textit{[ ( x1 , y1 ) , ( x2 , y2 ) ]
+  \item Point - reprezentuje punkt na mapie, to podstawowy typ, który służy do budowania pozostałych typów przestrzennych. Dane zapisane są jako para współrzędnych w~postaci tekstowej \textit{( x, y )}, gdzie x i~y to liczby zmienno-przecinkowe.
+  \item Line - prosta w~znaczeniu geometrycznym, mogą być reprezentowane przez równanie liniowe \textit{Ax + By + C = 0}, wtedy w~bazie danych zapisane są współczynniki \textit{A, B, C}. Innym sposobem reprezentacji tego typu są dwa punkty, przez które przechodzi prosta \textit{[ ( x1 , y1 ) , ( x2 , y2 ) ]
   }.
-  \item Line Segment - w znaczeniu geometrycznym to odcinek, reprezentowany przez dwa punkty, początek i koniec odcinka \textit{[ ( x1 , y1 ) , ( x2 , y2 ) ]}.
-  \item Box - to czworokąty zapisane jako dwa przeciwległe wierzchołki \textit{( ( x1 , y1 ) , ( x2 , y2 ) )}.
-  \item Path - lista połączonych ze sobą punktów, ścieżka. Ścieżka może być otwarta, jeśli pierwszy i ostatni punkt nie są ze sobą połączone, lub zamknięta, jeśli pierwszy i ostatni punkt są ze sobą połączone. Nawiasy kwadratowe reprezentują otwartę ścieżkę \textit{[ ( x1 , y1 ) , ... , ( xn , yn ) ]}, zamnkięta ścieżka jest przedstawiona za pomocą okrągłych nawiasów \textit{( ( x1 , y1 ) , ... , ( xn , yn ) )}.
-  \item Polygon - to wielokąt zapisany za pomocą listy punktów, reprezentujących kolejne wierzchołki wielokątu \textit{( ( x1 , y1 ) , ... , ( xn , yn ) )}.
-  \item Circle - okrąg zapisany przy pomocy środka i promienia \textit{< ( x , y ) , r >}.
+  \item Line Segment - w~znaczeniu geometrycznym to odcinek, reprezentowany przez dwa punkty, początek i~koniec odcinka \textit{[ ( x1 , y1 ) , ( x2 , y2 ) ]}.
+  \item Box - to czworokąt zapisane jako dwa przeciwległe wierzchołki\\ \textit{( ( x1 , y1 ) , ( x2 , y2 ) )}.
+  \item Path - lista połączonych ze sobą punktów, ścieżka. Ścieżka może być otwarta, jeśli pierwszy i~ostatni punkt nie są ze sobą połączone, lub zamknięta, jeśli pierwszy i~ostatni punkt są ze sobą połączone. Nawiasy kwadratowe reprezentują otwartę ścieżkę \textit{[ ( x1 , y1 ) , ... , ( xn , yn ) ]}, zamknięta ścieżka jest przedstawiona za pomocą okrągłych nawiasów \textit{( ( x1 , y1 ) , ... , ( xn , yn ) )}.
+  \item Polygon - to wielokąt zapisany za pomocą listy punktów, reprezentujących kolejne wierzchołki wielokąta \textit{( ( x1 , y1 ) , ... , ( xn , yn ) )}.
+  \item Circle - okrąg zapisany przy pomocy środka i~promienia \textit{  $< ( x , y ) , r >$ }.
 \end{itemize}
-PostgreSQL dostarcza niewiele funkcji do wyszukiwania danych. Sprawdzenie zależności między dwoma punktami takich jak np. przecięcie dwóch obiektów lub zawieranie się jednego punktu w drugim nie jest dostępne dla typów \textit{Path} i \textit{Polygon}. 
+PostgreSQL dostarcza niewiele funkcji do wyszukiwania danych. Sprawdzenie zależności między dwoma punktami takich jak np. przecięcie dwóch obiektów lub zawieranie się jednego obiektu w~drugim nie jest dostępne dla typów \textit{Path} i~\textit{Polygon}. 
 \subsection{PostGIS}
-PostGIS jest biblioteką rozszerzającą możliwości PostgreSQL w zakresie przetwarzania danych przestrzennych. Biblioteka jest wspierana przez fundacje \textit{Open Source Geospatial}\cite{doc_postgis}. Dane są zapisane w formie binarnej jako współrzędne geograficzne lub geometryczne w zależności od wyboru. Postgis zapewnia wsparcie typów zdefiniowanych przez \textit{Open Geospatial Consortium}:
+PostGIS jest biblioteką rozszerzającą możliwości PostgreSQL w~zakresie przetwarzania danych przestrzennych. Biblioteka jest wspierana przez fundacje \textit{Open Source Geospatial}. \cite{doc_postgis} Dane są zapisane w~formie binarnej jako współrzędne geograficzne lub geometryczne w~zależności od wyboru. PostGIS zapewnia wsparcie typów zdefiniowanych przez \textit{Open Geospatial Consortium}:
 \begin{itemize}
   \item POINT - pojedynczy punkt na mapie.
   \item LINESTRING - zbiór połączonych ze sobą punktów reprezentujący ścieżkę.
-  \item POLYGON - zbiór połączonych ze sobą punktów reprezentujący wierzchołki wielokątu.
-\end{itemize}
+  \item POLYGON - zbiór połączonych ze sobą punktów reprezentujący wierzchołki wielokąta.
+\end{itemize} 
 \textit{Open Geospatial Consortium} definiuje również kolekcje obiektów powyższych typów:
 \begin{itemize}
   \item MULTIPOINT - kolekcja punktów.
@@ -471,31 +472,31 @@ PostGIS jest biblioteką rozszerzającą możliwości PostgreSQL w zakresie prze
 Dla wszystkich typów dostępny jest taki sam zestaw funkcji, które np. sprawdzają zależności między dwoma obiektami, co jest pomocne przy wyszukiwaniu obiektów.
 
 \subsection{MySQL Spatial}
-MySQL Spatial jest rozszerzeniem dla bazy MySQL, które dostarcza wsparcie dla danych przestrzennych. Rozszerzenie dostarcza typy danych zdefiniowane przez grupę \textit{Open Geospatial Consortium}\cite{doc_mysql}. Zbiór funkcjonalności pokrywa się z funkcjonalnościami rozszerzenia Postgis.
+MySQL Spatial jest rozszerzeniem dla bazy MySQL, które dostarcza wsparcie dla danych przestrzennych. Rozszerzenie dostarcza typy danych zdefiniowane przez grupę \textit{Open Geospatial Consortium}. \cite{doc_mysql} Zbiór funkcjonalności pokrywa się z~funkcjonalnościami rozszerzenia Postgis.
 \subsection{SpatiaLite}
-SpatiaLite jest rozszerzeniem dla bazy danych SQLite, które zawiera wsparcie dla typów przestrzennych zdefiniowanych przez grupę \textit{Open Geospatial Consortium}\cite{doc_spatialite}: \textit{Point, Line, Multiline, Polygon, Multipolygon}. Cała baza danych zapisana jest w pojedynczym pliku. Biblioteka udostępniona jest na zasadzie otwartego źródła.
+SpatiaLite jest rozszerzeniem dla bazy danych SQLite, które zawiera wsparcie dla typów przestrzennych zdefiniowanych przez grupę \textit{Open Geospatial Consortium}\cite{doc_spatialite}: \textit{Point, Line, Multiline, Polygon, Multipolygon}. Cała baza danych zapisana jest w~pojedynczym pliku. Biblioteka udostępniona jest na zasadzie otwartego źródła.
 
 \section{Obiektowe przetwarzanie danych}
 \subsection{RGeo}
-RGeo wspiera typy danych zdefiniowane przez \textit{Open Geospatial Consortium}, takie jak punkt, linia i wielokąt. Dane są reprezentowane w formie obiektowej. Biblioteka pozwala na podstawowe operacje analizowania danych przestrzennych, takie jak szukanie punktów przecięcia i obliczenia pola powierzchni. Biblioteka operuje na reprezentacji geograficznej i gemoetrycznej danych i pozwala konwertować dane pomiędzy dostępnymi reprezentacjami. RGeo udostępnia udostępnia jedynie interfejs w języku Ruby dla programistów, a do obsługi danych geograficznej korzysta z bibliotek GEOS i proj.4, te biblioteki są napisane w języku C++.
+RGeo wspiera typy danych zdefiniowane przez \textit{Open Geospatial Consortium}, takie jak punkt, linia i~wielokąt. Dane są reprezentowane w~formie obiektowej. Biblioteka pozwala na podstawowe operacje analizowania danych przestrzennych, takie jak szukanie punktów przecięcia i~obliczenia pola powierzchni. Biblioteka operuje na reprezentacji geograficznej i~geometrycznej danych i~pozwala konwertować dane pomiędzy dostępnymi reprezentacjami. RGeo udostępnia udostępnia jedynie interfejs w~języku Ruby dla programistów, a~do obsługi danych geograficznych korzysta z~bibliotek GEOS i~proj.4, te biblioteki są napisane w~języku C++. \cite{doc_rgeo}
 
 \subsection{GeoRuby}
-GeoRuby jest biblioteką całkowicie napisaną za pomocą języka Ruby do przetwarzania danych przestrzennych. Biblioteka ściśle podąża za modelem danych definiowanych przez \textit{Open Geospatial Consortium}, dlatego dobrze łączy się z takimi bazami danych jak Postgis, Mysql Spatial, SpatiaLite i innymi, które również wspierają typu opracowane przez OGC\cite{doc_georuby}.
+GeoRuby jest biblioteką całkowicie napisaną za pomocą języka Ruby do przetwarzania danych przestrzennych. Biblioteka ściśle podąża za modelem danych definiowanych przez \textit{Open Geospatial Consortium}, dlatego dobrze łączy się z~takimi bazami danych jak Postgis, MySQL Spatial, SpatiaLite i~innymi, które również wspierają typu opracowane przez OGC. \cite{doc_georuby}
 
 \section{Prezentowanie danych}
 \label{sec:maps-tools}
 \subsection{Leaflet}
-Leaflet jest biblioteką napisaną w języku Javascript, która pozwala dodać interaktywną mapę do widoku aplikacji internetowej. Biblioteka nie dostarcza graficznej reprezentacji mapy, ale zapewnia obsługę mapy z zewnętrznego serwisu np. OpenStreetMap. Do mapy można dodawać interaktywne obiekty. Biblioteka dostępna jest na zasadzie otwartego źródła.\cite{doc_leaflet}
+Leaflet jest biblioteką napisaną w~języku JavaScript, która pozwala dodać interaktywną mapę do widoku aplikacji internetowej. Biblioteka nie dostarcza graficznej reprezentacji mapy, ale zapewnia obsługę mapy z~zewnętrznego serwisu np. OpenStreetMap. Do mapy można dodawać interaktywne obiekty. Biblioteka dostępna jest na zasadzie otwartego źródła. \cite{doc_leaflet}
 
 \subsection{GoogleMaps JavaScript API}
-GoogleMaps JavaScript API pozwala dołączyć mapę z serwisu Google Maps. Mapa jest interaktywna i pozwala wyświetlać obiekty dodane przez programistę. W darmowejwersji GoogleMaps API pozwala wczytać mapę 25 000 razy w ciągu dnia.\cite{doc_google}
+GoogleMaps JavaScript API pozwala dołączyć mapę z~serwisu Google Maps. Mapa jest interaktywna i~pozwala wyświetlać obiekty dodane przez programistę. W darmowej wersji GoogleMaps API pozwala wczytać mapę 25 000 razy w~ciągu dnia. \cite{doc_google}
 
 
 \chapter{Badania}
 
 \section{Plan badań}
 
-Na podstawie dostępnej dokumentacji oraz zaimplementowanych aplikacji w każdym z badanych narzędzi, frameworki zostaną porównane w następującyh aspektach:
+Na podstawie dostępnej dokumentacji oraz zaimplementowanych aplikacji w~każdym z~badanych narzędzi, frameworki zostaną porównane w~następujących aspektach:
 \begin{itemize}
   \item dostępne funkcjonalności
   \item struktura utworzonego projektu
@@ -505,7 +506,7 @@ Na podstawie dostępnej dokumentacji oraz zaimplementowanych aplikacji w każdym
 
 \subsection{Aplikacja zaimplementowana na potrzeby badań}
 
-W~celu wykonania analizy porównanwczej w~każdym z~wybranych frameworków została zaimplementowana aplikacja internetowa operująca na danych geograficznych posiadająca takie same funkcjonalności. Aplikacje zostały zrealizowane zgodnie z architekturą i konwencją wykorzystywanymi w danym frameworku zawartych w dokumentacji narzędzia. W projektach wykorzystano jedynie biblioteki niezbędnę do zrealizowania wymaganych funkcjonalności. Nie używano bibliotek modyfikujących architekturę aplikacji lub funkcjonalności frameworka.
+W~celu wykonania analizy porównawczej w~każdym z~wybranych frameworków została zaimplementowana aplikacja internetowa operująca na danych geograficznych posiadająca takie same funkcjonalności. Aplikacje zostały zrealizowane zgodnie z~architekturą i~konwencją wykorzystywaną w~danym frameworku zawartych w~dokumentacji narzędzia. W projektach wykorzystano jedynie biblioteki niezbędne do zrealizowania wymaganych funkcjonalności. Nie używano bibliotek modyfikujących architekturę aplikacji lub funkcjonalności frameworka.
 Aplikacja ma za zadanie wykonywać 4 podstawowe operacje na danych geograficznych:
 \begin{itemize}
   \item tworzenie
@@ -523,14 +524,14 @@ Wszystkie funkcjonalności wykonanej aplikacji zostały zaprezentowane na rysunk
   \label{fig:use_cases}
 \end{figure}
 
-Aby przeprowadzić badania w realistycznych warunkach aplikacja korzysta z gotowych zbiorów danych:
+Aby przeprowadzić badania w~realistycznych warunkach aplikacja korzysta z~gotowych zbiorów danych:
 \begin{itemize}
-  \item punkty - pochodzące ze zbioru "Państwowy rejestr nazw geograficznych - miejscowości", zbiór zawiera 256796 obiektów, dostępny jest pod adresem http://www.codgik.gov.pl/index.php/darmowe-dane/prng.html
-  \item linie - dane uzyskano z serwisu http://download.geofabrik.de/europe/poland.html pozwalającego pobrać drogi z terenu Polski z bazy danych OpenStreetMap. Zbiór obejmuje 2519660 obiektów
-  \item wielokąty - obiekty pobrano z Państwowego Rejestru Granic dostępnego pod adresem http://gis-support.pl/baza-wiedzy/dane-do-pobrania/, zbiór liczy 59978 obiektów
+  \item Punkty - pochodzące ze zbioru "Państwowy rejestr nazw geograficznych - miejscowości", zbiór zawiera 256796 obiektów, dostępny jest pod adresem http://www.codgik.gov.pl/index.php/darmowe-dane/prng.html.
+  \item Linie - dane uzyskano z~serwisu http://download.geofabrik.de/europe/poland.html pozwalającego pobrać drogi z~terenu Polski z~bazy danych OpenStreetMap. Zbiór obejmuje 2519660 obiektów.
+  \item Wielokąty - obiekty pobrano z~Państwowego Rejestru Granic dostępnego pod adresem http://gis-support.pl/baza-wiedzy/dane-do-pobrania/, zbiór liczy 59978 obiektów.
 \end{itemize}
 
-Każda wersja aplikacji posiada taką samą bazę danych, której schemat znajduje się na rysunku \ref{fig:erd}
+Każda wersja aplikacji posiada taką samą bazę danych, której schemat znajduje się na rysunku \ref{fig:erd}. Jako bazę danych wykorzystano PostgreSQL z~rozszerzeniem PostGIS. Dane geograficznej w~warstwie aplikacji przetwarzano używając biblioteki RGeo.
 
 \begin{figure}[H]
   \centering
@@ -539,7 +540,7 @@ Każda wersja aplikacji posiada taką samą bazę danych, której schemat znajdu
   \label{fig:erd}
 \end{figure}
 
-Do prezentacji danych na mapie wykorzystano bibliotekę LefletJS, ponieważ jest darmowa i ma otwarte źródła. Mapa pochodzi z serwisu OpenStreetMap. Widok gotowej aplikacji znajduje się na rysunku \ref{fig:app}.
+Do prezentacji danych na mapie wykorzystano bibliotekę LefletJS, ponieważ jest darmowa i~ma otwarte źródła. Mapa pochodzi z~serwisu OpenStreetMap. Widok gotowej aplikacji znajduje się na rysunku \ref{fig:app}.
 
 \begin{figure}[H]
   \centering
@@ -549,21 +550,49 @@ Do prezentacji danych na mapie wykorzystano bibliotekę LefletJS, ponieważ jest
 \end{figure}
 
 \subsection{Narzędzia wykorzystane podczas badań}
-selenium, capybara, jmeter, ruby benchmark
+Do zmierzenia wydajności zaimplementowanych aplikacji zastosowano następujące narzędzia:
+\begin{itemize}
+  \item{Capybara} - biblioteka w~języku Ruby pozwalająca symulować interakcje prawdziwego użytkownika z~wybraną aplikacją internetową. Capybara dostarcza szereg metod pozwalających zapisać jako scenariusz kolejne kroki postępowania użytkownika m.in. kliknięcie wybranego elementu lub wprowadzenie danych do formularza. Do wspierania JavaScriptu, Capybara używa Selenium. Selenium jest narzędziem, które umożliwia automatyczne wykonanie testów akceptacyjnych aplikacji internetowej w~wybranej przeglądarce. W przeprowadzonych badaniach testy uruchomione zostały w~przeglądarce Firefox. \cite{doc_capybara}
+  \item{JMeter} - aplikacja napisana w~języku Java dostępna na licencji otwartego źródła. JMeter służy do wykonywania testów wydajności aplikacji internetowych. W niniejszych badaniach JMeter wykorzystywał protokół HTTP do wysyłania określonych zapytań do aplikacji. W badaniach pomocna również okazała się funkcja symulowania wielu użytkowników - JMeter uruchamia wybrany scenariusz na wielu wątkach aby sprawdzić jak zachowa się aplikacja przy wielu równoległych zapytaniach. \cite{doc_jmeter}
+  \item{Ruby Benchmark} - biblioteka pozwalająca na zmierzenie czasu wykonywania podanego blogu kodu. Ruby Benchmark został wykorzystany przy zmierzeniu czasu wykonywania scenariuszy utworzonych przy pomocy Capybary oraz czasu wykonywania operacji na bazie danych. \cite{doc_benchmark}
+\end{itemize}
 
 \subsection{Środowisko badawcze}
 
-\section{Porównianie funkcjonalności wybranych frameworków}
+Do przeprowadznia badań użyto dwóch komputerów:
+
+\begin{enumerate}
+\item Komputer - serwer
+  \begin{itemize}
+    \item MacBook Pro(Retina, 13 cali,model: Early 2015)
+    \item Procesor: Intel Core i5 2,7 GHz 2 rdzenie
+    \item Pamięć RAM: 8GB DDR3 1867 MHz
+    \item Dysk: 120GB APPLE SSD SM0128G
+  \end{itemize}
+\item Komputer - tester
+  \begin{itemize}
+    \item MacBook Mini 6.1
+    \item Procesor: Intel Core i5 2,5 GHz 2 rdzenie
+    \item Pamięć RAM: 8GB DDR3 1600 MHz
+    \item Dysk: 240GB GOODRAM SSD CX100
+  \end{itemize}
+\end{enumerate}
+
+Na \textit{komputerze - serwer} uruchomiona była aktualnie testowana aplikacja. \textit{Komputer - tester} wykonywał zaimplementowane badania. Podczas badań komputery były podłączone ze sobą lokalnie przy pomocy sieci Wi-Fi 802.11n i~nie miały dostępu do zewnętrznej sieci. Na komputerach uruchomione były tylko niezbędne aplikacje do przeprowadzenia badań.
+
+\section{Porównanie funkcjonalności wybranych frameworków}
 
 \subsection{Przechowywanie danych}
 
- Ruby on Rails posiada największe wsparcie w przechowywaniu danych geograficznych z rozpatrywanych narzędzi. Biblioteka ActiveRecord domyślne wykorzystywana w Ruby on Rails do mapowania obiektowo-relacyjnego posiada adaptery dla następujących baz danych: PostgreSQL z dodatkiem PostGIS, MysqlSpatial, SpatiaLite. Za pomocą adapterów, w migracjach można używać typów kolumn z przestrzennych baz danych. Przy komunikacji typy przestrzenne z bazy danych mapowane są na typy zaimplemetowane w bibliotece RGeo. Konfiguracja nie wymaga wiele pracy, wystarczy dodać odpowiednią bibliotekę do projektu i w konfiguracji bazy danych ustawić odpowiedni adapter. Od tego momentu można w migracjach przy definiowaniu kolumn używać wszystkich typów przestrzennych dostarczanych przez wybraną bazę danych. Dane przestrzenne podczas wykonywanych akcji między aplikacją, a bazą danych są automatycznie mapowane.
+ Ruby on Rails posiada największe wsparcie w~przechowywaniu danych geograficznych z~rozpatrywanych narzędzi. Biblioteka ActiveRecord domyślne wykorzystywana w~Ruby on Rails do mapowania obiektowo-relacyjnego posiada adaptery dla następujących baz danych: PostgreSQL z~dodatkiem PostGIS, MysqlSpatial, SpatiaLite. Za pomocą adapterów, w~migracjach można używać typów kolumn z~przestrzennych baz danych. Przy komunikacji typy przestrzenne z~bazy danych mapowane są na typy zaimplementowane w~bibliotece RGeo. Konfiguracja nie wymaga wiele pracy, wystarczy dodać odpowiednią bibliotekę do projektu i~w konfiguracji bazy danych ustawić odpowiedni adapter. Od tego momentu można w~migracjach przy definiowaniu kolumn używać wszystkich typów przestrzennych dostarczanych przez wybraną bazę danych. Dane przestrzenne podczas wykonywanych akcji między aplikacją, a~bazą danych są automatycznie mapowane.
 
- Hanami w migracjach pozwala uzywać kodu napisanego w języku sql do np. definiowania typów lub włączania dodatków w bazie danych, dlatego bez problemów można stworzyć i wersjonować bazę danych z typami przestrzennymi. Jednak framework, podobnie jak Ruby on Rails, posiada mechanizm automatycznego mapowania typów bazy danych do typów obiektów, który nie pozwala na definiowanie własnych typów lub własnych reguł mapowania. To ograniczenie powoduje otrzymanie wyjątku przy próbie uruchomienia aplikacj zawierającej nieznany typ. Framework wspiera jedynie typy przestrzenne zdefiniowane w bazie danych Postgresql, które są zapisywane postaci tekstowej zawierającej współrzędne. Możliwe jest zapisanie wszystkich 3 podstawowych typów przestrzennych: punktu, lini, wielokąta. Postgresql dostarcza podstawowe operacje wyszukiwania danych przestrzennych tylko dla punktów, dlatego zastosowanie Postgresql bez dodatku Postgis mocno ogranicza możliwości budowanej aplikacji. Dodanie obsługi typów geometrycznych dostarczonych przez dodatek Postgis nie wymaga dużej ilości kodu, wymagana jest dobra znajomość języka Ruby i mechanizmu przedefiniowania istniejących już klas tzw. "monkey patching". Najłatwiejsze rozwiązanie pozwalające używać typów geometrycznych z biblioteki Postgis znajduje się na listingu \ref{lst:postgis_patching}. Przy takim rozwiązaniu wartości z kolumny geometrycznnej mapowane są na typ String z wartością binarną.
+ Tworzenie bazy danych przestrzennej za pomocą Rody nie stanowi problemu. Framework pozwala używać kodu SQL w~migracjach dlatego można włączyć dowolne rozszerzenie wybranej bazy danych i~używać dodatkowych typów. Roda nie zapewnia specjalnego wsparcia przy mapowaniu danych przestrzennych na obiekty, dane są zwracane w~formie tekstowej binarnej wartości pola.
+
+ Hanami w~migracjach pozwala ozywać kodu napisanego w~języku SQL do np. definiowania typów lub włączania dodatków w~bazie danych, dlatego bez problemów można stworzyć i~wersjonować bazę danych z~typami przestrzennymi. Jednak framework, podobnie jak Ruby on Rails, posiada mechanizm automatycznego mapowania typów bazy danych do typów obiektów, który nie pozwala na definiowanie własnych typów lub własnych reguł mapowania. To ograniczenie powoduje otrzymanie wyjątku przy próbie uruchomienia aplikacji zawierającej nieznany typ. Framework wspiera jedynie typy przestrzenne zdefiniowane w~bazie danych PostgreSQL, które są zapisywane postaci tekstowej zawierającej współrzędne. Możliwe jest zapisanie wszystkich 3 podstawowych typów przestrzennych: punktu, linii, wielokąta. PostgreSQL dostarcza podstawowe operacje wyszukiwania danych przestrzennych tylko dla punktów, dlatego zastosowanie PostgreSQL bez dodatku PostGIS mocno ogranicza możliwości budowanej aplikacji. Dodanie obsługi typów geometrycznych dostarczonych przez dodatek PostGIS nie wymaga dużej ilości kodu, wymagana jest dobra znajomość języka Ruby i~mechanizmu przedefiniowania istniejących już klas tzw. "monkey patching". Najłatwiejsze rozwiązanie pozwalające używać typów geometrycznych z~biblioteki PostGIS znajduje się na listingu \ref{lst:postgis_patching}. Przy takim rozwiązaniu wartości z~kolumny geometrycznej mapowane są na typ String z~wartością binarną.
 
  \newpage
 
-\begin{lstlisting}[language=Ruby, caption={Obsługa typów geometrycznych z biblioteki Postgis przez Hanami}, label=lst:postgis_patching]
+\begin{lstlisting}[language=Ruby, caption={Obsługa typów geometrycznych z~biblioteki PostGIS przez Hanami}, label=lst:postgis_patching]
 require 'rom/sql/extensions/postgres/inferrer'
 require 'rom/sql/extensions/postgres/types'
 
@@ -573,23 +602,23 @@ ROM::SQL::Schema::PostgresInferrer.class_eval do
   def map_db_type(db_type)
     # najpierw następuje próba użycia oryginalnej metody mapowania typów
     # jeśli zakończy się ona nie powodzeniem, to następuje sprawdzenie 
-    # czy typ kolumny z bazy danych rozpoczyna się od słowa 'geometry'
+    # czy typ kolumny z~bazy danych rozpoczyna się od słowa 'geometry'
     # wtedy dane są rzutowane do typu ROM::Types::String
     map_db_type_original(db_type) || (db_type.start_with?('geometry') ? ROM::Types::String : nil)
   end
 end
 \end{lstlisting}
 
-\subsection{Przetwarzanie danych}
+\subsection{Obiektowe przetwarzanie danych}
 
- Do obiektowego przetwarzania danych dostępne są dwie biblioteki Rgeo i GeoRuby. Ruby on Rails, dzięki wspomnianym wcześniej adapterom dużo wygodniej jest korzystać z Rgeo dzięki automatycznemu mapowaniu danych relacyjnych na obiekty.
- Framework Hanami w żaden sposób nie rozszerza możliwości bibliotek Rgeo i GeoRuby. W zaimplementowanej metodzie mapującej wartości przestrzenne na typ obiektowy otrzymujemy wartość binarną, którą dalej można zamienić na typ z biblioteki Rgeo, co zaprezentowano na listingu \ref{lst:coordinates_helper}
+ Do obiektowego przetwarzania danych dostępne są dwie biblioteki Rgeo i~GeoRuby. Ruby on Rails, dzięki wspomnianym wcześniej adapterom dużo wygodniej jest korzystać z~Rgeo dzięki automatycznemu mapowaniu danych relacyjnych na obiekty.
+ Frameworki Roda oraz Hanami w~żaden sposób nie rozszerzają możliwości bibliotek Rgeo i~GeoRuby. W  Hanami, zaimplementowana metoda mapująca wartości przestrzenne na typ obiektowy zwraca wartość binarną, Roda domyślne zwraca dane przestrzenne w~takiej formie. Wartość binarną dalej można zamienić na typ z~biblioteki Rgeo, co zaprezentowano na listingu \ref{lst:coordinates_helper}
 
- \begin{lstlisting}[language=Ruby, caption={Tworzenie obiektu Rgeo z zapisu binarnego danych przestrzennych}, label=lst:coordinates_helper]
+ \begin{lstlisting}[language=Ruby, caption={Tworzenie obiektu Rgeo z~zapisu binarnego danych przestrzennych}, label=lst:coordinates_helper]
 module CoordinatesHelper
   FACTORY = RGeo::Geographic.spherical_factory(:srid => 4326)
 
-  # utworzenie obiektu Rgeo z binarnego zapisu danych przestrzennych
+  # utworzenie obiektu Rgeo z~binarnego zapisu danych przestrzennych
   def coordinates_object
     RGeo::WKRep::WKBParser.new(FACTORY, support_ewkb: true,
         default_srid: 4326).parse(coordinates)
@@ -604,17 +633,17 @@ end
 
 \subsection{Prezentowanie danych}
 
-Framework Ruby on Rails posiada biblioteki do integracji obu narzędzi do prezentacji danych geograficznych wspomnianych w rozdziale \ref{sec:maps-tools}:
+Framework Ruby on Rails posiada biblioteki do integracji obu narzędzi do prezentacji danych geograficznych wspomnianych w~rozdziale \ref{sec:maps-tools}:
 \begin{enumerate}
-  \item{leaflet-rails} - dołącza do projektu Ruby on Rails bibliotekę leafletjs napisaną w języku javascript wraz ze stylami oraz dodaje metody do widoków pozwalające na dołączenie mapy i podstawową konfiguracje bez potrzeby używania javascriptu
-  \item{Google Maps for Rails} - biblioteka opakowuje javascriptową bibliotekę google maps, ułatwiając jej dodanie do projektu
+  \item{leaflet-rails} - dołącza do projektu Ruby on Rails bibliotekę leafletjs napisaną w~języku JavaScript wraz ze stylami oraz dodaje metody do widoków pozwalające na dołączenie mapy i~podstawową konfiguracje bez potrzeby używania JavaScriptu.
+  \item{Google Maps for Rails} - biblioteka opakowuje JavaScriptową bibliotekę GoogleMaps JavaScript API, ułatwiając jej dodanie do projektu.
 \end{enumerate}
-Dzięki takiej integracji zgodnie z konwencją w języku Ruby\cite{doc_ruby}  wspomniane bilbioteki są przechowywane centralnie w systemie zamiast w projekcie.
-Hanami w przeciwieśtwie do Ruby on Rails nie posiada bibliotek wspomagających dołączenie do projektu biblioteki leafletjs lub Google Maps. Żeby skorzystać jednej z wymienionych bibliotek należy dołączyć jej kod do projektu.
+Dzięki takiej integracji zgodnie z~sposobem dołączania bibliotek do projektu w~języku Ruby \cite{doc_ruby}, wspomniane biblioteki są przechowywane centralnie w~systemie zamiast w~projekcie.
+Roda oraz Hanami w~przeciwieństwie do Ruby on Rails nie posiadają bibliotek wspomagających dołączenie do projektu biblioteki Leafletjs lub Google Maps Javascript API. Żeby skorzystać jednej z~wymienionych bibliotek należy dołączyć jej kod do projektu.
 
-Przy odczycie danych w formacie JSON, Ruby on Rails automatycznie serializuje model do postaci JSON. W projekcie wykorzystującym Hanami, niezbędne jest dodanie zewnętrznej bilbioteki realizującej serializowanie danych np. \textit{Roar} i zdefiniowanie odpowiedniego reprezentera. Przykładowy reprezenter został zaprezentowany na listingu \ref{lst:representer}
+Przy odczycie danych w~formacie JSON, Ruby on Rails oraz Roda automatycznie serializują model do postaci JSON. W projekcie wykorzystującym Hanami, niezbędne jest dodanie zewnętrznej bilbioteki realizującej serializowanie danych np. \textit{Roar} i~zdefiniowanie odpowiedniego prezentera. Przykładowy prezenter został zaprezentowany na listingu \ref{lst:representer}
 
- \begin{lstlisting}[language=Ruby, caption={Reprezenter dla modelu Point}, label=lst:representer]
+ \begin{lstlisting}[language=Ruby, caption={Prezenter dla modelu Point}, label=lst:representer]
 require 'roar/decorator'
 require 'roar/json'
 
@@ -638,9 +667,13 @@ end
 
 \subsection{Podsumowanie}
 
-Ruby on Rails posiada zdecydowanie więcej gotowych narzędzi do pracy z danymi geograficznymi. Tworzenie aplikacji dzięki temu trwa mniej czasu. Implementacja systemu informacji geograficznej za pomocą frameworku Hanami wymaga od programisty znacznie więcej pracy i większych umiejętności programistycznych.
+Ruby on Rails posiada zdecydowanie najwięcej gotowych narzędzi do pracy z~danymi geograficznymi z~rozpatrywanych frameworków. Tworzenie aplikacji dzięki temu trwa mniej czasu. Roda mimo mniejszego wsparcia dla danych przestrzennych w~przeciwieństwie do Hanami pozwala na ich używanie bez rozszerzania funkcjonalności frameworka. Hanami pozwala zbudować prosty system GIS wykorzystujący podstawowe typy przestrzenne dostępne w~bazie danych PostgreSQL, ale implementacja systemu informacji geograficznej wykorzystującego inną bazę danych za pomocą frameworku Hanami wymaga od programisty znacznie więcej pracy i~większych umiejętności programistycznych aby rozszerzyć możliwości frameworka.
+
+\newpage
 
 \section{Porównianie struktur wykonanych projektów}
+
+Struktura zaimplementowanego projektu przy pomocy Ruby on Rails bezpośrednio odzwierciedla architekturę frameworku. W projekcie mamy jasny podział na Model-Widok-Kontroler. 
 
 \begin{figure}[H]
   \centering
@@ -714,9 +747,82 @@ Ruby on Rails posiada zdecydowanie więcej gotowych narzędzi do pracy z danymi 
   \end{minipage}
   
     
-  \caption{Struktura projektu Rails}
+  \caption{Struktura projektu Ruby on Rails}
   \label{fig:rails_proj_structure}
 \end{figure}
+
+\newpage
+Filozofia prostoty w~frameworku Roda ma swoje odzwierciedlenie w~strukturze projektu, która nie posiada za wiele rozgałęzień.
+
+\begin{figure}[H]
+  \centering
+  \begin{minipage}[H]{0.4\textwidth}
+    \begin{forest}
+      pic dir tree,
+      where level=0{}{% folder icons by default; override using file for file icons
+        directory,
+      },
+      [roda\_project
+        [assets
+          [js
+            [application.js 17, file]
+            [checkboxes.js 63, file]
+            [leaflet.js 5, file]
+            [line\_form.js 58, file]
+            [lines.js 39, file]
+            [point\_form.js 59, file]
+            [points.js 66, file]
+            [polygon\_form.js 60, file]
+            [polygons.js 37, file]
+            [map.js 41, file]
+          ]
+          [css
+            [leaflet.css 548, file]
+            [main.css.scss 34, file]
+          ]
+        ]
+      [...]]
+    \end{forest}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[t!]{0.4\textwidth}
+    \begin{forest}
+      pic dir tree,
+      where level=0{}{% folder icons by default; override using file for file icons
+        directory,
+      },
+      [...
+        [models
+          [concerns
+            [gis\_support.rb 16, file]
+          ]
+          [line.rb 20, file]
+          [point.rb 23, file]
+          [polygon.rb 19, file]
+        ]
+        [routes
+          [lines.rb 47, file]
+          [points.rb 47, file]
+          [polygons.rb 47, file]
+        ]
+        [views
+          [shared
+            [\_line\_form.erb 12, file]
+            [\_point\_form.erb 17, file]
+          ]
+          [index.erb 92, file]
+          [layout.erb 14, file]
+        ]
+        [app.rb 33, file]
+        [models.rb 24, file]
+      ]
+    \end{forest}
+  \end{minipage}  
+  \caption{Struktura projektu Roda}
+  \label{fig:roda_proj_structure}
+\end{figure}
+
+Dodatkowe warstwy abstrakcji w~architekturze projektu Hanami przekładają się na bardziej rozbudowaną strukturę projektu.
 
 \begin{figure}[H]
   \centering
@@ -811,8 +917,8 @@ Ruby on Rails posiada zdecydowanie więcej gotowych narzędzi do pracy z danymi 
   \end{minipage}
   
     
-  \caption{Struktura projektu Rails}
-  \label{fig:rails_proj_structure}
+  \caption{Struktura projektu Hanami - część I}
+  \label{fig:hanami_1_proj_structure}
 \end{figure}
 
 \begin{figure}[H]
@@ -844,103 +950,11 @@ Ruby on Rails posiada zdecydowanie więcej gotowych narzędzi do pracy z danymi 
       ]
     ]
   \end{forest}   
-  \caption{Struktura projektu Rails}
-  \label{fig:rails_proj_structure}
+  \caption{Struktura projektu Hanami - część II}
+  \label{fig:hanami_2_proj_structure}
 \end{figure}
 
-\begin{figure}[H]
-  \centering
-  \begin{minipage}[H]{0.4\textwidth}
-    \begin{forest}
-      pic dir tree,
-      where level=0{}{% folder icons by default; override using file for file icons
-        directory,
-      },
-      [roda\_project
-        [assets
-          [js
-            [application.js 17, file]
-            [checkboxes.js 63, file]
-            [leaflet.js 5, file]
-            [line\_form.js 58, file]
-            [lines.js 39, file]
-            [point\_form.js 59, file]
-            [points.js 66, file]
-            [polygon\_form.js 60, file]
-            [polygons.js 37, file]
-            [map.js 41, file]
-          ]
-          [css
-            [leaflet.css 548, file]
-            [main.css.scss 34, file]
-          ]
-        ]
-      [...]]
-    \end{forest}
-  \end{minipage}
-  \hfill
-  \begin{minipage}[t!]{0.4\textwidth}
-    \begin{forest}
-      pic dir tree,
-      where level=0{}{% folder icons by default; override using file for file icons
-        directory,
-      },
-      [...
-        [models
-          [concerns
-            [gis\_support.rb 16, file]
-          ]
-          [line.rb 20, file]
-          [point.rb 23, file]
-          [polygon.rb 19, file]
-        ]
-        [routes
-          [lines.rb 47, file]
-          [points.rb 47, file]
-          [polygons.rb 47, file]
-        ]
-        [views
-          [shared
-            [\_line\_form.erb 12, file]
-            [\_point\_form.erb 17, file]
-          ]
-          [index.erb 92, file]
-          [layout.erb 14, file]
-        ]
-        [app.rb 33, file]
-        [models.rb 24, file]
-      ]
-    \end{forest}
-  \end{minipage}  
-  \caption{Struktura projektu Roda}
-  \label{fig:roda_proj_structure}
-\end{figure}
-
-% \begin{figure}[H]
-%   \centering
-%   \begin{tikzpicture}
-%     \begin{axis}[
-%       width = 0.8\linewidth,
-%       height = 0.5\linewidth,
-%       ybar=8pt,
-%       enlarge x limits=0.15,
-%       ymin=0,
-%       xtick=none,
-%       legend pos=outer north east,
-%       ylabel={Liczba plików},
-%       nodes near coords,
-%       nodes near coords align={vertical},
-%       compat=1.8]
-%       \addplot coordinates {(,1), (,2), (,3) };
-%       \legend{hanami, rails, roda}
-%     \end{axis}
-%   \end{tikzpicture}
-%   \caption{Liczba plików w projekcie w zależności od użytego frameworka}
-%   \label{fig:files_count}
-% \end{figure}
-
-\section{Porównianie  wydajności zaimplemetowanych aplikacji}
-\subsection{Interfejs użytkownika}
+Na rysunkach \ref{fig:files_count} i~\ref{fig:folders_count} można zauważyć, że projekt stworzony przy pomocy Hanami zawiera znacznie więcej plików i~folderów od dwóch pozostałych projektów. Dodatkowe warstwy abstrakcji w~architekturze frameworka przekładają się na bardziej skomplikowaną strukturę projektu. Projekty zrealizowany przy pomocy Ruby on Rails i~Roda zawierają dokładnie tyle samo plików, ale Roda ma nieco mniej folderów. Na rysunku \ref{fig:roda_proj_structure} można zauważyć, że struktura projektu Roda jest bardziej płaska niż struktura Ruby on Rails zaprezentowana na rysunku \ref{fig:rails_proj_structure}.
 
 \begin{figure}[H]
   \centering
@@ -948,13 +962,99 @@ Ruby on Rails posiada zdecydowanie więcej gotowych narzędzi do pracy z danymi 
     \begin{axis}[
       width = 0.8\linewidth,
       height = 0.5\linewidth,
-      ybar=8pt,
+      ybar=50pt,
+      enlarge x limits=0.15,
+      ymin=0,
+      xtick=\empty,
+      legend cell align=left, legend pos=outer north east,
+      ylabel={Liczba plików},
+      nodes near coords,
+      nodes near coords align={vertical}]
+      \addplot coordinates {(1,45)};
+      \addplot coordinates {(1,25)};
+      \addplot coordinates {(1,25)};
+      \legend{Hanami, Ruby on Rails, Roda}
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Liczba plików w~projekcie w~zależności od użytego frameworku}
+  \label{fig:files_count}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+      width = 0.8\linewidth,
+      height = 0.5\linewidth,
+      ybar=50pt,
+      enlarge x limits=0.15,
+      ymin=0,
+      xtick=\empty,
+      legend cell align=left, legend pos=outer north east,
+      ylabel={Liczba plików},
+      nodes near coords,
+      nodes near coords align={vertical}]
+      \addplot coordinates {(1,21)};
+      \addplot coordinates {(1,11)};
+      \addplot coordinates {(1,8)};
+      \legend{Hanami, Ruby on Rails, Roda}
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Liczba folderów w~projekcie w~zależności od użytego frameworku}
+  \label{fig:folders_count}
+\end{figure}
+
+Na poniższym wykresie można zauważyć, że projekt Ruby on Rails zawiera najmniej linii kodu. Framework posiada wiele gotowych, wbudowanych funkcjonalności co ułatwia pracę programiście. Projekt Hanami zawiera najwięcej linii kodu co spowodowane jest skomplikowaną architekturą aplikacji, każda kolejna warstwa abstrakcji narzuca na programistę obowiązek napisania dodatkowego kodu realizującego komunikacje między warstwami.
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+      width = 0.8\linewidth,
+      height = 0.5\linewidth,
+      ybar=50pt,
+      enlarge x limits=0.15,
+      ymin=0,
+      xtick=\empty,
+      legend cell align=left, legend pos=outer north east,
+      ylabel={Liczba plików},
+      nodes near coords,
+      nodes near coords align={vertical}]
+      \addplot coordinates {(1,1780)};
+      \addplot coordinates {(1,822)};
+      \addplot coordinates {(1,1438)};
+      \legend{Hanami, Ruby on Rails, Roda}
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Liczba linii kodu w~projekcie w~zależności od użytego frameworku}
+  \label{fig:code_lines_count}
+\end{figure}
+
+\newpage
+\section{Porównianie  wydajności zaimplemetowanych aplikacji}
+
+Wszystkie wyniki badań wydajnościowych zostały uśrednione po 30 przebiegach.
+
+\subsection{Interfejs użytkownika}
+
+Badania na poziomie interfejsu użytkownika wykonano za pomocą Capybary, Selenium i~Ruby Benchmark. Każdy scenariusz obejmował kroki, które użytkownik musi wykonać w~aplikacji aby wykonać daną akcje. Badanie danego scenariusza, kończono w~chwili pojawienia się efektów wykonanej akcji w~interfejsie graficznym.
+
+\subsubsection{Punkty}
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+      width = 0.8\linewidth,
+      height = 0.5\linewidth,
+      ybar=12pt,
+      legend cell align=left,
       enlarge x limits=0.15,
       ymin=0,
       flexible xticklabels from table={results/rails_cud_point_capybara_50.csv}{0}{header=false,col sep=comma},
       xticklabel style={right=10pt,rotate=45,anchor=east}, % To make sure the text labels are nicely aligned
       xtick=data,
-      legend pos=outer north east,
+      legend cell align=left, legend pos=outer north east,
       ylabel={Czas [s]},
       nodes near coords,
       nodes near coords align={vertical},
@@ -966,12 +1066,14 @@ Ruby on Rails posiada zdecydowanie więcej gotowych narzędzi do pracy z danymi 
       \addplot table[x expr=\coordindex, y index={1}] {\hanamitable};
       \addplot table[x expr=\coordindex, y index={1}] {\railstable};
       \addplot table[x expr=\coordindex, y index={1}] {\rodatable};
-      \legend{hanami, rails, roda}
+      \legend{Hanami, Ruby on Rails, Roda}
     \end{axis}
   \end{tikzpicture}
   \caption{Czas wykonania operacji CRUD dla punktu}
   \label{fig:crud_points}
 \end{figure}
+
+Framework Hanami okazał się najwolniejszy przy pojedynczych operacjach na obiektach typu punkt. Roda jest bardziej wydajna w~akcjach dodawania i~aktualizowania punktów, natomiast Ruby on Rails ma przewagę przy wyświetlaniu i~usuwaniu punktu.
 
 \begin{figure}[H]
   \centering
@@ -981,7 +1083,7 @@ Ruby on Rails posiada zdecydowanie więcej gotowych narzędzi do pracy z danymi 
       height = 0.5\linewidth,
       ymin=0,
       xmin=0,
-      legend pos=outer north east,
+      legend cell align=left, legend pos=outer north east,
       xlabel={Liczba punktów na mapie},
       ylabel={Czas [s]}]
       \pgfplotstableread[col sep=comma]{results/rails_read_points_capybara_50.csv}\railstable;
@@ -991,12 +1093,16 @@ Ruby on Rails posiada zdecydowanie więcej gotowych narzędzi do pracy z danymi 
       \addplot table[x=count, y=time] {\hanamitable};
       \addplot table[x=count, y=time] {\railstable};
       \addplot table[x=count, y=time] {\rodatable};
-      \legend{hanami, rails, roda}
+      \legend{Hanami, Ruby on Rails, Roda}
     \end{axis}
   \end{tikzpicture}
-  \caption{Czas ładowania widoku w zależności od liczby punktów}
+  \caption{Czas ładowania widoku w~zależności od liczby punktów}
   \label{fig:read_points}
 \end{figure}
+
+Na powyższym wykresie można zauważyć, że przewaga Rody i~Ruby on Rails nad Hanami jest stała i~nie zależy od liczby punktów.
+
+\subsubsection{Linie}
 
 \begin{figure}[H]
   \centering
@@ -1004,13 +1110,13 @@ Ruby on Rails posiada zdecydowanie więcej gotowych narzędzi do pracy z danymi 
     \begin{axis}[
       width = 0.8\linewidth,
       height = 0.5\linewidth,
-      ybar=8pt,
+      ybar=12pt,
       enlarge x limits=0.15,
       ymin=0,
       flexible xticklabels from table={results/rails_cud_line_capybara_50.csv}{0}{header=false,col sep=comma},
       xticklabel style={right=10pt,rotate=45,anchor=east}, % To make sure the text labels are nicely aligned
       xtick=data,
-      legend pos=outer north east,
+      legend cell align=left, legend pos=outer north east,
       ylabel={Czas [s]},
       nodes near coords,
       nodes near coords align={vertical},
@@ -1022,12 +1128,16 @@ Ruby on Rails posiada zdecydowanie więcej gotowych narzędzi do pracy z danymi 
       \addplot table[x expr=\coordindex, y index={1}] {\hanamitable};
       \addplot table[x expr=\coordindex, y index={1}] {\railstable};
       \addplot table[x expr=\coordindex, y index={1}] {\rodatable};
-      \legend{hanami, rails, roda}
+      \legend{Hanami, Ruby on Rails, Roda}
     \end{axis}
   \end{tikzpicture}
   \caption{Czas wykonania operacji CRUD dla linii}
   \label{fig:crud_lines}
 \end{figure}
+
+W operacjach na liniach można zauważyć, że Roda nie radzi sobie już tak dobrze jak z~obiektami punktowymi. Najlepiej wypada Ruby on Rails, dwa pozostałe frameworki uzyskały porównywalne wyniki.
+
+\subsubsection{Wielokąty}
 
 \begin{figure}[H]
   \centering
@@ -1039,7 +1149,7 @@ Ruby on Rails posiada zdecydowanie więcej gotowych narzędzi do pracy z danymi 
       xmin=0,
       xticklabel style={right=10pt, below=5pt,rotate=30,anchor=east},
       xlabel style={below=10pt},
-      legend pos=outer north east,
+      legend cell align=left, legend pos=outer north east,
       xlabel={Liczba linii na mapie},
       ylabel={Czas [s]}]
       \pgfplotstableread[col sep=comma]{results/rails_read_lines_capybara_50.csv}\railstable;
@@ -1049,12 +1159,14 @@ Ruby on Rails posiada zdecydowanie więcej gotowych narzędzi do pracy z danymi 
       \addplot table[x=count, y=time] {\hanamitable};
       \addplot table[x=count, y=time] {\railstable};
       \addplot table[x=count, y=time] {\rodatable};
-      \legend{hanami, rails, roda}
+      \legend{Hanami, Ruby on Rails, Roda}
     \end{axis}
   \end{tikzpicture}
-  \caption{Czas ładowania widoku w zależności od liczby linii}
+  \caption{Czas ładowania widoku w~zależności od liczby linii}
   \label{fig:read_lines}
 \end{figure}
+
+Przy ładowaniu widoku zawierającego mniej niż 200 linii Roda i~Ruby on Rails dają podobne rezultaty. Przy większej liczbie linii Ruby on Rails zyskuje przewagę. Hanami wypada najgorzej, ale różnica między nim, a~dwoma pozostałymi frameworkami spada wraz ze wzrostem liczby linii.
 
 \begin{figure}[H]
   \centering
@@ -1062,13 +1174,13 @@ Ruby on Rails posiada zdecydowanie więcej gotowych narzędzi do pracy z danymi 
     \begin{axis}[
       width = 0.8\linewidth,
       height = 0.5\linewidth,
-      ybar=8pt,
+      ybar=12pt,
       enlarge x limits=0.15,
       ymin=0,
       flexible xticklabels from table={results/rails_cud_polygon_capybara_50.csv}{0}{header=false,col sep=comma},
       xticklabel style={right=10pt,rotate=45,anchor=east}, % To make sure the text labels are nicely aligned
       xtick=data,
-      legend pos=outer north east,
+      legend cell align=left, legend pos=outer north east,
       ylabel={Czas [s]},
       nodes near coords,
       nodes near coords align={vertical},
@@ -1080,12 +1192,14 @@ Ruby on Rails posiada zdecydowanie więcej gotowych narzędzi do pracy z danymi 
       \addplot table[x expr=\coordindex, y index={1}] {\hanamitable};
       \addplot table[x expr=\coordindex, y index={1}] {\railstable};
       \addplot table[x expr=\coordindex, y index={1}] {\rodatable};
-      \legend{hanami, rails, roda}
+      \legend{Hanami, Ruby on Rails, Roda}
     \end{axis}
   \end{tikzpicture}
   \caption{Czas wykonania operacji CRUD dla wielokątów}
   \label{fig:crud_polygons}
 \end{figure}
+
+Podczas operacji na wielokątach Roda i~Hanami wypadły porównywalnie, obydwa frameworki dały gorsze rezultaty niż Ruby on Rails.
 
 \begin{figure}[H]
   \centering
@@ -1097,8 +1211,8 @@ Ruby on Rails posiada zdecydowanie więcej gotowych narzędzi do pracy z danymi 
       xmin=0,
       xticklabel style={right=10pt, below=5pt,rotate=30,anchor=east},
       xlabel style={below=10pt},
-      legend pos=outer north east,
-      xlabel={Liczba linii na mapie},
+      legend cell align=left, legend pos=outer north east,
+      xlabel={Liczba wielokątów na mapie},
       ylabel={Czas [s]}]
       \pgfplotstableread[col sep=comma]{results/rails_read_polygons_capybara_50.csv}\railstable;
       \pgfplotstableread[col sep=comma]{results/hanami_read_polygons_capybara_50.csv}\hanamitable;
@@ -1107,14 +1221,22 @@ Ruby on Rails posiada zdecydowanie więcej gotowych narzędzi do pracy z danymi 
       \addplot table[x=count, y=time] {\hanamitable};
       \addplot table[x=count, y=time] {\railstable};
       \addplot table[x=count, y=time] {\rodatable};
-      \legend{hanami, rails, roda}
+      \legend{Hanami, Ruby on Rails, Roda}
     \end{axis}
   \end{tikzpicture}
-  \caption{Czas ładowania widoku w zależności od liczby wielokątów}
+  \caption{Czas ładowania widoku w~zależności od liczby wielokątów}
   \label{fig:read_polygons}
 \end{figure}
 
+Podczas ładowania większej liczby wielokątów, najszybciej zwiększał się czas wykonania akcji dla frameworku Hanami. Drugie miejsce zajęła Roda, najlepsze wyniki zarejestrowano z~użyciem Ruby on Rails.
+
+\newpage
+
 \subsection{Zapytania HTTP}
+
+Wszystkie badania w~tym rozdziale wykonano przy pomocy aplikacji JMeter.
+
+\subsubsection{Punkty}
 
 \begin{figure}[H]
   \centering
@@ -1122,13 +1244,13 @@ Ruby on Rails posiada zdecydowanie więcej gotowych narzędzi do pracy z danymi 
     \begin{axis}[
       width = 0.8\linewidth,
       height = 0.5\linewidth,
-      ybar=8pt,
+      ybar=12pt,
       enlarge x limits=0.15,
       ymin=0,
       flexible xticklabels from table={results/rails_cud_point_capybara_50.csv}{0}{header=false,col sep=comma},
       xticklabel style={right=10pt,rotate=45,anchor=east}, % To make sure the text labels are nicely aligned
       xtick=data,
-      legend pos=outer north east,
+      legend cell align=left, legend pos=outer north east,
       ylabel={Czas [ms]},
       nodes near coords,
       nodes near coords align={vertical},
@@ -1140,12 +1262,14 @@ Ruby on Rails posiada zdecydowanie więcej gotowych narzędzi do pracy z danymi 
       \addplot table[x expr=\coordindex, y index={1}] {\hanamitable};
       \addplot table[x expr=\coordindex, y index={1}] {\railstable};
       \addplot table[x expr=\coordindex, y index={1}] {\rodatable};
-      \legend{hanami, rails, roda}
+      \legend{Hanami, Ruby on Rails, Roda}
     \end{axis}
   \end{tikzpicture}
   \caption{Czas wykonania zapytania HTTP dla punktu}
   \label{fig:http_crud_points}
 \end{figure}
+
+Czas pojedynczych operacji HTTP dla obiektów punktowych jednoznacznie pokazuje, że najbardziej wydajna jest aplikacja napisana z~użyciem Ruby on Rails, następnie Roda, a~najmniej wydajny okazał się framework Hanami.
 
 \begin{figure}[H]
   \centering
@@ -1155,8 +1279,8 @@ Ruby on Rails posiada zdecydowanie więcej gotowych narzędzi do pracy z danymi 
       height = 0.5\linewidth,
       ymin=0,
       xmin=0,
-      legend pos=outer north east,
-      xlabel={liczba punktów},
+      legend cell align=left, legend pos=outer north east,
+      xlabel={Liczba punktów},
       ylabel={Czas [ms]}]
       \pgfplotstableread[col sep=comma]{results/http/rails_read_points_http_50.csv}\railstable;
       \pgfplotstableread[col sep=comma]{results/http/hanami_read_points_http_50.csv}\hanamitable;
@@ -1165,12 +1289,14 @@ Ruby on Rails posiada zdecydowanie więcej gotowych narzędzi do pracy z danymi 
       \addplot table[x=count, y=time] {\hanamitable};
       \addplot table[x=count, y=time] {\railstable};
       \addplot table[x=count, y=time] {\rodatable};
-      \legend{hanami, rails, roda}
+      \legend{Hanami, Ruby on Rails, Roda}
     \end{axis}
   \end{tikzpicture}
-  \caption{Czas ładowania danych w zależności od liczby punktów}
+  \caption{Czas ładowania danych w~zależności od liczby punktów}
   \label{fig:http_read_points}
 \end{figure}
+
+Hanami bez względu na liczbę punktów wypada gorzej od dwóch pozostałych frameworków. Jeśli punktów jest mniej niż 40, Ruby on Rails wczytuje dane nieco szybciej niż Roda. Powyżej 70 punktów, lepsze wyniki uzyskano dla frameworku Roda.
 
 \begin{figure}[H]
   \centering
@@ -1182,7 +1308,7 @@ Ruby on Rails posiada zdecydowanie więcej gotowych narzędzi do pracy z danymi 
       xmin=0,
       xticklabel style={right=10pt, below=5pt,rotate=30,anchor=east},
       xlabel style={below=10pt},
-      legend pos=outer north east,
+      legend cell align=left, legend pos=outer north east,
       xlabel={Liczba użytkowników},
       ylabel={Czas [ms]}]
       \pgfplotstableread[col sep=comma]{results/load/rails_point_avg_time.csv}\railstable;
@@ -1192,12 +1318,14 @@ Ruby on Rails posiada zdecydowanie więcej gotowych narzędzi do pracy z danymi 
       \addplot table[x index={0}, y index={1}] {\hanamitable};
       \addplot table[x index={0}, y index={1}] {\railstable};
       \addplot table[x index={0}, y index={1}] {\rodatable};
-      \legend{hanami, rails, roda}
+      \legend{Hanami, Ruby on Rails, Roda}
     \end{axis}
   \end{tikzpicture}
-  \caption{Czas ładowania danych w zależności od liczby użytkowników}
+  \caption{Czas ładowania danych w~zależności od liczby użytkowników}
   \label{fig:load_avg_time_point}
 \end{figure}
+
+Przy zwiększającej się liczbie użytkowników aplikacja wykorzystująca framework Hanami szybciej zwiększa swój czas odpowiedzi. Pozostałe dwie aplikacje zachowują się podobnie.
 
 \begin{figure}[H]
   \centering
@@ -1209,7 +1337,7 @@ Ruby on Rails posiada zdecydowanie więcej gotowych narzędzi do pracy z danymi 
       xmin=0,
       xticklabel style={right=10pt, below=5pt,rotate=30,anchor=east},
       xlabel style={below=10pt},
-      legend pos=outer north east,
+      legend cell align=left, legend pos=outer north east,
       xlabel={liczba użytkowników},
       ylabel={liczba obsłużonych zapytań na sekunde}]
       \pgfplotstableread[col sep=comma]{results/load/rails_point_rps.csv}\railstable;
@@ -1219,12 +1347,16 @@ Ruby on Rails posiada zdecydowanie więcej gotowych narzędzi do pracy z danymi 
       \addplot table[x index={0}, y index={1}] {\hanamitable};
       \addplot table[x index={0}, y index={1}] {\railstable};
       \addplot table[x index={0}, y index={1}] {\rodatable};
-      \legend{hanami, rails, roda}
+      \legend{Hanami, Ruby on Rails, Roda}
     \end{axis}
   \end{tikzpicture}
-  \caption{liczba obsłużonych zapytań na sekunde w zależności od liczby użytkowników}
+  \caption{liczba obsłużonych zapytań na sekunde w~zależności od liczby użytkowników}
   \label{fig:load_rps_point}
 \end{figure}
+
+Początkowo Ruby on Rails obsługuje najwięcej użytkowników. Powyżej 200 użytkowników, Roda wyrównuje wynik frameworku Ruby on Rails - 169 użytkowników na sekundę.
+
+\subsubsection{Linie}
 
 \begin{figure}[H]
   \centering
@@ -1232,13 +1364,13 @@ Ruby on Rails posiada zdecydowanie więcej gotowych narzędzi do pracy z danymi 
     \begin{axis}[
       width = 0.8\linewidth,
       height = 0.5\linewidth,
-      ybar=8pt,
+      ybar=12pt,
       enlarge x limits=0.15,
       ymin=0,
       flexible xticklabels from table={results/http/rails_crud_line_http_50.csv}{0}{header=false,col sep=comma},
       xticklabel style={right=10pt,rotate=45,anchor=east}, % To make sure the text labels are nicely aligned
       xtick=data,
-      legend pos=outer north east,
+      legend cell align=left, legend pos=outer north east,
       ylabel={Czas [ms]},
       nodes near coords,
       nodes near coords align={vertical},
@@ -1250,12 +1382,14 @@ Ruby on Rails posiada zdecydowanie więcej gotowych narzędzi do pracy z danymi 
       \addplot table[x expr=\coordindex, y index={1}] {\hanamitable};
       \addplot table[x expr=\coordindex, y index={1}] {\railstable};
       \addplot table[x expr=\coordindex, y index={1}] {\rodatable};
-      \legend{hanami, rails, roda}
+      \legend{Hanami, Ruby on Rails, Roda}
     \end{axis}
   \end{tikzpicture}
   \caption{Czas wykonania operacji CRUD dla linii}
   \label{fig:http_crud_lines}
 \end{figure}
+
+Tak samo jak dla punktów, najkrótszy czas operacji na liniach otrzymano w~badaniach aplikacji opartej na frameworku Ruby on Rails. Następne miejsce zajął framework Roda. Najdłuższy czas odpowiedzi otrzymano wykorzystując Hanami.
 
 \begin{figure}[H]
   \centering
@@ -1267,8 +1401,8 @@ Ruby on Rails posiada zdecydowanie więcej gotowych narzędzi do pracy z danymi 
       xmin=0,
       xticklabel style={right=10pt, below=5pt,rotate=30,anchor=east},
       xlabel style={below=10pt},
-      legend pos=outer north east,
-      xlabel={liczba linii na mapie},
+      legend cell align=left, legend pos=outer north east,
+      xlabel={Liczba linii na mapie},
       ylabel={Czas [ms]}]
       \pgfplotstableread[col sep=comma]{results/http/rails_read_lines_http_50.csv}\railstable;
       \pgfplotstableread[col sep=comma]{results/http/hanami_read_lines_http_50.csv}\hanamitable;
@@ -1277,12 +1411,14 @@ Ruby on Rails posiada zdecydowanie więcej gotowych narzędzi do pracy z danymi 
       \addplot table[x=count, y=time] {\hanamitable};
       \addplot table[x=count, y=time] {\railstable};
       \addplot table[x=count, y=time] {\rodatable};
-      \legend{hanami, rails, roda}
+      \legend{Hanami, Ruby on Rails, Roda}
     \end{axis}
   \end{tikzpicture}
-  \caption{Czas ładowania danych w zależności od liczby linii}
+  \caption{Czas ładowania danych w~zależności od liczby linii}
   \label{fig:http_read_lines}
 \end{figure}
+
+Poniżej 500 linii na mapie wszystkie 3 aplikacje odpowiadały w~podobnym czasie. Przy większej liczby linii, czas odpowiedzi Hanami rósł szybciej niż pozostałych dwóch frameworków. Najkrótszy czas odpowiedzi dla danych liczących ponad 1000 linii zanotowano dla aplikacji wykorzystującej framework Roda.
 
 \begin{figure}[H]
   \centering
@@ -1294,9 +1430,9 @@ Ruby on Rails posiada zdecydowanie więcej gotowych narzędzi do pracy z danymi 
       xmin=0,
       xticklabel style={right=10pt, below=5pt,rotate=30,anchor=east},
       xlabel style={below=10pt},
-      legend pos=outer north east,
+      legend cell align=left, legend pos=outer north east,
       xlabel={Liczba użytkowników},
-      ylabel={Czas [ms]}]
+      ylabel={Czas [s]}]
       \pgfplotstableread[col sep=comma]{results/load/rails_line_avg_time.csv}\railstable;
       \pgfplotstableread[col sep=comma]{results/load/hanami_line_avg_time.csv}\hanamitable;
       \pgfplotstableread[col sep=comma]{results/load/roda_line_avg_time.csv}\rodatable;
@@ -1304,12 +1440,14 @@ Ruby on Rails posiada zdecydowanie więcej gotowych narzędzi do pracy z danymi 
       \addplot table[x index={0}, y index={1}] {\hanamitable};
       \addplot table[x index={0}, y index={1}] {\railstable};
       \addplot table[x index={0}, y index={1}] {\rodatable};
-      \legend{hanami, rails, roda}
+      \legend{Hanami, Ruby on Rails, Roda}
     \end{axis}
   \end{tikzpicture}
-  \caption{Czas ładowania danych w zależności od liczby użytkowników}
+  \caption{Czas ładowania danych w~zależności od liczby użytkowników}
   \label{fig:load_avg_time_line}
 \end{figure}
+
+Wraz ze wzrostem liczby użytkowników czas odpowiedzi aplikacji zbudowanej w~oparciu o~framework Hanami, rósł szybciej niż pozostałych dwóch aplikacji.
 
 \begin{figure}[H]
   \centering
@@ -1321,9 +1459,9 @@ Ruby on Rails posiada zdecydowanie więcej gotowych narzędzi do pracy z danymi 
       xmin=0,
       xticklabel style={right=10pt, below=5pt,rotate=30,anchor=east},
       xlabel style={below=10pt},
-      legend pos=outer north east,
-      xlabel={liczba użytkowników},
-      ylabel={liczba obsłużonych zapytań na sekunde}]
+      legend cell align=left, legend pos=outer north east,
+      xlabel={Liczba użytkowników},
+      ylabel={Liczba obsłużonych zapytań na sekunde}]
       \pgfplotstableread[col sep=comma]{results/load/rails_line_rps.csv}\railstable;
       \pgfplotstableread[col sep=comma]{results/load/hanami_line_rps.csv}\hanamitable;
       \pgfplotstableread[col sep=comma]{results/load/roda_line_rps.csv}\rodatable;
@@ -1331,12 +1469,16 @@ Ruby on Rails posiada zdecydowanie więcej gotowych narzędzi do pracy z danymi 
       \addplot table[x index={0}, y index={1}] {\hanamitable};
       \addplot table[x index={0}, y index={1}] {\railstable};
       \addplot table[x index={0}, y index={1}] {\rodatable};
-      \legend{hanami, rails, roda}
+      \legend{Hanami, Ruby on Rails, Roda}
     \end{axis}
   \end{tikzpicture}
-  \caption{liczba obsłużonych zapytań na sekunde w zależności od liczby użytkowników}
+  \caption{Liczba obsłużonych zapytań na sekunde w~zależności od liczby użytkowników}
   \label{fig:load_rps_line}
 \end{figure}
+
+Powyżej 200 użytkowników jednocześnie korzystających z~aplikacji, Roda i~Ruby on Rails w~ciągu sekundy obsługiwały około 190 użytkowników na sekundę. Przy mniejszej liczbie użytkowników Ruby on Rails obsługiwał więcej użytkowników w~ciągu sekundy od Rody. Hanami w~ciągu całego badania prezentował się znacznie gorzej od dwóch pozostałych frameworków i~maksymalnie w~ciągu sekundy odpowiedział na zapytanie 115 użytkowników.
+
+\subsubsection{Wielokąty}
 
 \begin{figure}[H]
   \centering
@@ -1344,14 +1486,14 @@ Ruby on Rails posiada zdecydowanie więcej gotowych narzędzi do pracy z danymi 
     \begin{axis}[
       width = 0.8\linewidth,
       height = 0.5\linewidth,
-      ybar=8pt,
+      ybar=12pt,
       enlarge x limits=0.15,
       ymin=0,
       flexible xticklabels from table={results/http/rails_crud_polygon_http_50.csv}{0}{header=false,col sep=comma},
       xticklabel style={right=10pt,rotate=45,anchor=east}, % To make sure the text labels are nicely aligned
       xtick=data,
-      legend pos=outer north east,
-      ylabel={Czas [s]},
+      legend cell align=left, legend pos=outer north east,
+      ylabel={Czas [ms]},
       nodes near coords,
       nodes near coords align={vertical},
       ]
@@ -1362,12 +1504,14 @@ Ruby on Rails posiada zdecydowanie więcej gotowych narzędzi do pracy z danymi 
       \addplot table[x expr=\coordindex, y index={1}] {\hanamitable};
       \addplot table[x expr=\coordindex, y index={1}] {\railstable};
       \addplot table[x expr=\coordindex, y index={1}] {\rodatable};
-      \legend{hanami, rails, roda}
+      \legend{Hanami, Ruby on Rails, Roda}
     \end{axis}
   \end{tikzpicture}
   \caption{Czas wykonania operacji CRUD dla wielokątów}
   \label{fig:http_crud_polygons}
 \end{figure}
+
+W podstawowych operacjach na wielokątach najlepsze czasy uzyskał framework Ruby on Rails, które były średnio dwukrotnie lepsze od wyników najwolniejszego frameworku Hanami.
 
 \begin{figure}[H]
   \centering
@@ -1379,9 +1523,9 @@ Ruby on Rails posiada zdecydowanie więcej gotowych narzędzi do pracy z danymi 
       xmin=0,
       xticklabel style={right=10pt, below=5pt,rotate=30,anchor=east},
       xlabel style={below=10pt},
-      legend pos=outer north east,
+      legend cell align=left, legend pos=outer north east,
       xlabel={Liczba linii na mapie},
-      ylabel={Czas [s]}]
+      ylabel={Czas [ms]}]
       \pgfplotstableread[col sep=comma]{results/http/rails_read_polygons_http_50.csv}\railstable;
       \pgfplotstableread[col sep=comma]{results/http/hanami_read_polygons_http_50.csv}\hanamitable;
       \pgfplotstableread[col sep=comma]{results/http/roda_read_polygons_http_50.csv}\rodatable;
@@ -1389,12 +1533,14 @@ Ruby on Rails posiada zdecydowanie więcej gotowych narzędzi do pracy z danymi 
       \addplot table[x=count, y=time] {\hanamitable};
       \addplot table[x=count, y=time] {\railstable};
       \addplot table[x=count, y=time] {\rodatable};
-      \legend{hanami, rails, roda}
+      \legend{Hanami, Ruby on Rails, Roda}
     \end{axis}
   \end{tikzpicture}
-  \caption{Czas ładowania danych w zależności od liczby wielokątów}
+  \caption{Czas ładowania danych w~zależności od liczby wielokątów}
   \label{fig:http_read_polygons}
 \end{figure}
+
+Czas odpowiedzi aplikacji zbudowanej w~oparciu o~Hanami znacznie szybciej rósł w~porównaniu do dwóch pozostałych aplikacji. Ruby on Rails i~Roda uzyskały zbliżone czasy z~małą, stałą przewagą na korzyść Ruby on Rails.
 
 \begin{figure}[H]
   \centering
@@ -1406,7 +1552,7 @@ Ruby on Rails posiada zdecydowanie więcej gotowych narzędzi do pracy z danymi 
       xmin=0,
       xticklabel style={right=10pt, below=5pt,rotate=30,anchor=east},
       xlabel style={below=10pt},
-      legend pos=outer north east,
+      legend cell align=left, legend pos=outer north east,
       xlabel={Liczba użytkowników},
       ylabel={Czas [ms]}]
       \pgfplotstableread[col sep=comma]{results/load/rails_polygon_avg_time.csv}\railstable;
@@ -1416,12 +1562,14 @@ Ruby on Rails posiada zdecydowanie więcej gotowych narzędzi do pracy z danymi 
       \addplot table[x index={0}, y index={1}] {\hanamitable};
       \addplot table[x index={0}, y index={1}] {\railstable};
       \addplot table[x index={0}, y index={1}] {\rodatable};
-      \legend{hanami, rails, roda}
+      \legend{Hanami, Ruby on Rails, Roda}
     \end{axis}
   \end{tikzpicture}
-  \caption{Czas ładowania danych w zależności od liczby użytkowników}
+  \caption{Czas ładowania danych w~zależności od liczby użytkowników}
   \label{fig:load_avg_time_polygon}
 \end{figure}
+
+Dla danych typu wielokąt, Hanami znacznie wolniej obsługiwał zapytania przy wzrastającej liczbie użytkowników w~porównaniu do pozostałych frameworków. Najlepiej z~rosnącą liczbą użytkownik radził sobie framework Ruby on Rails.
 
 \begin{figure}[H]
   \centering
@@ -1433,9 +1581,9 @@ Ruby on Rails posiada zdecydowanie więcej gotowych narzędzi do pracy z danymi 
       xmin=0,
       xticklabel style={right=10pt, below=5pt,rotate=30,anchor=east},
       xlabel style={below=10pt},
-      legend pos=outer north east,
-      xlabel={liczba użytkowników},
-      ylabel={liczba obsłużonych zapytań na sekunde}]
+      legend cell align=left, legend pos=outer north east,
+      xlabel={Liczba użytkowników},
+      ylabel={Liczba obsłużonych zapytań na sekunde}]
       \pgfplotstableread[col sep=comma]{results/load/rails_polygon_rps.csv}\railstable;
       \pgfplotstableread[col sep=comma]{results/load/hanami_polygon_rps.csv}\hanamitable;
       \pgfplotstableread[col sep=comma]{results/load/roda_polygon_rps.csv}\rodatable;
@@ -1443,14 +1591,20 @@ Ruby on Rails posiada zdecydowanie więcej gotowych narzędzi do pracy z danymi 
       \addplot table[x index={0}, y index={1}] {\hanamitable};
       \addplot table[x index={0}, y index={1}] {\railstable};
       \addplot table[x index={0}, y index={1}] {\rodatable};
-      \legend{hanami, rails, roda}
+      \legend{Hanami, Ruby on Rails, Roda}
     \end{axis}
   \end{tikzpicture}
-  \caption{liczba obsłużonych zapytań na sekunde w zależności od liczby użytkowników}
+  \caption{Liczba obsłużonych zapytań na sekunde w~zależności od liczby użytkowników}
   \label{fig:load_rps_polygon}
 \end{figure}
 
-\subsection{Komunikacja z bazą danych}
+Hanami zdołał maksymalnie obsłużyć 7 użytkowników w~ciągu sekundy i~ta liczba nie zmieniała się przy rosnącej liczbie użytkowników. Ruby on Rails, podobnie jak dla innych typów danych przy mniejszej liczbie użytkowników, mniej niż 200, obsługiwał więcej użytkowników niż Roda, jednak od 200 użytkowników jednocześnie korzystających z~aplikacji, oba frameworki obsługiwały prawie 50 użytkowników w~ciągu jednej sekundy.
+
+\subsection{Komunikacja z~bazą danych}
+
+Badania wydajności komunikacji z~bazą danych zrealizowano w~warstwie modelu każdej z~aplikacji. Czas wykonywania metod dla wybranych modeli zmierzono przy pomocy biblioteki Ruby Benchmark.
+
+\subsubsection{Punkty}
 
 \begin{figure}[H]
   \centering
@@ -1458,14 +1612,14 @@ Ruby on Rails posiada zdecydowanie więcej gotowych narzędzi do pracy z danymi 
     \begin{axis}[
       width = 0.8\linewidth,
       height = 0.5\linewidth,
-      ybar=8pt,
+      ybar=15pt,
       enlarge x limits=0.15,
       ymin=0,
       flexible xticklabels from table={results/model/rails_crud_point_model_50.csv}{0}{header=false,col sep=comma},
       xticklabel style={right=10pt,rotate=45,anchor=east}, % To make sure the text labels are nicely aligned
       xtick=data,
-      legend pos=outer north east,
-      ylabel={Czas [s]},
+      legend cell align=left, legend pos=outer north east,
+      ylabel={Czas [ms]},
       nodes near coords,
       nodes near coords align={vertical},
       compat=1.8]
@@ -1476,12 +1630,14 @@ Ruby on Rails posiada zdecydowanie więcej gotowych narzędzi do pracy z danymi 
       \addplot table[x expr=\coordindex, y index={1}] {\hanamitable};
       \addplot table[x expr=\coordindex, y index={1}] {\railstable};
       \addplot table[x expr=\coordindex, y index={1}] {\rodatable};
-      \legend{hanami, rails, roda}
+      \legend{Hanami, Ruby on Rails, Roda}
     \end{axis}
   \end{tikzpicture}
   \caption{Czas wykonania operacji CRUD dla punktu}
   \label{fig:model_crud_points}
 \end{figure}
+
+W pojedynczych operacjach w~warstwie modelu czasy operacji na punktach były do siebie zbliżone dla 3 badanych frameworków. Najszybciej zadane operacje wykonał framework Roda.
 
 \begin{figure}[H]
   \centering
@@ -1491,9 +1647,9 @@ Ruby on Rails posiada zdecydowanie więcej gotowych narzędzi do pracy z danymi 
       height = 0.5\linewidth,
       ymin=0,
       xmin=0,
-      legend pos=outer north east,
-      xlabel={Liczba punktów na mapie},
-      ylabel={Czas [s]}]
+      legend cell align=left, legend pos=outer north east,
+      xlabel={Liczba punktów},
+      ylabel={Czas [ms]}]
       \pgfplotstableread[col sep=comma]{results/model/rails_read_points_model_50.csv}\railstable;
       \pgfplotstableread[col sep=comma]{results/model/hanami_read_points_model_50.csv}\hanamitable;
       \pgfplotstableread[col sep=comma]{results/model/roda_read_points_model_50.csv}\rodatable;
@@ -1501,12 +1657,16 @@ Ruby on Rails posiada zdecydowanie więcej gotowych narzędzi do pracy z danymi 
       \addplot table[x=count, y=time] {\hanamitable};
       \addplot table[x=count, y=time] {\railstable};
       \addplot table[x=count, y=time] {\rodatable};
-      \legend{hanami, rails, roda}
+      \legend{Hanami, Ruby on Rails, Roda}
     \end{axis}
   \end{tikzpicture}
-  \caption{Czas wczytywania danych z bazy w zależności od liczby punktów}
+  \caption{Czas wczytywania danych z~bazy w~zależności od liczby punktów}
   \label{fig:model_read_points}
 \end{figure}
+
+Przy rosnącej liczbie wczytywanych punktów Roda i~Ruby on Rails uzyskały podobne wyniki, które były znacznie lepsze od Hanami.
+
+\subsubsection{Linie}
 
 \begin{figure}[H]
   \centering
@@ -1514,14 +1674,14 @@ Ruby on Rails posiada zdecydowanie więcej gotowych narzędzi do pracy z danymi 
     \begin{axis}[
       width = 0.8\linewidth,
       height = 0.5\linewidth,
-      ybar=8pt,
+      ybar=15pt,
       enlarge x limits=0.15,
       ymin=0,
       flexible xticklabels from table={results/model/rails_crud_line_model_50.csv}{0}{header=false,col sep=comma},
       xticklabel style={right=10pt,rotate=45,anchor=east}, % To make sure the text labels are nicely aligned
       xtick=data,
-      legend pos=outer north east,
-      ylabel={Czas [s]},
+      legend cell align=left, legend pos=outer north east,
+      ylabel={Czas [ms]},
       nodes near coords,
       nodes near coords align={vertical},
       ]
@@ -1532,12 +1692,14 @@ Ruby on Rails posiada zdecydowanie więcej gotowych narzędzi do pracy z danymi 
       \addplot table[x expr=\coordindex, y index={1}] {\hanamitable};
       \addplot table[x expr=\coordindex, y index={1}] {\railstable};
       \addplot table[x expr=\coordindex, y index={1}] {\rodatable};
-      \legend{hanami, rails, roda}
+      \legend{Hanami, Ruby on Rails, Roda}
     \end{axis}
   \end{tikzpicture}
   \caption{Czas wykonania operacji CRUD dla linii}
   \label{fig:model_crud_lines}
 \end{figure}
+
+Wyniki dla danych liniowych są analogiczne jak dla punktów, Roda uzyskała najlepsze rezultaty, a~najgorsze wyniki uzyskano dla Hanami.
 
 \begin{figure}[H]
   \centering
@@ -1549,9 +1711,9 @@ Ruby on Rails posiada zdecydowanie więcej gotowych narzędzi do pracy z danymi 
       xmin=0,
       xticklabel style={right=10pt, below=5pt,rotate=30,anchor=east},
       xlabel style={below=10pt},
-      legend pos=outer north east,
+      legend cell align=left, legend pos=outer north east,
       xlabel={Liczba linii na mapie},
-      ylabel={Czas [s]}]
+      ylabel={Czas [ms]}]
       \pgfplotstableread[col sep=comma]{results/model/rails_read_lines_model_50.csv}\railstable;
       \pgfplotstableread[col sep=comma]{results/model/hanami_read_lines_model_50.csv}\hanamitable;
       \pgfplotstableread[col sep=comma]{results/model/roda_read_lines_model_50.csv}\rodatable;
@@ -1559,12 +1721,16 @@ Ruby on Rails posiada zdecydowanie więcej gotowych narzędzi do pracy z danymi 
       \addplot table[x=count, y=time] {\hanamitable};
       \addplot table[x=count, y=time] {\railstable};
       \addplot table[x=count, y=time] {\rodatable};
-      \legend{hanami, rails, roda}
+      \legend{Hanami, Ruby on Rails, Roda}
     \end{axis}
   \end{tikzpicture}
-  \caption{Czas wczytywania danych z bazy w zależności od liczby linii}
+  \caption{Czas wczytywania danych z~bazy w~zależności od liczby linii}
   \label{fig:model_read_lines}
 \end{figure}
+
+Przy danych liniowych nadal czas odpowiedzi Hanami rósł znacznie szybciej od dwóch pozostałych frameworków. Można zauważyć, że różnica między Hanami, a~Ruby on Rails jest bardziej zauważalna niż dla punktów, z~korzyścią na stronę Ruby on Rails.
+
+\subsubsection{Wielokąty}
 
 \begin{figure}[H]
   \centering
@@ -1572,14 +1738,14 @@ Ruby on Rails posiada zdecydowanie więcej gotowych narzędzi do pracy z danymi 
     \begin{axis}[
       width = 0.8\linewidth,
       height = 0.5\linewidth,
-      ybar=8pt,
+      ybar=15pt,
       enlarge x limits=0.15,
       ymin=0,
       flexible xticklabels from table={results/model/rails_crud_polygon_model_50.csv}{0}{header=false,col sep=comma},
       xticklabel style={right=10pt,rotate=45,anchor=east}, % To make sure the text labels are nicely aligned
       xtick=data,
-      legend pos=outer north east,
-      ylabel={Czas [s]},
+      legend cell align=left, legend pos=outer north east,
+      ylabel={Czas [ms]},
       nodes near coords,
       nodes near coords align={vertical},
       ]
@@ -1590,12 +1756,14 @@ Ruby on Rails posiada zdecydowanie więcej gotowych narzędzi do pracy z danymi 
       \addplot table[x expr=\coordindex, y index={1}] {\hanamitable};
       \addplot table[x expr=\coordindex, y index={1}] {\railstable};
       \addplot table[x expr=\coordindex, y index={1}] {\rodatable};
-      \legend{hanami, rails, roda}
+      \legend{Hanami, Ruby on Rails, Roda}
     \end{axis}
   \end{tikzpicture}
   \caption{Czas wykonania operacji CRUD dla wielokątów}
   \label{fig:model_crud_polygons}
 \end{figure}
+
+Badania dla wielokątów dały analogiczne wyniki jak dla dwóch poprzednich typów danych - Roda wykonywała operacje szybciej niż pozostałe frameworki. Najdłuższy czas otrzymano dla frameworku Hanami.
 
 \begin{figure}[H]
   \centering
@@ -1607,9 +1775,9 @@ Ruby on Rails posiada zdecydowanie więcej gotowych narzędzi do pracy z danymi 
       xmin=0,
       xticklabel style={right=10pt, below=5pt,rotate=30,anchor=east},
       xlabel style={below=10pt},
-      legend pos=outer north east,
-      xlabel={Liczba linii na mapie},
-      ylabel={Czas [s]}]
+      legend cell align=left, legend pos=outer north east,
+      xlabel={Liczba wielokątów na mapie},
+      ylabel={Czas [ms]}]
       \pgfplotstableread[col sep=comma]{results/model/rails_read_polygons_model_50.csv}\railstable;
       \pgfplotstableread[col sep=comma]{results/model/hanami_read_polygons_model_50.csv}\hanamitable;
       \pgfplotstableread[col sep=comma]{results/model/roda_read_polygons_model_50.csv}\rodatable;
@@ -1617,22 +1785,30 @@ Ruby on Rails posiada zdecydowanie więcej gotowych narzędzi do pracy z danymi 
       \addplot table[x=count, y=time] {\hanamitable};
       \addplot table[x=count, y=time] {\railstable};
       \addplot table[x=count, y=time] {\rodatable};
-      \legend{hanami, rails, roda}
+      \legend{Hanami, Ruby on Rails, Roda}
     \end{axis}
   \end{tikzpicture}
-  \caption{Czas wczytywania danych z bazy w zależności od liczby wielokątów}
+  \caption{Czas wczytywania danych z~bazy w~zależności od liczby wielokątów}
   \label{fig:model_read_polygons}
 \end{figure}
 
+Podobnie jak dla pozostałych typów danych geograficznych, dla aplikacji wykorzystującej framework Hanami odnotowano znacznie gorsze wyniki dla rosnącej liczby wczytywanych wielokątów niż dla pozostałych dwóch aplikacji. Jednak dla wielokątów różnica między frameworkiem Roda, a~Ruby on Rails jest bardziej zauważalna.
+
 \chapter{Podsumowanie}
 \section{Analiza wyników badań}
-\emph{który framework jest najbardziej wydajny w~rozpatrywanych przypadkach}
+
+Badania wykazały, że przy wyborze frameworku internetowego języka Ruby do budowy systemu informacji geograficznej najgorszym wyborem jest framework Hanami. Jego jedynym atutem może być rozbudowana architektura, która ułatwia organizacje kodu źródłowego w~rozbudowanych projektach. Jednak w~prostszych projektach, wiele warstw abstrakcji wymaga od programistów napisania więcej kodu źródłowego niż w~innych frameworkach do zaimplementowania takich samych funkcjonalności. Hanami jest znacznie mniej wydajny w~każdej z~badanych płaszczyzn - interfejsu użytkownika, zapytań HTTP, komunikacji z~bazą danych. Dodatkowo aby użyć innej przestrzennej bazy danych niż PostgreSQL trzeba zaimplementować wsparcie dla nowych typów danych, co nie jest konieczne przy korzystaniu z~innych frameworków.
+
+Pozostałe dwa frameworki Ruby on Rails i~Roda podobnie wypadły w~badaniach wydajnościowych. Roda w~operacjach CRUD w~warstwie modelu była szybsza dla wszystkich typów danych od frameworku Ruby on Rails, jednak przy wczytywaniu bardziej skomplikowanych typów - linii i~wielokątów - dla Ruby on Rails zarejestrowano niższe czasy przy dużej liczbie danych. Na poziomie zapytań HTTP oraz interfejsu użytkownika, aplikacja wykorzystująca Ruby on Rails była bardziej wydajna zarówno dla  operacji na pojedynczych obiektach geograficznych, jak i~dla wczytywania większej liczby obiektów. Ruby on Rails posiada więcej bibliotek służących do pracy na dannych geograficznych co ma przełożenie na mniejszą ilość napisanego kodu dzięki gotowym funkcją. Struktura projektu Ruby on Rails i~projektu Roda jest bardzo podobna, projekty zawierały tyle samo plików.
 
 \section{Realizacja celu projektu}
-\emph{czy cel projektu został zrealizowany, napotkane trudności/przeszkody}
-
-\begin{thebibliography}{inz}
+Niniejsza praca udowodniła, że za pomocą frameworków internetowych języka Ruby z~powodzeniem można stworzyć system informacji geograficznej. Najlepszym wyborem do budowy systemu GIS okazał się najbardziej popularny framework Ruby on Rails. Duża popularność przekłada się na duże wsparcie, wiele dostępnych bibliotek i~narzędzi do pracy z~danymi przestrzennymi. Ruby on Rails wymagał najmniej kodu źródłowego do zaimplementowania zaprojektowanego systemu, który wykazywał się największą wydajnościom przy przetwarzaniu danych geograficznych.
+  
+\begin{thebibliography}{99}
   \addcontentsline{toc}{chapter}{Literatura}
+
+  \bibitem{doc_capybara}
+  \emph{Dokumentacja biblioteki Capybara}, dostępna pod adresem:\\ \url{https://github.com/teamcapybara/capybara}, aktualne na dzień 18.06.2017r.
 
   \bibitem{doc_georuby}
   \emph{Dokumentacja biblioteki GeoRuby}, dostępna pod adresem:\\ \url{https://github.com/nofxx/georuby}, aktualne na dzień 15.06.2017r.
@@ -1646,11 +1822,17 @@ Ruby on Rails posiada zdecydowanie więcej gotowych narzędzi do pracy z danymi 
   \bibitem{doc_rgeo}
   \emph{Dokumentacja biblioteki Rgeo}, dostępna pod adresem:\\ \url{https://github.com/rgeo/rgeo}, aktualne na dzień 15.06.2017r.
 
+  \bibitem{doc_benchmark}
+  \emph{Dokumentacja biblioteki Ruby Benchmark}, dostępna pod adresem:\\ \url{https://ruby-doc.org/stdlib-1.9.3/libdoc/benchmark/rdoc/Benchmark.html}, aktualne na dzień 18.06.2017r.
+
   \bibitem{doc_hanami}
   \emph{Dokumentacja Hanami}, dostępna pod adresem:\\ \url{http://hanamirb.org/guides/}, aktualne na dzień 08.03.2017r.
 
   \bibitem{doc_ruby}
   \emph{Dokumentacja języka Ruby}, dostępna pod adresem:\\ \url{https://www.ruby-lang.org/pl/documentation/}, aktualne na dzień 08.03.2017r.
+
+  \bibitem{doc_jmeter}
+  \emph{Dokumentacja JMeter}, dostępna pod adresem:\\ \url{http://jmeter.apache.org/index.html}, aktualne na dzień 18.06.2017r.
 
   \bibitem{doc_mango}
   \emph{Dokumentacja MangoMap}, dostępna pod adresem:\\ \url{http://help.mangomap.com/}, aktualne na dzień 22.04.2017r.
@@ -1693,8 +1875,20 @@ Ruby on Rails posiada zdecydowanie więcej gotowych narzędzi do pracy z danymi 
   Smyrdek Przemysław, \emph{Czym jest framework i~po co go używać}, dostępne pod adresem:\\
   \url{http://poznajprogramowanie.pl/czym-jest-framework-i-po-co-go-uzywac/}, aktualne na dzień 20.04.2017r.
   
-  
- 
 \end{thebibliography}
+
+\appendix
+
+\chapter{Opis zawartości płyty CD}
+W głównym katalogu załączonej do pracy płyty CD znajdują się:
+\begin{itemize}
+  \item mgr\_rails - kod źródłowy projektu Ruby on Rails
+  \item mgr\_roda - kod źródłowy projektu Roda
+  \item mgr\_hanami - kod źródłowy projektu Hanami
+  \item jmeter\_benchmarks - kod źródłowy testów wydajnościowych napisanych za pomocą aplikacji JMeter
+  \item capybara\_benchmarks - kod źródłowy testów wydajnościowych napisanych za pomocą biblioteki Capybara
+  \item praca\_dyplomowa.pdf - niniejszy dokument
+  \item streszczenie.pdf - streszczenie niniejszego dokumentu
+\end{itemize}
 
 \end{document}

@@ -1,8 +1,8 @@
 \select@language {polish}
 \contentsline {chapter}{\numberline {1}Wprowadzenie}{3}{chapter.1}
 \contentsline {section}{\numberline {1.1}Cel pracy}{3}{section.1.1}
-\contentsline {section}{\numberline {1.2}Zakres i koncepcja pracy}{3}{section.1.2}
-\contentsline {chapter}{\numberline {2}Podstawy teorytyczne}{5}{chapter.2}
+\contentsline {section}{\numberline {1.2}Zakres i~koncepcja pracy}{3}{section.1.2}
+\contentsline {chapter}{\numberline {2}Podstawy teoretyczne}{5}{chapter.2}
 \contentsline {section}{\numberline {2.1}Charakterystyka System\IeC {\'o}w Informacji Geograficznej}{5}{section.2.1}
 \contentsline {section}{\numberline {2.2}Charakterystyka j\IeC {\k e}zyka Ruby}{6}{section.2.2}
 \contentsline {chapter}{\numberline {3}Istniej\IeC {\k a}ce systemy GIS w~j\IeC {\k e}zyku Ruby}{7}{chapter.3}
@@ -11,7 +11,7 @@
 \contentsline {chapter}{\numberline {4}Frameworki internetowe w~j\IeC {\k e}zyku Ruby}{9}{chapter.4}
 \contentsline {section}{\numberline {4.1}Ruby on Rails}{10}{section.4.1}
 \contentsline {section}{\numberline {4.2}Roda}{11}{section.4.2}
-\contentsline {section}{\numberline {4.3}Hanami}{12}{section.4.3}
+\contentsline {section}{\numberline {4.3}Hanami}{13}{section.4.3}
 \contentsline {chapter}{\numberline {5}Narz\IeC {\k e}dzia dost\IeC {\k e}pne do przetwarzania danych geograficznych w~j\IeC {\k e}zyku Ruby}{15}{chapter.5}
 \contentsline {section}{\numberline {5.1}Przechowywanie danych}{15}{section.5.1}
 \contentsline {subsection}{\numberline {5.1.1}PostgreSQL}{15}{subsection.5.1.1}
