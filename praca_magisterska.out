@@ -1,45 +1,51 @@
-\BOOKMARK [0][-]{chapter.1}{Wprowadzenie}{}% 1
-\BOOKMARK [1][-]{section.1.1}{Cel pracy}{chapter.1}% 2
-\BOOKMARK [1][-]{section.1.2}{Zakres i koncepcja pracy}{chapter.1}% 3
-\BOOKMARK [0][-]{chapter.2}{Podstawy teoretyczne}{}% 4
-\BOOKMARK [1][-]{section.2.1}{Charakterystyka System\363w Informacji Geograficznej}{chapter.2}% 5
-\BOOKMARK [1][-]{section.2.2}{Charakterystyka jezyka Ruby}{chapter.2}% 6
-\BOOKMARK [0][-]{chapter.3}{Istniejace systemy GIS w jezyku Ruby}{}% 7
-\BOOKMARK [1][-]{section.3.1}{OpenStreetMap}{chapter.3}% 8
-\BOOKMARK [1][-]{section.3.2}{MangoMap}{chapter.3}% 9
-\BOOKMARK [0][-]{chapter.4}{Frameworki internetowe w jezyku Ruby}{}% 10
-\BOOKMARK [1][-]{section.4.1}{Ruby on Rails}{chapter.4}% 11
-\BOOKMARK [1][-]{section.4.2}{Roda}{chapter.4}% 12
-\BOOKMARK [1][-]{section.4.3}{Hanami}{chapter.4}% 13
-\BOOKMARK [0][-]{chapter.5}{Narzedzia dostepne do przetwarzania danych geograficznych w jezyku Ruby}{}% 14
-\BOOKMARK [1][-]{section.5.1}{Przechowywanie danych}{chapter.5}% 15
-\BOOKMARK [2][-]{subsection.5.1.1}{PostgreSQL}{section.5.1}% 16
-\BOOKMARK [2][-]{subsection.5.1.2}{PostGIS}{section.5.1}% 17
-\BOOKMARK [2][-]{subsection.5.1.3}{MySQL Spatial}{section.5.1}% 18
-\BOOKMARK [2][-]{subsection.5.1.4}{SpatiaLite}{section.5.1}% 19
-\BOOKMARK [1][-]{section.5.2}{Obiektowe przetwarzanie danych}{chapter.5}% 20
-\BOOKMARK [2][-]{subsection.5.2.1}{RGeo}{section.5.2}% 21
-\BOOKMARK [2][-]{subsection.5.2.2}{GeoRuby}{section.5.2}% 22
-\BOOKMARK [1][-]{section.5.3}{Prezentowanie danych}{chapter.5}% 23
-\BOOKMARK [2][-]{subsection.5.3.1}{Leaflet}{section.5.3}% 24
-\BOOKMARK [2][-]{subsection.5.3.2}{GoogleMaps JavaScript API}{section.5.3}% 25
-\BOOKMARK [0][-]{chapter.6}{Badania}{}% 26
-\BOOKMARK [1][-]{section.6.1}{Plan badan}{chapter.6}% 27
-\BOOKMARK [2][-]{subsection.6.1.1}{Aplikacja zaimplementowana na potrzeby badan}{section.6.1}% 28
-\BOOKMARK [2][-]{subsection.6.1.2}{Narzedzia wykorzystane podczas badan}{section.6.1}% 29
-\BOOKMARK [2][-]{subsection.6.1.3}{Srodowisko badawcze}{section.6.1}% 30
-\BOOKMARK [1][-]{section.6.2}{Por\363wnanie funkcjonalnosci wybranych framework\363w}{chapter.6}% 31
-\BOOKMARK [2][-]{subsection.6.2.1}{Przechowywanie danych}{section.6.2}% 32
-\BOOKMARK [2][-]{subsection.6.2.2}{Obiektowe przetwarzanie danych}{section.6.2}% 33
-\BOOKMARK [2][-]{subsection.6.2.3}{Prezentowanie danych}{section.6.2}% 34
-\BOOKMARK [2][-]{subsection.6.2.4}{Podsumowanie}{section.6.2}% 35
-\BOOKMARK [1][-]{section.6.3}{Por\363wnianie struktur wykonanych projekt\363w}{chapter.6}% 36
-\BOOKMARK [1][-]{section.6.4}{Por\363wnianie wydajnosci zaimplemetowanych aplikacji}{chapter.6}% 37
-\BOOKMARK [2][-]{subsection.6.4.1}{Interfejs uzytkownika}{section.6.4}% 38
-\BOOKMARK [2][-]{subsection.6.4.2}{Zapytania HTTP}{section.6.4}% 39
-\BOOKMARK [2][-]{subsection.6.4.3}{Komunikacja z baza danych}{section.6.4}% 40
-\BOOKMARK [0][-]{chapter.7}{Podsumowanie}{}% 41
-\BOOKMARK [1][-]{section.7.1}{Analiza wynik\363w badan}{chapter.7}% 42
-\BOOKMARK [1][-]{section.7.2}{Realizacja celu projektu}{chapter.7}% 43
-\BOOKMARK [0][-]{chapter*.14}{Literatura}{}% 44
-\BOOKMARK [0][-]{appendix.A}{Opis zawartosci p\233yty CD}{}% 45
+\BOOKMARK [0][-]{chapter*.3}{Spis rysunk\363w}{}% 1
+\BOOKMARK [0][-]{chapter*.3}{Spis fragment\363w kodu}{}% 2
+\BOOKMARK [0][-]{chapter.1}{Wprowadzenie}{}% 3
+\BOOKMARK [1][-]{section.1.1}{Cel pracy}{chapter.1}% 4
+\BOOKMARK [1][-]{section.1.2}{Zakres i koncepcja pracy}{chapter.1}% 5
+\BOOKMARK [0][-]{chapter.2}{Podstawy teoretyczne}{}% 6
+\BOOKMARK [1][-]{section.2.1}{Charakterystyka System\363w Informacji Geograficznej}{chapter.2}% 7
+\BOOKMARK [1][-]{section.2.2}{Charakterystyka jezyka Ruby}{chapter.2}% 8
+\BOOKMARK [0][-]{chapter.3}{Istniejace systemy GIS w jezyku Ruby}{}% 9
+\BOOKMARK [1][-]{section.3.1}{OpenStreetMap}{chapter.3}% 10
+\BOOKMARK [1][-]{section.3.2}{MangoMap}{chapter.3}% 11
+\BOOKMARK [0][-]{chapter.4}{Frameworki internetowe w jezyku Ruby}{}% 12
+\BOOKMARK [1][-]{section.4.1}{Ruby on Rails}{chapter.4}% 13
+\BOOKMARK [1][-]{section.4.2}{Roda}{chapter.4}% 14
+\BOOKMARK [1][-]{section.4.3}{Hanami}{chapter.4}% 15
+\BOOKMARK [0][-]{chapter.5}{Narzedzia dostepne do przetwarzania danych geograficznych w jezyku Ruby}{}% 16
+\BOOKMARK [1][-]{section.5.1}{Przechowywanie danych}{chapter.5}% 17
+\BOOKMARK [2][-]{subsection.5.1.1}{PostgreSQL}{section.5.1}% 18
+\BOOKMARK [2][-]{subsection.5.1.2}{PostGIS}{section.5.1}% 19
+\BOOKMARK [2][-]{subsection.5.1.3}{MySQL Spatial}{section.5.1}% 20
+\BOOKMARK [2][-]{subsection.5.1.4}{SpatiaLite}{section.5.1}% 21
+\BOOKMARK [1][-]{section.5.2}{Obiektowe przetwarzanie danych}{chapter.5}% 22
+\BOOKMARK [2][-]{subsection.5.2.1}{RGeo}{section.5.2}% 23
+\BOOKMARK [2][-]{subsection.5.2.2}{GeoRuby}{section.5.2}% 24
+\BOOKMARK [1][-]{section.5.3}{Prezentowanie danych}{chapter.5}% 25
+\BOOKMARK [2][-]{subsection.5.3.1}{Leaflet}{section.5.3}% 26
+\BOOKMARK [2][-]{subsection.5.3.2}{GoogleMaps JavaScript API}{section.5.3}% 27
+\BOOKMARK [0][-]{chapter.6}{Aplikacja zaimplementowana na potrzeby badan}{}% 28
+\BOOKMARK [1][-]{section.6.1}{Opis aplikacji}{chapter.6}% 29
+\BOOKMARK [1][-]{section.6.2}{Implementacja}{chapter.6}% 30
+\BOOKMARK [1][-]{section.6.3}{Prezentacja aplikacji}{chapter.6}% 31
+\BOOKMARK [0][-]{chapter.7}{Badania}{}% 32
+\BOOKMARK [1][-]{section.7.1}{Plan badan}{chapter.7}% 33
+\BOOKMARK [2][-]{subsection.7.1.1}{Srodowisko badawcze}{section.7.1}% 34
+\BOOKMARK [2][-]{subsection.7.1.2}{Narzedzia wykorzystane podczas badan}{section.7.1}% 35
+\BOOKMARK [1][-]{section.7.2}{Por\363wnanie funkcjonalnosci wybranych framework\363w}{chapter.7}% 36
+\BOOKMARK [2][-]{subsection.7.2.1}{Przechowywanie danych}{section.7.2}% 37
+\BOOKMARK [2][-]{subsection.7.2.2}{Obiektowe przetwarzanie danych}{section.7.2}% 38
+\BOOKMARK [2][-]{subsection.7.2.3}{Prezentowanie danych}{section.7.2}% 39
+\BOOKMARK [2][-]{subsection.7.2.4}{Podsumowanie}{section.7.2}% 40
+\BOOKMARK [1][-]{section.7.3}{Por\363wnianie struktur wykonanych projekt\363w}{chapter.7}% 41
+\BOOKMARK [1][-]{section.7.4}{Por\363wnianie wydajnosci zaimplemetowanych aplikacji}{chapter.7}% 42
+\BOOKMARK [2][-]{subsection.7.4.1}{Interfejs uzytkownika}{section.7.4}% 43
+\BOOKMARK [2][-]{subsection.7.4.2}{Zapytania HTTP}{section.7.4}% 44
+\BOOKMARK [2][-]{subsection.7.4.3}{Komunikacja z baza danych}{section.7.4}% 45
+\BOOKMARK [0][-]{chapter.8}{Podsumowanie i wnioski}{}% 46
+\BOOKMARK [1][-]{section.8.1}{Podsumowanie wykonanej pracy}{chapter.8}% 47
+\BOOKMARK [1][-]{section.8.2}{Analiza wynik\363w badan}{chapter.8}% 48
+\BOOKMARK [1][-]{section.8.3}{Realizacja celu projektu}{chapter.8}% 49
+\BOOKMARK [0][-]{chapter*.16}{Literatura}{}% 50
+\BOOKMARK [0][-]{appendix.A}{Opis zawartosci p\233yty CD}{}% 51

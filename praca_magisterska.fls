@@ -323,6 +323,10 @@ INPUT /usr/local/texlive/2016/texmf-dist/tex/generic/pgfplots/pgfplots.revision.
 INPUT /usr/local/texlive/2016/texmf-dist/tex/generic/pgfplots/pgfplots.revision.tex
 INPUT /usr/local/texlive/2016/texmf-dist/tex/generic/pgfplots/numtable/pgfplotstable.code.tex
 INPUT /usr/local/texlive/2016/texmf-dist/tex/generic/pgfplots/numtable/pgfplotstable.coltype.code.tex
+INPUT /usr/local/texlive/2016/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarypatterns.code.tex
+INPUT /usr/local/texlive/2016/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarypatterns.code.tex
+INPUT /usr/local/texlive/2016/texmf-dist/tex/generic/pgf/libraries/pgflibrarypatterns.code.tex
+INPUT /usr/local/texlive/2016/texmf-dist/tex/generic/pgf/libraries/pgflibrarypatterns.code.tex
 INPUT praca_magisterska.aux
 INPUT praca_magisterska.aux
 OUTPUT praca_magisterska.aux
@@ -377,6 +381,12 @@ INPUT /usr/local/texlive/2016/texmf-dist/fonts/tfm/public/pl/plbx12.tfm
 OUTPUT praca_magisterska.toc
 INPUT /usr/local/texlive/2016/texmf-dist/fonts/tfm/public/pl/plr10.tfm
 INPUT /usr/local/texlive/2016/texmf-dist/fonts/tfm/public/pl/plbx10.tfm
+INPUT praca_magisterska.lof
+INPUT praca_magisterska.lof
+OUTPUT praca_magisterska.lof
+INPUT praca_magisterska.lol
+INPUT praca_magisterska.lol
+OUTPUT praca_magisterska.lol
 INPUT /usr/local/texlive/2016/texmf-dist/fonts/tfm/public/pl/plbx12.tfm
 INPUT /usr/local/texlive/2016/texmf-dist/fonts/tfm/public/pl/plti12.tfm
 INPUT /usr/local/texlive/2016/texmf-dist/fonts/tfm/public/pl/plr10.tfm
